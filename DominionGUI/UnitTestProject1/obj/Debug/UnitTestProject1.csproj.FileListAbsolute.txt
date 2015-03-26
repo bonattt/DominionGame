@@ -1,0 +1,7 @@
+H:\CSSE376\GithubProject\DominionGame\DominionGUI\UnitTestProject1\bin\Debug\UnitTestProject1.dll
+H:\CSSE376\GithubProject\DominionGame\DominionGUI\UnitTestProject1\bin\Debug\UnitTestProject1.pdb
+H:\CSSE376\GithubProject\DominionGame\DominionGUI\UnitTestProject1\obj\Debug\UnitTestProject1.csprojResolveAssemblyReference.cache
+H:\CSSE376\GithubProject\DominionGame\DominionGUI\UnitTestProject1\obj\Debug\UnitTestProject1.dll
+H:\CSSE376\GithubProject\DominionGame\DominionGUI\UnitTestProject1\obj\Debug\UnitTestProject1.pdb
+H:\CSSE376\GithubProject\DominionGame\DominionGUI\UnitTestProject1\bin\Debug\DominionGUI.exe
+H:\CSSE376\GithubProject\DominionGame\DominionGUI\UnitTestProject1\bin\Debug\DominionGUI.pdb

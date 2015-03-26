@@ -7,3 +7,12 @@ c:\users\cookmn\documents\visual studio 2013\Projects\DominionGUI\DominionGUI\ob
 c:\users\cookmn\documents\visual studio 2013\Projects\DominionGUI\DominionGUI\obj\Debug\DominionGUI.csproj.GenerateResource.Cache
 c:\users\cookmn\documents\visual studio 2013\Projects\DominionGUI\DominionGUI\obj\Debug\DominionGUI.exe
 c:\users\cookmn\documents\visual studio 2013\Projects\DominionGUI\DominionGUI\obj\Debug\DominionGUI.pdb
+H:\CSSE376\GithubProject\DominionGame\DominionGUI\DominionGUI\bin\Debug\DominionGUI.exe.config
+H:\CSSE376\GithubProject\DominionGame\DominionGUI\DominionGUI\obj\Debug\DominionGUI.exe
+H:\CSSE376\GithubProject\DominionGame\DominionGUI\DominionGUI\obj\Debug\DominionGUI.pdb
+H:\CSSE376\GithubProject\DominionGame\DominionGUI\DominionGUI\bin\Debug\DominionGUI.exe
+H:\CSSE376\GithubProject\DominionGame\DominionGUI\DominionGUI\bin\Debug\DominionGUI.pdb
+H:\CSSE376\GithubProject\DominionGame\DominionGUI\DominionGUI\obj\Debug\DominionGUI.csprojResolveAssemblyReference.cache
+H:\CSSE376\GithubProject\DominionGame\DominionGUI\DominionGUI\obj\Debug\DominionGUI.Form1.resources
+H:\CSSE376\GithubProject\DominionGame\DominionGUI\DominionGUI\obj\Debug\DominionGUI.Properties.Resources.resources
+H:\CSSE376\GithubProject\DominionGame\DominionGUI\DominionGUI\obj\Debug\DominionGUI.csproj.GenerateResource.Cache
