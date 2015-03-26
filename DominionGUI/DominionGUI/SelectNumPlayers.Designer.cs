@@ -1,6 +1,6 @@
 ﻿namespace DominionGUI
 {
-    partial class Form1
+    partial class SelectNumPlayers
     {
         /// <summary>
         /// Required designer variable.

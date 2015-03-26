@@ -16,3 +16,13 @@ H:\CSSE376\GithubProject\DominionGame\DominionGUI\DominionGUI\obj\Debug\Dominion
 H:\CSSE376\GithubProject\DominionGame\DominionGUI\DominionGUI\obj\Debug\DominionGUI.Form1.resources
 H:\CSSE376\GithubProject\DominionGame\DominionGUI\DominionGUI\obj\Debug\DominionGUI.Properties.Resources.resources
 H:\CSSE376\GithubProject\DominionGame\DominionGUI\DominionGUI\obj\Debug\DominionGUI.csproj.GenerateResource.Cache
+C:\Users\cookmn\Documents\GitHub\DominionGame\DominionGUI\DominionGUI\bin\Debug\DominionGUI.exe.config
+C:\Users\cookmn\Documents\GitHub\DominionGame\DominionGUI\DominionGUI\obj\Debug\DominionGUI.exe
+C:\Users\cookmn\Documents\GitHub\DominionGame\DominionGUI\DominionGUI\obj\Debug\DominionGUI.pdb
+C:\Users\cookmn\Documents\GitHub\DominionGame\DominionGUI\DominionGUI\bin\Debug\DominionGUI.exe
+C:\Users\cookmn\Documents\GitHub\DominionGame\DominionGUI\DominionGUI\bin\Debug\DominionGUI.pdb
+C:\Users\cookmn\Documents\GitHub\DominionGame\DominionGUI\DominionGUI\obj\Debug\DominionGUI.csprojResolveAssemblyReference.cache
+C:\Users\cookmn\Documents\GitHub\DominionGame\DominionGUI\DominionGUI\obj\Debug\DominionGUI.SelectNumPlayers.resources
+C:\Users\cookmn\Documents\GitHub\DominionGame\DominionGUI\DominionGUI\obj\Debug\DominionGUI.Properties.Resources.resources
+C:\Users\cookmn\Documents\GitHub\DominionGame\DominionGUI\DominionGUI\obj\Debug\DominionGUI.csproj.GenerateResource.Cache
+C:\Users\cookmn\Documents\GitHub\DominionGame\DominionGUI\DominionGUI\obj\Debug\DominionGUI.MainBoard.resources
