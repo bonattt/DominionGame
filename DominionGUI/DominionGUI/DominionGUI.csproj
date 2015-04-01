@@ -81,6 +81,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -94,6 +95,81 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Adventurer.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bureaucrat.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cellar.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Chancellor.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Chapel.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Councilroom.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Feast.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Festival.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gardens.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Laboratory.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Library.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Market.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Militia.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mine.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Moat.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Moneylender.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Remodel.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Smithy.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Spy.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Thief.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Throneroom.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Village.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Witch.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Woodcutter.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Workshop.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

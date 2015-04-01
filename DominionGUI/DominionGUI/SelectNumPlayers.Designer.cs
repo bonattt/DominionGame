@@ -79,6 +79,7 @@
             this.checkBox4.TabIndex = 12;
             this.checkBox4.Text = "Random";
             this.checkBox4.UseVisualStyleBackColor = true;
+            this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
             // 
             // checkBox5
             // 
