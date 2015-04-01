@@ -15,7 +15,7 @@ namespace DominionCards
         }
         public int getPrice()
         {
-            return -1;
+            return price;
         }
         public abstract void play();
         public abstract void addToDeck();
