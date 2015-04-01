@@ -10,14 +10,46 @@ namespace RandomGenerateCards
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("This is RandomGenerateCards");
+            List<int> theList = GenerateRandomList();
+            Console.WriteLine("Result: " + theList.Count);
+            theList.ForEach(Console.WriteLine);
         }
-        public static List<int> GenerateRandomList(int count)
+        static Random random = new Random();
+        public static List<int> GenerateRandomList()
         {
-            List<int> theList =  new List<int>();
-	        theList.Add(2);
-	        theList.Add(2);
-            return theList;
+            int count = 10;
+            int min = 0;
+            int max = 25;
+            if (max <= min || count < 0 ||
+                    (count > max - min && max - min > 0))
+            {
+                throw new ArgumentOutOfRangeException("Range " + min + " to " + max +
+                           " (" + ((Int64)max - (Int64)min) + " values), or count " + count + " is illegal");
+            }
+
+            HashSet<int> candidates = new HashSet<int>();
+
+            for (int top = max - count; top < max; top++)
+            {
+                if (!candidates.Add(random.Next(min, top + 1)))
+                {
+                    candidates.Add(top);
+                }
+            }
+
+            List<int> result = candidates.ToList();
+
+            for (int i = result.Count - 1; i > 0; i--)
+            {
+                int k = random.Next(i + 1);
+                int tmp = result[k];
+                result[k] = result[i];
+                result[i] = tmp;
+            }
+            return result;
         }
     }
 }
+
+
+
