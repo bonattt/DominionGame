@@ -6,7 +6,20 @@ using System.Threading.Tasks;
 
 namespace DominionCards
 {
-    class ComputerPlayer
+    class ComputerPlayer : Player
     {
+        public ComputerPlayer()
+            : base()
+        {
+            // TODO impliment this
+        }
+        public void actionPhase()
+        {
+            // TODO implement
+        }
+        public void buyPhase()
+        {
+            // TODO implement
+        }
     }
 }
