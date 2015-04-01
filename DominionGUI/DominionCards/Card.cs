@@ -9,15 +9,16 @@ namespace DominionCards
     public abstract class Card
     {
         private int price;
-        public Card()
+        public Card(int price)
         {
-
+            this.price = price;
         }
         public int getPrice()
         {
-            return price;
+            return -1;
         }
+        public abstract void play();
         public abstract void addToDeck();
-        public abstract void Trash();
+        public abstract void trash();
     }
 }

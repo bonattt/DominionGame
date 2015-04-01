@@ -42,6 +42,9 @@
   <ItemGroup>
     <Compile Include="Card.cs" />
     <Compile Include="CardTEST.cs" />
+    <Compile Include="ActionCard.cs" />
+    <Compile Include="VictoryCard.cs" />
+    <Compile Include="TreasureCard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

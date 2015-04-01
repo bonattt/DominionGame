@@ -11,9 +11,25 @@ namespace DominionCards
     class CardTEST
     {
         [Test()]
-        public void test1()
+        public void testGetPriceVictoryCard()
         {
-            Assert.Fail();
+            int vPrice = 2;
+            Card v = new VictoryCard(1, vPrice);
+            Assert.AreEqual(v.getPrice(), vPrice);
+        }
+        [Test()]
+        public void testGetPriceTreasureCard()
+        {
+            int tPrice = 2;
+            Card t = new TreasureCard(1, tPrice);
+            Assert.AreEqual(t.getPrice(), tPrice);
+        }
+        [Test()]
+        public void testGetPriceActionCard()
+        {
+            int aPrice = 2;
+            Card a = new ActionCard(1, 1, 1, 1, aPrice);
+            Assert.AreEqual(a.getPrice(), aPrice);
         }
     }
 }
