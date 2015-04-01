@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RandomGenerateCards
 {
-    class Program
+    class CheckRandom
     {
         static void Main(string[] args)
         {
