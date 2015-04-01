@@ -30,5 +30,15 @@ namespace DominionGUI
         {
             Close();
         }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SelectNumPlayers_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
