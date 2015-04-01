@@ -16,7 +16,7 @@ namespace RandomGenerateCards
         {
             List<int> theList =  new List<int>();
 	        theList.Add(2);
-	        theList.Add(3);
+	        theList.Add(2);
             return theList;
         }
     }
