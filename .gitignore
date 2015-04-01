@@ -216,3 +216,7 @@ pip-log.txt
 .mr.developer.cfg
 DominionGUI/DominionGUI/obj/Debug/DominionGUI.csproj.GenerateResource.Cache
 *.cache
+<<<<<<< HEAD
+=======
+DominionGUI/DominionGUI.v12.suo
+>>>>>>> origin/Luke
