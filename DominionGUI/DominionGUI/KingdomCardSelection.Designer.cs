@@ -120,7 +120,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(65, 100);
+            this.checkBox1.Location = new System.Drawing.Point(59, 97);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(100, 21);
             this.checkBox1.TabIndex = 2;
@@ -130,241 +130,241 @@
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(376, 100);
+            this.checkBox2.Location = new System.Drawing.Point(215, 97);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(66, 21);
+            this.checkBox2.Size = new System.Drawing.Size(100, 21);
             this.checkBox2.TabIndex = 3;
-            this.checkBox2.Text = "Cellar\r\n";
+            this.checkBox2.Text = "Bureaucrat";
             this.checkBox2.UseVisualStyleBackColor = true;
             // 
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(215, 262);
+            this.checkBox3.Location = new System.Drawing.Point(376, 97);
             this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(65, 21);
+            this.checkBox3.Size = new System.Drawing.Size(66, 21);
             this.checkBox3.TabIndex = 4;
-            this.checkBox3.Text = "Feast";
+            this.checkBox3.Text = "Cellar";
             this.checkBox3.UseVisualStyleBackColor = true;
             // 
             // checkBox4
             // 
             this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(668, 430);
+            this.checkBox4.Location = new System.Drawing.Point(528, 97);
             this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(61, 21);
+            this.checkBox4.Size = new System.Drawing.Size(97, 21);
             this.checkBox4.TabIndex = 5;
-            this.checkBox4.Text = "Moat";
+            this.checkBox4.Text = "Chancellor";
             this.checkBox4.UseVisualStyleBackColor = true;
             // 
             // checkBox5
             // 
             this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(522, 262);
+            this.checkBox5.Location = new System.Drawing.Point(668, 97);
             this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(85, 21);
+            this.checkBox5.Size = new System.Drawing.Size(74, 21);
             this.checkBox5.TabIndex = 6;
-            this.checkBox5.Text = "Gardens";
+            this.checkBox5.Text = "Chapel";
             this.checkBox5.UseVisualStyleBackColor = true;
             // 
             // checkBox6
             // 
             this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(668, 771);
+            this.checkBox6.Location = new System.Drawing.Point(60, 259);
             this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(94, 21);
+            this.checkBox6.Size = new System.Drawing.Size(117, 21);
             this.checkBox6.TabIndex = 7;
-            this.checkBox6.Text = "Workshop";
+            this.checkBox6.Text = "Council Room";
             this.checkBox6.UseVisualStyleBackColor = true;
             // 
             // checkBox7
             // 
             this.checkBox7.AutoSize = true;
-            this.checkBox7.Location = new System.Drawing.Point(522, 771);
+            this.checkBox7.Location = new System.Drawing.Point(219, 259);
             this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(103, 21);
+            this.checkBox7.Size = new System.Drawing.Size(65, 21);
             this.checkBox7.TabIndex = 8;
-            this.checkBox7.Text = "Woodcutter";
+            this.checkBox7.Text = "Feast";
             this.checkBox7.UseVisualStyleBackColor = true;
             // 
             // checkBox8
             // 
             this.checkBox8.AutoSize = true;
-            this.checkBox8.Location = new System.Drawing.Point(215, 100);
+            this.checkBox8.Location = new System.Drawing.Point(376, 259);
             this.checkBox8.Name = "checkBox8";
-            this.checkBox8.Size = new System.Drawing.Size(100, 21);
+            this.checkBox8.Size = new System.Drawing.Size(78, 21);
             this.checkBox8.TabIndex = 9;
-            this.checkBox8.Text = "Bureaucrat";
+            this.checkBox8.Text = "Festival";
             this.checkBox8.UseVisualStyleBackColor = true;
             // 
             // checkBox9
             // 
             this.checkBox9.AutoSize = true;
-            this.checkBox9.Location = new System.Drawing.Point(668, 100);
+            this.checkBox9.Location = new System.Drawing.Point(528, 259);
             this.checkBox9.Name = "checkBox9";
-            this.checkBox9.Size = new System.Drawing.Size(74, 21);
+            this.checkBox9.Size = new System.Drawing.Size(85, 21);
             this.checkBox9.TabIndex = 10;
-            this.checkBox9.Text = "Chapel";
+            this.checkBox9.Text = "Gardens";
             this.checkBox9.UseVisualStyleBackColor = true;
             // 
             // checkBox10
             // 
             this.checkBox10.AutoSize = true;
-            this.checkBox10.Location = new System.Drawing.Point(376, 602);
+            this.checkBox10.Location = new System.Drawing.Point(668, 259);
             this.checkBox10.Name = "checkBox10";
-            this.checkBox10.Size = new System.Drawing.Size(72, 21);
+            this.checkBox10.Size = new System.Drawing.Size(99, 21);
             this.checkBox10.TabIndex = 11;
-            this.checkBox10.Text = "Smithy";
+            this.checkBox10.Text = "Laboratory";
             this.checkBox10.UseVisualStyleBackColor = true;
             // 
             // checkBox11
             // 
             this.checkBox11.AutoSize = true;
-            this.checkBox11.Location = new System.Drawing.Point(668, 262);
+            this.checkBox11.Location = new System.Drawing.Point(55, 426);
             this.checkBox11.Name = "checkBox11";
-            this.checkBox11.Size = new System.Drawing.Size(99, 21);
+            this.checkBox11.Size = new System.Drawing.Size(74, 21);
             this.checkBox11.TabIndex = 12;
-            this.checkBox11.Text = "Laboratory";
+            this.checkBox11.Text = "Library";
             this.checkBox11.UseVisualStyleBackColor = true;
             // 
             // checkBox12
             // 
             this.checkBox12.AutoSize = true;
-            this.checkBox12.Location = new System.Drawing.Point(668, 602);
+            this.checkBox12.Location = new System.Drawing.Point(219, 426);
             this.checkBox12.Name = "checkBox12";
-            this.checkBox12.Size = new System.Drawing.Size(62, 21);
+            this.checkBox12.Size = new System.Drawing.Size(73, 21);
             this.checkBox12.TabIndex = 13;
-            this.checkBox12.Text = "Thief";
+            this.checkBox12.Text = "Market";
             this.checkBox12.UseVisualStyleBackColor = true;
             // 
             // checkBox13
             // 
             this.checkBox13.AutoSize = true;
-            this.checkBox13.Location = new System.Drawing.Point(522, 602);
+            this.checkBox13.Location = new System.Drawing.Point(376, 426);
             this.checkBox13.Name = "checkBox13";
-            this.checkBox13.Size = new System.Drawing.Size(54, 21);
+            this.checkBox13.Size = new System.Drawing.Size(65, 21);
             this.checkBox13.TabIndex = 14;
-            this.checkBox13.Text = "Spy";
+            this.checkBox13.Text = "Militia";
             this.checkBox13.UseVisualStyleBackColor = true;
             // 
             // checkBox14
             // 
             this.checkBox14.AutoSize = true;
-            this.checkBox14.Location = new System.Drawing.Point(65, 602);
+            this.checkBox14.Location = new System.Drawing.Point(528, 426);
             this.checkBox14.Name = "checkBox14";
-            this.checkBox14.Size = new System.Drawing.Size(112, 21);
+            this.checkBox14.Size = new System.Drawing.Size(60, 21);
             this.checkBox14.TabIndex = 15;
-            this.checkBox14.Text = "Moneylender";
+            this.checkBox14.Text = "Mine";
             this.checkBox14.UseVisualStyleBackColor = true;
             // 
             // checkBox15
             // 
             this.checkBox15.AutoSize = true;
-            this.checkBox15.Location = new System.Drawing.Point(376, 771);
+            this.checkBox15.Location = new System.Drawing.Point(668, 426);
             this.checkBox15.Name = "checkBox15";
-            this.checkBox15.Size = new System.Drawing.Size(65, 21);
+            this.checkBox15.Size = new System.Drawing.Size(61, 21);
             this.checkBox15.TabIndex = 16;
-            this.checkBox15.Text = "Witch";
+            this.checkBox15.Text = "Moat";
             this.checkBox15.UseVisualStyleBackColor = true;
             // 
             // checkBox16
             // 
             this.checkBox16.AutoSize = true;
-            this.checkBox16.Location = new System.Drawing.Point(376, 430);
+            this.checkBox16.Location = new System.Drawing.Point(60, 602);
             this.checkBox16.Name = "checkBox16";
-            this.checkBox16.Size = new System.Drawing.Size(65, 21);
+            this.checkBox16.Size = new System.Drawing.Size(112, 21);
             this.checkBox16.TabIndex = 17;
-            this.checkBox16.Text = "Militia";
+            this.checkBox16.Text = "Moneylender";
             this.checkBox16.UseVisualStyleBackColor = true;
             // 
             // checkBox17
             // 
             this.checkBox17.AutoSize = true;
-            this.checkBox17.Location = new System.Drawing.Point(65, 771);
+            this.checkBox17.Location = new System.Drawing.Point(219, 602);
             this.checkBox17.Name = "checkBox17";
-            this.checkBox17.Size = new System.Drawing.Size(108, 21);
+            this.checkBox17.Size = new System.Drawing.Size(86, 21);
             this.checkBox17.TabIndex = 18;
-            this.checkBox17.Text = "Throneroom";
+            this.checkBox17.Text = "Remodel";
             this.checkBox17.UseVisualStyleBackColor = true;
             // 
             // checkBox18
             // 
             this.checkBox18.AutoSize = true;
-            this.checkBox18.Location = new System.Drawing.Point(215, 771);
+            this.checkBox18.Location = new System.Drawing.Point(376, 602);
             this.checkBox18.Name = "checkBox18";
             this.checkBox18.Size = new System.Drawing.Size(72, 21);
             this.checkBox18.TabIndex = 19;
-            this.checkBox18.Text = "Village";
+            this.checkBox18.Text = "Smithy";
             this.checkBox18.UseVisualStyleBackColor = true;
             // 
             // checkBox19
             // 
             this.checkBox19.AutoSize = true;
-            this.checkBox19.Location = new System.Drawing.Point(65, 430);
+            this.checkBox19.Location = new System.Drawing.Point(528, 602);
             this.checkBox19.Name = "checkBox19";
-            this.checkBox19.Size = new System.Drawing.Size(74, 21);
+            this.checkBox19.Size = new System.Drawing.Size(54, 21);
             this.checkBox19.TabIndex = 20;
-            this.checkBox19.Text = "Library";
+            this.checkBox19.Text = "Spy";
             this.checkBox19.UseVisualStyleBackColor = true;
             // 
             // checkBox20
             // 
             this.checkBox20.AutoSize = true;
-            this.checkBox20.Location = new System.Drawing.Point(376, 262);
+            this.checkBox20.Location = new System.Drawing.Point(668, 602);
             this.checkBox20.Name = "checkBox20";
-            this.checkBox20.Size = new System.Drawing.Size(78, 21);
+            this.checkBox20.Size = new System.Drawing.Size(62, 21);
             this.checkBox20.TabIndex = 21;
-            this.checkBox20.Text = "Festival";
+            this.checkBox20.Text = "Thief";
             this.checkBox20.UseVisualStyleBackColor = true;
             // 
             // checkBox21
             // 
             this.checkBox21.AutoSize = true;
-            this.checkBox21.Location = new System.Drawing.Point(215, 602);
+            this.checkBox21.Location = new System.Drawing.Point(68, 767);
             this.checkBox21.Name = "checkBox21";
-            this.checkBox21.Size = new System.Drawing.Size(86, 21);
+            this.checkBox21.Size = new System.Drawing.Size(117, 21);
             this.checkBox21.TabIndex = 22;
-            this.checkBox21.Text = "Remodel";
+            this.checkBox21.Text = "Throne Room";
             this.checkBox21.UseVisualStyleBackColor = true;
             // 
             // checkBox22
             // 
             this.checkBox22.AutoSize = true;
-            this.checkBox22.Location = new System.Drawing.Point(215, 430);
+            this.checkBox22.Location = new System.Drawing.Point(219, 767);
             this.checkBox22.Name = "checkBox22";
-            this.checkBox22.Size = new System.Drawing.Size(73, 21);
+            this.checkBox22.Size = new System.Drawing.Size(72, 21);
             this.checkBox22.TabIndex = 23;
-            this.checkBox22.Text = "Market";
+            this.checkBox22.Text = "Village";
             this.checkBox22.UseVisualStyleBackColor = true;
             // 
             // checkBox23
             // 
             this.checkBox23.AutoSize = true;
-            this.checkBox23.Location = new System.Drawing.Point(65, 262);
+            this.checkBox23.Location = new System.Drawing.Point(376, 767);
             this.checkBox23.Name = "checkBox23";
-            this.checkBox23.Size = new System.Drawing.Size(108, 21);
+            this.checkBox23.Size = new System.Drawing.Size(65, 21);
             this.checkBox23.TabIndex = 24;
-            this.checkBox23.Text = "Councilroom";
+            this.checkBox23.Text = "Witch";
             this.checkBox23.UseVisualStyleBackColor = true;
             // 
             // checkBox24
             // 
             this.checkBox24.AutoSize = true;
-            this.checkBox24.Location = new System.Drawing.Point(522, 100);
+            this.checkBox24.Location = new System.Drawing.Point(528, 767);
             this.checkBox24.Name = "checkBox24";
-            this.checkBox24.Size = new System.Drawing.Size(97, 21);
+            this.checkBox24.Size = new System.Drawing.Size(103, 21);
             this.checkBox24.TabIndex = 25;
-            this.checkBox24.Text = "Chancellor";
+            this.checkBox24.Text = "Woodcutter";
             this.checkBox24.UseVisualStyleBackColor = true;
             // 
             // checkBox25
             // 
             this.checkBox25.AutoSize = true;
-            this.checkBox25.Location = new System.Drawing.Point(522, 430);
+            this.checkBox25.Location = new System.Drawing.Point(668, 767);
             this.checkBox25.Name = "checkBox25";
-            this.checkBox25.Size = new System.Drawing.Size(60, 21);
+            this.checkBox25.Size = new System.Drawing.Size(94, 21);
             this.checkBox25.TabIndex = 26;
-            this.checkBox25.Text = "Mine";
+            this.checkBox25.Text = "Workshop";
             this.checkBox25.UseVisualStyleBackColor = true;
             // 
             // pictureBox1
