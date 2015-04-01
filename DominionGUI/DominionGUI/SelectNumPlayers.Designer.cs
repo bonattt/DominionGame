@@ -35,8 +35,8 @@
             this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // checkBox1
@@ -108,16 +108,6 @@
             this.button1.Text = "Play!";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(22, 21);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(238, 17);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "How many players wish to play?";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -127,6 +117,16 @@
             this.label2.Size = new System.Drawing.Size(346, 17);
             this.label2.TabIndex = 17;
             this.label2.Text = "How do you wish to select the Kingdom Cards?";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(22, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(238, 17);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "How many players wish to play?";
             // 
             // SelectNumPlayers
             // 
@@ -159,8 +159,8 @@
         private System.Windows.Forms.CheckBox checkBox5;
         private System.Windows.Forms.CheckBox checkBox6;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }
 
