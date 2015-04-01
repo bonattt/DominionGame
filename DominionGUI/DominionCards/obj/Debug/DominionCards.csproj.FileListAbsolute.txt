@@ -1,7 +1,0 @@
-C:\Users\bonattt\Documents\School\3 spring Sophomore\CSSE 376 - SQA\Project\DominionGame\DominionGUI\DominionCards\bin\Debug\DominionCards.dll
-C:\Users\bonattt\Documents\School\3 spring Sophomore\CSSE 376 - SQA\Project\DominionGame\DominionGUI\DominionCards\bin\Debug\DominionCards.pdb
-C:\Users\bonattt\Documents\School\3 spring Sophomore\CSSE 376 - SQA\Project\DominionGame\DominionGUI\DominionCards\bin\Debug\nunit.framework.dll
-C:\Users\bonattt\Documents\School\3 spring Sophomore\CSSE 376 - SQA\Project\DominionGame\DominionGUI\DominionCards\bin\Debug\nunit.framework.xml
-C:\Users\bonattt\Documents\School\3 spring Sophomore\CSSE 376 - SQA\Project\DominionGame\DominionGUI\DominionCards\obj\Debug\DominionCards.csprojResolveAssemblyReference.cache
-C:\Users\bonattt\Documents\School\3 spring Sophomore\CSSE 376 - SQA\Project\DominionGame\DominionGUI\DominionCards\obj\Debug\DominionCards.dll
-C:\Users\bonattt\Documents\School\3 spring Sophomore\CSSE 376 - SQA\Project\DominionGame\DominionGUI\DominionCards\obj\Debug\DominionCards.pdb
