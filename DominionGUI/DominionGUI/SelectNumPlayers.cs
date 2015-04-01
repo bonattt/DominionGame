@@ -45,5 +45,19 @@ namespace DominionGUI
         {
             Close();
         }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            string movies = "";
+
+            if (checkBox1.Checked)
+            {
+
+                movies = movies + checkBox1.Text;
+
+            }
+
+            MessageBox.Show(movies);
+        }
     }
 }
