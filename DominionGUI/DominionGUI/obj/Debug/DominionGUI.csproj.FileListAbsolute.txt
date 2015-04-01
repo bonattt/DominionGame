@@ -36,3 +36,4 @@ C:\Users\bonattt\Documents\School\3 spring Sophomore\CSSE 376 - SQA\Project\Domi
 C:\Users\bonattt\Documents\School\3 spring Sophomore\CSSE 376 - SQA\Project\DominionGame\DominionGUI\DominionGUI\obj\Debug\DominionGUI.SelectNumPlayers.resources
 C:\Users\bonattt\Documents\School\3 spring Sophomore\CSSE 376 - SQA\Project\DominionGame\DominionGUI\DominionGUI\obj\Debug\DominionGUI.Properties.Resources.resources
 C:\Users\bonattt\Documents\School\3 spring Sophomore\CSSE 376 - SQA\Project\DominionGame\DominionGUI\DominionGUI\obj\Debug\DominionGUI.csproj.GenerateResource.Cache
+C:\Users\cookmn\Documents\GitHub\DominionGame\DominionGUI\DominionGUI\obj\Debug\DominionGUI.KingdomCardSelection.resources

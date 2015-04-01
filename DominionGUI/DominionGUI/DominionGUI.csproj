@@ -44,6 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="KingdomCardSelection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KingdomCardSelection.Designer.cs">
+      <DependentUpon>KingdomCardSelection.cs</DependentUpon>
+    </Compile>
     <Compile Include="SelectNumPlayers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,6 +64,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="KingdomCardSelection.resx">
+      <DependentUpon>KingdomCardSelection.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainBoard.resx">
       <DependentUpon>MainBoard.cs</DependentUpon>
     </EmbeddedResource>
