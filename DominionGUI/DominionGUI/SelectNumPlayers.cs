@@ -95,6 +95,7 @@ namespace DominionGUI
                     xValue = xValue + 90;
                     newPicture.Parent = myForm;
                     myForm.Update();
+                    
                 }
 
                 if (tempList.Contains(2))

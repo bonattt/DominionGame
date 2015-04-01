@@ -43,6 +43,7 @@
     <Compile Include="Card.cs" />
     <Compile Include="CardTEST.cs" />
     <Compile Include="ActionCard.cs" />
+    <Compile Include="DominionData.cs" />
     <Compile Include="ComputerPlayer.cs" />
     <Compile Include="GameBoard.cs" />
     <Compile Include="HumanPlayer.cs" />
