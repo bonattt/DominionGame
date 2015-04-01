@@ -13,7 +13,8 @@ namespace RandomGenerateCards
         [Test()]
         public void testRandom1()
         {
-            Boolean israndom = false;
+            List<int> theList = GenerateRandom.GenerateRandomList(10);
+            Boolean israndom =  theList.Distinct().Count() == theList.Count();
             Assert.AreEqual(true,israndom);
         }
 

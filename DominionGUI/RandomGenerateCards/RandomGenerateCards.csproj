@@ -43,7 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="RandomCardsTest.cs" />
-    <Compile Include="CheckRandom.cs" />
+    <Compile Include="GenerateRandom.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

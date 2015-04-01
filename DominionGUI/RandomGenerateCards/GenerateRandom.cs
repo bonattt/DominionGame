@@ -6,11 +6,18 @@ using System.Threading.Tasks;
 
 namespace RandomGenerateCards
 {
-    class CheckRandom
+    class GenerateRandom
     {
         static void Main(string[] args)
         {
             Console.WriteLine("This is RandomGenerateCards");
+        }
+        public static List<int> GenerateRandomList(int count)
+        {
+            List<int> theList =  new List<int>();
+	        theList.Add(2);
+	        theList.Add(3);
+            return theList;
         }
     }
 }
