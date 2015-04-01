@@ -25,4 +25,4 @@ C:\Users\cookmn\Documents\GitHub\DominionGame\DominionGUI\DominionGUI\obj\Debug\
 C:\Users\cookmn\Documents\GitHub\DominionGame\DominionGUI\DominionGUI\obj\Debug\DominionGUI.SelectNumPlayers.resources
 C:\Users\cookmn\Documents\GitHub\DominionGame\DominionGUI\DominionGUI\obj\Debug\DominionGUI.Properties.Resources.resources
 C:\Users\cookmn\Documents\GitHub\DominionGame\DominionGUI\DominionGUI\obj\Debug\DominionGUI.csproj.GenerateResource.Cache
-C:\Users\cookmn\Documents\GitHub\DominionGame\DominionGUI\DominionGUI\obj\Debug\DominionGUI.MainBoard.resources
+C:\Users\cookmn\Documents\GitHub\DominionGame\DominionGUI\DominionGUI\obj\Debug\DominionGUI.KingdomCardSelection.resources
