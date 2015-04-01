@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace DominionCards
 {
-    class VictoryCard : Card
+    public class VictoryCard : Card
     {
         int vp;
-        public VictoryCard(int victoryPts, int price) : base(price)
+        public VictoryCard(int victoryPts, int price)
+            : base(price)
         {
             vp = victoryPts;
         }

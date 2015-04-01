@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DominionCards
 {
-    class TreasureCard : Card
+    public class TreasureCard : Card
     {
         int value;
         public TreasureCard(int money, int price)
