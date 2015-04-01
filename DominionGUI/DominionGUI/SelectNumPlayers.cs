@@ -35,5 +35,10 @@ namespace DominionGUI
         {
 
         }
+
+        private void SelectNumPlayers_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
