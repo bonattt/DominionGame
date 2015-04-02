@@ -48,6 +48,7 @@
             this.checkBox1.TabIndex = 9;
             this.checkBox1.Text = "2 Players";
             this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // checkBox2
             // 
@@ -78,6 +79,7 @@
             this.checkBox4.TabIndex = 12;
             this.checkBox4.Text = "Random";
             this.checkBox4.UseVisualStyleBackColor = true;
+            this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
             // 
             // checkBox5
             // 
@@ -107,6 +109,7 @@
             this.button1.TabIndex = 15;
             this.button1.Text = "Play!";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // label2
             // 

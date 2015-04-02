@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FD137FCD-2CF8-4295-B235-F0519E9D61D6}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{49AF3923-B952-441E-9670-A3A727D74557}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DominionCards</RootNamespace>
-    <AssemblyName>DominionCards</AssemblyName>
+    <RootNamespace>RandomGenerateCards</RootNamespace>
+    <AssemblyName>RandomGenerateCards</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -40,23 +42,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Card.cs" />
-    <Compile Include="CardTEST.cs" />
-    <Compile Include="ActionCard.cs" />
-    <Compile Include="ComputerPlayer.cs" />
-    <Compile Include="GameBoard.cs" />
-    <Compile Include="HumanPlayer.cs" />
-    <Compile Include="KingdomCards\Adventurer.cs" />
-    <Compile Include="Player.cs" />
-    <Compile Include="TestAddCards.cs" />
-    <Compile Include="VictoryCard.cs" />
-    <Compile Include="TreasureCard.cs" />
+    <Compile Include="RandomCardsTest.cs" />
+    <Compile Include="GenerateRandom.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

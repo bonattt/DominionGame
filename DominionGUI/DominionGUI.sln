@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DominionGUI", "DominionGUI\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DominionCards", "DominionCards\DominionCards.csproj", "{FD137FCD-2CF8-4295-B235-F0519E9D61D6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomGenerateCards", "RandomGenerateCards\RandomGenerateCards.csproj", "{49AF3923-B952-441E-9670-A3A727D74557}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{FD137FCD-2CF8-4295-B235-F0519E9D61D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD137FCD-2CF8-4295-B235-F0519E9D61D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD137FCD-2CF8-4295-B235-F0519E9D61D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49AF3923-B952-441E-9670-A3A727D74557}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49AF3923-B952-441E-9670-A3A727D74557}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49AF3923-B952-441E-9670-A3A727D74557}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49AF3923-B952-441E-9670-A3A727D74557}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

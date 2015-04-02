@@ -6,13 +6,22 @@ using System.Threading.Tasks;
 
 namespace DominionCards
 {
-    class GameBoard
+    public class GameBoard
     {
-        Queue<Player> turnOrder;
-        Dictionary<Card, int> cards;
+        private Queue<Player> turnOrder;
+        public Dictionary<Card, int> cards;
         public GameBoard(Dictionary<Card, int> cards, Queue<Player> turnOrder)
         {
-            // TODO implement
+            this.turnOrder = turnOrder;
+            this.cards = cards;
+        }
+        public void addCard(Card c)
+        {
+            cards.Add(c, 10);
+        }
+        public int getCardsLeft(Card c)
+        {
+            return cards[c];
         }
     }
 }
