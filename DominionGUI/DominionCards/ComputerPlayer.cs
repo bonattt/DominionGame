@@ -13,11 +13,11 @@ namespace DominionCards
         {
             // TODO impliment this
         }
-        public void actionPhase()
+        public override void actionPhase()
         {
             // TODO implement
         }
-        public void buyPhase()
+        public override void buyPhase()
         {
             // TODO implement
         }
