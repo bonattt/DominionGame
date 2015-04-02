@@ -37,3 +37,7 @@ C:\Users\bonattt\Documents\School\3 spring Sophomore\CSSE 376 - SQA\Project\Domi
 C:\Users\bonattt\Documents\School\3 spring Sophomore\CSSE 376 - SQA\Project\DominionGame\DominionGUI\DominionGUI\obj\Debug\DominionGUI.Properties.Resources.resources
 C:\Users\bonattt\Documents\School\3 spring Sophomore\CSSE 376 - SQA\Project\DominionGame\DominionGUI\DominionGUI\obj\Debug\DominionGUI.csproj.GenerateResource.Cache
 C:\Users\cookmn\Documents\GitHub\DominionGame\DominionGUI\DominionGUI\obj\Debug\DominionGUI.KingdomCardSelection.resources
+C:\Users\cookmn\Documents\GitHub\DominionGame\DominionGUI\DominionGUI\bin\Debug\RandomGenerateCards.exe
+C:\Users\cookmn\Documents\GitHub\DominionGame\DominionGUI\DominionGUI\bin\Debug\nunit.framework.dll
+C:\Users\cookmn\Documents\GitHub\DominionGame\DominionGUI\DominionGUI\bin\Debug\RandomGenerateCards.pdb
+C:\Users\cookmn\Documents\GitHub\DominionGame\DominionGUI\DominionGUI\bin\Debug\nunit.framework.xml

@@ -81,11 +81,14 @@ namespace DominionGUI
                 var myForm = new MainBoard();
                 myForm.Show();
 
+                List<int> numList = new List<int>();
+                numList = RandomGenerateCards.GenerateRandom.GenerateRandomList();
+
                 int xValue = 95;
                 int yValue = 50;
 
 
-                if (tempList.Contains(1)){
+                if (numList.Contains(1)){
                     kingdomCards = kingdomCards + "Adventurer" + "\n";
                     PictureBox newPicture = new PictureBox();
                     newPicture.Image = DominionGUI.Properties.Resources.Adventurer;
@@ -98,7 +101,7 @@ namespace DominionGUI
                     
                 }
 
-                if (tempList.Contains(2))
+                if (numList.Contains(2))
                 {
                     kingdomCards = kingdomCards + "Bureaucrat" + "\n";
                     PictureBox newPicture = new PictureBox();
@@ -111,7 +114,7 @@ namespace DominionGUI
                     myForm.Update();
                 }
 
-                if (tempList.Contains(3))
+                if (numList.Contains(3))
                 {
                     kingdomCards = kingdomCards + "Cellar" + "\n";
                     PictureBox newPicture = new PictureBox();
@@ -124,7 +127,7 @@ namespace DominionGUI
                     myForm.Update();
                 }
 
-                if (tempList.Contains(4))
+                if (numList.Contains(4))
                 {
                     kingdomCards = kingdomCards + "Chancellor" + "\n";
                     PictureBox newPicture = new PictureBox();
@@ -137,7 +140,7 @@ namespace DominionGUI
                     myForm.Update();
                 }
 
-                if (tempList.Contains(5))
+                if (numList.Contains(5))
                 {
                     kingdomCards = kingdomCards + "Chapel" + "\n";
                     PictureBox newPicture = new PictureBox();
@@ -150,7 +153,7 @@ namespace DominionGUI
                     myForm.Update();
                 }
 
-                if (tempList.Contains(6))
+                if (numList.Contains(6))
                 {
                     kingdomCards = kingdomCards + "Council Room" + "\n";
                     PictureBox newPicture = new PictureBox();
@@ -163,7 +166,7 @@ namespace DominionGUI
                     myForm.Update();
                 }
 
-                if (tempList.Contains(7))
+                if (numList.Contains(7))
                 {
                     kingdomCards = kingdomCards + "Feast" + "\n";
                     PictureBox newPicture = new PictureBox();
@@ -176,7 +179,7 @@ namespace DominionGUI
                     myForm.Update();
                 }
 
-                if (tempList.Contains(8))
+                if (numList.Contains(8))
                 {
                     kingdomCards = kingdomCards + "Festival" + "\n";
                     PictureBox newPicture = new PictureBox();
@@ -189,7 +192,7 @@ namespace DominionGUI
                     myForm.Update();
                 }
 
-                if (tempList.Contains(9))
+                if (numList.Contains(9))
                 {
                     kingdomCards = kingdomCards + "Gardens" + "\n";
                     PictureBox newPicture = new PictureBox();
@@ -202,7 +205,7 @@ namespace DominionGUI
                     myForm.Update();
                 }
 
-                if (tempList.Contains(10))
+                if (numList.Contains(10))
                 {
                     kingdomCards = kingdomCards + "Laboratory" + "\n";
                     PictureBox newPicture = new PictureBox();
@@ -215,7 +218,7 @@ namespace DominionGUI
                     myForm.Update();
                 }
 
-                if (tempList.Contains(11))
+                if (numList.Contains(11))
                 {
                     kingdomCards = kingdomCards + "Library" + "\n";
                     PictureBox newPicture = new PictureBox();
@@ -228,7 +231,7 @@ namespace DominionGUI
                     myForm.Update();
                 }
 
-                if (tempList.Contains(12))
+                if (numList.Contains(12))
                 {
                     kingdomCards = kingdomCards + "Market" + "\n";
                     PictureBox newPicture = new PictureBox();
@@ -241,7 +244,7 @@ namespace DominionGUI
                     myForm.Update();
                 }
 
-                if (tempList.Contains(13))
+                if (numList.Contains(13))
                 {
                     kingdomCards = kingdomCards + "Militia" + "\n";
                     PictureBox newPicture = new PictureBox();
@@ -254,7 +257,7 @@ namespace DominionGUI
                     myForm.Update();
                 }
 
-                if (tempList.Contains(14))
+                if (numList.Contains(14))
                 {
                     kingdomCards = kingdomCards + "Mine" + "\n";
                     PictureBox newPicture = new PictureBox();
@@ -267,7 +270,7 @@ namespace DominionGUI
                     myForm.Update();
                 }
 
-                if (tempList.Contains(15))
+                if (numList.Contains(15))
                 {
                     kingdomCards = kingdomCards + "Moat" + "\n";
                     PictureBox newPicture = new PictureBox();
@@ -280,7 +283,7 @@ namespace DominionGUI
                     myForm.Update();
                 }
 
-                if (tempList.Contains(16))
+                if (numList.Contains(16))
                 {
                     kingdomCards = kingdomCards + "Moneylender" + "\n";
                     PictureBox newPicture = new PictureBox();
@@ -293,7 +296,7 @@ namespace DominionGUI
                     myForm.Update();
                 }
 
-                if (tempList.Contains(17))
+                if (numList.Contains(17))
                 {
                     kingdomCards = kingdomCards + "Remodel" + "\n";
                     PictureBox newPicture = new PictureBox();
@@ -306,7 +309,7 @@ namespace DominionGUI
                     myForm.Update();
                 }
 
-                if (tempList.Contains(18))
+                if (numList.Contains(18))
                 {
                     kingdomCards = kingdomCards + "Smithy" + "\n";
                     PictureBox newPicture = new PictureBox();
@@ -319,7 +322,7 @@ namespace DominionGUI
                     myForm.Update();
                 }
 
-                if (tempList.Contains(19))
+                if (numList.Contains(19))
                 {
                     kingdomCards = kingdomCards + "Spy" + "\n";
                     PictureBox newPicture = new PictureBox();
@@ -332,7 +335,7 @@ namespace DominionGUI
                     myForm.Update();
                 }
 
-                if (tempList.Contains(20))
+                if (numList.Contains(20))
                 {
                     kingdomCards = kingdomCards + "Thief" + "\n";
                     PictureBox newPicture = new PictureBox();
@@ -345,7 +348,7 @@ namespace DominionGUI
                     myForm.Update();
                 }
 
-                if (tempList.Contains(21))
+                if (numList.Contains(21))
                 {
                     kingdomCards = kingdomCards + "Throne Room" + "\n";
                     PictureBox newPicture = new PictureBox();
@@ -358,7 +361,7 @@ namespace DominionGUI
                     myForm.Update();
                 }
 
-                if (tempList.Contains(22))
+                if (numList.Contains(22))
                 {
                     kingdomCards = kingdomCards + "Village" + "\n";
                     PictureBox newPicture = new PictureBox();
@@ -371,7 +374,7 @@ namespace DominionGUI
                     myForm.Update();
                 }
 
-                if (tempList.Contains(23))
+                if (numList.Contains(23))
                 {
                     kingdomCards = kingdomCards + "Witch" + "\n";
                     PictureBox newPicture = new PictureBox();
@@ -384,7 +387,7 @@ namespace DominionGUI
                     myForm.Update();
                 }
 
-                if (tempList.Contains(24))
+                if (numList.Contains(24))
                 {
                     kingdomCards = kingdomCards + "Woodcutter" + "\n";
                     PictureBox newPicture = new PictureBox();
@@ -397,7 +400,7 @@ namespace DominionGUI
                     myForm.Update();
                 }
 
-                if (tempList.Contains(25))
+                if (numList.Contains(25))
                 {
                     kingdomCards = kingdomCards + "Workshop" + "\n";
                     PictureBox newPicture = new PictureBox();
