@@ -66,17 +66,6 @@ namespace DominionGUI
 
             if (checkBox4.Checked)
             {
-                List<int> tempList = new List<int>();
-                tempList.Add(5);
-                tempList.Add(10);
-                tempList.Add(12);
-                tempList.Add(13);
-                tempList.Add(1);
-                tempList.Add(25);
-                tempList.Add(14);
-                tempList.Add(7);
-                tempList.Add(21);
-                tempList.Add(2);
 
                 var myForm = new MainBoard();
                 myForm.Show();

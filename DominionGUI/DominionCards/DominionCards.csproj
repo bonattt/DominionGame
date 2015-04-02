@@ -43,11 +43,11 @@
     <Compile Include="Card.cs" />
     <Compile Include="CardTEST.cs" />
     <Compile Include="ActionCard.cs" />
-    <Compile Include="DominionData.cs" />
     <Compile Include="ComputerPlayer.cs" />
     <Compile Include="GameBoard.cs" />
     <Compile Include="HumanPlayer.cs" />
     <Compile Include="Player.cs" />
+    <Compile Include="TestAddCards.cs" />
     <Compile Include="VictoryCard.cs" />
     <Compile Include="TreasureCard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
