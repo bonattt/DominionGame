@@ -12,15 +12,16 @@ namespace DominionCards
         private Dictionary<Card, int> cards;
         public GameBoard(Dictionary<Card, int> cards, Queue<Player> turnOrder)
         {
-            // TODO implement
+            this.turnOrder = turnOrder;
+            this.cards = cards;
         }
         public void addCard(Card c)
         {
-            // TODO implement
+            cards.Add(c, 12);
         }
         public int getCardsLeft(Card c)
         {
-            return -1;
+            return cards[c];
         }
     }
 }
