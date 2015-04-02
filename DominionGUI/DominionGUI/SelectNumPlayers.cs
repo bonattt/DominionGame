@@ -12,6 +12,7 @@ namespace DominionGUI
 {
     public partial class SelectNumPlayers : Form
     {
+        private DominionCards.GameBoard board;
         public SelectNumPlayers()
         {
             InitializeComponent();
@@ -72,9 +73,12 @@ namespace DominionGUI
 
                 List<int> numList = new List<int>();
                 numList = RandomGenerateCards.GenerateRandom.GenerateRandomList();
-
+              
                 int xValue = 95;
                 int yValue = 50;
+
+                board = new DominionCards.GameBoard(new Dictionary<DominionCards.Card, int>(),
+                    new Queue<DominionCards.Player>());
 
 
                 if (numList.Contains(1)){
@@ -87,6 +91,7 @@ namespace DominionGUI
                     xValue = xValue + 90;
                     newPicture.Parent = myForm;
                     myForm.Update();
+                    board.addCard(new DominionCards.KingdomCards.Adventurer());
                     
                 }
 
@@ -401,7 +406,7 @@ namespace DominionGUI
                     newPicture.Parent = myForm;
                     myForm.Update();
                 }
-
+                Console.WriteLine(board.cards.Count);
             }
 
         }

@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace DominionCards
 {
-    class GameBoard
+    public class GameBoard
     {
         private Queue<Player> turnOrder;
-        private Dictionary<Card, int> cards;
+        public Dictionary<Card, int> cards;
         public GameBoard(Dictionary<Card, int> cards, Queue<Player> turnOrder)
         {
             this.turnOrder = turnOrder;
@@ -17,7 +17,7 @@ namespace DominionCards
         }
         public void addCard(Card c)
         {
-            cards.Add(c, 12);
+            cards.Add(c, 10);
         }
         public int getCardsLeft(Card c)
         {

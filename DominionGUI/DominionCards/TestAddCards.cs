@@ -19,7 +19,7 @@ namespace DominionCards
             Card newCard = new ActionCard(1, 1, 1, 1, 1);
             board.addCard(newCard);
 
-            Assert.AreEqual(board.getCardsLeft(newCard), 12);
+            Assert.AreEqual(board.getCardsLeft(newCard), 10);
         }
         [Test()]
         public void testVictoryCardAddedToBoard()
@@ -30,7 +30,7 @@ namespace DominionCards
             Card newCard = new VictoryCard(1, 1);
             board.addCard(newCard);
 
-            Assert.AreEqual(board.getCardsLeft(newCard), 12);
+            Assert.AreEqual(board.getCardsLeft(newCard), 10);
         }
         [Test()]
         public void testTreasureCardAddedToBoard()
@@ -41,7 +41,7 @@ namespace DominionCards
             Card newCard = new TreasureCard(1, 1);
             board.addCard(newCard);
 
-            Assert.AreEqual(board.getCardsLeft(newCard), 12);
+            Assert.AreEqual(board.getCardsLeft(newCard), 10);
         }
     }
 }
