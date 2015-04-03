@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DominionCards.KingdomCards
 {
-    class Gardens : VictoryCard
+    public class Gardens : VictoryCard
     {
         public Gardens()
             : base(0, 4)

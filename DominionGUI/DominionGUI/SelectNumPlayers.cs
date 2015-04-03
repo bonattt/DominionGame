@@ -12,7 +12,7 @@ namespace DominionGUI
 {
     public partial class SelectNumPlayers : Form
     {
-        private DominionCards.GameBoard board;
+        public DominionCards.GameBoard board;
         public SelectNumPlayers()
         {
             InitializeComponent();
@@ -63,6 +63,9 @@ namespace DominionGUI
 
         private void checkBox4_CheckedChanged(object sender, EventArgs e)
         {
+            addRandomCards();
+        }
+        public void addRandomCards(){
             string kingdomCards = "";
 
             if (checkBox4.Checked)
@@ -81,6 +84,19 @@ namespace DominionGUI
                     new Queue<DominionCards.Player>());
 
 
+                if (numList.Contains(0))
+                {
+                    kingdomCards = kingdomCards + "Workshop" + "\n";
+                    PictureBox newPicture = new PictureBox();
+                    newPicture.Image = DominionGUI.Properties.Resources.Workshop;
+                    newPicture.Height = 122;
+                    newPicture.Width = 75;
+                    newPicture.Location = new Point(xValue, yValue);
+                    xValue += 90;
+                    newPicture.Parent = myForm;
+                    myForm.Update();
+                    board.addCard(new DominionCards.KingdomCards.Workshop());
+                }
                 if (numList.Contains(1)){
                     kingdomCards = kingdomCards + "Adventurer" + "\n";
                     PictureBox newPicture = new PictureBox();
@@ -92,7 +108,6 @@ namespace DominionGUI
                     newPicture.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.Adventurer());
-                    
                 }
 
                 if (numList.Contains(2))
@@ -106,6 +121,7 @@ namespace DominionGUI
                     xValue += 90;
                     newPicture.Parent = myForm;
                     myForm.Update();
+                    board.addCard(new DominionCards.KingdomCards.Bureaucrat());
                 }
 
                 if (numList.Contains(3))
@@ -119,6 +135,7 @@ namespace DominionGUI
                     xValue += 90;
                     newPicture.Parent = myForm;
                     myForm.Update();
+                    board.addCard(new DominionCards.KingdomCards.Cellar());
                 }
 
                 if (numList.Contains(4))
@@ -132,6 +149,7 @@ namespace DominionGUI
                     xValue += 90;
                     newPicture.Parent = myForm;
                     myForm.Update();
+                    board.addCard(new DominionCards.KingdomCards.Chancellor());
                 }
 
                 if (numList.Contains(5))
@@ -145,6 +163,7 @@ namespace DominionGUI
                     xValue += 90;
                     newPicture.Parent = myForm;
                     myForm.Update();
+                    board.addCard(new DominionCards.KingdomCards.Chapel());
                 }
 
                 if (numList.Contains(6))
@@ -158,6 +177,7 @@ namespace DominionGUI
                     xValue += 90;
                     newPicture.Parent = myForm;
                     myForm.Update();
+                    board.addCard(new DominionCards.KingdomCards.CouncilRoom());
                 }
 
                 if (numList.Contains(7))
@@ -171,6 +191,7 @@ namespace DominionGUI
                     xValue += 90;
                     newPicture.Parent = myForm;
                     myForm.Update();
+                    board.addCard(new DominionCards.KingdomCards.Feast());
                 }
 
                 if (numList.Contains(8))
@@ -184,6 +205,7 @@ namespace DominionGUI
                     xValue += 90;
                     newPicture.Parent = myForm;
                     myForm.Update();
+                    board.addCard(new DominionCards.KingdomCards.Festival());
                 }
 
                 if (numList.Contains(9))
@@ -197,6 +219,7 @@ namespace DominionGUI
                     xValue += 90;
                     newPicture.Parent = myForm;
                     myForm.Update();
+                    board.addCard(new DominionCards.KingdomCards.Gardens());
                 }
 
                 if (numList.Contains(10))
@@ -210,6 +233,7 @@ namespace DominionGUI
                     xValue += 90;
                     newPicture.Parent = myForm;
                     myForm.Update();
+                    board.addCard(new DominionCards.KingdomCards.Laboratory());
                 }
 
                 if (numList.Contains(11))
@@ -223,6 +247,7 @@ namespace DominionGUI
                     xValue += 90;
                     newPicture.Parent = myForm;
                     myForm.Update();
+                    board.addCard(new DominionCards.KingdomCards.Library());
                 }
 
                 if (numList.Contains(12))
@@ -236,6 +261,7 @@ namespace DominionGUI
                     xValue += 90;
                     newPicture.Parent = myForm;
                     myForm.Update();
+                    board.addCard(new DominionCards.KingdomCards.Market());
                 }
 
                 if (numList.Contains(13))
@@ -249,6 +275,7 @@ namespace DominionGUI
                     xValue += 90;
                     newPicture.Parent = myForm;
                     myForm.Update();
+                    board.addCard(new DominionCards.KingdomCards.Militia());
                 }
 
                 if (numList.Contains(14))
@@ -262,6 +289,7 @@ namespace DominionGUI
                     xValue += 90;
                     newPicture.Parent = myForm;
                     myForm.Update();
+                    board.addCard(new DominionCards.KingdomCards.Mine());
                 }
 
                 if (numList.Contains(15))
@@ -275,6 +303,7 @@ namespace DominionGUI
                     xValue += 90;
                     newPicture.Parent = myForm;
                     myForm.Update();
+                    board.addCard(new DominionCards.KingdomCards.Moat());
                 }
 
                 if (numList.Contains(16))
@@ -288,6 +317,7 @@ namespace DominionGUI
                     xValue += 90;
                     newPicture.Parent = myForm;
                     myForm.Update();
+                    board.addCard(new DominionCards.KingdomCards.MoneyLender());
                 }
 
                 if (numList.Contains(17))
@@ -301,6 +331,7 @@ namespace DominionGUI
                     xValue += 90;
                     newPicture.Parent = myForm;
                     myForm.Update();
+                    board.addCard(new DominionCards.KingdomCards.Remodel());
                 }
 
                 if (numList.Contains(18))
@@ -314,6 +345,7 @@ namespace DominionGUI
                     xValue += 90;
                     newPicture.Parent = myForm;
                     myForm.Update();
+                    board.addCard(new DominionCards.KingdomCards.Smithy());
                 }
 
                 if (numList.Contains(19))
@@ -327,6 +359,7 @@ namespace DominionGUI
                     xValue += 90;
                     newPicture.Parent = myForm;
                     myForm.Update();
+                    board.addCard(new DominionCards.KingdomCards.Spy());
                 }
 
                 if (numList.Contains(20))
@@ -340,6 +373,7 @@ namespace DominionGUI
                     xValue += 90;
                     newPicture.Parent = myForm;
                     myForm.Update();
+                    board.addCard(new DominionCards.KingdomCards.Thief());
                 }
 
                 if (numList.Contains(21))
@@ -353,6 +387,7 @@ namespace DominionGUI
                     xValue += 90;
                     newPicture.Parent = myForm;
                     myForm.Update();
+                    board.addCard(new DominionCards.KingdomCards.ThroneRoom());
                 }
 
                 if (numList.Contains(22))
@@ -366,6 +401,7 @@ namespace DominionGUI
                     xValue += 90;
                     newPicture.Parent = myForm;
                     myForm.Update();
+                    board.addCard(new DominionCards.KingdomCards.Village());
                 }
 
                 if (numList.Contains(23))
@@ -379,6 +415,7 @@ namespace DominionGUI
                     xValue += 90;
                     newPicture.Parent = myForm;
                     myForm.Update();
+                    board.addCard(new DominionCards.KingdomCards.Witch());
                 }
 
                 if (numList.Contains(24))
@@ -392,21 +429,9 @@ namespace DominionGUI
                     xValue += 90;
                     newPicture.Parent = myForm;
                     myForm.Update();
+                    board.addCard(new DominionCards.KingdomCards.Woodcutter());
                 }
-
-                if (numList.Contains(25))
-                {
-                    kingdomCards = kingdomCards + "Workshop" + "\n";
-                    PictureBox newPicture = new PictureBox();
-                    newPicture.Image = DominionGUI.Properties.Resources.Workshop;
-                    newPicture.Height = 122;
-                    newPicture.Width = 75;
-                    newPicture.Location = new Point(xValue, yValue);
-                    xValue += 90;
-                    newPicture.Parent = myForm;
-                    myForm.Update();
-                }
-                Console.WriteLine(board.cards.Count);
+                    Console.WriteLine(board.cards.Count);
             }
 
         }
