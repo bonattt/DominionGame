@@ -72,6 +72,7 @@
     <Compile Include="KingdomCards\Woodcutter.cs" />
     <Compile Include="KingdomCards\Workshop.cs" />
     <Compile Include="Player.cs" />
+    <Compile Include="PlayerTest.cs" />
     <Compile Include="TestAddCards.cs" />
     <Compile Include="VictoryCard.cs" />
     <Compile Include="TreasureCard.cs" />

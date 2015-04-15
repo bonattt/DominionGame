@@ -9,16 +9,19 @@ namespace DominionCards
 {
     public abstract class Player
     {
-        private ArrayList hand = new ArrayList();
-        private ArrayList deck = new ArrayList();
-        private ArrayList discard = new ArrayList();
-        private ArrayList attack = new ArrayList();
+        private Stack hand = new Stack();
+        private Stack deck = new Stack();
+        private Stack discard = new Stack();
+        private Stack attack = new Stack();
         private String name;
         private int order;
         private int actions, buys, money;
         public Player()
         {
-            // TODO implement this.
+            for (int i = 0; i < 3; i++)
+            {
+                // add cards.
+            }
         }
         public Card drawCard(){
 
@@ -32,5 +35,38 @@ namespace DominionCards
 
         public abstract void actionPhase();
         public abstract void buyPhase();
+
+        public Stack getHand()
+        {
+            return hand;
+        }
+        public Stack getDeck()
+        {
+            return deck;
+        }
+        public Stack getDiscard()
+        {
+            return discard;
+        }
+        public Stack getAttacks()
+        {
+            return attack;
+        }
+        public String getName()
+        {
+            return name;
+        }
+        public int actionsLeft()
+        {
+            return actions;
+        }
+        public int buysLeft()
+        {
+            return buys;
+        }
+        public int moneyLeft()
+        {
+            return money;
+        }
     }
 }
