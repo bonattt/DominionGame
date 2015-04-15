@@ -9,7 +9,7 @@ namespace DominionCards.KingdomCards
     public class Village : ActionCard
     {
         public Village()
-            : base(1, 0, 0, 2, 3)
+            : base(1, 0, 0, 2, 3, 28)
         {
             // TODO implement
         }

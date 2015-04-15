@@ -9,7 +9,7 @@ namespace DominionCards.KingdomCards
     public class MoneyLender : ActionCard
     {
         public MoneyLender()
-            : base(0, 0, 0, 0, 4)
+            : base(0, 0, 0, 0, 4, 21)
         {
             // TODO implement
         }

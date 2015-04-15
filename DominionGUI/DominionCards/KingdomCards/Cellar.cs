@@ -8,7 +8,7 @@ namespace DominionCards.KingdomCards
 {
     public class Cellar : ActionCard
     {
-        public Cellar() : base(0, 0, 0, 1, 2) 
+        public Cellar() : base(0, 0, 0, 1, 2, 8) 
         {
             // TODO implement
         }

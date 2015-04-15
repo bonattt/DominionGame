@@ -9,7 +9,7 @@ namespace DominionCards.KingdomCards
     public class Mine : ActionCard
     {
         public Mine()
-            : base(0, 0, 0, 0, 5)
+            : base(0, 0, 0, 0, 5, 19)
         {
             // TODO implement
         }

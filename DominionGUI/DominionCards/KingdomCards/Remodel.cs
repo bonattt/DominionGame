@@ -9,7 +9,7 @@ namespace DominionCards.KingdomCards
     public class Remodel : ActionCard
     {
         public Remodel()
-            : base(0, 0, 0, 0, 4)
+            : base(0, 0, 0, 0, 4, 22)
         {
             // TODO implement
         }

@@ -9,7 +9,7 @@ namespace DominionCards.KingdomCards
     public class Market : ActionCard
     {
         public Market()
-            : base(1, 1, 1, 1, 5)
+            : base(1, 1, 1, 1, 5, 17)
         {
             // TODO implement
         }

@@ -9,8 +9,8 @@ namespace DominionCards
     public class VictoryCard : Card
     {
         int vp;
-        public VictoryCard(int victoryPts, int price)
-            : base(price)
+        public VictoryCard(int victoryPts, int price, int idNumb)
+            : base(price, idNumb)
         {
             vp = victoryPts;
         }

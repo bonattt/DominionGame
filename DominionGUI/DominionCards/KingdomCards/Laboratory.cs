@@ -9,7 +9,7 @@ namespace DominionCards.KingdomCards
     public class Laboratory : ActionCard
     {
         public Laboratory()
-            : base(2, 0, 0, 1, 5)
+            : base(2, 0, 0, 1, 5, 15)
         {
             // TODO implement
         }

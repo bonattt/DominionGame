@@ -8,10 +8,13 @@ namespace DominionCards
 {
     public abstract class Card
     {
-        private int price;
-        public Card(int price)
+        public static int GENERIC_CARD_ID = -1;
+
+        private int price, id;
+        public Card(int price, int idNumb)
         {
             this.price = price;
+            id = idNumb;
         }
         public int getPrice()
         {

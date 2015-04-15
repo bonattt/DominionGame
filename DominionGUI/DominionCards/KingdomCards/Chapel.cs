@@ -9,7 +9,7 @@ namespace DominionCards.KingdomCards
     public class Chapel : ActionCard
     {
         public Chapel()
-            : base(0, 0, 0, 0, 4)
+            : base(0, 0, 0, 0, 4, 10)
         {
             // TODO implement
         }

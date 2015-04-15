@@ -9,7 +9,7 @@ namespace DominionCards.KingdomCards
     public class Feast : ActionCard
     {
         public Feast()
-            : base(0, 0, 0, 0, 4)
+            : base(0, 0, 0, 0, 4, 12)
         {
             // TODO implement
         } 

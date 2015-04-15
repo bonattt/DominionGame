@@ -9,8 +9,8 @@ namespace DominionCards
     public class TreasureCard : Card
     {
         int value;
-        public TreasureCard(int money, int price)
-            : base(price)
+        public TreasureCard(int money, int price, int idNumb)
+            : base(price, idNumb)
         {
             value = money;
         }
