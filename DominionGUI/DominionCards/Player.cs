@@ -10,11 +10,10 @@ namespace DominionCards
     public abstract class Player
     {
         private Stack hand = new Stack();
-        private Stack deck = new Stack();
+        private Stack deck = new ArrayList();
         private Stack discard = new Stack();
         private Stack attack = new Stack();
         private String name;
-        private int order;
         private int actions, buys, money;
         public Player()
         {
