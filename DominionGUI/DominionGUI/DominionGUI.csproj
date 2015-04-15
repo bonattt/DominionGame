@@ -183,6 +183,81 @@
       <Name>RandomGenerateCards</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AdventurerHalfNew.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BureaucratHalf.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CellarHalf.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ChancellorHalf.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ChapelHalf.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CouncilroomHalf.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LibraryHalf.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MoneylenderHalf.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ThroneroomHalf.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FeastHalf.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FestivalHalf.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GardensHalf.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LaboratoryHalf.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MarketHalf.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MilitiaHalf.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MineHalf.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MoatHalf.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RemodelHalf.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SmithyHalf.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SpyHalf.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ThiefHalf.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\VillageHalf.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WitchHalf.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WoodcutterHalf.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WorkshopHalf.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

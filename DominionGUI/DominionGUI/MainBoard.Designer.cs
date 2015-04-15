@@ -37,6 +37,7 @@
             this.ClientSize = new System.Drawing.Size(1082, 780);
             this.Name = "MainBoard";
             this.Text = "Dominion Game Board";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MainBoard_Load);
             this.ResumeLayout(false);
 

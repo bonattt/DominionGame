@@ -76,6 +76,7 @@ namespace DominionGUI
 
                 List<int> numList = new List<int>();
                 numList = RandomGenerateCards.GenerateRandom.GenerateRandomList();
+                numList.Add(3);
               
                 int xValue = 95;
                 int yValue = 50;
@@ -99,13 +100,13 @@ namespace DominionGUI
                 }
                 if (numList.Contains(1)){
                     kingdomCards = kingdomCards + "Adventurer" + "\n";
-                    PictureBox newPicture = new PictureBox();
-                    newPicture.Image = DominionGUI.Properties.Resources.Adventurer;
-                    newPicture.Height = 122;
-                    newPicture.Width = 75;
-                    newPicture.Location = new Point(xValue, yValue);
-                    xValue = xValue + 90;
-                    newPicture.Parent = myForm;
+                    Button newButton = new Button();
+                    newButton.Image = DominionGUI.Properties.Resources.AdventurerHalfNew;
+                    newButton.Height = 179;
+                    newButton.Width = 256;
+                    newButton.Location = new Point(xValue, yValue);
+                    xValue = xValue + 256;
+                    newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.Adventurer());
                 }
@@ -113,13 +114,13 @@ namespace DominionGUI
                 if (numList.Contains(2))
                 {
                     kingdomCards = kingdomCards + "Bureaucrat" + "\n";
-                    PictureBox newPicture = new PictureBox();
-                    newPicture.Image = DominionGUI.Properties.Resources.Bureaucrat;
-                    newPicture.Height = 122;
-                    newPicture.Width = 75;
-                    newPicture.Location = new Point(xValue, yValue);
-                    xValue += 90;
-                    newPicture.Parent = myForm;
+                    Button newButton = new Button();
+                    newButton.Image = DominionGUI.Properties.Resources.BureaucratHalf;
+                    newButton.Height = 179;
+                    newButton.Width = 256;
+                    newButton.Location = new Point(xValue, yValue);
+                    xValue += 256;
+                    newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.Bureaucrat());
                 }
@@ -127,13 +128,13 @@ namespace DominionGUI
                 if (numList.Contains(3))
                 {
                     kingdomCards = kingdomCards + "Cellar" + "\n";
-                    PictureBox newPicture = new PictureBox();
-                    newPicture.Image = DominionGUI.Properties.Resources.Cellar;
-                    newPicture.Height = 122;
-                    newPicture.Width = 75;
-                    newPicture.Location = new Point(xValue, yValue);
-                    xValue += 90;
-                    newPicture.Parent = myForm;
+                    Button newButton = new Button();
+                    newButton.Image = DominionGUI.Properties.Resources.CellarHalf;
+                    newButton.Height = 179;
+                    newButton.Width = 256;
+                    newButton.Location = new Point(xValue, yValue);
+                    xValue += 256;
+                    newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.Cellar());
                 }
@@ -141,13 +142,13 @@ namespace DominionGUI
                 if (numList.Contains(4))
                 {
                     kingdomCards = kingdomCards + "Chancellor" + "\n";
-                    PictureBox newPicture = new PictureBox();
-                    newPicture.Image = DominionGUI.Properties.Resources.Chancellor;
-                    newPicture.Height = 122;
-                    newPicture.Width = 75;
-                    newPicture.Location = new Point(xValue, yValue);
-                    xValue += 90;
-                    newPicture.Parent = myForm;
+                    Button newButton = new Button();
+                    newButton.Image = DominionGUI.Properties.Resources.ChancellorHalf;
+                    newButton.Height = 179;
+                    newButton.Width = 256;
+                    newButton.Location = new Point(xValue, yValue);
+                    xValue += 256;
+                    newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.Chancellor());
                 }
@@ -155,13 +156,13 @@ namespace DominionGUI
                 if (numList.Contains(5))
                 {
                     kingdomCards = kingdomCards + "Chapel" + "\n";
-                    PictureBox newPicture = new PictureBox();
-                    newPicture.Image = DominionGUI.Properties.Resources.Chapel;
-                    newPicture.Height = 122;
-                    newPicture.Width = 75;
-                    newPicture.Location = new Point(xValue, yValue);
-                    xValue += 90;
-                    newPicture.Parent = myForm;
+                    Button newButton = new Button();
+                    newButton.Image = DominionGUI.Properties.Resources.ChapelHalf;
+                    newButton.Height = 179;
+                    newButton.Width = 256;
+                    newButton.Location = new Point(xValue, yValue);
+                    xValue += 256;
+                    newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.Chapel());
                 }
@@ -169,13 +170,13 @@ namespace DominionGUI
                 if (numList.Contains(6))
                 {
                     kingdomCards = kingdomCards + "Council Room" + "\n";
-                    PictureBox newPicture = new PictureBox();
-                    newPicture.Image = DominionGUI.Properties.Resources.Councilroom;
-                    newPicture.Height = 122;
-                    newPicture.Width = 75;
-                    newPicture.Location = new Point(xValue, yValue);
-                    xValue += 90;
-                    newPicture.Parent = myForm;
+                    Button newButton = new Button();
+                    newButton.Image = DominionGUI.Properties.Resources.CouncilroomHalf;
+                    newButton.Height = 179;
+                    newButton.Width = 256;
+                    newButton.Location = new Point(xValue, yValue);
+                    xValue += 256;
+                    newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.CouncilRoom());
                 }
@@ -183,13 +184,13 @@ namespace DominionGUI
                 if (numList.Contains(7))
                 {
                     kingdomCards = kingdomCards + "Feast" + "\n";
-                    PictureBox newPicture = new PictureBox();
-                    newPicture.Image = DominionGUI.Properties.Resources.Feast;
-                    newPicture.Height = 122;
-                    newPicture.Width = 75;
-                    newPicture.Location = new Point(xValue, yValue);
-                    xValue += 90;
-                    newPicture.Parent = myForm;
+                    Button newButton = new Button();
+                    newButton.Image = DominionGUI.Properties.Resources.FeastHalf;
+                    newButton.Height = 179;
+                    newButton.Width = 256;
+                    newButton.Location = new Point(xValue, yValue);
+                    xValue += 256;
+                    newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.Feast());
                 }
@@ -197,13 +198,13 @@ namespace DominionGUI
                 if (numList.Contains(8))
                 {
                     kingdomCards = kingdomCards + "Festival" + "\n";
-                    PictureBox newPicture = new PictureBox();
-                    newPicture.Image = DominionGUI.Properties.Resources.Festival;
-                    newPicture.Height = 122;
-                    newPicture.Width = 75;
-                    newPicture.Location = new Point(xValue, yValue);
-                    xValue += 90;
-                    newPicture.Parent = myForm;
+                    Button newButton = new Button();
+                    newButton.Image = DominionGUI.Properties.Resources.FestivalHalf;
+                    newButton.Height = 179;
+                    newButton.Width = 256;
+                    newButton.Location = new Point(xValue, yValue);
+                    xValue += 256;
+                    newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.Festival());
                 }
@@ -211,13 +212,13 @@ namespace DominionGUI
                 if (numList.Contains(9))
                 {
                     kingdomCards = kingdomCards + "Gardens" + "\n";
-                    PictureBox newPicture = new PictureBox();
-                    newPicture.Image = DominionGUI.Properties.Resources.Gardens;
-                    newPicture.Height = 122;
-                    newPicture.Width = 75;
-                    newPicture.Location = new Point(xValue, yValue);
-                    xValue += 90;
-                    newPicture.Parent = myForm;
+                    Button newButton = new Button();
+                    newButton.Image = DominionGUI.Properties.Resources.GardensHalf;
+                    newButton.Height = 179;
+                    newButton.Width = 256;
+                    newButton.Location = new Point(xValue, yValue);
+                    xValue += 256;
+                    newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.Gardens());
                 }
@@ -225,13 +226,13 @@ namespace DominionGUI
                 if (numList.Contains(10))
                 {
                     kingdomCards = kingdomCards + "Laboratory" + "\n";
-                    PictureBox newPicture = new PictureBox();
-                    newPicture.Image = DominionGUI.Properties.Resources.Laboratory;
-                    newPicture.Height = 122;
-                    newPicture.Width = 75;
-                    newPicture.Location = new Point(xValue, yValue);
-                    xValue += 90;
-                    newPicture.Parent = myForm;
+                    Button newButton = new Button();
+                    newButton.Image = DominionGUI.Properties.Resources.LaboratoryHalf;
+                    newButton.Height = 179;
+                    newButton.Width = 256;
+                    newButton.Location = new Point(xValue, yValue);
+                    xValue += 256;
+                    newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.Laboratory());
                 }
@@ -239,13 +240,13 @@ namespace DominionGUI
                 if (numList.Contains(11))
                 {
                     kingdomCards = kingdomCards + "Library" + "\n";
-                    PictureBox newPicture = new PictureBox();
-                    newPicture.Image = DominionGUI.Properties.Resources.Library;
-                    newPicture.Height = 122;
-                    newPicture.Width = 75;
-                    newPicture.Location = new Point(xValue, yValue);
-                    xValue += 90;
-                    newPicture.Parent = myForm;
+                    Button newButton = new Button();
+                    newButton.Image = DominionGUI.Properties.Resources.LibraryHalf;
+                    newButton.Height = 179;
+                    newButton.Width = 256;
+                    newButton.Location = new Point(xValue, yValue);
+                    xValue += 256;
+                    newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.Library());
                 }
@@ -253,13 +254,13 @@ namespace DominionGUI
                 if (numList.Contains(12))
                 {
                     kingdomCards = kingdomCards + "Market" + "\n";
-                    PictureBox newPicture = new PictureBox();
-                    newPicture.Image = DominionGUI.Properties.Resources.Market;
-                    newPicture.Height = 122;
-                    newPicture.Width = 75;
-                    newPicture.Location = new Point(xValue, yValue);
-                    xValue += 90;
-                    newPicture.Parent = myForm;
+                    Button newButton = new Button();
+                    newButton.Image = DominionGUI.Properties.Resources.MarketHalf;
+                    newButton.Height = 179;
+                    newButton.Width = 256;
+                    newButton.Location = new Point(xValue, yValue);
+                    xValue += 256;
+                    newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.Market());
                 }
@@ -267,13 +268,13 @@ namespace DominionGUI
                 if (numList.Contains(13))
                 {
                     kingdomCards = kingdomCards + "Militia" + "\n";
-                    PictureBox newPicture = new PictureBox();
-                    newPicture.Image = DominionGUI.Properties.Resources.Militia;
-                    newPicture.Height = 122;
-                    newPicture.Width = 75;
-                    newPicture.Location = new Point(xValue, yValue);
-                    xValue += 90;
-                    newPicture.Parent = myForm;
+                    Button newButton = new Button();
+                    newButton.Image = DominionGUI.Properties.Resources.MilitiaHalf;
+                    newButton.Height = 179;
+                    newButton.Width = 256;
+                    newButton.Location = new Point(xValue, yValue);
+                    xValue += 256;
+                    newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.Militia());
                 }
@@ -281,13 +282,13 @@ namespace DominionGUI
                 if (numList.Contains(14))
                 {
                     kingdomCards = kingdomCards + "Mine" + "\n";
-                    PictureBox newPicture = new PictureBox();
-                    newPicture.Image = DominionGUI.Properties.Resources.Mine;
-                    newPicture.Height = 122;
-                    newPicture.Width = 75;
-                    newPicture.Location = new Point(xValue, yValue);
-                    xValue += 90;
-                    newPicture.Parent = myForm;
+                    Button newButton = new Button();
+                    newButton.Image = DominionGUI.Properties.Resources.MineHalf;
+                    newButton.Height = 179;
+                    newButton.Width = 256;
+                    newButton.Location = new Point(xValue, yValue);
+                    xValue += 256;
+                    newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.Mine());
                 }
@@ -295,13 +296,13 @@ namespace DominionGUI
                 if (numList.Contains(15))
                 {
                     kingdomCards = kingdomCards + "Moat" + "\n";
-                    PictureBox newPicture = new PictureBox();
-                    newPicture.Image = DominionGUI.Properties.Resources.Moat;
-                    newPicture.Height = 122;
-                    newPicture.Width = 75;
-                    newPicture.Location = new Point(xValue, yValue);
-                    xValue += 90;
-                    newPicture.Parent = myForm;
+                    Button newButton = new Button();
+                    newButton.Image = DominionGUI.Properties.Resources.MoatHalf;
+                    newButton.Height = 179;
+                    newButton.Width = 256;
+                    newButton.Location = new Point(xValue, yValue);
+                    xValue += 256;
+                    newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.Moat());
                 }
@@ -309,13 +310,13 @@ namespace DominionGUI
                 if (numList.Contains(16))
                 {
                     kingdomCards = kingdomCards + "Moneylender" + "\n";
-                    PictureBox newPicture = new PictureBox();
-                    newPicture.Image = DominionGUI.Properties.Resources.Moneylender;
-                    newPicture.Height = 122;
-                    newPicture.Width = 75;
-                    newPicture.Location = new Point(xValue, yValue);
-                    xValue += 90;
-                    newPicture.Parent = myForm;
+                    Button newButton = new Button();
+                    newButton.Image = DominionGUI.Properties.Resources.MoneylenderHalf;
+                    newButton.Height = 179;
+                    newButton.Width = 256;
+                    newButton.Location = new Point(xValue, yValue);
+                    xValue += 256;
+                    newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.MoneyLender());
                 }
@@ -323,13 +324,13 @@ namespace DominionGUI
                 if (numList.Contains(17))
                 {
                     kingdomCards = kingdomCards + "Remodel" + "\n";
-                    PictureBox newPicture = new PictureBox();
-                    newPicture.Image = DominionGUI.Properties.Resources.Remodel;
-                    newPicture.Height = 122;
-                    newPicture.Width = 75;
-                    newPicture.Location = new Point(xValue, yValue);
-                    xValue += 90;
-                    newPicture.Parent = myForm;
+                    Button newButton = new Button();
+                    newButton.Image = DominionGUI.Properties.Resources.RemodelHalf;
+                    newButton.Height = 179;
+                    newButton.Width = 256;
+                    newButton.Location = new Point(xValue, yValue);
+                    xValue += 256;
+                    newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.Remodel());
                 }
@@ -337,13 +338,13 @@ namespace DominionGUI
                 if (numList.Contains(18))
                 {
                     kingdomCards = kingdomCards + "Smithy" + "\n";
-                    PictureBox newPicture = new PictureBox();
-                    newPicture.Image = DominionGUI.Properties.Resources.Smithy;
-                    newPicture.Height = 122;
-                    newPicture.Width = 75;
-                    newPicture.Location = new Point(xValue, yValue);
-                    xValue += 90;
-                    newPicture.Parent = myForm;
+                    Button newButton = new Button();
+                    newButton.Image = DominionGUI.Properties.Resources.SmithyHalf;
+                    newButton.Height = 179;
+                    newButton.Width = 256;
+                    newButton.Location = new Point(xValue, yValue);
+                    xValue += 256;
+                    newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.Smithy());
                 }
@@ -351,13 +352,13 @@ namespace DominionGUI
                 if (numList.Contains(19))
                 {
                     kingdomCards = kingdomCards + "Spy" + "\n";
-                    PictureBox newPicture = new PictureBox();
-                    newPicture.Image = DominionGUI.Properties.Resources.Spy;
-                    newPicture.Height = 122;
-                    newPicture.Width = 75;
-                    newPicture.Location = new Point(xValue, yValue);
-                    xValue += 90;
-                    newPicture.Parent = myForm;
+                    Button newButton = new Button();
+                    newButton.Image = DominionGUI.Properties.Resources.SpyHalf;
+                    newButton.Height = 179;
+                    newButton.Width = 256;
+                    newButton.Location = new Point(xValue, yValue);
+                    xValue += 256;
+                    newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.Spy());
                 }
@@ -365,13 +366,13 @@ namespace DominionGUI
                 if (numList.Contains(20))
                 {
                     kingdomCards = kingdomCards + "Thief" + "\n";
-                    PictureBox newPicture = new PictureBox();
-                    newPicture.Image = DominionGUI.Properties.Resources.Thief;
-                    newPicture.Height = 122;
-                    newPicture.Width = 75;
-                    newPicture.Location = new Point(xValue, yValue);
-                    xValue += 90;
-                    newPicture.Parent = myForm;
+                    Button newButton = new Button();
+                    newButton.Image = DominionGUI.Properties.Resources.ThiefHalf;
+                    newButton.Height = 179;
+                    newButton.Width = 256;
+                    newButton.Location = new Point(xValue, yValue);
+                    xValue += 256;
+                    newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.Thief());
                 }
@@ -379,13 +380,13 @@ namespace DominionGUI
                 if (numList.Contains(21))
                 {
                     kingdomCards = kingdomCards + "Throne Room" + "\n";
-                    PictureBox newPicture = new PictureBox();
-                    newPicture.Image = DominionGUI.Properties.Resources.Throneroom;
-                    newPicture.Height = 122;
-                    newPicture.Width = 75;
-                    newPicture.Location = new Point(xValue, yValue);
-                    xValue += 90;
-                    newPicture.Parent = myForm;
+                    Button newButton = new Button();
+                    newButton.Image = DominionGUI.Properties.Resources.ThroneroomHalf;
+                    newButton.Height = 179;
+                    newButton.Width = 256;
+                    newButton.Location = new Point(xValue, yValue);
+                    xValue += 256;
+                    newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.ThroneRoom());
                 }
@@ -393,13 +394,13 @@ namespace DominionGUI
                 if (numList.Contains(22))
                 {
                     kingdomCards = kingdomCards + "Village" + "\n";
-                    PictureBox newPicture = new PictureBox();
-                    newPicture.Image = DominionGUI.Properties.Resources.Village;
-                    newPicture.Height = 122;
-                    newPicture.Width = 75;
-                    newPicture.Location = new Point(xValue, yValue);
-                    xValue += 90;
-                    newPicture.Parent = myForm;
+                    Button newButton = new Button();
+                    newButton.Image = DominionGUI.Properties.Resources.VillageHalf;
+                    newButton.Height = 179;
+                    newButton.Width = 256;
+                    newButton.Location = new Point(xValue, yValue);
+                    xValue += 256;
+                    newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.Village());
                 }
@@ -407,13 +408,13 @@ namespace DominionGUI
                 if (numList.Contains(23))
                 {
                     kingdomCards = kingdomCards + "Witch" + "\n";
-                    PictureBox newPicture = new PictureBox();
-                    newPicture.Image = DominionGUI.Properties.Resources.Witch;
-                    newPicture.Height = 122;
-                    newPicture.Width = 75;
-                    newPicture.Location = new Point(xValue, yValue);
-                    xValue += 90;
-                    newPicture.Parent = myForm;
+                    Button newButton = new Button();
+                    newButton.Image = DominionGUI.Properties.Resources.WitchHalf;
+                    newButton.Height = 179;
+                    newButton.Width = 256;
+                    newButton.Location = new Point(xValue, yValue);
+                    xValue += 256;
+                    newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.Witch());
                 }
@@ -421,13 +422,13 @@ namespace DominionGUI
                 if (numList.Contains(24))
                 {
                     kingdomCards = kingdomCards + "Woodcutter" + "\n";
-                    PictureBox newPicture = new PictureBox();
-                    newPicture.Image = DominionGUI.Properties.Resources.Woodcutter;
-                    newPicture.Height = 122;
-                    newPicture.Width = 75;
-                    newPicture.Location = new Point(xValue, yValue);
-                    xValue += 90;
-                    newPicture.Parent = myForm;
+                    Button newButton = new Button();
+                    newButton.Image = DominionGUI.Properties.Resources.WoodcutterHalf;
+                    newButton.Height = 179;
+                    newButton.Width = 256;
+                    newButton.Location = new Point(xValue, yValue);
+                    xValue += 256;
+                    newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.Woodcutter());
                 }

@@ -31,5 +31,10 @@ namespace DominionGUI
         {
 
         }
+
+        private void KingdomCardSelection_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

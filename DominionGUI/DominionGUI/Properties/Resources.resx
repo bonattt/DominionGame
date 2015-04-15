@@ -118,79 +118,154 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Adventurer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Adventurer.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="MilitiaHalf" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MilitiaHalf.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Bureaucrat" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Bureaucrat.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Cellar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Cellar.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Chancellor" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Chancellor.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Chapel" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Chapel.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Councilroom" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Councilroom.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Feast" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Feast.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Festival" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Festival.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Gardens" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Gardens.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Laboratory" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Laboratory.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Library" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Library.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Market" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Market.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Militia" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Militia.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Mine" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Mine.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Moat" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Moat.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Moneylender" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Moneylender.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Remodel" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Remodel.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Smithy" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Smithy.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Spy" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Spy.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="SmithyHalf" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SmithyHalf.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Thief" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Thief.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Throneroom" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Throneroom.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="AdventurerHalfNew" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AdventurerHalfNew.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Spy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Spy.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WitchHalf" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WitchHalf.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MoneylenderHalf" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MoneylenderHalf.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="VillageHalf" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\VillageHalf.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Festival" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Festival.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cellar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cellar.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Gardens" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Gardens.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FeastHalf" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FeastHalf.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Village" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Village.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Militia" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Militia.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Councilroom" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Councilroom.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MoatHalf" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MoatHalf.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RemodelHalf" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RemodelHalf.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Workshop" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Workshop.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ChancellorHalf" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ChancellorHalf.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Laboratory" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Laboratory.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Witch" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Witch.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ChapelHalf" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ChapelHalf.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Remodel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Remodel.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Feast" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Feast.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ThroneroomHalf" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ThroneroomHalf.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LaboratoryHalf" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LaboratoryHalf.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WoodcutterHalf" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WoodcutterHalf.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Chapel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Chapel.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Library" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Library.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BureaucratHalf" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BureaucratHalf.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ThiefHalf" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ThiefHalf.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Bureaucrat" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Bureaucrat.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Moat" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Moat.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MineHalf" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MineHalf.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LibraryHalf" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LibraryHalf.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GardensHalf" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GardensHalf.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Market" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Market.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Woodcutter" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Woodcutter.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Workshop" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Workshop.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="SpyHalf" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SpyHalf.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Chancellor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Chancellor.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Moneylender" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Moneylender.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FestivalHalf" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FestivalHalf.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Throneroom" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Throneroom.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Mine" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Mine.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Smithy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Smithy.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CouncilroomHalf" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CouncilroomHalf.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Adventurer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Adventurer.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MarketHalf" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MarketHalf.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CellarHalf" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CellarHalf.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WorkshopHalf" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WorkshopHalf.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
