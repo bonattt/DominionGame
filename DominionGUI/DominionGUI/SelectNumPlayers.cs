@@ -81,7 +81,7 @@ namespace DominionGUI
 
 
                 List<int> numList = new List<int>();
-                numList = RandomGenerateCards.GenerateRandom.GenerateRandomList();
+                numList = RandomGenerateCards.GenerateRandom.GenerateRandomList(25);
                 numList.Add(24);
                 
               
