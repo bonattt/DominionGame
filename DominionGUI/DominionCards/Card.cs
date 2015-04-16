@@ -20,6 +20,10 @@ namespace DominionCards
         {
             return price;
         }
+        public int getID()
+        {
+            return id;
+        }
         public abstract void play();
         public abstract void addToDeck();
         public abstract void trash();
