@@ -68,6 +68,35 @@ namespace DominionCards
             Assert.AreEqual(10, p1.countVictoryPoints());
         }
         [Test()]
+        public void testCountVictoryPointsWhenCardsInDiscard(){
+            Player p1 = new HumanPlayer();
+            Stack<Card> deck = new Stack<Card>();
+            ArrayList discard = p1.getDiscard();
+            p1.setDeck(deck);
+            Assert.AreEqual(0, p1.countVictoryPoints());
+            deck.Push(new KingdomCards.Estate());
+            Assert.AreEqual(1, p1.countVictoryPoints());
+            deck.Push(new KingdomCards.Duchy());
+            Assert.AreEqual(4, p1.countVictoryPoints());
+            discard.Add(new KingdomCards.Province());
+            Assert.AreEqual(10, p1.countVictoryPoints());
+        }
+        [Test()]
+        public void testCountVictoryPointsWhenCardsInHand(){
+            Player p1 = new HumanPlayer();
+            Stack<Card> deck = new Stack<Card>();
+            ArrayList hand = new ArrayList();
+            p1.setDeck(deck);
+            p1.setHand(hand);
+            Assert.AreEqual(0, p1.countVictoryPoints());
+            deck.Push(new KingdomCards.Estate());
+            Assert.AreEqual(1, p1.countVictoryPoints());
+            deck.Push(new KingdomCards.Duchy());
+            Assert.AreEqual(4, p1.countVictoryPoints());
+            hand.Add(new KingdomCards.Province());
+            Assert.AreEqual(10, p1.countVictoryPoints());
+        }
+        [Test()]
         public void playingTreasureCardAddsMoney()
         {
             Player p1 = new HumanPlayer();
