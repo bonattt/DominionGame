@@ -74,12 +74,12 @@ namespace DominionCards
             ArrayList discard = p1.getDiscard();
             p1.setDeck(deck);
             Assert.AreEqual(0, p1.countVictoryPoints());
-            deck.Push(new KingdomCards.Estate());
-            Assert.AreEqual(1, p1.countVictoryPoints());
+            deck.Push(new KingdomCards.Province());
+            Assert.AreEqual(6, p1.countVictoryPoints());
             deck.Push(new KingdomCards.Duchy());
-            Assert.AreEqual(4, p1.countVictoryPoints());
-            discard.Add(new KingdomCards.Province());
-            Assert.AreEqual(10, p1.countVictoryPoints());
+            Assert.AreEqual(9, p1.countVictoryPoints());
+            discard.Add(new KingdomCards.Duchy());
+            Assert.AreEqual(12, p1.countVictoryPoints());
         }
         [Test()]
         public void testCountVictoryPointsWhenCardsInHand(){
@@ -91,10 +91,10 @@ namespace DominionCards
             Assert.AreEqual(0, p1.countVictoryPoints());
             deck.Push(new KingdomCards.Estate());
             Assert.AreEqual(1, p1.countVictoryPoints());
-            deck.Push(new KingdomCards.Duchy());
-            Assert.AreEqual(4, p1.countVictoryPoints());
+            deck.Push(new KingdomCards.Province());
+            Assert.AreEqual(7, p1.countVictoryPoints());
             hand.Add(new KingdomCards.Province());
-            Assert.AreEqual(10, p1.countVictoryPoints());
+            Assert.AreEqual(13, p1.countVictoryPoints());
         }
         [Test()]
         public void playingTreasureCardAddsMoney()

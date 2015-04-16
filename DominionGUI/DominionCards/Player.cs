@@ -134,6 +134,11 @@ namespace DominionCards
         {
             // finds the card that was played in the player's hand, then removes it.
             int handSize = hand.Count;
+            if (c.getID() == 3 || c.getID() == 4 || c.getID() == 5 || c.getID() == 14)
+            {
+                throw new Exception("you cannot play victory cards!!");
+            }
+
             for (int i = 0; i < hand.Count; i++)
             {
                 if (hand[i] == c)
