@@ -13,6 +13,26 @@ namespace DominionCards
     class PlayerTest
     {
         [Test()]
+        public void testDrawHandDrawsFiveCards()
+        {
+            Player p1 = new HumanPlayer();
+            ArrayList hand = p1.getHand();
+
+            p1.drawHand();
+            Assert.AreEqual(5, hand.Count);
+        }
+        [Test()]
+        public void testDrawHandRemovesFiveCardsFromDeck()
+        {
+            Player p1 = new HumanPlayer();
+            Stack<Card> deck = p1.getDeck();
+            int initialDeck = deck.Count;
+
+            p1.drawHand();
+            Assert.AreEqual(initialDeck - 5, deck.Count);
+        }
+
+        [Test()]
         public void testPlayerStartsWithCorrectNumberOfEstates()
         {
             Player p1 = new HumanPlayer();
@@ -49,12 +69,6 @@ namespace DominionCards
             Stack<Card> deck = p1.getDeck();
             Assert.AreEqual(10, deck.Count);
         }
-//        [Test()]
-        public void testPlayerStartsWithFiveCardHand()
-        {
-            Player p1 = new HumanPlayer();
-           Assert.Fail();
-        }
         [Test()]
         public void testPlayerStartsWithOnlyEstatesAndCopper()
         {
@@ -68,7 +82,7 @@ namespace DominionCards
                 }
             }
         }
-//        [Test()]
+        [Test()]
         public void testDrawCardMakesDeckSmaller()
         {
             Player p1 = new HumanPlayer();
@@ -77,14 +91,19 @@ namespace DominionCards
             p1.drawCard();
             Assert.AreEqual(initialDeckSize - 1, deck.Count);
         }
-//        [Test()]
+        [Test()]
         public void testDrawCardMakesHandBigger()
         {
             Player p1 = new HumanPlayer();
             ArrayList hand = p1.getHand();
+
+            hand.Add(new KingdomCards.Smithy());
             int initialDeckSize = hand.Count;
-            p1.drawCard();
-            Assert.AreEqual(initialDeckSize + 1, hand.Count);
+            p1.setHand(hand);
+            printCardStats((ActionCard)hand[0]);
+            p1.playCard((Card)hand[0]);
+
+            Assert.AreEqual(initialDeckSize + 2, hand.Count);
         }
         [Test()]
         public void playingActionCardReducesActionsByOne()
@@ -169,10 +188,16 @@ namespace DominionCards
             p1.playCard((Card)hand[0]);
             Assert.AreEqual(m, p1.moneyLeft());
         }
-//        [Test()]
+        [Test()]
         public void playingCardThatDrawsCards()
         {
-            // TODO implement
+            Player p1 = new HumanPlayer();
+            ArrayList hand = new ArrayList();
+            hand.Add(new KingdomCards.Laboratory());
+            p1.setHand(hand);
+            printCardStats((ActionCard)hand[0]);
+            p1.playCard((Card)hand[0]);
+            Assert.AreEqual(2, hand.Count);
         }
         private void printCardStats(ActionCard c)
         {

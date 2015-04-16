@@ -25,9 +25,19 @@ namespace DominionCards
             {
                 deck.Push(new KingdomCards.Copper());
             }
+            // TODO shuffle the deck
         }
-        public Card drawCard(){
-            return null;
+        public Card drawCard()
+        {
+            return deck.Pop();
+        }
+        public void drawHand()
+        {
+            // TODO
+        }
+        private void drawCardsFromPartialDeck()
+        {
+            throw new NotImplementedException("your deck ran out while drawing cards!!!");
         }
         public void endTurn()
         {
