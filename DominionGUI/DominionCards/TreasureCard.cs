@@ -27,5 +27,10 @@ namespace DominionCards
         {
             // TODO implement this
         }
+        public int getValue()
+        {
+            Console.WriteLine("returning value of treasure card");
+            return value;
+        }
     }
 }

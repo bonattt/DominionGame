@@ -60,6 +60,7 @@ namespace DominionCards
 
         public abstract void actionPhase();
         public abstract void buyPhase();
+        public abstract void selectToDiscard();
 
         public ArrayList getHand()
         {
@@ -113,6 +114,13 @@ namespace DominionCards
             if (handSize - 1 != hand.Count)
             {
                 throw new Exception("tried to play a card not in your hand!!!"); // USE A BETTER EXCEPTION
+            }
+            // check if card is treasure, and handle it specially
+            if (c.getID() == 0 || c.getID() == 1 || c.getID() == 2)
+            {
+                Console.WriteLine("treasure card played, value " + ((TreasureCard)c).getValue());
+                money += ((TreasureCard)c).getValue();
+                return actions;
             }
 
             // resolves generic card effects

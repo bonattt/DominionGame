@@ -21,5 +21,9 @@ namespace DominionCards
         {
             // TODO implement
         }
+        public override void selectToDiscard()
+        {
+            // TODO implement
+        }
     }
 }
