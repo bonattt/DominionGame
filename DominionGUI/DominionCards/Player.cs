@@ -33,7 +33,20 @@ namespace DominionCards
         }
         public void drawHand()
         {
-            // TODO
+            if (deck.Count < 5)
+            {
+                drawCardsFromPartialDeck();
+            }
+
+            for (int i = 0; i < hand.Count; i++)
+            {
+                discard.Push((Card)hand[i]);
+            }
+            hand.Clear();
+            for (int i = 0; i < 5; i++)
+            {
+                hand.Add(drawCard());
+            }
         }
         private void drawCardsFromPartialDeck()
         {
