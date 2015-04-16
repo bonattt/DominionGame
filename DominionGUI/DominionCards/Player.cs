@@ -23,7 +23,6 @@ namespace DominionCards
             }
         }
         public Card drawCard(){
-
             return null;
         }
         public void endTurn()

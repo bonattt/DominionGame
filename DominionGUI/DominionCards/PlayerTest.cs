@@ -68,5 +68,23 @@ namespace DominionCards
                 }
             }
         }
+        [Test()]
+        public void testDrawCardMakesDeckSmaller()
+        {
+            Player p1 = new HumanPlayer();
+            Stack<Card> deck = p1.getDeck();
+            int initialDeckSize = deck.Count;
+            p1.drawCard();
+            Assert.AreEqual(initialDeckSize - 1, deck.Count);
+        }
+        [Test()]
+        public void testDrawCardMakesHandBigger()
+        {
+            Player p1 = new HumanPlayer();
+            ArrayList hand = p1.getHand();
+            int initialDeckSize = hand.Count;
+            p1.drawCard();
+            Assert.AreEqual(initialDeckSize + 1, hand.Count);
+        }
     }
 }
