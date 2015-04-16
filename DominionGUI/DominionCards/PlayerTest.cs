@@ -13,6 +13,16 @@ namespace DominionCards
     class PlayerTest
     {
         [Test()]
+        public void testDrawHandDiscardsOldHand()
+        {
+            Player p1 = new HumanPlayer();
+            p1.drawHand();
+            ArrayList hand = p1.getHand();
+            p1.drawHand();
+            Assert.AreEqual(hand, p1.getHand());
+        }
+
+        [Test()]
         public void testDrawHandDrawsFiveCards()
         {
             Player p1 = new HumanPlayer();
