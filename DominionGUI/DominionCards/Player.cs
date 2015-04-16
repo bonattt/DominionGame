@@ -42,6 +42,10 @@ namespace DominionCards
         {
             return hand;
         }
+        public void setHand(ArrayList h)
+        {
+            hand = h; // THIS METHOD IS FOR TESTING USE
+        }
         public Stack<Card> getDeck()
         {
             return deck;
@@ -74,9 +78,9 @@ namespace DominionCards
         {
             ActionCard card = (ActionCard) c;
             actions--;
-            for (int i = 0; i < card.extraCards; i++)
+            for (int i = 0; i < card.cards; i++)
             {
-
+                // TODO implement
             }
         }
     }
