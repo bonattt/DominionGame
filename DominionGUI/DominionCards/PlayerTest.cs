@@ -16,11 +16,11 @@ namespace DominionCards
         public void testPlayerStartsWithCorrectNumberOfEstates()
         {
             Player p1 = new HumanPlayer();
-            ArrayList hand = p1.getHand();
+            Stack<Card> deck = p1.getDeck();
             int numbEstates = 0;
-            for (int i = 0; i < hand.Count; i++)
+            for (int i = 0; i < deck.Count; i++)
             {
-                if (((Card)hand[i]).getID() == 3)
+                if (deck.Pop().getID() == 3)
                 {
                     numbEstates++;
                 }
@@ -31,11 +31,11 @@ namespace DominionCards
         public void testPlayerStartsWithCorrectNumberOfCopper()
         {
             Player p1 = new HumanPlayer();
-            ArrayList hand = p1.getHand();
+            Stack<Card> deck = p1.getDeck();
             int numbCopper = 0;
-            for (int i = 0; i < hand.Count; i++)
+            for (int i = 0; i < deck.Count; i++)
             {
-                if (((Card)hand[i]).getID() == 0)
+                if (deck.Pop().getID() == 0)
                 {
                     numbCopper++;
                 }
@@ -46,8 +46,8 @@ namespace DominionCards
         public void testPlayerStartsWithCorrectNumberOfCards()
         {
             Player p1 = new HumanPlayer();
-            ArrayList hand = p1.getHand();
-            Assert.AreEqual(10, hand.Count);
+            Stack<Card> deck = p1.getDeck();
+            Assert.AreEqual(10, deck.Count);
         }
 //        [Test()]
 //        public void testPlayerStartsWithFiveCardHand()
