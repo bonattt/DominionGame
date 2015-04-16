@@ -21,7 +21,50 @@ namespace DominionCards
             p1.drawHand();
             Assert.AreEqual(hand, p1.getHand());
         }
-
+        [Test()]
+        public void playingTreasureCardDoesntUseAnAction()
+        {
+            Player p1 = new HumanPlayer();
+            int a = p1.actionsLeft();
+            ArrayList hand = new ArrayList();
+            hand.Add(new KingdomCards.Copper());
+            p1.setHand(hand);
+            p1.playCard((Card)hand[0]);
+            Assert.AreEqual(a, p1.actionsLeft());
+        }
+        [Test()]
+        public void playingTreasureCardDoesntAddBuys()
+        {
+            Player p1 = new HumanPlayer();
+            int b = p1.buysLeft();
+            ArrayList hand = new ArrayList();
+            hand.Add(new KingdomCards.Gold());
+            p1.setHand(hand);
+            p1.playCard((Card)hand[0]);
+            Assert.AreEqual(b, p1.actionsLeft());
+        }
+        [Test()]
+        public void playingTreasureCardDoesntDrawCards()
+        {
+            Player p1 = new HumanPlayer();
+            ArrayList hand = new ArrayList();
+            hand.Add(new KingdomCards.Gold());
+            int cards = hand.Count;
+            p1.setHand(hand);
+            p1.playCard((Card)hand[0]);
+            Assert.AreEqual(cards - 1, p1.actionsLeft());
+        }
+        [Test()]
+        public void playingTreasureCardAddsMoney()
+        {
+            Player p1 = new HumanPlayer();
+            int m = p1.moneyLeft();
+            ArrayList hand = new ArrayList();
+            hand.Add(new KingdomCards.Silver());
+            p1.setHand(hand);
+            p1.playCard((Card)hand[0]);
+            Assert.AreEqual(m + 2, p1.actionsLeft());
+        }
         [Test()]
         public void testDrawHandDrawsFiveCards()
         {
@@ -110,7 +153,6 @@ namespace DominionCards
             hand.Add(new KingdomCards.Smithy());
             int initialDeckSize = hand.Count;
             p1.setHand(hand);
-            printCardStats((ActionCard)hand[0]);
             p1.playCard((Card)hand[0]);
 
             Assert.AreEqual(initialDeckSize + 2, hand.Count);
@@ -123,7 +165,6 @@ namespace DominionCards
             ArrayList hand = new ArrayList();
             hand.Add(new KingdomCards.Smithy());
             p1.setHand(hand);
-            printCardStats((ActionCard)hand[0]);
             p1.playCard((Card) hand[0]);
             Assert.AreEqual(a - 1, p1.actionsLeft());
         }
@@ -134,7 +175,6 @@ namespace DominionCards
             ArrayList hand = new ArrayList();
             hand.Add(new KingdomCards.Woodcutter());
             p1.setHand(hand);
-            printCardStats((ActionCard)hand[0]);
             p1.playCard((Card) hand[0]);
             Assert.AreEqual(0, p1.getHand().Count);
         }
@@ -146,7 +186,6 @@ namespace DominionCards
             ArrayList hand = new ArrayList();
             hand.Add(new KingdomCards.Woodcutter());
             p1.setHand(hand);
-            printCardStats((ActionCard)hand[0]);
             p1.playCard((Card) hand[0]);
             Assert.AreEqual(b+1, p1.buysLeft());
         }
@@ -158,7 +197,6 @@ namespace DominionCards
             ArrayList hand = new ArrayList();
             hand.Add(new KingdomCards.Smithy());
             p1.setHand(hand);
-            printCardStats((ActionCard)hand[0]);
             p1.playCard((Card)hand[0]);
             Assert.AreEqual(b, p1.buysLeft());
         }
@@ -170,7 +208,6 @@ namespace DominionCards
             ArrayList hand = new ArrayList();
             hand.Add(new KingdomCards.Village());
             p1.setHand(hand);
-            printCardStats((ActionCard)hand[0]);
             p1.playCard((Card)hand[0]);
             Assert.AreEqual(a+1, p1.actionsLeft());
         }
@@ -182,7 +219,6 @@ namespace DominionCards
             ArrayList hand = new ArrayList();
             hand.Add(new KingdomCards.Festival());
             p1.setHand(hand);
-            printCardStats((ActionCard)hand[0]);
             p1.playCard((Card)hand[0]);
             Assert.AreEqual(m+2, p1.moneyLeft());
         }
@@ -194,7 +230,7 @@ namespace DominionCards
             ArrayList hand = new ArrayList();
             hand.Add(new KingdomCards.Chapel());
             p1.setHand(hand);
-            printCardStats((ActionCard)hand[0]);
+            
             p1.playCard((Card)hand[0]);
             Assert.AreEqual(m, p1.moneyLeft());
         }
@@ -205,7 +241,6 @@ namespace DominionCards
             ArrayList hand = new ArrayList();
             hand.Add(new KingdomCards.Laboratory());
             p1.setHand(hand);
-            printCardStats((ActionCard)hand[0]);
             p1.playCard((Card)hand[0]);
             Assert.AreEqual(2, hand.Count);
         }
