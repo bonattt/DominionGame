@@ -19,7 +19,11 @@ namespace DominionCards
         {
             for (int i = 0; i < 3; i++)
             {
-                // add cards.
+                deck.Push(new KingdomCards.Estate());
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                deck.Push(new KingdomCards.Copper());
             }
         }
         public Card drawCard(){
