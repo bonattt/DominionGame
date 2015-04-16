@@ -63,7 +63,7 @@ namespace DominionCards
             hand.Add(new KingdomCards.Silver());
             p1.setHand(hand);
             p1.playCard((Card)hand[0]);
-            Assert.AreEqual(m + 2, p1.actionsLeft());
+            Assert.AreEqual(m + 2, p1.moneyLeft());
         }
         [Test()]
         public void testDrawHandDrawsFiveCards()
