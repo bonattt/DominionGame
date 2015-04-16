@@ -10,6 +10,25 @@ namespace DominionCards
     [TestFixture()]
     class CardTEST
     {
+
+        [Test()]
+        public void testTreasureReturnsNoVP()
+        {
+            Card c = new KingdomCards.Silver();
+            Assert.AreEqual(0, c.getVictoryPoints());
+        }
+        [Test()]
+        public void testActionReturnsNoVP()
+        {
+            Card c = new KingdomCards.Village();
+            Assert.AreEqual(0, c.getVictoryPoints());
+        }
+        [Test()]
+        public void testVictoryReturnsVP()
+        {
+            Card c = new KingdomCards.Estate();
+            Assert.AreEqual(1, c.getVictoryPoints());
+        }
         [Test()]
         public void testGetPriceVictoryCard()
         {

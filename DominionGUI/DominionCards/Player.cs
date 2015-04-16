@@ -70,6 +70,10 @@ namespace DominionCards
         {
             hand = h; // THIS METHOD IS FOR TESTING USE
         }
+        public void setDeck(Stack<Card> d)
+        {
+            deck = d; // THIS METHOD IS FOR TESTING USE
+        }
         public Stack<Card> getDeck()
         {
             return deck;
@@ -97,6 +101,10 @@ namespace DominionCards
         public int moneyLeft()
         {
             return money;
+        }
+        public int countVictoryPoints()
+        {
+            return -999;
         }
         public int playCard(Card c)
         {

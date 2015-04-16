@@ -14,6 +14,9 @@ namespace DominionCards
         {
             vp = victoryPts;
         }
+        public int getVictoryPoints(){
+            return vp;
+        }
         public override void play()
         {
             // TODO implement this
