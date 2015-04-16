@@ -10,16 +10,16 @@ namespace RandomGenerateCards
     {
         static void Main(string[] args)
         {
-            List<int> theList = GenerateRandomList();
+            List<int> theList = GenerateRandomList(25);
             Console.WriteLine("Result: " + theList.Count);
             theList.ForEach(Console.WriteLine);
         }
         static Random random = new Random();
-        public static List<int> GenerateRandomList()
+        public static List<int> GenerateRandomList(int size)
         {
             int count = 10;
             int min = 0;
-            int max = 25;
+            int max = size;
             if (max <= min || count < 0 ||
                     (count > max - min && max - min > 0))
             {
