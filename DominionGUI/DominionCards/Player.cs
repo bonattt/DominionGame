@@ -72,7 +72,12 @@ namespace DominionCards
         }
         public void playCard(Card c)
         {
-            // TODO implement
+            ActionCard card = (ActionCard) c;
+            actions--;
+            for (int i = 0; i < card.extraCards; i++)
+            {
+
+            }
         }
     }
 }

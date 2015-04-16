@@ -18,7 +18,7 @@ namespace DominionCards
             Player p1 = new HumanPlayer();
             Stack<Card> deck = p1.getDeck();
             int numbEstates = 0;
-            for (int i = 0; i < deck.Count; i++)
+            while (deck.Count > 0)
             {
                 if (deck.Pop().getID() == 3)
                 {
@@ -33,7 +33,7 @@ namespace DominionCards
             Player p1 = new HumanPlayer();
             Stack<Card> deck = p1.getDeck();
             int numbCopper = 0;
-            for (int i = 0; i < deck.Count; i++)
+            while (deck.Count > 0)
             {
                 if (deck.Pop().getID() == 0)
                 {
@@ -86,5 +86,10 @@ namespace DominionCards
             p1.drawCard();
             Assert.AreEqual(initialDeckSize + 1, hand.Count);
         }
+        public void playingCardReducesActionsByOne()
+        {
+            // TODO implement
+        }
+        public void 
     }
 }

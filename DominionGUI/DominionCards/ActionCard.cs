@@ -8,7 +8,7 @@ namespace DominionCards
 {
     public class ActionCard : Card
     {
-        int cards, money, buys, actions;
+        public int cards, money, buys, actions;
         public ActionCard(int extraCards, int extraMoney, int extraBuys, int extraActions, int price, int idNumb)
             : base(price, idNumb)
         {
