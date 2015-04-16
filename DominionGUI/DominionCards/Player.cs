@@ -11,7 +11,7 @@ namespace DominionCards
     {
         private Stack<Card> deck = new Stack<Card>();
         private ArrayList hand = new ArrayList();
-        private Stack<Card> discard = new Stack<Card>();
+        private ArrayList discard = new ArrayList();
         private Stack<Card> attack = new Stack<Card>();
         private String name;
         private int actions, buys, money;
@@ -40,7 +40,7 @@ namespace DominionCards
 
             for (int i = 0; i < hand.Count; i++)
             {
-                discard.Push((Card)hand[i]);
+                discard.Add((Card)hand[i]);
             }
             hand.Clear();
             for (int i = 0; i < 5; i++)
@@ -78,7 +78,7 @@ namespace DominionCards
         {
             return deck;
         }
-        public Stack<Card> getDiscard()
+        public ArrayList getDiscard()
         {
             return discard;
         }
@@ -104,7 +104,31 @@ namespace DominionCards
         }
         public int countVictoryPoints()
         {
-            return -999;
+            int vps = 0;
+            Stack<Card> tempStack = new Stack<Card>();
+            // get points from cards in deck
+            while (deck.Count > 0)
+            {
+                Card card = deck.Pop();
+                vps += card.getVictoryPoints();
+                tempStack.Push(card);
+            }
+            // Returns all cards to the deck
+            while (tempStack.Count > 0)
+            {
+                deck.Push(tempStack.Pop());
+            }
+            // get points for cards in discard
+            for (int i = 0; i < discard.Count; i++)
+            {
+                vps += ((Card)discard[i]).getVictoryPoints();
+            }
+            // get points for cards in hand
+            for (int i = 0; i < hand.Count; i++)
+            {
+                vps += ((Card)hand[i]).getVictoryPoints();
+            }
+            return vps;
         }
         public int playCard(Card c)
         {
