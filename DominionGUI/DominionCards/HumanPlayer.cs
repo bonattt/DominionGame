@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DominionCards
 {
-    class HumanPlayer : Player
+    public class HumanPlayer : Player
     {
         public HumanPlayer()
             : base()

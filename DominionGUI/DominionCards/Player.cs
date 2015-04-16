@@ -74,14 +74,36 @@ namespace DominionCards
         {
             return money;
         }
-        public void playCard(Card c)
+        public int playCard(Card c)
         {
+            // finds the card that was played in the player's hand, then removes it.
+            int handSize = hand.Count;
+            for (int i = 0; i < hand.Count; i++)
+            {
+                if (hand[i] == c)
+                {
+                    hand.Remove(c);
+                    break;
+                }
+            }
+            // makse sure a card was removed.
+            if (handSize - 1 != hand.Count)
+            {
+                throw new Exception("tried to play a card not in your hand!!!"); // USE A BETTER EXCEPTION
+            }
+
+            // resolves generic card effects
             ActionCard card = (ActionCard) c;
             actions--;
             for (int i = 0; i < card.cards; i++)
             {
-                // TODO implement
+                hand.Add(drawCard());
             }
+            actions += card.actions;
+            buys += card.buys;
+            money += card.money;
+
+            return actions;
         }
     }
 }
