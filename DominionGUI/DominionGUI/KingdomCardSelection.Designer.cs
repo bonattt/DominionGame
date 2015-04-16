@@ -63,7 +63,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(833, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(266, 39);
+            this.label1.Size = new System.Drawing.Size(258, 38);
             this.label1.TabIndex = 52;
             this.label1.Text = "Select 10 cards";
             // 

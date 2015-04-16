@@ -12,9 +12,15 @@ namespace DominionGUI
 {
     public partial class KingdomCardSelection : Form
     {
+
+       
         public KingdomCardSelection()
         {
             InitializeComponent();
+            List<int> numList = new List<int>();
+            numList.Add(1);
+            numList.Add(2);
+            numList.Add(3);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -36,5 +42,7 @@ namespace DominionGUI
         {
 
         }
+
+
     }
 }

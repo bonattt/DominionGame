@@ -64,6 +64,7 @@ namespace DominionGUI
         private void checkBox4_CheckedChanged(object sender, EventArgs e)
         {
             addRandomCards();
+
         }
         public void addRandomCards(){
             string kingdomCards = "";
@@ -71,12 +72,18 @@ namespace DominionGUI
             if (checkBox4.Checked)
             {
 
-                var myForm = new MainBoard();
+                var myForm = new MainBoard(); 
                 myForm.Show();
+
+                int tempCount = 128;
+
+                
+
 
                 List<int> numList = new List<int>();
                 numList = RandomGenerateCards.GenerateRandom.GenerateRandomList();
-                numList.Add(3);
+                numList.Add(24);
+                
               
                 int xValue = 95;
                 int yValue = 50;
@@ -88,16 +95,19 @@ namespace DominionGUI
                 if (numList.Contains(0))
                 {
                     kingdomCards = kingdomCards + "Workshop" + "\n";
-                    PictureBox newPicture = new PictureBox();
-                    newPicture.Image = DominionGUI.Properties.Resources.Workshop;
-                    newPicture.Height = 122;
-                    newPicture.Width = 75;
-                    newPicture.Location = new Point(xValue, yValue);
-                    xValue += 90;
-                    newPicture.Parent = myForm;
+                    Button newButton = new Button();
+                    newButton.Image = DominionGUI.Properties.Resources.WorkshopHalf;
+                    newButton.Height = 179;
+                    newButton.Width = 256;
+                    newButton.Location = new Point(xValue, yValue);
+                    xValue = xValue + 256;
+                    newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.Workshop());
                 }
+
+
+
                 if (numList.Contains(1)){
                     kingdomCards = kingdomCards + "Adventurer" + "\n";
                     Button newButton = new Button();
@@ -419,6 +429,7 @@ namespace DominionGUI
                     board.addCard(new DominionCards.KingdomCards.Witch());
                 }
 
+                DominionCards.KingdomCards.Woodcutter woodcutter = new DominionCards.KingdomCards.Woodcutter();  
                 if (numList.Contains(24))
                 {
                     kingdomCards = kingdomCards + "Woodcutter" + "\n";
@@ -430,8 +441,15 @@ namespace DominionGUI
                     xValue += 256;
                     newButton.Parent = myForm;
                     myForm.Update();
-                    board.addCard(new DominionCards.KingdomCards.Woodcutter());
+                    board.addCard(woodcutter);
                 }
+                    
+                Label countCard1Remaining = new Label();
+                countCard1Remaining.Text = "Cards Remaining: " + board.getCardsLeft(woodcutter);
+                countCard1Remaining.Location = new Point(500, 500);
+                countCard1Remaining.Width = 1000;
+                countCard1Remaining.Parent = myForm;
+                myForm.Update();
                     Console.WriteLine(board.cards.Count);
             }
 
