@@ -17,6 +17,10 @@ namespace DominionCards
             buys = extraBuys;
             actions = extraActions;
         }
+        public override int getVictoryPoints()
+        {
+            return 0;
+        }
         public override void play()
         {
             // TODO implement this

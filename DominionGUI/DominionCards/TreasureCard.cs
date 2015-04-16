@@ -18,6 +18,10 @@ namespace DominionCards
         {
             // TODO implement this
         }
+        public override int getVictoryPoints()
+        {
+            return 0;
+        }
         
         public override void addToDeck()
         {
