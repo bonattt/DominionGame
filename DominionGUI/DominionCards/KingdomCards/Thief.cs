@@ -9,7 +9,7 @@ namespace DominionCards.KingdomCards
     public class Thief : ActionCard
     {
         public Thief()
-            : base(0, 0, 0, 0, 4)
+            : base(0, 0, 0, 0, 4, 25)
         {
             // TODO implement
         }

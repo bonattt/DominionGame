@@ -9,7 +9,7 @@ namespace DominionCards.KingdomCards
     public class Bureaucrat : ActionCard
     {
         public Bureaucrat()
-            : base(0, 0, 0, 0, 4)
+            : base(0, 0, 0, 0, 4, 7)
         {
             // TODO implement
         }

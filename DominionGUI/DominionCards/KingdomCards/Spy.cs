@@ -9,7 +9,7 @@ namespace DominionCards.KingdomCards
     public class Spy : ActionCard
     {
         public Spy()
-            : base(1, 0, 0, 1, 4)
+            : base(1, 0, 0, 1, 4, 24)
         {
             // TODO implement
         }

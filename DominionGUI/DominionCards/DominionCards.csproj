@@ -51,10 +51,15 @@
     <Compile Include="KingdomCards\Cellar.cs" />
     <Compile Include="KingdomCards\Chancellor.cs" />
     <Compile Include="KingdomCards\Chapel.cs" />
+    <Compile Include="KingdomCards\Province.cs" />
+    <Compile Include="KingdomCards\Copper.cs" />
     <Compile Include="KingdomCards\CouncilRoom.cs" />
+    <Compile Include="KingdomCards\Duchy.cs" />
+    <Compile Include="KingdomCards\Estate.cs" />
     <Compile Include="KingdomCards\Feast.cs" />
     <Compile Include="KingdomCards\Festival.cs" />
     <Compile Include="KingdomCards\Gardens.cs" />
+    <Compile Include="KingdomCards\Gold.cs" />
     <Compile Include="KingdomCards\Laboratory.cs" />
     <Compile Include="KingdomCards\Library.cs" />
     <Compile Include="KingdomCards\Market.cs" />
@@ -63,6 +68,7 @@
     <Compile Include="KingdomCards\Moat.cs" />
     <Compile Include="KingdomCards\MoneyLender.cs" />
     <Compile Include="KingdomCards\Remodel.cs" />
+    <Compile Include="KingdomCards\Silver.cs" />
     <Compile Include="KingdomCards\Smithy.cs" />
     <Compile Include="KingdomCards\Spy.cs" />
     <Compile Include="KingdomCards\Thief.cs" />
@@ -72,6 +78,7 @@
     <Compile Include="KingdomCards\Woodcutter.cs" />
     <Compile Include="KingdomCards\Workshop.cs" />
     <Compile Include="Player.cs" />
+    <Compile Include="PlayerTest.cs" />
     <Compile Include="TestAddCards.cs" />
     <Compile Include="VictoryCard.cs" />
     <Compile Include="TreasureCard.cs" />

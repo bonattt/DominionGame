@@ -9,8 +9,8 @@ namespace DominionCards
     public class TreasureCard : Card
     {
         int value;
-        public TreasureCard(int money, int price)
-            : base(price)
+        public TreasureCard(int money, int price, int idNumb)
+            : base(price, idNumb)
         {
             value = money;
         }
@@ -26,6 +26,11 @@ namespace DominionCards
         public override void trash()
         {
             // TODO implement this
+        }
+        public int getValue()
+        {
+            Console.WriteLine("returning value of treasure card");
+            return value;
         }
     }
 }
