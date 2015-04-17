@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,8 +37,29 @@ namespace RandomGenerateCards
         [Test()]
         public void testSuffleDeck()
         {
-            List<int> theList = GenerateRandom.GenerateRandomList(5,5);
-            Boolean israndom = theList.Distinct().Count() == theList.Count();
+            ArrayList theList = new ArrayList();
+            theList.Add(4);
+            theList.Add(5);
+            theList.Add(11);
+            theList.Add(15);
+            theList.Add(29);
+
+            Stack olddeck = new Stack();
+
+            for (int i = 0; i < theList.Capacity; i++)
+            {
+                olddeck.Push(theList[i]);
+            }
+
+
+            Stack randomdeck = new Stack();
+
+            Boolean israndom = true;
+            for (int i = 0; i < olddeck.Count; i++)
+            {
+                if (olddeck.Pop()==randomdeck.Pop())
+                    israndom = false;
+            }
             Assert.AreEqual(true, israndom);
         }
     }
