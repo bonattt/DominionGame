@@ -54,11 +54,13 @@ namespace RandomGenerateCards
 
             Stack randomdeck = GenerateRandom.SuffleDeck(theList);
 
-            Boolean israndom = true;
+            Boolean israndom = false;
             for (int i = 0; i < olddeck.Count; i++)
             {
                 if (olddeck.Pop() == randomdeck.Pop())
+                {
                     israndom = false;
+                }
                 else
                     israndom = true;
             }
@@ -85,7 +87,38 @@ namespace RandomGenerateCards
 
             Stack randomdeck = GenerateRandom.SuffleDeck(theList);
 
-            Boolean israndom = true;
+            Boolean israndom = false;
+            for (int i = 0; i < olddeck.Count; i++)
+            {
+                if (olddeck.Pop() == randomdeck.Pop())
+                    israndom = false;
+                else
+                    israndom = true;
+            }
+            Assert.AreEqual(true, israndom);
+        }
+
+        [Test()]
+        public void testSuffleDeckSize100()
+        {
+            ArrayList theList = new ArrayList();
+            List<int> randomsize10list = GenerateRandom.GenerateRandomList(100, 100);
+            for (int i = 0; i < 100; i++)
+            {
+                theList.Add(randomsize10list[i]);
+            }
+
+            Stack olddeck = new Stack();
+
+            for (int i = 0; i < theList.Count; i++)
+            {
+                olddeck.Push(theList[i]);
+            }
+
+
+            Stack randomdeck = GenerateRandom.SuffleDeck(theList);
+
+            Boolean israndom = false;
             for (int i = 0; i < olddeck.Count; i++)
             {
                 if (olddeck.Pop() == randomdeck.Pop())
