@@ -23,5 +23,10 @@ namespace DominionCards
         {
             return cards[c];
         }
+
+        public int size()
+        {
+            return cards.Count;
+        }
     }
 }
