@@ -74,7 +74,7 @@ namespace DominionGUI
             {
 
                 var myForm = new MainBoard(); 
-                myForm.Show();
+                
 
                 List<int> numList = new List<int>();
                 numList = RandomGenerateCards.GenerateRandom.GenerateRandomList();
@@ -447,6 +447,7 @@ namespace DominionGUI
                 countCard1Remaining.Width = 1000;
                 countCard1Remaining.Parent = myForm;
                 myForm.Update();
+                myForm.Show();
             } }
             
 

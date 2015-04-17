@@ -13,7 +13,7 @@ namespace DominionGUI
     public partial class MainBoard : Form
     {
 
-        public DominionCards.GameBoard board;
+        
 
         public MainBoard()
         {
