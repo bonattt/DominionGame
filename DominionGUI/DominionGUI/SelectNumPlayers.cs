@@ -13,9 +13,15 @@ namespace DominionGUI
     public partial class SelectNumPlayers : Form
     {
         public DominionCards.GameBoard board;
+        public static SelectNumPlayers INSTANCE;
         public SelectNumPlayers()
         {
+            INSTANCE = this;
             InitializeComponent();
+            board = new DominionCards.GameBoard(new Dictionary<DominionCards.Card, int>(),
+                    new Queue<DominionCards.Player>());
+            addRandomCards();
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -64,7 +70,11 @@ namespace DominionGUI
 
         private void checkBox4_CheckedChanged(object sender, EventArgs e)
         {
-            addRandomCards();
+            board.addCard(new DominionCards.KingdomCards.Woodcutter());
+            if (board.cards.ContainsKey(new DominionCards.KingdomCards.Woodcutter()))
+            {
+                Close();
+            }
 
         }
         public void addRandomCards(){
@@ -84,8 +94,7 @@ namespace DominionGUI
                 int xValue = 95;
                 int yValue = 50;
 
-                board = new DominionCards.GameBoard(new Dictionary<DominionCards.Card, int>(),
-                    new Queue<DominionCards.Player>());
+                
 
 
                 if (numList.Contains(0))

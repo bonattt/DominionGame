@@ -17,14 +17,17 @@ namespace DominionGUI
 
         public MainBoard()
         {
+            
             InitializeComponent();
             button1.Image = DominionGUI.Properties.Resources.WorkshopHalf;
             drawCorrectImage(button1);
+            
         }
 
         private void drawCorrectImage(Button button)
         {
-            if (2 != 0)
+            
+            if (SelectNumPlayers.INSTANCE.board.cards.ContainsKey(new DominionCards.KingdomCards.Woodcutter()));
             {
                 button.Image = DominionGUI.Properties.Resources.WitchHalf;
             }

@@ -13,11 +13,11 @@ namespace DominionGUI
         [Test()]
         public void TestIfCorrectNumberOfCardsAreAddedToGameBoard()
         {
-            SelectNumPlayers s = new SelectNumPlayers();
+            new SelectNumPlayers();
             for (int i = 0; i < 100; i++)
             {
-                s.addRandomCards();
-                Assert.AreEqual(10, s.board.cards.Count);
+                SelectNumPlayers.INSTANCE.addRandomCards();
+                Assert.AreEqual(10, SelectNumPlayers.INSTANCE.board.cards.Count);
             }
         }
     }
