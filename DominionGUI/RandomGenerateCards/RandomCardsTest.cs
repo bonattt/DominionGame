@@ -57,8 +57,10 @@ namespace RandomGenerateCards
             Boolean israndom = true;
             for (int i = 0; i < olddeck.Count; i++)
             {
-                if (olddeck.Pop()==randomdeck.Pop())
+                if (olddeck.Pop() == randomdeck.Pop())
                     israndom = false;
+                else
+                    israndom = true;
             }
             Assert.AreEqual(true, israndom);
         }
