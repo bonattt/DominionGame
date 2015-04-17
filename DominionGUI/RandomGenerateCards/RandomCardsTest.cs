@@ -52,7 +52,7 @@ namespace RandomGenerateCards
             }
 
 
-            Stack randomdeck = new Stack();
+            Stack randomdeck = GenerateRandom.SuffleDeck(ArrayList theList);
 
             Boolean israndom = true;
             for (int i = 0; i < olddeck.Count; i++)

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -47,6 +48,12 @@ namespace RandomGenerateCards
                 result[i] = tmp;
             }
             return result;
+        }
+
+        public static Stack SuffleDeck(ArrayList inputlist)
+        {
+            Stack returndeck = new Stack();
+            return returndeck;
         }
     }
 }
