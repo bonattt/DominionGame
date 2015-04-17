@@ -32,6 +32,7 @@ namespace DominionGUI
             Close();
         }
 
+
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
@@ -74,11 +75,6 @@ namespace DominionGUI
 
                 var myForm = new MainBoard(); 
                 myForm.Show();
-
-                int tempCount = 128;
-
-                
-
 
                 List<int> numList = new List<int>();
                 numList = RandomGenerateCards.GenerateRandom.GenerateRandomList(25,5);
@@ -429,17 +425,18 @@ namespace DominionGUI
                     board.addCard(new DominionCards.KingdomCards.Witch());
                 }
 
-                DominionCards.KingdomCards.Woodcutter woodcutter = new DominionCards.KingdomCards.Woodcutter();  
+                DominionCards.KingdomCards.Woodcutter woodcutter = new DominionCards.KingdomCards.Woodcutter();
+                Button WoodcutterButton = new Button();
                 if (numList.Contains(24))
                 {
                     kingdomCards = kingdomCards + "Woodcutter" + "\n";
-                    Button newButton = new Button();
-                    newButton.Image = DominionGUI.Properties.Resources.WoodcutterHalf;
-                    newButton.Height = 179;
-                    newButton.Width = 256;
-                    newButton.Location = new Point(xValue, yValue);
+                    
+                    WoodcutterButton.Image = DominionGUI.Properties.Resources.WoodcutterHalf;
+                    WoodcutterButton.Height = 179;
+                    WoodcutterButton.Width = 256;
+                    WoodcutterButton.Location = new Point(700, 700);
                     xValue += 256;
-                    newButton.Parent = myForm;
+                    WoodcutterButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(woodcutter);
                 }
@@ -450,9 +447,13 @@ namespace DominionGUI
                 countCard1Remaining.Width = 1000;
                 countCard1Remaining.Parent = myForm;
                 myForm.Update();
-                    Console.WriteLine(board.cards.Count);
+            } }
+            
+
+
+               
             }
 
         }
-    }
-}
+    
+

@@ -12,9 +12,25 @@ namespace DominionGUI
 {
     public partial class MainBoard : Form
     {
+
+        public DominionCards.GameBoard board;
+
         public MainBoard()
         {
             InitializeComponent();
+            button1.Image = DominionGUI.Properties.Resources.WorkshopHalf;
+            drawCorrectImage(button1);
+        }
+
+        private void drawCorrectImage(Button button)
+        {
+            if (2 != 0)
+            {
+                button.Image = DominionGUI.Properties.Resources.WitchHalf;
+            }
+            {
+
+            }
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -31,5 +47,12 @@ namespace DominionGUI
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        
     }
 }
