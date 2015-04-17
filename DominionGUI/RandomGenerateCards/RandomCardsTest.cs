@@ -35,7 +35,7 @@ namespace RandomGenerateCards
         }
 
         [Test()]
-        public void testSuffleDeck()
+        public void testSuffleDeckSize5()
         {
             ArrayList theList = new ArrayList();
             theList.Add(4);
@@ -43,6 +43,37 @@ namespace RandomGenerateCards
             theList.Add(11);
             theList.Add(15);
             theList.Add(29);
+
+            Stack olddeck = new Stack();
+
+            for (int i = 0; i < theList.Count; i++)
+            {
+                olddeck.Push(theList[i]);
+            }
+
+
+            Stack randomdeck = GenerateRandom.SuffleDeck(theList);
+
+            Boolean israndom = true;
+            for (int i = 0; i < olddeck.Count; i++)
+            {
+                if (olddeck.Pop() == randomdeck.Pop())
+                    israndom = false;
+                else
+                    israndom = true;
+            }
+            Assert.AreEqual(true, israndom);
+        }
+
+        [Test()]
+        public void testSuffleDeckSize10()
+        {
+            ArrayList theList = new ArrayList();
+            List<int> randomsize10list = GenerateRandom.GenerateRandomList(10,10);
+            for (int i = 0; i < 10; i++)
+            {
+                theList.Add(randomsize10list[i]);
+            }
 
             Stack olddeck = new Stack();
 
