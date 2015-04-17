@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using System.Collections;
+using RandomGenerateCards;
 
 namespace DominionCards
 {
@@ -316,6 +317,51 @@ namespace DominionCards
             p1.playCard((Card)hand[0]);
             Assert.AreEqual(m+2, p1.moneyLeft());
         }
+//        [Test()]
+        public void testShuffledDeckContainsSameCards()
+        {
+            ArrayList list = new ArrayList();
+            Stack<Card> shuffledDeck;
+            for (int i = 0; i < 7; i++)
+            {
+                list.Add(new KingdomCards.Copper());
+            }
+            Dictionary<Card, int> cardCount;
+            Dictionary<Card, int> expect = new Dictionary<Card,int>();
+            expect.Add(new KingdomCards.Copper(), 7);
+//            shuffledDeck = (Stack<Card>) GenerateRandom.SuffleDeck(list);
+//            cardCount = countCards
+
+
+            for (int i = 0; i < 3; i++)
+            {
+                list.Add(new KingdomCards.Copper());
+            }
+        }
+        [Test()]
+        public void testConvertStackToCardStack()
+        {
+            Stack objStack = new Stack();
+            Stack<Card> dumpStack;
+            Stack<Card> expct = new Stack<Card>();
+            expct.Push(new KingdomCards.Copper());
+            expct.Push(new KingdomCards.Copper());
+            expct.Push(new KingdomCards.Duchy());
+            expct.Push(new KingdomCards.Smithy());
+            objStack.Push(new KingdomCards.Smithy());
+            objStack.Push(new KingdomCards.Duchy());
+            objStack.Push(new KingdomCards.Copper());
+            objStack.Push(new KingdomCards.Copper());
+
+            dumpStack = Player.ConvertStackToCardStack(objStack);
+
+            while (expct.Count > 0)
+            {
+                Assert.AreEqual(expct.Pop().getID(), dumpStack.Pop().getID());
+            }
+            Assert.AreEqual(expct.Count, dumpStack.Count);
+        }
+
         [Test()]
         public void playingCardWithoutMoneyDoesntAddMoney()
         {
@@ -346,6 +392,48 @@ namespace DominionCards
             Console.WriteLine("cash gianed " + c.money);
             Console.Read();
             Console.WriteLine();
+        }
+        [Test()]
+        public void testCountCards()
+        {
+            Stack<Card> deck = new Stack<Card>();
+            deck.Push(new KingdomCards.Cellar());
+            deck.Push(new KingdomCards.Village());
+            deck.Push(new KingdomCards.Smithy());
+            deck.Push(new KingdomCards.Village());
+            deck.Push(new KingdomCards.Village());
+
+            Dictionary<Card, int> count = countCards(deck);
+            Dictionary<Card, int> expct = new Dictionary<Card, int>();
+            expct.Add(new KingdomCards.Village(), 3);
+            expct.Add(new KingdomCards.Smithy(), 1);
+            expct.Add(new KingdomCards.Cellar(), 1);
+        }
+
+        private Dictionary<Card, int> countCards(Stack<Card> deck)
+        {
+            Dictionary<Card, int> count = new Dictionary<Card, int>();
+            Stack<Card> temp = new Stack<Card>();
+
+            while (deck.Count > 0)
+            {
+                Card c = deck.Pop();
+                if (count.ContainsKey(c))
+                {
+                    count.Add(c, count[c] + 1);
+                }
+                else
+                {
+                    count.Add(c, 1);
+                }
+            }
+            // reconstruct the deck
+            while (temp.Count > 0)
+            {
+                deck.Push(temp.Pop());
+            }
+
+            return null;
         }
     }
 }
