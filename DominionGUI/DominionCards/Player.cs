@@ -29,20 +29,22 @@ namespace DominionCards
         }
         public Card drawCard()
         {
+            if (deck.Count == 0)
+            {
+                // deck = suffle(discard);
+                discard.Clear();
+            }
             return deck.Pop();
         }
         public void drawHand()
         {
-            if (deck.Count < 5)
-            {
-                drawCardsFromPartialDeck();
-            }
-
+            // discard old hand
             for (int i = 0; i < hand.Count; i++)
             {
                 discard.Add((Card)hand[i]);
             }
             hand.Clear();
+            // draw five new cards
             for (int i = 0; i < 5; i++)
             {
                 hand.Add(drawCard());
@@ -69,6 +71,10 @@ namespace DominionCards
         public void setHand(ArrayList h)
         {
             hand = h; // THIS METHOD IS FOR TESTING USE
+        }
+        public void setDiscard(ArrayList dis)
+        {
+            discard = dis; // THIS METHOD IS USED FOR TESTING
         }
         public void setDeck(Stack<Card> d)
         {
