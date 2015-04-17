@@ -68,6 +68,58 @@ namespace DominionCards
             Assert.AreEqual(10, p1.countVictoryPoints());
         }
         [Test()]
+        public void drawFiveCardsWhenDeckRunsOut()
+        {
+            Player p1 = new HumanPlayer();
+            Stack<Card> deck = new Stack<Card>();
+            ArrayList discard = new ArrayList();
+            p1.setDeck(deck);
+            p1.setDiscard(discard);
+
+            // add 3 Estate cards to the deck
+            for (int i = 0; i < 3; i++)
+            {
+                deck.Push(new KingdomCards.Estate());
+            }
+            // add 3 copper cards to the discard
+            for (int i = 0; i < 3; i++)
+            {
+                discard.Add(new KingdomCards.Copper());
+            }
+            p1.drawHand();
+
+            ArrayList hand = p1.getHand();
+            Assert.AreEqual(5, hand.Count);
+        }
+        [Test()]
+        public void drawCardsStillOnDeckFirstWhenDeckRunsOut()
+        {
+            Player p1 = new HumanPlayer();
+            Stack<Card> deck = new Stack<Card>();
+            ArrayList discard = new ArrayList();
+            p1.setDeck(deck);
+            p1.setDiscard(discard);
+
+            // add 3 Estate cards to the deck
+            for (int i = 0; i < 3; i++)
+            {
+                deck.Push(new KingdomCards.Estate());
+            }
+            // add 3 copper cards to the discard
+            for (int i = 0; i < 3; i++)
+            {
+                discard.Add(new KingdomCards.Copper());
+            }
+            p1.drawHand();
+
+            ArrayList hand = p1.getHand();
+            Assert.AreEqual(3, ((Card)hand[0]).getID());
+            Assert.AreEqual(3, ((Card)hand[1]).getID());
+            Assert.AreEqual(3, ((Card)hand[2]).getID());
+            Assert.AreEqual(0, ((Card)hand[3]).getID());
+            Assert.AreEqual(0, ((Card)hand[4]).getID());
+        }
+        [Test()]
         public void testCountVictoryPointsWhenCardsInDiscard(){
             Player p1 = new HumanPlayer();
             Stack<Card> deck = new Stack<Card>();
