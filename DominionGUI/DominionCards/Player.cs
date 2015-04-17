@@ -179,5 +179,14 @@ namespace DominionCards
 
             return actions;
         }
+        public static Stack<Card> ConvertStackToCardStack(Stack s)
+        {
+            Stack<Card> deck = new Stack<Card>();
+            while (s.Count > 0)
+            {
+                deck.Push((Card)s.Pop());
+            }
+            return deck;
+        }
     }
 }
