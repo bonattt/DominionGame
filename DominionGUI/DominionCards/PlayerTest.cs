@@ -317,7 +317,7 @@ namespace DominionCards
             p1.playCard((Card)hand[0]);
             Assert.AreEqual(m+2, p1.moneyLeft());
         }
-//        [Test()]
+        [Test()]
         public void testShuffledDeckContainsSameCards()
         {
             ArrayList list = new ArrayList();
@@ -328,16 +328,29 @@ namespace DominionCards
             }
             Dictionary<Card, int> cardCount;
             Dictionary<Card, int> expect = new Dictionary<Card,int>();
-            expect.Add(new KingdomCards.Copper(), 7);
-//            shuffledDeck = (Stack<Card>) GenerateRandom.SuffleDeck(list);
-//            cardCount = countCards
 
+            expect.Add(new KingdomCards.Copper(), 7);
+            shuffledDeck = (Stack<Card>) Player.Shuffle(list);
+            cardCount = countCards(shuffledDeck);
+            CompareCounts(expect, cardCount);
 
             for (int i = 0; i < 3; i++)
             {
-                list.Add(new KingdomCards.Copper());
+                list.Add(new KingdomCards.Estate());
+            }
+            expect.Add(new KingdomCards.Estate(), 3);
+            shuffledDeck = (Stack<Card>) Player.Shuffle(list);
+            cardCount = countCards(shuffledDeck);
+            CompareCounts(expect, cardCount);
+        }
+        private static void CompareCounts(Dictionary<Card, int> expect, Dictionary<Card, int> cardCount)
+        {
+            foreach (KeyValuePair<Card, int> entry in expect)
+            {
+                Assert.AreEqual(entry.Value, cardCount[entry.Key]);
             }
         }
+
         [Test()]
         public void testConvertStackToCardStack()
         {

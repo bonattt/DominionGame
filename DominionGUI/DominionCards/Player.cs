@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
+using RandomGenerateCards;
 
 namespace DominionCards
 {
@@ -179,6 +180,14 @@ namespace DominionCards
 
             return actions;
         }
+        public static Stack<Card> Shuffle(ArrayList discard)
+        {
+            Stack<Card> newDeck; // = new Stack<Card>();
+            Stack temp = GenerateRandom.SuffleDeck(discard);
+            newDeck = ConvertStackToCardStack(temp);
+            return newDeck;
+        }
+
         public static Stack<Card> ConvertStackToCardStack(Stack s)
         {
             Stack<Card> deck = new Stack<Card>();
