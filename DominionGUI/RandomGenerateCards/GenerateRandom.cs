@@ -53,8 +53,8 @@ namespace RandomGenerateCards
         public static Stack SuffleDeck(ArrayList inputlist)
         {
             Stack returndeck = new Stack();
-            List<int> randomindex = GenerateRandomList(inputlist.Capacity, inputlist.Capacity);
-            for (int i = 0; i < inputlist.Capacity; i++)
+            List<int> randomindex = GenerateRandomList(inputlist.Count, inputlist.Count);
+            for (int i = 0; i < inputlist.Count; i++)
             {
                 returndeck.Push(inputlist[randomindex[i]]);
             }

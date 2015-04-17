@@ -46,7 +46,7 @@ namespace RandomGenerateCards
 
             Stack olddeck = new Stack();
 
-            for (int i = 0; i < theList.Capacity; i++)
+            for (int i = 0; i < theList.Count; i++)
             {
                 olddeck.Push(theList[i]);
             }
