@@ -9,7 +9,7 @@ namespace DominionCards.KingdomCards
     public class ThroneRoom : ActionCard
     {
         public ThroneRoom()
-            : base(0, 0, 0, 0, 4)
+            : base(0, 0, 0, 0, 4, 26)
         {
             // TODO implement
         }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DominionCards
 {
-    class HumanPlayer : Player
+    public class HumanPlayer : Player
     {
         public HumanPlayer()
             : base()
@@ -18,6 +18,10 @@ namespace DominionCards
             // TODO implement
         }
         public override void buyPhase()
+        {
+            // TODO implement
+        }
+        public override void selectToDiscard()
         {
             // TODO implement
         }

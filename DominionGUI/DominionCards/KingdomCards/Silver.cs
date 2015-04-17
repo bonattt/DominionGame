@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace DominionCards.KingdomCards
 {
-    public class MoneyLender : ActionCard
+    public class Silver : TreasureCard
     {
-        public MoneyLender()
-            : base(0, 0, 0, 0, 4, 21)
+        public Silver() : base (2, 3, 1)
         {
-            // TODO implement
+            // NOTHING HAPPENS
         }
     }
 }

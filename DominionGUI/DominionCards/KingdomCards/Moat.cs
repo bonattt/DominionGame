@@ -10,7 +10,7 @@ namespace DominionCards.KingdomCards
     public class Moat : ActionCard
     {
         public Moat()
-            : base(2, 0, 0, 0, 2)
+            : base(2, 0, 0, 0, 2, 20)
         {
             // TODO implement
         }

@@ -9,7 +9,7 @@ namespace DominionCards.KingdomCards
     public class Festival : ActionCard
     {
         public Festival()
-            : base(0, 2, 1, 2, 5)
+            : base(0, 2, 1, 2, 5, 13)
         {
             // TODO implement
         }

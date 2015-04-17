@@ -7,6 +7,7 @@ using NUnit.Framework;
 
 namespace DominionCards
 {
+    
     [TestFixture()]
     class TestAddCards
     {
@@ -16,7 +17,7 @@ namespace DominionCards
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
             Queue<Player> turns = new Queue<Player>();
             GameBoard board = new GameBoard(cards, turns);
-            Card newCard = new ActionCard(1, 1, 1, 1, 1);
+            Card newCard = new ActionCard(1, 1, 1, 1, 1, Card.GENERIC_CARD_ID);
             board.addCard(newCard);
 
             Assert.AreEqual(board.getCardsLeft(newCard), 10);
@@ -27,7 +28,7 @@ namespace DominionCards
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
             Queue<Player> turns = new Queue<Player>();
             GameBoard board = new GameBoard(cards, turns);
-            Card newCard = new VictoryCard(1, 1);
+            Card newCard = new VictoryCard(1, 1, Card.GENERIC_CARD_ID);
             board.addCard(newCard);
 
             Assert.AreEqual(board.getCardsLeft(newCard), 10);
@@ -38,7 +39,7 @@ namespace DominionCards
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
             Queue<Player> turns = new Queue<Player>();
             GameBoard board = new GameBoard(cards, turns);
-            Card newCard = new TreasureCard(1, 1);
+            Card newCard = new TreasureCard(1, 1, Card.GENERIC_CARD_ID);
             board.addCard(newCard);
 
             Assert.AreEqual(board.getCardsLeft(newCard), 10);

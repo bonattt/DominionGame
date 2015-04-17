@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,16 +11,34 @@ namespace RandomGenerateCards
     {
         static void Main(string[] args)
         {
-            List<int> theList = GenerateRandomList();
-            Console.WriteLine("Result: " + theList.Count);
-            theList.ForEach(Console.WriteLine);
+            ArrayList theList = new ArrayList();
+            List<int> randomsize10list = GenerateRandom.GenerateRandomList(10, 10);
+            for (int i = 0; i < 10; i++)
+            {
+                theList.Add(randomsize10list[i]);
+            }
+            Stack olddeck = new Stack(10);
+            for (int i = 0; i < theList.Count; i++)
+            {
+                olddeck.Push(theList[i]);
+            }
+            Console.WriteLine(olddeck.Count);
+            Stack randomdeck = GenerateRandom.SuffleDeck(theList);
+            for (int i = 0; i < olddeck.Count; i++)
+            {
+                Console.WriteLine("Olddeck: " + olddeck.Pop());
+            }
+            /*while (olddeck.Count > 0)
+            {
+                 Console.WriteLine("Olddeck: " + olddeck.Pop());
+            }*/
         }
         static Random random = new Random();
-        public static List<int> GenerateRandomList()
+        public static List<int> GenerateRandomList(int maxvalue,int size)
         {
-            int count = 10;
+            int count = size;
             int min = 0;
-            int max = 25;
+            int max = maxvalue;
             if (max <= min || count < 0 ||
                     (count > max - min && max - min > 0))
             {
@@ -47,6 +66,17 @@ namespace RandomGenerateCards
                 result[i] = tmp;
             }
             return result;
+        }
+
+        public static Stack SuffleDeck(ArrayList inputlist)
+        {
+            Stack returndeck = new Stack(inputlist.Count);
+            List<int> randomindex = GenerateRandomList(inputlist.Count, inputlist.Count);
+            for (int i = 0; i < inputlist.Count; i++)
+            {
+                returndeck.Push(inputlist[randomindex[i]]);
+            }
+                return returndeck;
         }
     }
 }

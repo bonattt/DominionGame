@@ -9,7 +9,7 @@ namespace DominionCards.KingdomCards
     public class Smithy : ActionCard
     {
         public Smithy()
-            : base(3, 0, 0, 0, 4)
+            : base(3, 0, 0, 0, 4, 23)
         {
             // TODO implement
         }

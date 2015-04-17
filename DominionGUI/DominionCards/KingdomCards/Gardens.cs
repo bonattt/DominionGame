@@ -9,7 +9,7 @@ namespace DominionCards.KingdomCards
     public class Gardens : VictoryCard
     {
         public Gardens()
-            : base(0, 4)
+            : base(0, 4, 14)
         {
             // TODO implement
         }

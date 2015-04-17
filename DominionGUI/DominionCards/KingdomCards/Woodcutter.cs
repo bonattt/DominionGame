@@ -9,7 +9,7 @@ namespace DominionCards.KingdomCards
     public class Woodcutter : ActionCard
     {
         public Woodcutter()
-            : base(0, 2, 1, 0, 3)
+            : base(0, 2, 1, 0, 3, 30)
         {
             // TODO implement
         }
