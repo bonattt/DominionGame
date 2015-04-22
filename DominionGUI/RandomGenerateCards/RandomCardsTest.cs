@@ -88,7 +88,7 @@ namespace RandomGenerateCards
             Stack randomdeck = GenerateRandom.SuffleDeck(theList);
 
             Boolean israndom = false;
-            for (int i = 0; i < olddeck.Count; i++)
+            while (olddeck.Count > 0)
             {
                 if (olddeck.Pop() == randomdeck.Pop())
                     israndom = false;
@@ -119,7 +119,7 @@ namespace RandomGenerateCards
             Stack randomdeck = GenerateRandom.SuffleDeck(theList);
 
             Boolean israndom = false;
-            for (int i = 0; i < olddeck.Count; i++)
+            while (olddeck.Count > 0)
             {
                 if (olddeck.Pop() == randomdeck.Pop())
                     israndom = false;
