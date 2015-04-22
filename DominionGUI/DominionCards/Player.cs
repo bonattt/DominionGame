@@ -108,6 +108,11 @@ namespace DominionCards
         {
             return money;
         }
+
+        public void addCard(Card card)
+        {
+            //todo
+        }
         public int countVictoryPoints()
         {
             int vps = 0;

@@ -338,6 +338,18 @@ namespace DominionCards
             p1.playCard((Card)hand[0]);
             Assert.AreEqual(2, hand.Count);
         }
+
+        [Test()]
+        public void buyingACard()
+        {
+            Player p1 = new HumanPlayer();
+            p1.setHand(new ArrayList());
+            ArrayList hand = new ArrayList();
+            Card laboratory = new KingdomCards.Laboratory();
+            hand.Add(laboratory);
+            p1.addCard(laboratory);
+            Assert.AreEqual(hand, p1.getHand());
+        }
         private void printCardStats(ActionCard c)
         {
             Console.WriteLine("cards drawn " + c.cards);

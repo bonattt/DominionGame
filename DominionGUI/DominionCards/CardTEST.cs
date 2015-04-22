@@ -50,5 +50,15 @@ namespace DominionCards
             Card a = new ActionCard(1, 1, 1, 1, aPrice, Card.GENERIC_CARD_ID);
             Assert.AreEqual(a.getPrice(), aPrice);
         }
+
+        [Test()]
+        public void testCouncilRoomAdds1Buy()
+        {
+            Card councilCard = new KingdomCards.CouncilRoom();
+            Player humanPlayer = new HumanPlayer();
+            int hpbuys = humanPlayer.buysLeft();
+            humanPlayer.playCard(councilCard);
+            Assert.AreEqual(hpbuys + 1, humanPlayer.buysLeft());
+        }
     }
 }
