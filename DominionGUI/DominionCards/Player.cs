@@ -109,9 +109,10 @@ namespace DominionCards
             return money;
         }
 
-        public void addCard(Card card)
+        public void buyCard(Card card)
         {
-            //todo
+            deck.Push(card);
+            buys--;
         }
         public int countVictoryPoints()
         {

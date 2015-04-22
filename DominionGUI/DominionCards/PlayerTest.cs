@@ -343,12 +343,12 @@ namespace DominionCards
         public void buyingACard()
         {
             Player p1 = new HumanPlayer();
-            p1.setHand(new ArrayList());
-            ArrayList hand = new ArrayList();
+            p1.setDeck(new Stack<Card>());
+            Stack deck = new Stack();
             Card laboratory = new KingdomCards.Laboratory();
-            hand.Add(laboratory);
-            p1.addCard(laboratory);
-            Assert.AreEqual(hand, p1.getHand());
+            deck.Push(laboratory);
+            p1.buyCard(laboratory);
+            Assert.AreEqual(deck, p1.getDeck());
         }
         private void printCardStats(ActionCard c)
         {
