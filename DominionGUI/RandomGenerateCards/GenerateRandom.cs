@@ -13,10 +13,21 @@ namespace RandomGenerateCards
         {
             ArrayList theList = new ArrayList();
             List<int> randomsize10list = GenerateRandom.GenerateRandomList(10, 10);
-            for (int i = 0; i < 10; i++)
+            /*for (int i = 0; i < 10; i++)
             {
                 theList.Add(randomsize10list[i]);
-            }
+            }*/
+
+            theList.Add(4);
+            theList.Add(5);
+            theList.Add(5);
+            theList.Add(15);
+            theList.Add(5);
+            theList.Add(4);
+            theList.Add(5);
+            theList.Add(11);
+            theList.Add(15);
+            theList.Add(29);
             Stack olddeck = new Stack(10);
             for (int i = 0; i < theList.Count; i++)
             {
@@ -24,14 +35,10 @@ namespace RandomGenerateCards
             }
             Console.WriteLine(olddeck.Count);
             Stack randomdeck = GenerateRandom.SuffleDeck(theList);
-            for (int i = 0; i < olddeck.Count; i++)
+            while (olddeck.Count > 0)
             {
-                Console.WriteLine("Olddeck: " + olddeck.Pop());
+                 Console.WriteLine("Olddeck: " + olddeck.Pop()+"        Newdeck: "  + randomdeck.Pop());
             }
-            /*while (olddeck.Count > 0)
-            {
-                 Console.WriteLine("Olddeck: " + olddeck.Pop());
-            }*/
         }
         static Random random = new Random();
         public static List<int> GenerateRandomList(int maxvalue,int size)
