@@ -118,7 +118,7 @@ namespace DominionCards
 
         public void addCardToHand(Card card)
         {
-            //todo
+            deck.Push(card);
         }
         public int countVictoryPoints()
         {
