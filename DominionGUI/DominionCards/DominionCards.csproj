@@ -51,6 +51,7 @@
     <Compile Include="KingdomCards\Cellar.cs" />
     <Compile Include="KingdomCards\Chancellor.cs" />
     <Compile Include="KingdomCards\Chapel.cs" />
+    <Compile Include="KingdomCards\Curse.cs" />
     <Compile Include="KingdomCards\Province.cs" />
     <Compile Include="KingdomCards\Copper.cs" />
     <Compile Include="KingdomCards\CouncilRoom.cs" />

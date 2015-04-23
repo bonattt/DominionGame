@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DominionCards
 {
-    public class VictoryCard : Card
+    public abstract class VictoryCard : Card
     {
         int vp;
         public VictoryCard(int victoryPts, int price, int idNumb)

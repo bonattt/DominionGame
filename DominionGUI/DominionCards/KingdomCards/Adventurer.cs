@@ -10,7 +10,11 @@ namespace DominionCards.KingdomCards
     {
         public Adventurer() : base(0, 0, 0 ,0 , 6, 6) 
         {
-            // TODO implement this
+            
+        }
+        public void textEffect()
+        {
+            //todo
         }
     }
 }

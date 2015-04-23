@@ -12,5 +12,10 @@ namespace DominionCards.KingdomCards
         {
             // TODO implement
         }
+
+        public void textEffect()
+        {
+            //todo
+        }
     }
 }
