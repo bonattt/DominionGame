@@ -111,8 +111,14 @@ namespace DominionCards
 
         public void buyCard(Card card)
         {
-            deck.Push(card);
+            discard.Add(card);
             buys--;
+            //todo modify money spent/verify that user has enough money to buy the card
+        }
+
+        public void addCardToHand(Card card)
+        {
+            //todo
         }
         public int countVictoryPoints()
         {
