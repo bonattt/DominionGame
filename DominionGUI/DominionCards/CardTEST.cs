@@ -60,5 +60,6 @@ namespace DominionCards
             humanPlayer.playCard(councilCard);
             Assert.AreEqual(hpbuys + 1, humanPlayer.buysLeft());
         }
+
     }
 }
