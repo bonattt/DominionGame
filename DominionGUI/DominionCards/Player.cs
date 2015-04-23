@@ -108,6 +108,18 @@ namespace DominionCards
         {
             return money;
         }
+
+        public void buyCard(Card card)
+        {
+            discard.Add(card);
+            buys--;
+            //todo modify money spent/verify that user has enough money to buy the card
+        }
+
+        public void addCardToHand(Card card)
+        {
+            hand.Add(card);
+        }
         public int countVictoryPoints()
         {
             int vps = 0;

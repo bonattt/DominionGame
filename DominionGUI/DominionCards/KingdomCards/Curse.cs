@@ -6,15 +6,11 @@ using System.Threading.Tasks;
 
 namespace DominionCards.KingdomCards
 {
-    public class Province : VictoryCard
+    public class Curse : VictoryCard
     {
-        public Province() : base (6, 8, 5)
+        public Curse() : base(-1, 0, 32)
         {
-            // NOTHING HAPPENS
-        }
-        public void textEffect()
-        {
-            //todo
+            //NOTHING HAPPENS
         }
     }
 }

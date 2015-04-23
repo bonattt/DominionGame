@@ -50,5 +50,7 @@ namespace DominionCards
             Card a = new ActionCard(1, 1, 1, 1, aPrice, Card.GENERIC_CARD_ID);
             Assert.AreEqual(a.getPrice(), aPrice);
         }
+
+
     }
 }
