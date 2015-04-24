@@ -106,16 +106,20 @@ namespace DominionGUI
         {
             if (checkBox4.Checked)
             {
-
                 addRandomCards();
             }
             else if (checkBox5.Checked)
             {
-                var myForm = new KingdomCardSelection();
+                var myFrom = new KingdomCardSelection();
+                myFrom.Update();
+                myFrom.Show();
+                
             }
             else if (checkBox6.Checked)
             {
-                var myForm = new KingdomCardSelection();
+                var myFrom = new KingdomCardSelection();
+                myFrom.Update();
+                myFrom.Show();
             }
             
             /*board.addCard(new DominionCards.KingdomCards.Woodcutter());
@@ -134,11 +138,7 @@ namespace DominionGUI
             
         }
         public void addRandomCards(){
-            string kingdomCards = "";
-
-            if (checkBox4.Checked)
-            {
-
+                string kingdomCards = "";
                 var myForm = new MainBoard(); 
                 
 
@@ -549,7 +549,7 @@ namespace DominionGUI
                 myForm.Update();
                 myForm.Show();
             } }
-            }
+            
 
         }
     
