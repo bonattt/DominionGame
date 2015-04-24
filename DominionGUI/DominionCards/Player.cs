@@ -32,8 +32,7 @@ namespace DominionCards
         {
             if (deck.Count == 0)
             {
-                // deck = suffle(discard);
-                discard.Clear();
+                //TODO
             }
             return deck.Pop();
         }

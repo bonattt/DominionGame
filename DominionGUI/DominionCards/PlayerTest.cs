@@ -14,6 +14,65 @@ namespace DominionCards
     class PlayerTest
     {
         [Test()]
+        public void TestFiveCardsDrawnEvenIfDeckEmpty()
+        {
+            Player p = new HumanPlayer();
+            Stack<Card> deck = p.getDeck();
+            ArrayList newDiscard = new ArrayList();
+            while (deck.Count > 0)
+            {
+                newDiscard.Add(deck.Pop());
+            }
+            p.setDiscard(newDiscard);
+            p.drawHand();
+            Assert.AreEqual(5, p.getHand().Count);
+        }
+        [Test()]
+        public void DeckShufflesWhenHandDrawnFromTooSmallDeck_FiveCardsDrawn()
+        {
+            Player p = new HumanPlayer();
+            Stack<Card> deck = p.getDeck();
+            ArrayList newDiscard = new ArrayList();
+            while (deck.Count > 2)
+            {
+                newDiscard.Add(deck.Pop());
+            }
+            p.setDiscard(newDiscard);
+            p.drawHand();
+            Assert.AreEqual(5, p.getHand().Count);
+        }
+        [Test()]
+        public void DeckShufflesWhenHandDrawnFromTooSmallDeck_DiscardEmpty()
+        {
+            Player p = new HumanPlayer();
+            Stack<Card> deck = p.getDeck();
+            ArrayList newDiscard = new ArrayList();
+            while (deck.Count > 2)
+            {
+                newDiscard.Add(deck.Pop());
+            }
+            p.setDiscard(newDiscard);
+            p.drawHand();
+            Assert.AreEqual(0, p.getDiscard().Count);
+        }
+        [Test()]
+        public void DeckShufflesWhenHandDrawnFromTooSmallDeck_DeckHasCorrectNumbCards()
+        {
+            Player p = new HumanPlayer();
+            Stack<Card> deck = p.getDeck();
+            ArrayList newDiscard = new ArrayList();
+            while (deck.Count > 2)
+            {
+                newDiscard.Add(deck.Pop());
+            }
+            p.setDiscard(newDiscard);
+            int discardCount = newDiscard.Count;
+            int deckCount = p.getDeck().Count;
+            int expectedShuffledDeckSize = discardCount - 5 + deckCount;
+            p.drawHand();
+            Assert.AreEqual(expectedShuffledDeckSize, p.getDeck().Count);
+        }
+        [Test()]
         public void testDiscardGoesToDeckWhenCardIsDrawnAndDeckIsEmpty()
         {
             Player p = new HumanPlayer();
