@@ -14,17 +14,48 @@ namespace DominionCards
     class PlayerTest
     {
         [Test()]
-        public void aHashMapWork()
+        public void testDiscardGoesToDeckWhenCardIsDrawnAndDeckIsEmpty()
         {
-            Dictionary<Card, int> dict1 = new Dictionary<Card, int>();
-
-            dict1.Add(new KingdomCards.Adventurer(), 1);
-            dict1.Add(new KingdomCards.Village(), 2);
-            dict1.Add(new KingdomCards.Copper(), 3);
-
-            Assert.AreEqual(1, dict1[new KingdomCards.Adventurer()]);
-            Assert.AreEqual(2, dict1[new KingdomCards.Village()]);
-            Assert.AreEqual(3, dict1[new KingdomCards.Copper()]);
+            Player p = new HumanPlayer();
+            Stack<Card> deck = p.getDeck();
+            ArrayList newDiscard = new ArrayList();
+            while (deck.Count > 0)
+            {
+                newDiscard.Add(deck.Pop());
+            }
+            p.setDiscard(newDiscard);
+            int discardSize = newDiscard.Count;
+            p.drawCard();
+            Assert.AreEqual(discardSize - 1, p.getDeck().Count);
+        }
+        [Test()]
+        public void HandGetsOneCardWhenCardIsDrawnIfDeckIsEmpty()
+        {
+            Player p = new HumanPlayer();
+            Stack<Card> deck = p.getDeck();
+            ArrayList newDiscard = new ArrayList();
+            while (deck.Count > 0)
+            {
+                newDiscard.Add(deck.Pop());
+            }
+            p.setDiscard(newDiscard);
+            p.drawCard();
+            Assert.AreEqual(1, p.getHand().Count);
+        }
+        [Test()]
+        public void testDiscardGoesAwayWhenDeckIsShuffledDrawingCards()
+        {
+            Player p = new HumanPlayer();
+            Stack<Card> deck = p.getDeck();
+            ArrayList newDiscard = new ArrayList();
+            while (deck.Count > 0)
+            {
+                newDiscard.Add(deck.Pop());
+            }
+            p.setDiscard(newDiscard);
+            int discardSize = newDiscard.Count;
+            p.drawCard();
+            Assert.AreEqual(0, p.getDiscard().Count);
         }
         [Test()]
         public void testDrawHandDiscardsOldHand()

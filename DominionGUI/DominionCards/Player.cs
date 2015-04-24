@@ -15,7 +15,7 @@ namespace DominionCards
         private ArrayList discard = new ArrayList();
         private Stack<Card> attack = new Stack<Card>();
         private String name;
-        private int actions, buys, money;
+        public int actions, buys, money; // TODO set this to public temporarily so code would compile. 
         public Player()
         {
             for (int i = 0; i < 3; i++)

@@ -12,8 +12,6 @@ namespace DominionCards
     class CardTEST
     {
         [Test()]
-<<<<<<< HEAD
-=======
         public void aTempTestWoodcutter()
         {
             Card c = new KingdomCards.Woodcutter();
@@ -33,7 +31,6 @@ namespace DominionCards
             Assert.AreEqual(count + 2, p.getHand().Count);
         }
         [Test()]
->>>>>>> origin/Morgan
         public void testTreasureReturnsNoVP()
         {
             Card c = new KingdomCards.Silver();
