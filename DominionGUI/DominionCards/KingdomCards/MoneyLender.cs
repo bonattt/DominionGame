@@ -13,9 +13,10 @@ namespace DominionCards.KingdomCards
         {
             // TODO implement
         }
-        public void textEffect()
+        public override void play(Player player)
         {
-            //todo
+            
+
         }
     }
 }
