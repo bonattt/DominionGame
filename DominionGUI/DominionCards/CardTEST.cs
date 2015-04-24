@@ -73,6 +73,25 @@ namespace DominionCards
             Card c = new KingdomCards.Estate();
             Assert.AreEqual(1, c.getVictoryPoints());
         }
+        [Test()]
+        public void testCardEquals()
+        {
+            Card copper = new KingdomCards.Copper();
+            Card village = new KingdomCards.Village();
+            Card smithy = new KingdomCards.Smithy();
+            
+            Assert.AreNotEqual(copper, smithy);
+            Assert.AreNotEqual(copper, village);
+            Assert.AreNotEqual(village, smithy);
+            Assert.AreNotEqual(smithy, copper);
+            Assert.AreNotEqual(village, copper);
+            Assert.AreNotEqual(smithy, village);
+
+            Assert.AreEqual(copper, new KingdomCards.Copper());
+            Assert.AreEqual(village, new KingdomCards.Village());
+            Assert.AreEqual(smithy, new KingdomCards.Smithy());
+        }
+
         /*[Test()]
         public void testGetPriceVictoryCard()
         {

@@ -35,6 +35,19 @@ namespace DominionCards
         }
         public override bool Equals(object obj)
         {
+            Card c;
+            try
+            {
+                c = (Card)obj;
+            }
+            catch (InvalidCastException)
+            {
+                return false;
+            }
+            if (c.getID() == getID())
+            {
+                return true;
+            }
             return false;
         }
     }
