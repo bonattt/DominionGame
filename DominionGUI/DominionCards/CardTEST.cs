@@ -18,7 +18,15 @@ namespace DominionCards
             Player p = new HumanPlayer();
             c.play(p);
         }
-
+        [Test()]
+        public void testThatCardsWorkInDictionaries()
+        {
+            Dictionary<Card, int> dict = new Dictionary<Card, int>();
+            dict.Add(new KingdomCards.Copper(), 1);
+            dict.Add(new KingdomCards.Village(), 2);
+            Assert.AreEqual(1, dict[new KingdomCards.Copper()]);
+            Assert.AreEqual(2, dict[new KingdomCards.Village()]);
+        }
         [Test()]
         public void testThatAdventurerDoesThing()
         {
@@ -36,7 +44,6 @@ namespace DominionCards
             Card c = new KingdomCards.Silver();
             Assert.AreEqual(0, c.getVictoryPoints());
         }
-
         [Test()]
         public void testLibrary()
         {
@@ -53,7 +60,6 @@ namespace DominionCards
             Card c = new KingdomCards.Village();
             Assert.AreEqual(0, c.getVictoryPoints());
         }
-
         [Test()]
         public void testMoneyLenderAddsSpendPoints()
         {
@@ -64,8 +70,6 @@ namespace DominionCards
             int buys = p.buysLeft();
             c.play(p);
             Assert.AreEqual(buys + 3, p.buysLeft());
-
-
         }
         [Test()]
         public void testVictoryReturnsVP()
