@@ -23,7 +23,6 @@ namespace DominionCards.KingdomCards
                 {
                     player.addCardToHand(c);
                     handSize++;
-                    
                 }
                 else
                 {

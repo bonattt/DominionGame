@@ -11,14 +11,6 @@ namespace DominionCards
     [TestFixture()]
     class CardTEST
     {
-        [Test()]
-        public void aTempTestWoodcutter()
-        {
-            Card c = new KingdomCards.Woodcutter();
-            Player p = new HumanPlayer();
-            c.play(p);
-        }
-        [Test()]
         public void testThatCardsWorkInDictionaries()
         {
             Dictionary<Card, int> dict = new Dictionary<Card, int>();
@@ -61,15 +53,87 @@ namespace DominionCards
             Assert.AreEqual(0, c.getVictoryPoints());
         }
         [Test()]
-        public void testMoneyLenderAddsSpendPoints()
+        public void testMoneyLenderAddsMoneyIfThereIsCopper()
         {
             Card c = new KingdomCards.MoneyLender();
             Player p = new HumanPlayer();
+            ArrayList newHand = new ArrayList();
+            newHand.Add(new KingdomCards.Estate());
+            newHand.Add(new KingdomCards.Estate());
+            newHand.Add(new KingdomCards.Estate());
+            newHand.Add(new KingdomCards.Village());
+            newHand.Add(new KingdomCards.Copper());
             p.addCardToHand(c);
-            p.drawHand();
-            int buys = p.buysLeft();
-            c.play(p);
-            Assert.AreEqual(buys + 3, p.buysLeft());
+            int moneyBefore = p.moneyLeft();
+            p.playCard(c);
+            Assert.AreEqual(moneyBefore + 3, p.moneyLeft());
+            ///////////////////////////////////
+        }
+        [Test()]
+        public void testMoneyLenderDoesNotAddMoneyIfThereIsNoCopper()
+        {
+            Card c = new KingdomCards.MoneyLender();
+            Player p = new HumanPlayer();
+            ArrayList newHand = new ArrayList();
+            newHand.Add(new KingdomCards.Estate());
+            newHand.Add(new KingdomCards.Estate());
+            newHand.Add(new KingdomCards.Estate());
+            newHand.Add(new KingdomCards.Village());
+            p.addCardToHand(c);
+            int moneyBefore = p.moneyLeft();
+            p.playCard(c);
+            Assert.AreEqual(moneyBefore, p.moneyLeft());
+            ///////////////////////////////////
+        }
+        [Test()]
+        public void testMoneyLenderDoesNotRemoveNoCopper()
+        {
+            Card c = new KingdomCards.MoneyLender();
+            Player p = new HumanPlayer();
+            ArrayList newHand = new ArrayList();
+            newHand.Add(new KingdomCards.Estate());
+            newHand.Add(new KingdomCards.Estate());
+            newHand.Add(new KingdomCards.Estate());
+            newHand.Add(new KingdomCards.Village());
+            int handBefore = p.getHand().Count;
+            p.addCardToHand(c);
+            p.playCard(c);
+            Assert.AreEqual(handBefore, p.getHand().Count);
+            ///////////////////////////////////
+        }
+        [Test()]
+        public void testMoneyLenderRemovesCopper()
+        {
+            Card c = new KingdomCards.MoneyLender();
+            Player p = new HumanPlayer();
+            ArrayList newHand = new ArrayList();
+            newHand.Add(new KingdomCards.Estate());
+            newHand.Add(new KingdomCards.Estate());
+            newHand.Add(new KingdomCards.Estate());
+            newHand.Add(new KingdomCards.Village());
+            newHand.Add(new KingdomCards.Copper());
+            int handBefore = p.getHand().Count;
+            p.addCardToHand(c);
+            p.playCard(c);
+            Assert.AreEqual(handBefore-1, p.getHand().Count);
+            ///////////////////////////////////
+        }
+        [Test()]
+        public void testMoneyLenderOnlyRemovesOneCopper()
+        {
+            Card c = new KingdomCards.MoneyLender();
+            Player p = new HumanPlayer();
+            ArrayList newHand = new ArrayList();
+            newHand.Add(new KingdomCards.Estate());
+            newHand.Add(new KingdomCards.Estate());
+            newHand.Add(new KingdomCards.Estate());
+            newHand.Add(new KingdomCards.Copper());
+            newHand.Add(new KingdomCards.Copper());
+            int handBefore = p.getHand().Count;
+            p.addCardToHand(c);
+            p.playCard(c);
+            Assert.AreEqual(handBefore-1, p.getHand().Count);
+            ///////////////////////////////////
         }
         [Test()]
         public void testVictoryReturnsVP()
