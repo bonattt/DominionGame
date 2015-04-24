@@ -25,8 +25,13 @@ namespace DominionCards
             return id;
         }
         public abstract int getVictoryPoints();
-        public abstract void play();
+        public abstract void play(Player player);
         public abstract void addToDeck();
         public abstract void trash();
+
+        public override int GetHashCode()
+        {
+            return id;
+        }
     }
 }

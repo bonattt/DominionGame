@@ -6,16 +6,11 @@ using System.Threading.Tasks;
 
 namespace DominionCards.KingdomCards
 {
-    public class Cellar : ActionCard
+    public class Curse : VictoryCard
     {
-        public Cellar() : base(0, 0, 0, 1, 2, 8) 
+        public Curse() : base(-1, 0, 32)
         {
-            // TODO implement
-        }
-
-        public void textEffect()
-        {
-            //todo
+            //NOTHING HAPPENS
         }
     }
 }

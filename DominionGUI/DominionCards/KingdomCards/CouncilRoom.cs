@@ -11,7 +11,12 @@ namespace DominionCards.KingdomCards
         public CouncilRoom()
             : base(4, 0, 1, 0, 5, 11)
         {
-            // TODO implement
+            //todo - will treat as an attack
+        }
+
+        public void textEffect()
+        {
+            //todo
         }
     }
 }

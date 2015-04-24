@@ -11,7 +11,7 @@ namespace DominionCards
     [TestFixture()]
     class TestAddCards
     {
-        [Test()]
+        /*[Test()]
         public void testActionCardAddedToBoard()
         {
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
@@ -43,6 +43,6 @@ namespace DominionCards
             board.addCard(newCard);
 
             Assert.AreEqual(board.getCardsLeft(newCard), 10);
-        }
+        }*/
     }
 }

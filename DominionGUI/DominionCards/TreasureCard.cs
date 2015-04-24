@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DominionCards
 {
-    public class TreasureCard : Card
+    public abstract class TreasureCard : Card
     {
         int value;
         public TreasureCard(int money, int price, int idNumb)
@@ -14,7 +14,7 @@ namespace DominionCards
         {
             value = money;
         }
-        public override void play()
+        public override void play(Player p)
         {
             // TODO implement this
         }

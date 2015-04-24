@@ -12,6 +12,10 @@ namespace DominionCards.KingdomCards
             : base(0, 0, 0, 0, 4, 12)
         {
             // TODO implement
-        } 
+        }
+        public void textEffect()
+        {
+            //todo
+        }
     }
 }

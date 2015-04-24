@@ -12,6 +12,13 @@ namespace DominionCards.KingdomCards
             : base(0, 2, 1, 0, 3, 30)
         {
             // TODO implement
+
         }
+        public override void play(Player player)
+        {
+            Console.WriteLine("I'm a lumberjack and I'm okay!");
+
+        }
+
     }
 }
