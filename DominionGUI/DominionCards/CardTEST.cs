@@ -17,6 +17,14 @@ namespace DominionCards
             Player p = new HumanPlayer();
             c.play(p);
         }
+
+        [Test()]
+        public void testThatAdventurerDoesThing()
+        {
+            Card c = new KingdomCards.Adventurer();
+            Player p = new HumanPlayer();
+            c.play(p);
+        }
         [Test()]
         public void testTreasureReturnsNoVP()
         {

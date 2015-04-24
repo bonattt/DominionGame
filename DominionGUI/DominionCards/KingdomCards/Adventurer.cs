@@ -12,9 +12,10 @@ namespace DominionCards.KingdomCards
         {
             
         }
-        public void textEffect()
+        public override void play(Player player)
         {
-            //todo
+            Console.WriteLine("I'm a wild child and I'm okay!");
+
         }
     }
 }
