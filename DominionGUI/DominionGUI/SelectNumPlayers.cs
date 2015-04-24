@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -13,8 +14,10 @@ namespace DominionGUI
     public partial class SelectNumPlayers : Form
     {
         public DominionCards.GameBoard board;
+        DominionCards.Player player;
         public static SelectNumPlayers INSTANCE;
         int discardsize = 0;
+        Label discarddeck = new Label();
         CheckBox lastChecked;
         public SelectNumPlayers()
         {
@@ -129,8 +132,12 @@ namespace DominionGUI
         {
 
             Button clickedButton = (Button)sender;
-            clickedButton.Visible = false;
             discardsize = discardsize + 1;
+            discarddeck.Text = "Discard Cards Size: " + discardsize;
+            clickedButton.Visible = false;
+            
+            
+            
             
         }
         public void addRandomCards(){
@@ -139,7 +146,7 @@ namespace DominionGUI
             if (checkBox4.Checked)
             {
 
-                var myForm = new MainBoard(); 
+                var myForm = new MainBoard();
                 
 
                 List<int> numList = new List<int>();
@@ -149,6 +156,14 @@ namespace DominionGUI
               
                 int xValue = 95;
                 int yValue = 50;
+
+               
+                
+                discarddeck.Location = new Point(500, 650);
+                discarddeck.Width = 1000;
+                discarddeck.Parent = myForm;
+                myForm.Update();
+                myForm.Show();
 
                 
 
@@ -541,13 +556,7 @@ namespace DominionGUI
                 myForm.Update();
                 myForm.Show();
 
-                Label discarddeck = new Label();
-                discarddeck.Text = "Discard Cards Size: " + discardsize;
-                discarddeck.Location = new Point(500, 650);
-                discarddeck.Width = 1000;
-                discarddeck.Parent = myForm;
-                myForm.Update();
-                myForm.Show();
+                
             } }
             }
 

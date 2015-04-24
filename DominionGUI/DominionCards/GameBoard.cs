@@ -8,7 +8,7 @@ namespace DominionCards
 {
     public class GameBoard
     {
-        private Queue<Player> turnOrder;
+        public Queue<Player> turnOrder;
         public Dictionary<Card, int> cards;
         public GameBoard(Dictionary<Card, int> cards, Queue<Player> turnOrder)
         {
@@ -18,6 +18,11 @@ namespace DominionCards
         public void addCard(Card c)
         {
             cards.Add(c, 10);
+        }
+
+        public Queue<Player> getPlayerQueue()
+        {
+            return turnOrder;
         }
         public int getCardsLeft(Card c)
         {
