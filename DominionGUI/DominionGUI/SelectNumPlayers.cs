@@ -145,18 +145,8 @@ namespace DominionGUI
             
         }
         public void addRandomCards(){
-<<<<<<< HEAD
                 string kingdomCards = "";
-                var myForm = new MainBoard(); 
-=======
-            string kingdomCards = "";
-
-            if (checkBox4.Checked)
-            {
-
-                var myForm = new MainBoard();
->>>>>>> origin/Morgan
-                
+                var myForm = new MainBoard();         
 
                 List<int> numList = new List<int>();
                 numList = RandomGenerateCards.GenerateRandom.GenerateRandomList(25,5);
