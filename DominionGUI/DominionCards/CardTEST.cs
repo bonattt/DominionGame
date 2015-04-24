@@ -35,6 +35,17 @@ namespace DominionCards
             Card c = new KingdomCards.Silver();
             Assert.AreEqual(0, c.getVictoryPoints());
         }
+
+        [Test()]
+        public void testLibrary()
+        {
+            Card c = new KingdomCards.Library();
+            Player p = new HumanPlayer();
+            p.drawHand();
+            p.addCardToHand(c);
+            c.play(p);
+            Assert.AreEqual(7, p.getHand().Count);
+        }
         [Test()]
         public void testActionReturnsNoVP()
         {
