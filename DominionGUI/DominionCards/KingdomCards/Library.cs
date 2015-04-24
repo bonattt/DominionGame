@@ -13,9 +13,24 @@ namespace DominionCards.KingdomCards
         {
             // TODO implement
         }
-        public void textEffect()
+        public override void play(Player player)
         {
-            //todo
+            int handSize = player.getHand().Count;
+            while (handSize < 7)
+            {
+                Card c = player.getDeck().Pop();
+                if (c.getID() == 0 || c.getID() == 1 || c.getID() == 2 || c.getID() == 3 || c.getID() == 4 || c.getID() == 5 || c.getID() == 32)
+                {
+                    player.addCardToHand(c);
+                    handSize++;
+                    
+                }
+                else
+                {
+                    player.getDiscard().Add(c);
+                }
+            }
+
         }
     }
 }

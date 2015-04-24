@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections;
 
 namespace DominionCards.KingdomCards
 {
@@ -12,9 +13,24 @@ namespace DominionCards.KingdomCards
         {
             
         }
-        public void textEffect()
+        public override void play(Player player)
         {
-            //todo
+            int cardsAdded = 0;
+            while (cardsAdded != 2)
+            {
+                Card c = player.getDeck().Pop();
+                if (c.getID() == 0 || c.getID() == 1 || c.getID() == 2)
+                {
+                    player.addCardToHand(c);
+                    cardsAdded++;
+                    
+                }
+                else
+                {
+                    player.getDiscard().Add(c);
+                }
+            }
+
         }
     }
 }

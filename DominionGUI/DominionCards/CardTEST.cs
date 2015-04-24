@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,16 +12,63 @@ namespace DominionCards
     class CardTEST
     {
         [Test()]
+<<<<<<< HEAD
+=======
+        public void aTempTestWoodcutter()
+        {
+            Card c = new KingdomCards.Woodcutter();
+            Player p = new HumanPlayer();
+            c.play(p);
+        }
+
+        [Test()]
+        public void testThatAdventurerDoesThing()
+        {
+            Card c = new KingdomCards.Adventurer();
+            Player p = new HumanPlayer();
+            p.addCardToHand(c);
+            p.drawHand();
+            int count = p.getHand().Count;
+            c.play(p);
+            Assert.AreEqual(count + 2, p.getHand().Count);
+        }
+        [Test()]
+>>>>>>> origin/Morgan
         public void testTreasureReturnsNoVP()
         {
             Card c = new KingdomCards.Silver();
             Assert.AreEqual(0, c.getVictoryPoints());
+        }
+
+        [Test()]
+        public void testLibrary()
+        {
+            Card c = new KingdomCards.Library();
+            Player p = new HumanPlayer();
+            p.addCardToHand(c);
+            p.drawHand();
+            c.play(p);
+            Assert.AreEqual(7, p.getHand().Count);
         }
         [Test()]
         public void testActionReturnsNoVP()
         {
             Card c = new KingdomCards.Village();
             Assert.AreEqual(0, c.getVictoryPoints());
+        }
+
+        [Test()]
+        public void testMoneyLenderAddsSpendPoints()
+        {
+            Card c = new KingdomCards.MoneyLender();
+            Player p = new HumanPlayer();
+            p.addCardToHand(c);
+            p.drawHand();
+            int buys = p.buysLeft();
+            c.play(p);
+            Assert.AreEqual(buys + 3, p.buysLeft());
+
+
         }
         [Test()]
         public void testVictoryReturnsVP()

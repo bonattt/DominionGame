@@ -13,9 +13,13 @@ namespace DominionCards.KingdomCards
         {
             // TODO implement
         }
-        public void textEffect()
+        public override void play(Player player)
         {
-            //todo
+            Console.WriteLine(buys);
+            player.
+            buys += 3;
+            Console.WriteLine(buys);
+
         }
     }
 }
