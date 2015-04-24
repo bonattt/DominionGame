@@ -15,7 +15,10 @@ namespace DominionCards.KingdomCards
         }
         public override void play(Player player)
         {
-            
+            Console.WriteLine(buys);
+            player.
+            buys += 3;
+            Console.WriteLine(buys);
 
         }
     }
