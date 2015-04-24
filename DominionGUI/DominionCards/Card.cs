@@ -33,5 +33,9 @@ namespace DominionCards
         {
             return id;
         }
+        public override bool Equals(object obj)
+        {
+            return false;
+        }
     }
 }

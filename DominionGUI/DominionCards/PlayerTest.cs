@@ -409,30 +409,26 @@ namespace DominionCards
         [Test()]
         public void testShuffledDeckContainsSameCards()
         {
-            ArrayList list = new ArrayList();
-            Stack<Card> shuffledDeck;
-            for (int i = 0; i < 7; i++)
-            {
-                list.Add(new KingdomCards.Copper());
-            }
-            Dictionary<int, int> cardCount;
-            Dictionary<int, int> expect = new Dictionary<int,int>();
+            Stack<Card> deck = new Stack<Card>();
+            Dictionary<int, int> count;
+            Dictionary<int, int> expct = new Dictionary<int, int>();
 
-            expect.Add(new KingdomCards.Copper().getID(), 7);
-            shuffledDeck = (Stack<Card>) Player.Shuffle(list);
-            cardCount = countCards(shuffledDeck);
-            CollectionAssert.AreEqual(expect, cardCount);
+            deck.Push(new KingdomCards.Copper());
+            deck.Push(new KingdomCards.Copper());
+            deck.Push(new KingdomCards.Copper());
+            deck.Push(new KingdomCards.Village());
+            deck.Push(new KingdomCards.Village());
+            deck.Push(new KingdomCards.Smithy());
 
-            for (int i = 0; i < 3; i++)
-            {
-                list.Add(new KingdomCards.Estate());
-            }
-            expect.Add(new KingdomCards.Estate().getID(), 3);
-            shuffledDeck = (Stack<Card>) Player.Shuffle(list);
-            cardCount = countCards(shuffledDeck);
-            CollectionAssert.AreEqual(expect, cardCount);
+            count = countCards(deck);
+            expct.Add(new KingdomCards.Copper().getID(), 3);
+            expct.Add(new KingdomCards.Village().getID(), 2);
+            expct.Add(new KingdomCards.Smithy().getID(), 1);
+
+            CollectionAssert.AreEqual(expct, count);
         }
         private static void CompareCounts(Dictionary<Card, int> expect, Dictionary<Card, int> cardCount)
+// TODO MARKED FOR DEMOLITION
         {
             foreach (KeyValuePair<Card, int> entry in expect)
             {
