@@ -14,6 +14,8 @@ namespace DominionGUI
     {
         public DominionCards.GameBoard board;
         public static SelectNumPlayers INSTANCE;
+        int discardsize = 0;
+        CheckBox lastChecked;
         public SelectNumPlayers()
         {
             INSTANCE = this;
@@ -21,6 +23,7 @@ namespace DominionGUI
             board = new DominionCards.GameBoard(new Dictionary<DominionCards.Card, int>(),
                     new Queue<DominionCards.Player>());
             addRandomCards();
+
 
         }
 
@@ -57,32 +60,78 @@ namespace DominionGUI
         private void Playeroption(object sender, EventArgs e)
         {
             string movies = "";
-
+            
             if (checkBox1.Checked)
             {
                 movies = movies + checkBox1.Text;
+                checkBox2.Enabled = false;
+                checkBox3.Enabled = false;
+                lastChecked = checkBox1;
             }
             else if (checkBox2.Checked)
             {
                 movies = movies + checkBox2.Text;
+                checkBox1.Enabled = false;
+                checkBox3.Enabled = false;
+                lastChecked = checkBox2;
             }
             else if (checkBox3.Checked)
             {
                 movies = movies + checkBox3.Text;
+                checkBox1.Enabled = false;
+                checkBox2.Enabled = false;
+                lastChecked = checkBox3;
             }
-
+            if(!lastChecked.Equals(null))
+                if (lastChecked.Equals(checkBox1) && !checkBox1.Checked)
+                {
+                    checkBox2.Enabled = true;
+                    checkBox3.Enabled = true;
+                }
+                if (lastChecked.Equals(checkBox2) && !checkBox2.Checked)
+                {
+                    checkBox1.Enabled = true;
+                    checkBox3.Enabled = true;
+                }
+                if (lastChecked.Equals(checkBox3) && !checkBox3.Checked)
+                {
+                    checkBox1.Enabled = true;
+                    checkBox2.Enabled = true;
+                }
             if(movies.Length>0)
                 MessageBox.Show(movies);
         }
 
-        private void checkBox4_CheckedChanged(object sender, EventArgs e)
+        private void CardSelectOption(object sender, EventArgs e)
         {
-            board.addCard(new DominionCards.KingdomCards.Woodcutter());
+            if (checkBox4.Checked)
+            {
+
+                addRandomCards();
+            }
+            else if (checkBox5.Checked)
+            {
+                var myForm = new KingdomCardSelection();
+            }
+            else if (checkBox6.Checked)
+            {
+                var myForm = new KingdomCardSelection();
+            }
+            
+            /*board.addCard(new DominionCards.KingdomCards.Woodcutter());
             if (board.cards.ContainsKey(new DominionCards.KingdomCards.Woodcutter()))
             {
                 Close();
-            }
+            }*/
 
+        }
+        private void gameplay(Object sender, EventArgs e)
+        {
+
+            Button clickedButton = (Button)sender;
+            clickedButton.Visible = false;
+            discardsize = discardsize + 1;
+            
         }
         public void addRandomCards(){
             string kingdomCards = "";
@@ -116,6 +165,9 @@ namespace DominionGUI
                     newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.Workshop());
+                    newButton.Click += new EventHandler(this.gameplay);
+                   
+
                 }
 
 
@@ -131,6 +183,7 @@ namespace DominionGUI
                     newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.Adventurer());
+                    newButton.Click += new EventHandler(this.gameplay);
                 }
 
                 if (numList.Contains(2))
@@ -145,6 +198,7 @@ namespace DominionGUI
                     newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.Bureaucrat());
+                    newButton.Click += new EventHandler(this.gameplay);
                 }
 
                 if (numList.Contains(3))
@@ -159,6 +213,7 @@ namespace DominionGUI
                     newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.Cellar());
+                    newButton.Click += new EventHandler(this.gameplay);
                 }
 
                 if (numList.Contains(4))
@@ -173,6 +228,7 @@ namespace DominionGUI
                     newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.Chancellor());
+                    newButton.Click += new EventHandler(this.gameplay);
                 }
 
                 if (numList.Contains(5))
@@ -187,6 +243,7 @@ namespace DominionGUI
                     newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.Chapel());
+                    newButton.Click += new EventHandler(this.gameplay);
                 }
 
                 if (numList.Contains(6))
@@ -201,6 +258,7 @@ namespace DominionGUI
                     newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.CouncilRoom());
+                    newButton.Click += new EventHandler(this.gameplay);
                 }
 
                 if (numList.Contains(7))
@@ -215,6 +273,7 @@ namespace DominionGUI
                     newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.Feast());
+                    newButton.Click += new EventHandler(this.gameplay);
                 }
 
                 if (numList.Contains(8))
@@ -229,6 +288,7 @@ namespace DominionGUI
                     newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.Festival());
+                    newButton.Click += new EventHandler(this.gameplay);
                 }
 
                 if (numList.Contains(9))
@@ -243,6 +303,7 @@ namespace DominionGUI
                     newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.Gardens());
+                    newButton.Click += new EventHandler(this.gameplay);
                 }
 
                 if (numList.Contains(10))
@@ -257,6 +318,7 @@ namespace DominionGUI
                     newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.Laboratory());
+                    newButton.Click += new EventHandler(this.gameplay);
                 }
 
                 if (numList.Contains(11))
@@ -271,6 +333,7 @@ namespace DominionGUI
                     newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.Library());
+                    newButton.Click += new EventHandler(this.gameplay);
                 }
 
                 if (numList.Contains(12))
@@ -285,6 +348,7 @@ namespace DominionGUI
                     newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.Market());
+                    newButton.Click += new EventHandler(this.gameplay);
                 }
 
                 if (numList.Contains(13))
@@ -299,6 +363,7 @@ namespace DominionGUI
                     newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.Militia());
+                    newButton.Click += new EventHandler(this.gameplay);
                 }
 
                 if (numList.Contains(14))
@@ -313,6 +378,7 @@ namespace DominionGUI
                     newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.Mine());
+                    newButton.Click += new EventHandler(this.gameplay);
                 }
 
                 if (numList.Contains(15))
@@ -327,6 +393,7 @@ namespace DominionGUI
                     newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.Moat());
+                    newButton.Click += new EventHandler(this.gameplay);
                 }
 
                 if (numList.Contains(16))
@@ -341,6 +408,7 @@ namespace DominionGUI
                     newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.MoneyLender());
+                    newButton.Click += new EventHandler(this.gameplay);
                 }
 
                 if (numList.Contains(17))
@@ -355,6 +423,7 @@ namespace DominionGUI
                     newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.Remodel());
+                    newButton.Click += new EventHandler(this.gameplay);
                 }
 
                 if (numList.Contains(18))
@@ -369,6 +438,7 @@ namespace DominionGUI
                     newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.Smithy());
+                    newButton.Click += new EventHandler(this.gameplay);
                 }
 
                 if (numList.Contains(19))
@@ -383,6 +453,7 @@ namespace DominionGUI
                     newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.Spy());
+                    newButton.Click += new EventHandler(this.gameplay);
                 }
 
                 if (numList.Contains(20))
@@ -397,6 +468,7 @@ namespace DominionGUI
                     newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.Thief());
+                    newButton.Click += new EventHandler(this.gameplay);
                 }
 
                 if (numList.Contains(21))
@@ -411,6 +483,7 @@ namespace DominionGUI
                     newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.ThroneRoom());
+                    newButton.Click += new EventHandler(this.gameplay);
                 }
 
                 if (numList.Contains(22))
@@ -425,6 +498,7 @@ namespace DominionGUI
                     newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.Village());
+                    newButton.Click += new EventHandler(this.gameplay);
                 }
 
                 if (numList.Contains(23))
@@ -439,6 +513,7 @@ namespace DominionGUI
                     newButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(new DominionCards.KingdomCards.Witch());
+                    newButton.Click += new EventHandler(this.gameplay);
                 }
 
                 DominionCards.KingdomCards.Woodcutter woodcutter = new DominionCards.KingdomCards.Woodcutter();
@@ -455,6 +530,7 @@ namespace DominionGUI
                     WoodcutterButton.Parent = myForm;
                     myForm.Update();
                     board.addCard(woodcutter);
+                    WoodcutterButton.Click += new EventHandler(this.gameplay);
                 }
                     
                 Label countCard1Remaining = new Label();
@@ -464,11 +540,15 @@ namespace DominionGUI
                 countCard1Remaining.Parent = myForm;
                 myForm.Update();
                 myForm.Show();
+
+                Label discarddeck = new Label();
+                discarddeck.Text = "Discard Cards Size: " + discardsize;
+                discarddeck.Location = new Point(500, 650);
+                discarddeck.Width = 1000;
+                discarddeck.Parent = myForm;
+                myForm.Update();
+                myForm.Show();
             } }
-            
-
-
-               
             }
 
         }

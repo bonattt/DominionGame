@@ -27,13 +27,6 @@ namespace DominionGUI
         private void drawCorrectImage(Button button)
         {
             
-            if (SelectNumPlayers.INSTANCE.board.cards.ContainsKey(new DominionCards.KingdomCards.Woodcutter()));
-            {
-                button.Image = DominionGUI.Properties.Resources.WitchHalf;
-            }
-            {
-
-            }
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -55,7 +48,15 @@ namespace DominionGUI
         {
             Close();
         }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
 
+        public static void addRandom()
+        { 
+
+        }
         
     }
 }

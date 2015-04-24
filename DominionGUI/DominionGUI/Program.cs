@@ -17,8 +17,8 @@ namespace DominionGUI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new SelectNumPlayers());
-            Application.Run(new KingdomCardSelection());
-            Application.Run(new MainBoard());
+            //Application.Run(new KingdomCardSelection());
+            //Application.Run(new MainBoard());
         }
     }
 }
