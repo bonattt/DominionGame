@@ -25,9 +25,6 @@ namespace DominionGUI
             InitializeComponent();
             board = new DominionCards.GameBoard(new Dictionary<DominionCards.Card, int>(),
                     new Queue<DominionCards.Player>());
-            addRandomCards();
-
-
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
