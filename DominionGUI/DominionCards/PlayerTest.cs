@@ -26,8 +26,6 @@ namespace DominionCards
             Assert.AreEqual(2, dict1[new KingdomCards.Village()]);
             Assert.AreEqual(3, dict1[new KingdomCards.Copper()]);
         }
-
-
         [Test()]
         public void testDrawHandDiscardsOldHand()
         {
@@ -341,10 +339,10 @@ namespace DominionCards
             {
                 list.Add(new KingdomCards.Copper());
             }
-            Dictionary<Card, int> cardCount;
-            Dictionary<Card, int> expect = new Dictionary<Card,int>();
+            Dictionary<int, int> cardCount;
+            Dictionary<int, int> expect = new Dictionary<int,int>();
 
-            expect.Add(new KingdomCards.Copper(), 7);
+            expect.Add(new KingdomCards.Copper().getID(), 7);
             shuffledDeck = (Stack<Card>) Player.Shuffle(list);
             cardCount = countCards(shuffledDeck);
             CollectionAssert.AreEqual(expect, cardCount);
@@ -353,7 +351,7 @@ namespace DominionCards
             {
                 list.Add(new KingdomCards.Estate());
             }
-            expect.Add(new KingdomCards.Estate(), 3);
+            expect.Add(new KingdomCards.Estate().getID(), 3);
             shuffledDeck = (Stack<Card>) Player.Shuffle(list);
             cardCount = countCards(shuffledDeck);
             CollectionAssert.AreEqual(expect, cardCount);
@@ -460,33 +458,32 @@ namespace DominionCards
             deck.Push(new KingdomCards.Village());
             deck.Push(new KingdomCards.Village());
 
-            Dictionary<Card, int> count = countCards(deck);
-            Dictionary<Card, int> expct = new Dictionary<Card, int>();
-            expct.Add(new KingdomCards.Village(), 3);
-            expct.Add(new KingdomCards.Smithy(), 1);
-            expct.Add(new KingdomCards.Cellar(), 1);
+            Dictionary<int, int> count = countCards(deck);
+            Dictionary<int, int> expct = new Dictionary<int, int>();
+            expct.Add(new KingdomCards.Village().getID(), 3);
+            expct.Add(new KingdomCards.Smithy().getID(), 1);
+            expct.Add(new KingdomCards.Cellar().getID(), 1);
 
-            //CollectionAssert.AreEqual(count, expct);
-            HashSet<int> testSet1 = new HashSet<int>();
-            HashSet<int> testSet2 = new HashSet<int>();
-            HashSet<int> testSet3 = new HashSet<int>();
+            CollectionAssert.AreEqual(count, expct);
         }
 
-        private Dictionary<Card, int> countCards(Stack<Card> deck)
+        private Dictionary<int, int> countCards(Stack<Card> deck)
         {
-            Dictionary<Card, int> count = new Dictionary<Card, int>();
+            Dictionary<int, int> count = new Dictionary<int, int>();
             Stack<Card> temp = new Stack<Card>();
 
             while (deck.Count > 0)
             {
                 Card c = deck.Pop();
-                if (count.ContainsKey(c))
+                if (count.ContainsKey(c.getID()))
                 {
-                    count.Add(c, count[c] + 1);
+                    int number = count[c.getID()] + 1;
+                    count.Remove(c.getID());
+                    count.Add(c.getID(), number);
                 }
                 else
                 {
-                    count.Add(c, 1);
+                    count.Add(c.getID(), 1);
                 }
             }
             // reconstruct the deck
