@@ -14,7 +14,7 @@ namespace DominionCards.KingdomCards
         }
         public override void play(Player player)
         {
-            Console.WriteLine("I'm a wild child and I'm okay!");
+            
 
         }
     }
