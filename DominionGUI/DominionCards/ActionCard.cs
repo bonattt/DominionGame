@@ -23,7 +23,7 @@ namespace DominionCards
         }
         public override void play(Player player)
         {
-            // TODO implement this
+            Console.WriteLine("I am just an action card!!");
         }
 
         public override void addToDeck()

@@ -10,7 +10,13 @@ namespace DominionCards
     [TestFixture()]
     class CardTEST
     {
-
+        [Test()]
+        public void aTempTestWoodcutter()
+        {
+            Card c = new KingdomCards.Woodcutter();
+            Player p = new HumanPlayer();
+            c.play(p);
+        }
         [Test()]
         public void testTreasureReturnsNoVP()
         {
@@ -29,7 +35,7 @@ namespace DominionCards
             Card c = new KingdomCards.Estate();
             Assert.AreEqual(1, c.getVictoryPoints());
         }
-        [Test()]
+        /*[Test()]
         public void testGetPriceVictoryCard()
         {
             int vPrice = 2;
@@ -49,8 +55,6 @@ namespace DominionCards
             int aPrice = 2;
             Card a = new ActionCard(1, 1, 1, 1, aPrice, Card.GENERIC_CARD_ID);
             Assert.AreEqual(a.getPrice(), aPrice);
-        }
-
-
+        }*/
     }
 }

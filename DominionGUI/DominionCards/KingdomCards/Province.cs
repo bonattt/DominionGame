@@ -12,9 +12,5 @@ namespace DominionCards.KingdomCards
         {
             // NOTHING HAPPENS
         }
-        public void textEffect()
-        {
-            //todo
-        }
     }
 }
