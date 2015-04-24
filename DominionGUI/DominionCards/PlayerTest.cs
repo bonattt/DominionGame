@@ -14,6 +14,21 @@ namespace DominionCards
     class PlayerTest
     {
         [Test()]
+        public void aHashMapWork()
+        {
+            Dictionary<Card, int> dict1 = new Dictionary<Card, int>();
+
+            dict1.Add(new KingdomCards.Adventurer(), 1);
+            dict1.Add(new KingdomCards.Village(), 2);
+            dict1.Add(new KingdomCards.Copper(), 3);
+
+            Assert.AreEqual(1, dict1[new KingdomCards.Adventurer()]);
+            Assert.AreEqual(2, dict1[new KingdomCards.Village()]);
+            Assert.AreEqual(3, dict1[new KingdomCards.Copper()]);
+        }
+
+
+        [Test()]
         public void testDrawHandDiscardsOldHand()
         {
             Player p1 = new HumanPlayer();
@@ -332,7 +347,7 @@ namespace DominionCards
             expect.Add(new KingdomCards.Copper(), 7);
             shuffledDeck = (Stack<Card>) Player.Shuffle(list);
             cardCount = countCards(shuffledDeck);
-            CompareCounts(expect, cardCount);
+            CollectionAssert.AreEqual(expect, cardCount);
 
             for (int i = 0; i < 3; i++)
             {
@@ -341,13 +356,18 @@ namespace DominionCards
             expect.Add(new KingdomCards.Estate(), 3);
             shuffledDeck = (Stack<Card>) Player.Shuffle(list);
             cardCount = countCards(shuffledDeck);
-            CompareCounts(expect, cardCount);
+            CollectionAssert.AreEqual(expect, cardCount);
         }
         private static void CompareCounts(Dictionary<Card, int> expect, Dictionary<Card, int> cardCount)
         {
             foreach (KeyValuePair<Card, int> entry in expect)
             {
-                Assert.AreEqual(entry.Value, cardCount[entry.Key]);
+                //Assert.AreEqual(entry.Value, cardCount[entry.Key]);
+                Console.WriteLine("expected: " + entry.Key.getID() + ", " + entry.Value);
+                if (cardCount.ContainsKey(entry.Key))
+                {
+                    Console.WriteLine("returned: " + entry.Key.getID() + ", " + cardCount[entry.Key]);
+                }
             }
         }
 
@@ -445,6 +465,11 @@ namespace DominionCards
             expct.Add(new KingdomCards.Village(), 3);
             expct.Add(new KingdomCards.Smithy(), 1);
             expct.Add(new KingdomCards.Cellar(), 1);
+
+            //CollectionAssert.AreEqual(count, expct);
+            HashSet<int> testSet1 = new HashSet<int>();
+            HashSet<int> testSet2 = new HashSet<int>();
+            HashSet<int> testSet3 = new HashSet<int>();
         }
 
         private Dictionary<Card, int> countCards(Stack<Card> deck)
@@ -469,8 +494,7 @@ namespace DominionCards
             {
                 deck.Push(temp.Pop());
             }
-
-            return null;
+            return count;
         }
     }
 }

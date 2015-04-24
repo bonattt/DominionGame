@@ -11,13 +11,6 @@ namespace DominionCards
     class CardTEST
     {
         [Test()]
-        public void aTempTestWoodcutter()
-        {
-            Card c = new KingdomCards.Woodcutter();
-            Player p = new HumanPlayer();
-            c.play(p);
-        }
-        [Test()]
         public void testTreasureReturnsNoVP()
         {
             Card c = new KingdomCards.Silver();
