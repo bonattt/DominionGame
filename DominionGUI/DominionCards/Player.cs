@@ -32,7 +32,7 @@ namespace DominionCards
         {
             if (deck.Count == 0)
             {
-                //TODO
+                deck = Shuffle(discard);
             }
             return deck.Pop();
         }
@@ -196,6 +196,7 @@ namespace DominionCards
             Stack<Card> newDeck; // = new Stack<Card>();
             Stack temp = GenerateRandom.SuffleDeck(discard);
             newDeck = ConvertStackToCardStack(temp);
+            discard.Clear();
             return newDeck;
         }
 
