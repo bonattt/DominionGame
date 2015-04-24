@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections;
 
 namespace DominionCards.KingdomCards
 {
@@ -15,7 +16,21 @@ namespace DominionCards.KingdomCards
         }
         public override void play(Player player)
         {
-            // TODO
+            ArrayList hand = player.getHand();
+            for (int i = 0; i < hand.Count; i++)
+            {
+                Card c;
+                try {
+                    c = (Card) hand[i];
+                } catch (InvalidCastException) {
+                    continue;
+                }
+                if (c.getID() == 0){
+                    hand.Remove(c);
+                    player.money += 3;
+                    return;
+                }
+            }
         }
     }
 }

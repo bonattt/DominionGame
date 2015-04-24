@@ -1,28 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
+using System.Collections.Generic;
+using DominionCards;
+using DominionCards.KingdomCards;
 
-namespace DominionCards
+namespace UnitTestProject2
 {
-    [TestFixture()]
-    class CardTEST
+    [TestClass]
+    public class UnitTestCard
     {
         public void testThatCardsWorkInDictionaries()
         {
             Dictionary<Card, int> dict = new Dictionary<Card, int>();
-            dict.Add(new KingdomCards.Copper(), 1);
-            dict.Add(new KingdomCards.Village(), 2);
-            Assert.AreEqual(1, dict[new KingdomCards.Copper()]);
-            Assert.AreEqual(2, dict[new KingdomCards.Village()]);
+            dict.Add(new Copper(), 1);
+            dict.Add(new Village(), 2);
+            Assert.AreEqual(1, dict[new Copper()]);
+            Assert.AreEqual(2, dict[new Village()]);
         }
-        [Test()]
+        [TestMethod]
         public void testThatAdventurerDoesThing()
         {
-            Card c = new KingdomCards.Adventurer();
+            Card c = new Adventurer();
             Player p = new HumanPlayer();
             p.addCardToHand(c);
             p.drawHand();
@@ -30,39 +29,39 @@ namespace DominionCards
             c.play(p);
             Assert.AreEqual(count + 2, p.getHand().Count);
         }
-        [Test()]
+        [TestMethod]
         public void testTreasureReturnsNoVP()
         {
-            Card c = new KingdomCards.Silver();
+            Card c = new Silver();
             Assert.AreEqual(0, c.getVictoryPoints());
         }
-        [Test()]
+        [TestMethod]
         public void testLibrary()
         {
-            Card c = new KingdomCards.Library();
+            Card c = new Library();
             Player p = new HumanPlayer();
             p.addCardToHand(c);
             p.drawHand();
             c.play(p);
             Assert.AreEqual(7, p.getHand().Count);
         }
-        [Test()]
+        [TestMethod]
         public void testActionReturnsNoVP()
         {
-            Card c = new KingdomCards.Village();
+            Card c = new Village();
             Assert.AreEqual(0, c.getVictoryPoints());
         }
-        [Test()]
+        [TestMethod]
         public void testMoneyLenderAddsMoneyIfThereIsCopper()
         {
-            Card c = new KingdomCards.MoneyLender();
+            Card c = new MoneyLender();
             Player p = new HumanPlayer();
             ArrayList newHand = new ArrayList();
-            newHand.Add(new KingdomCards.Estate());
-            newHand.Add(new KingdomCards.Estate());
-            newHand.Add(new KingdomCards.Estate());
-            newHand.Add(new KingdomCards.Village());
-            newHand.Add(new KingdomCards.Copper());
+            newHand.Add(new Estate());
+            newHand.Add(new Estate());
+            newHand.Add(new Estate());
+            newHand.Add(new Village());
+            newHand.Add(new Copper());
             p.setHand(newHand);
             p.addCardToHand(c);
             int moneyBefore = p.moneyLeft();
@@ -70,16 +69,16 @@ namespace DominionCards
             Assert.AreEqual(moneyBefore + 3, p.moneyLeft());
             ///////////////////////////////////
         }
-        [Test()]
+        [TestMethod]
         public void testMoneyLenderDoesNotAddMoneyIfThereIsNoCopper()
         {
-            Card c = new KingdomCards.MoneyLender();
+            Card c = new MoneyLender();
             Player p = new HumanPlayer();
             ArrayList newHand = new ArrayList();
-            newHand.Add(new KingdomCards.Estate());
-            newHand.Add(new KingdomCards.Estate());
-            newHand.Add(new KingdomCards.Estate());
-            newHand.Add(new KingdomCards.Village());
+            newHand.Add(new Estate());
+            newHand.Add(new Estate());
+            newHand.Add(new Estate());
+            newHand.Add(new Village());
             p.setHand(newHand);
             p.addCardToHand(c);
             int moneyBefore = p.moneyLeft();
@@ -87,16 +86,16 @@ namespace DominionCards
             Assert.AreEqual(moneyBefore, p.moneyLeft());
             ///////////////////////////////////
         }
-        [Test()]
+        [TestMethod]
         public void testMoneyLenderDoesNotRemoveNoCopper()
         {
-            Card c = new KingdomCards.MoneyLender();
+            Card c = new MoneyLender();
             Player p = new HumanPlayer();
             ArrayList newHand = new ArrayList();
-            newHand.Add(new KingdomCards.Estate());
-            newHand.Add(new KingdomCards.Estate());
-            newHand.Add(new KingdomCards.Estate());
-            newHand.Add(new KingdomCards.Village());
+            newHand.Add(new Estate());
+            newHand.Add(new Estate());
+            newHand.Add(new Estate());
+            newHand.Add(new Village());
             p.setHand(newHand);
             int handBefore = p.getHand().Count;
             p.addCardToHand(c);
@@ -104,55 +103,55 @@ namespace DominionCards
             Assert.AreEqual(handBefore, p.getHand().Count);
             ///////////////////////////////////
         }
-        [Test()]
+        [TestMethod]
         public void testMoneyLenderRemovesCopper()
         {
-            Card c = new KingdomCards.MoneyLender();
+            Card c = new MoneyLender();
             Player p = new HumanPlayer();
             ArrayList newHand = new ArrayList();
-            newHand.Add(new KingdomCards.Estate());
-            newHand.Add(new KingdomCards.Estate());
-            newHand.Add(new KingdomCards.Estate());
-            newHand.Add(new KingdomCards.Village());
-            newHand.Add(new KingdomCards.Copper());
+            newHand.Add(new Estate());
+            newHand.Add(new Estate());
+            newHand.Add(new Estate());
+            newHand.Add(new Village());
+            newHand.Add(new Copper());
             p.setHand(newHand);
             int handBefore = p.getHand().Count;
             p.addCardToHand(c);
             p.playCard(c);
-            Assert.AreEqual(handBefore-1, p.getHand().Count);
+            Assert.AreEqual(handBefore - 1, p.getHand().Count);
             ///////////////////////////////////
         }
-        [Test()]
+        [TestMethod]
         public void testMoneyLenderOnlyRemovesOneCopper()
         {
-            Card c = new KingdomCards.MoneyLender();
+            Card c = new MoneyLender();
             Player p = new HumanPlayer();
             ArrayList newHand = new ArrayList();
-            newHand.Add(new KingdomCards.Estate());
-            newHand.Add(new KingdomCards.Estate());
-            newHand.Add(new KingdomCards.Estate());
-            newHand.Add(new KingdomCards.Copper());
-            newHand.Add(new KingdomCards.Copper());
+            newHand.Add(new Estate());
+            newHand.Add(new Estate());
+            newHand.Add(new Estate());
+            newHand.Add(new Copper());
+            newHand.Add(new Copper());
             p.setHand(newHand);
             int handBefore = p.getHand().Count;
             p.addCardToHand(c);
             p.playCard(c);
-            Assert.AreEqual(handBefore-1, p.getHand().Count);
+            Assert.AreEqual(handBefore - 1, p.getHand().Count);
             ///////////////////////////////////
         }
-        [Test()]
+        [TestMethod]
         public void testVictoryReturnsVP()
         {
-            Card c = new KingdomCards.Estate();
+            Card c = new Estate();
             Assert.AreEqual(1, c.getVictoryPoints());
         }
-        [Test()]
+        [TestMethod]
         public void testCardEquals()
         {
-            Card copper = new KingdomCards.Copper();
-            Card village = new KingdomCards.Village();
-            Card smithy = new KingdomCards.Smithy();
-            
+            Card copper = new Copper();
+            Card village = new Village();
+            Card smithy = new Smithy();
+
             Assert.AreNotEqual(copper, smithy);
             Assert.AreNotEqual(copper, village);
             Assert.AreNotEqual(village, smithy);
@@ -160,26 +159,26 @@ namespace DominionCards
             Assert.AreNotEqual(village, copper);
             Assert.AreNotEqual(smithy, village);
 
-            Assert.AreEqual(copper, new KingdomCards.Copper());
-            Assert.AreEqual(village, new KingdomCards.Village());
-            Assert.AreEqual(smithy, new KingdomCards.Smithy());
+            Assert.AreEqual(copper, new Copper());
+            Assert.AreEqual(village, new Village());
+            Assert.AreEqual(smithy, new Smithy());
         }
 
-        /*[Test()]
+        /*[TestMethod]
         public void testGetPriceVictoryCard()
         {
             int vPrice = 2;
             Card v = new VictoryCard(1, vPrice, Card.GENERIC_CARD_ID);
             Assert.AreEqual(v.getPrice(), vPrice);
         }
-        [Test()]
+        [TestMethod]
         public void testGetPriceTreasureCard()
         {
             int tPrice = 2;
             Card t = new TreasureCard(1, tPrice, Card.GENERIC_CARD_ID);
             Assert.AreEqual(t.getPrice(), tPrice);
         }
-        [Test()]
+        [TestMethod]
         public void testGetPriceActionCard()
         {
             int aPrice = 2;

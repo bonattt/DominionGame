@@ -188,7 +188,7 @@ namespace DominionCards
             actions += card.actions;
             buys += card.buys;
             money += card.money;
-
+            card.play(this);
             return actions;
         }
         public static Stack<Card> Shuffle(ArrayList discard)
