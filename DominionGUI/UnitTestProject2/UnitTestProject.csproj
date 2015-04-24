@@ -51,11 +51,8 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="CardTEST.cs" />
-    <Compile Include="PlayerTEST.cs" />
-    <Compile Include="AddCardsTEST.cs" />
-    <Compile Include="RandomCardsTest.cs" />
-    <Compile Include="TestAddRandomCardsFromGUI.cs" />
+    <Compile Include="UnitTestCard.cs" />
+    <Compile Include="UnitTestPlayer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DominionCards\DominionCards.csproj">
