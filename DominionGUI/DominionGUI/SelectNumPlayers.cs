@@ -54,18 +54,25 @@ namespace DominionGUI
             Close();
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void Playeroption(object sender, EventArgs e)
         {
             string movies = "";
 
             if (checkBox1.Checked)
             {
-
                 movies = movies + checkBox1.Text;
-
+            }
+            else if (checkBox2.Checked)
+            {
+                movies = movies + checkBox2.Text;
+            }
+            else if (checkBox3.Checked)
+            {
+                movies = movies + checkBox3.Text;
             }
 
-            MessageBox.Show(movies);
+            if(movies.Length>0)
+                MessageBox.Show(movies);
         }
 
         private void checkBox4_CheckedChanged(object sender, EventArgs e)

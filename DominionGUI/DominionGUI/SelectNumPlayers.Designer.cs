@@ -39,63 +39,65 @@
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // checkBox1
+            // TwoPlayerOption   checkBox1
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.Location = new System.Drawing.Point(87, 68);
-            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Name = "TwoPlayerOption";
             this.checkBox1.Size = new System.Drawing.Size(89, 21);
             this.checkBox1.TabIndex = 9;
             this.checkBox1.Text = "2 Players";
             this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.Playeroption);
             // 
-            // checkBox2
+            // ThreePlayerOption  checkBox2
             // 
             this.checkBox2.AutoSize = true;
             this.checkBox2.Location = new System.Drawing.Point(87, 116);
-            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Name = "ThreePlayerOption";
             this.checkBox2.Size = new System.Drawing.Size(89, 21);
             this.checkBox2.TabIndex = 10;
             this.checkBox2.Text = "3 Players";
             this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.Playeroption);
             // 
-            // checkBox3
+            // FourPlayerOption  checkBox3
             // 
             this.checkBox3.AutoSize = true;
             this.checkBox3.Location = new System.Drawing.Point(87, 168);
-            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Name = "FourPlayerOption";
             this.checkBox3.Size = new System.Drawing.Size(89, 21);
             this.checkBox3.TabIndex = 11;
             this.checkBox3.Text = "4 Players";
             this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkBox3.CheckedChanged += new System.EventHandler(this.Playeroption);
             // 
-            // checkBox4
+            // RandomCardOption  checkBox4
             // 
             this.checkBox4.AutoSize = true;
             this.checkBox4.Location = new System.Drawing.Point(471, 68);
-            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Name = "RandomCardOption";
             this.checkBox4.Size = new System.Drawing.Size(83, 21);
             this.checkBox4.TabIndex = 12;
             this.checkBox4.Text = "Random";
             this.checkBox4.UseVisualStyleBackColor = true;
             this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
             // 
-            // checkBox5
+            // SelectCardOption  checkBox5
             // 
             this.checkBox5.AutoSize = true;
             this.checkBox5.Location = new System.Drawing.Point(471, 116);
-            this.checkBox5.Name = "checkBox5";
+            this.checkBox5.Name = "SelectCardOption";
             this.checkBox5.Size = new System.Drawing.Size(69, 21);
             this.checkBox5.TabIndex = 13;
             this.checkBox5.Text = "Select";
             this.checkBox5.UseVisualStyleBackColor = true;
             // 
-            // checkBox6
+            // RandomAndModifyCardOption  checkBox6
             // 
             this.checkBox6.AutoSize = true;
             this.checkBox6.Location = new System.Drawing.Point(471, 168);
-            this.checkBox6.Name = "checkBox6";
+            this.checkBox6.Name = "RandomAndModifyCardOption";
             this.checkBox6.Size = new System.Drawing.Size(156, 21);
             this.checkBox6.TabIndex = 14;
             this.checkBox6.Text = "Random and Modify";
