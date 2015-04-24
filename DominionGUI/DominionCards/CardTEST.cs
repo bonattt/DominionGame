@@ -12,15 +12,21 @@ namespace DominionCards
     class CardTEST
     {
         [Test()]
-<<<<<<< HEAD
-=======
         public void aTempTestWoodcutter()
         {
             Card c = new KingdomCards.Woodcutter();
             Player p = new HumanPlayer();
             c.play(p);
         }
-
+        [Test()]
+        public void testThatCardsWorkInDictionaries()
+        {
+            Dictionary<Card, int> dict = new Dictionary<Card, int>();
+            dict.Add(new KingdomCards.Copper(), 1);
+            dict.Add(new KingdomCards.Village(), 2);
+            Assert.AreEqual(1, dict[new KingdomCards.Copper()]);
+            Assert.AreEqual(2, dict[new KingdomCards.Village()]);
+        }
         [Test()]
         public void testThatAdventurerDoesThing()
         {
@@ -33,13 +39,11 @@ namespace DominionCards
             Assert.AreEqual(count + 2, p.getHand().Count);
         }
         [Test()]
->>>>>>> origin/Morgan
         public void testTreasureReturnsNoVP()
         {
             Card c = new KingdomCards.Silver();
             Assert.AreEqual(0, c.getVictoryPoints());
         }
-
         [Test()]
         public void testLibrary()
         {
@@ -56,7 +60,6 @@ namespace DominionCards
             Card c = new KingdomCards.Village();
             Assert.AreEqual(0, c.getVictoryPoints());
         }
-
         [Test()]
         public void testMoneyLenderAddsSpendPoints()
         {
@@ -67,8 +70,6 @@ namespace DominionCards
             int buys = p.buysLeft();
             c.play(p);
             Assert.AreEqual(buys + 3, p.buysLeft());
-
-
         }
         [Test()]
         public void testVictoryReturnsVP()
@@ -76,6 +77,25 @@ namespace DominionCards
             Card c = new KingdomCards.Estate();
             Assert.AreEqual(1, c.getVictoryPoints());
         }
+        [Test()]
+        public void testCardEquals()
+        {
+            Card copper = new KingdomCards.Copper();
+            Card village = new KingdomCards.Village();
+            Card smithy = new KingdomCards.Smithy();
+            
+            Assert.AreNotEqual(copper, smithy);
+            Assert.AreNotEqual(copper, village);
+            Assert.AreNotEqual(village, smithy);
+            Assert.AreNotEqual(smithy, copper);
+            Assert.AreNotEqual(village, copper);
+            Assert.AreNotEqual(smithy, village);
+
+            Assert.AreEqual(copper, new KingdomCards.Copper());
+            Assert.AreEqual(village, new KingdomCards.Village());
+            Assert.AreEqual(smithy, new KingdomCards.Smithy());
+        }
+
         /*[Test()]
         public void testGetPriceVictoryCard()
         {

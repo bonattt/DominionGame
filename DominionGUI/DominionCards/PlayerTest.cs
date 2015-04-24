@@ -14,17 +14,93 @@ namespace DominionCards
     class PlayerTest
     {
         [Test()]
-        public void aHashMapWork()
+        public void TestFiveCardsDrawnEvenIfDeckEmpty()
         {
-            Dictionary<Card, int> dict1 = new Dictionary<Card, int>();
-
-            dict1.Add(new KingdomCards.Adventurer(), 1);
-            dict1.Add(new KingdomCards.Village(), 2);
-            dict1.Add(new KingdomCards.Copper(), 3);
-
-            Assert.AreEqual(1, dict1[new KingdomCards.Adventurer()]);
-            Assert.AreEqual(2, dict1[new KingdomCards.Village()]);
-            Assert.AreEqual(3, dict1[new KingdomCards.Copper()]);
+            Player p = new HumanPlayer();
+            Stack<Card> deck = p.getDeck();
+            ArrayList newDiscard = new ArrayList();
+            while (deck.Count > 0)
+            {
+                newDiscard.Add(deck.Pop());
+            }
+            p.setDiscard(newDiscard);
+            p.drawHand();
+            Assert.AreEqual(5, p.getHand().Count);
+        }
+        [Test()]
+        public void DeckShufflesWhenHandDrawnFromTooSmallDeck_FiveCardsDrawn()
+        {
+            Player p = new HumanPlayer();
+            Stack<Card> deck = p.getDeck();
+            ArrayList newDiscard = new ArrayList();
+            while (deck.Count > 2)
+            {
+                newDiscard.Add(deck.Pop());
+            }
+            p.setDiscard(newDiscard);
+            p.drawHand();
+            Assert.AreEqual(5, p.getHand().Count);
+        }
+        [Test()]
+        public void DeckShufflesWhenHandDrawnFromTooSmallDeck_DiscardEmpty()
+        {
+            Player p = new HumanPlayer();
+            Stack<Card> deck = p.getDeck();
+            ArrayList newDiscard = new ArrayList();
+            while (deck.Count > 2)
+            {
+                newDiscard.Add(deck.Pop());
+            }
+            p.setDiscard(newDiscard);
+            p.drawHand();
+            Assert.AreEqual(0, p.getDiscard().Count);
+        }
+        [Test()]
+        public void DeckShufflesWhenHandDrawnFromTooSmallDeck_DeckHasCorrectNumbCards()
+        {
+            Player p = new HumanPlayer();
+            Stack<Card> deck = p.getDeck();
+            ArrayList newDiscard = new ArrayList();
+            while (deck.Count > 2)
+            {
+                newDiscard.Add(deck.Pop());
+            }
+            p.setDiscard(newDiscard);
+            int discardCount = newDiscard.Count;
+            int deckCount = p.getDeck().Count;
+            int expectedShuffledDeckSize = discardCount - 5 + deckCount;
+            p.drawHand();
+            Assert.AreEqual(expectedShuffledDeckSize, p.getDeck().Count);
+        }
+        [Test()]
+        public void testDiscardGoesToDeckWhenCardIsDrawnAndDeckIsEmpty()
+        {
+            Player p = new HumanPlayer();
+            Stack<Card> deck = p.getDeck();
+            ArrayList newDiscard = new ArrayList();
+            while (deck.Count > 0)
+            {
+                newDiscard.Add(deck.Pop());
+            }
+            p.setDiscard(newDiscard);
+            int discardSize = newDiscard.Count;
+            p.drawCard();
+            Assert.AreEqual(discardSize - 1, p.getDeck().Count);
+        }
+        [Test()]
+        public void testDiscardGoesAwayWhenDeckIsShuffledDrawingCards()
+        {
+            Player p = new HumanPlayer();
+            Stack<Card> deck = p.getDeck();
+            ArrayList newDiscard = new ArrayList();
+            while (deck.Count > 0)
+            {
+                newDiscard.Add(deck.Pop());
+            }
+            p.setDiscard(newDiscard);
+            int discardSize = newDiscard.Count;
+            p.drawCard();
+            Assert.AreEqual(0, p.getDiscard().Count);
         }
         [Test()]
         public void testDrawHandDiscardsOldHand()
@@ -333,30 +409,26 @@ namespace DominionCards
         [Test()]
         public void testShuffledDeckContainsSameCards()
         {
-            ArrayList list = new ArrayList();
-            Stack<Card> shuffledDeck;
-            for (int i = 0; i < 7; i++)
-            {
-                list.Add(new KingdomCards.Copper());
-            }
-            Dictionary<int, int> cardCount;
-            Dictionary<int, int> expect = new Dictionary<int,int>();
+            Stack<Card> deck = new Stack<Card>();
+            Dictionary<int, int> count;
+            Dictionary<int, int> expct = new Dictionary<int, int>();
 
-            expect.Add(new KingdomCards.Copper().getID(), 7);
-            shuffledDeck = (Stack<Card>) Player.Shuffle(list);
-            cardCount = countCards(shuffledDeck);
-            CollectionAssert.AreEqual(expect, cardCount);
+            deck.Push(new KingdomCards.Copper());
+            deck.Push(new KingdomCards.Copper());
+            deck.Push(new KingdomCards.Copper());
+            deck.Push(new KingdomCards.Village());
+            deck.Push(new KingdomCards.Village());
+            deck.Push(new KingdomCards.Smithy());
 
-            for (int i = 0; i < 3; i++)
-            {
-                list.Add(new KingdomCards.Estate());
-            }
-            expect.Add(new KingdomCards.Estate().getID(), 3);
-            shuffledDeck = (Stack<Card>) Player.Shuffle(list);
-            cardCount = countCards(shuffledDeck);
-            CollectionAssert.AreEqual(expect, cardCount);
+            count = countCards(deck);
+            expct.Add(new KingdomCards.Copper().getID(), 3);
+            expct.Add(new KingdomCards.Village().getID(), 2);
+            expct.Add(new KingdomCards.Smithy().getID(), 1);
+
+            CollectionAssert.AreEqual(expct, count);
         }
         private static void CompareCounts(Dictionary<Card, int> expect, Dictionary<Card, int> cardCount)
+// TODO MARKED FOR DEMOLITION
         {
             foreach (KeyValuePair<Card, int> entry in expect)
             {

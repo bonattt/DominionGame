@@ -15,7 +15,7 @@ namespace DominionCards
         private ArrayList discard = new ArrayList();
         private Stack<Card> attack = new Stack<Card>();
         private String name;
-        private int actions, buys, money;
+        public int actions, buys, money; // TODO set this to public temporarily so code would compile. 
         public Player()
         {
             for (int i = 0; i < 3; i++)
@@ -32,8 +32,7 @@ namespace DominionCards
         {
             if (deck.Count == 0)
             {
-                // deck = suffle(discard);
-                discard.Clear();
+                deck = Shuffle(discard);
             }
             return deck.Pop();
         }
@@ -197,6 +196,7 @@ namespace DominionCards
             Stack<Card> newDeck; // = new Stack<Card>();
             Stack temp = GenerateRandom.SuffleDeck(discard);
             newDeck = ConvertStackToCardStack(temp);
+            discard.Clear();
             return newDeck;
         }
 
