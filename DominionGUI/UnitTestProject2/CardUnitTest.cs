@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace UnitTestProject2
 {
     [TestClass]
-    public class cardTEST
+    public class CardUnitTest
     {
         [TestMethod]
         public void aTempTestWoodcutter()
