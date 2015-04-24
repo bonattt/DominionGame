@@ -13,10 +13,5 @@ namespace DominionCards.KingdomCards
         {
             //todo - will treat as an attack
         }
-
-        public void textEffect()
-        {
-            //todo
-        }
     }
 }
