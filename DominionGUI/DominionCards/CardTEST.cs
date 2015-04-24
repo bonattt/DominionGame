@@ -23,8 +23,11 @@ namespace DominionCards
         {
             Card c = new KingdomCards.Adventurer();
             Player p = new HumanPlayer();
+            p.addCardToHand(c);
+            p.drawHand();
+            int count = p.getHand().Count;
             c.play(p);
-            Assert.AreEqual(7, p.getHand().Count);
+            Assert.AreEqual(count + 2, p.getHand().Count);
         }
         [Test()]
         public void testTreasureReturnsNoVP()

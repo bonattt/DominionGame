@@ -15,10 +15,21 @@ namespace DominionCards.KingdomCards
         }
         public override void play(Player player)
         {
-            player.drawHand();
-            player.addCardToHand(new Woodcutter());
-            player.addCardToHand(new Woodcutter());
-            Console.WriteLine(player.getHand().Count);
+            int cardsAdded = 0;
+            while (cardsAdded != 2)
+            {
+                Card c = player.getDeck().Pop();
+                if (c.getID() == 0 || c.getID() == 1 || c.getID() == 2)
+                {
+                    player.addCardToHand(c);
+                    cardsAdded++;
+                    
+                }
+                else
+                {
+                    player.getDiscard().Add(c);
+                }
+            }
 
         }
     }
