@@ -88,20 +88,6 @@ namespace DominionCards
             Assert.AreEqual(discardSize - 1, p.getDeck().Count);
         }
         [Test()]
-        public void HandGetsOneCardWhenCardIsDrawnIfDeckIsEmpty()
-        {
-            Player p = new HumanPlayer();
-            Stack<Card> deck = p.getDeck();
-            ArrayList newDiscard = new ArrayList();
-            while (deck.Count > 0)
-            {
-                newDiscard.Add(deck.Pop());
-            }
-            p.setDiscard(newDiscard);
-            p.drawCard();
-            Assert.AreEqual(1, p.getHand().Count);
-        }
-        [Test()]
         public void testDiscardGoesAwayWhenDeckIsShuffledDrawingCards()
         {
             Player p = new HumanPlayer();
