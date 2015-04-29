@@ -15,7 +15,7 @@ namespace DominionCards
         private ArrayList hand = new ArrayList();
         private ArrayList discard = new ArrayList();
         private Stack<Card> attack = new Stack<Card>();
-        private String name;
+
         public int actions, buys, money; // TODO set this to public temporarily so code would compile. 
         public Player()
         {
@@ -100,10 +100,6 @@ namespace DominionCards
         public Stack<Card> getAttacks()
         {
             return attack;
-        }
-        public String getName()
-        {
-            return name;
         }
         public int actionsLeft()
         {
