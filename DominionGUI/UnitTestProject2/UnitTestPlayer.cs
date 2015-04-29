@@ -502,6 +502,36 @@ namespace UnitTestProject2
         }
 
         [TestMethod]
+        public void testBuyLowersNumBuysWithEnoughMoney()
+        {
+            Player p1 = new HumanPlayer();
+            int originalBuys = p1.buysLeft();
+            Card purchase = new Laboratory();  //5
+            ArrayList tempHand = new ArrayList();
+            Card gold1 = new Gold();
+            Card gold2 = new Gold();
+            tempHand.Add(gold1);
+            tempHand.Add(gold2);
+            p1.setHand(tempHand);
+            p1.playCard(gold1); //this makes it so that you have enough money to buy the card
+            p1.playCard(gold2); //same
+            p1.buyCard(purchase);
+            int buysAfter = p1.buysLeft();
+            Assert.AreEqual((originalBuys - 1), buysAfter);
+        }
+
+        [TestMethod]
+        public void testBuyLowersNumBuysNotEnoughMoney()
+        {
+            Player p1 = new HumanPlayer();
+            int originalBuys = p1.buysLeft();
+            Card purchase = new Laboratory();  //5
+            p1.buyCard(purchase);
+            int buysAfter = p1.buysLeft();
+            Assert.AreEqual(originalBuys, buysAfter);
+        }
+
+        [TestMethod]
         public void buyingExpensiveCardTakesMoneyFromPlayer()
         {
             Player p1 = new HumanPlayer();
