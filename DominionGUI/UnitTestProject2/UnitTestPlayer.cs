@@ -502,6 +502,84 @@ namespace UnitTestProject2
         }
 
         [TestMethod]
+        public void buyingExpensiveCardTakesMoneyFromPlayer()
+        {
+            Player p1 = new HumanPlayer();
+            Card purchase = new Laboratory();  //5
+            ArrayList tempHand = new ArrayList();
+            tempHand.Add(new Gold());
+            tempHand.Add(new Gold());
+            tempHand.Add(new Gold());
+            tempHand.Add(new Gold());
+            tempHand.Add(new Gold());
+            p1.setHand(tempHand);
+            p1.playCard(new Gold()); //this makes it so that you have enough money to buy the card
+            p1.playCard(new Gold()); //same
+            int moneyBefore = p1.moneyLeft();
+            int cost = purchase.getPrice();
+            p1.buyCard(purchase);
+            Assert.AreEqual((moneyBefore - cost), p1.moneyLeft());
+
+            
+        }
+        [TestMethod]
+        public void buyingCheapCardTakesMoneyFromPlayer()
+        {
+            Player p1 = new HumanPlayer();
+            Card purchase = new Estate();  //2
+            ArrayList tempHand = new ArrayList();
+            tempHand.Add(new Gold());
+            tempHand.Add(new Gold());
+            tempHand.Add(new Gold());
+            tempHand.Add(new Gold());
+            tempHand.Add(new Gold());
+            p1.setHand(tempHand);
+            p1.playCard(new Gold()); //this makes it so that you have enough money to buy the card
+            p1.playCard(new Gold()); //same
+            int moneyBefore = p1.moneyLeft();
+            int cost = purchase.getPrice();
+            p1.buyCard(purchase);
+            Assert.AreEqual((moneyBefore - cost), p1.moneyLeft());
+        }
+
+        [TestMethod]
+        public void testIfUserHasTooLittleMoney()
+        {
+            Player p1 = new HumanPlayer();
+            Card purchase = new Laboratory();  //5
+            Assert.IsFalse(p1.buyCard(purchase));            
+        }
+
+
+        [TestMethod]
+        public void testIfUserHasEnoughMoney()
+        {
+            Player p1 = new HumanPlayer();
+            Card purchase = new Laboratory();  //5
+            ArrayList tempHand = new ArrayList();
+            tempHand.Add(new Gold());
+            tempHand.Add(new Gold());
+            tempHand.Add(new Gold());
+            tempHand.Add(new Gold());
+            tempHand.Add(new Gold());
+            p1.setHand(tempHand);
+            p1.playCard(new Gold()); //this makes it so that you have enough money to buy the card
+            p1.playCard(new Gold()); //same
+            Assert.IsTrue(p1.buyCard(purchase));
+                     
+        }
+
+        [TestMethod]
+        public void cardNotAddedWithNotEnoughMoney()
+        {
+            Player p1 = new HumanPlayer();
+            Card purchase = new Laboratory();
+            int discardSize = p1.getDiscard().Count;
+            p1.buyCard(purchase);
+            Assert.AreEqual(discardSize, p1.getDiscard().Count);
+        }
+
+        [TestMethod]
         public void addCardToHand()
         {
             Player p1 = new HumanPlayer();

@@ -114,11 +114,12 @@ namespace DominionCards
             return money;
         }
 
-        public void buyCard(Card card)
+        public bool buyCard(Card card)
         {
             discard.Add(card);
             buys--;
             //todo modify money spent/verify that user has enough money to buy the card
+            return true;
         }
 
         public void addCardToHand(Card card)
