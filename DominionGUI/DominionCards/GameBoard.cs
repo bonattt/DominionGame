@@ -13,6 +13,7 @@ namespace DominionCards
         public GameBoard(Dictionary<Card, int> cards)
         {
             this.cards = cards;
+            turnOrder = new Queue<Player>();
         }
         public GameBoard(Dictionary<Card, int> cards, Queue<Player> turnOrder)
         {
@@ -39,7 +40,13 @@ namespace DominionCards
         }
         public Boolean AddPlayer(Player p)
         {
-            return false;
+            if (turnOrder.Contains(p))
+            {
+                Console.WriteLine("that player has already been added!");
+                return false;
+            }
+            turnOrder.Enqueue(p);
+            return true;
         }
     }
 }

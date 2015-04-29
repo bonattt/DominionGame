@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DominionCards;
+using System.Collections.Generic;
 
 namespace UnitTestProject2
 {
@@ -15,7 +16,8 @@ namespace UnitTestProject2
         [TestMethod]
         public void TestAddPlayerAddsAPlayer()
         {
-            GameBoard board = new GameBoard(null);
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            GameBoard board = new GameBoard(cards);
             Player p1 = new HumanPlayer(1);
             board.AddPlayer(p1);
             Assert.AreSame(p1, board.NextPlayer());
@@ -23,14 +25,16 @@ namespace UnitTestProject2
         [TestMethod]
         public void TestAddPlayerReturnsTrueWhenPlayerAdded()
         {
-            GameBoard board = new GameBoard(null);
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            GameBoard board = new GameBoard(cards);
             Player p1 = new HumanPlayer(1);
             Assert.IsTrue(board.AddPlayer(p1));
         }
         [TestMethod]
         public void TestAddPlayerReturnsFalseWhenPlayerAlreadyInQueue()
         {
-            GameBoard board = new GameBoard(null);
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            GameBoard board = new GameBoard(cards);
             Player p1 = new HumanPlayer(1);
             board.AddPlayer(p1);
             Assert.IsFalse(board.AddPlayer(p1));
