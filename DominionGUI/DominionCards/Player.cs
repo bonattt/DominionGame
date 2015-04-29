@@ -116,10 +116,15 @@ namespace DominionCards
 
         public bool buyCard(Card card)
         {
-            discard.Add(card);
-            buys--;
-            //todo modify money spent/verify that user has enough money to buy the card
-            return true;
+            if (this.money < card.getPrice())
+            {
+                return false;
+            }
+                  discard.Add(card);
+                buys--;
+                this.money -= card.getPrice();
+                return true;
+            
         }
 
         public void addCardToHand(Card card)

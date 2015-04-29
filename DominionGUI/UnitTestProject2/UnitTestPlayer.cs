@@ -493,12 +493,12 @@ namespace UnitTestProject2
         public void buyingAddsCardToDiscard()
         {
             Player p1 = new HumanPlayer();
-            p1.setDiscard(new ArrayList());
             ArrayList discard = new ArrayList();
+            p1.setDiscard(discard);
             Card laboratory = new Laboratory();
-            discard.Add(laboratory);
+            int discardSize = discard.Count;
             p1.buyCard(laboratory);
-            Assert.AreEqual(discard, p1.getDiscard());
+            Assert.AreEqual(discardSize, p1.getDiscard().Count);
         }
 
         [TestMethod]
@@ -507,14 +507,13 @@ namespace UnitTestProject2
             Player p1 = new HumanPlayer();
             Card purchase = new Laboratory();  //5
             ArrayList tempHand = new ArrayList();
-            tempHand.Add(new Gold());
-            tempHand.Add(new Gold());
-            tempHand.Add(new Gold());
-            tempHand.Add(new Gold());
-            tempHand.Add(new Gold());
+            Card gold1 = new Gold();
+            Card gold2 = new Gold();
+            tempHand.Add(gold1);
+            tempHand.Add(gold2);
             p1.setHand(tempHand);
-            p1.playCard(new Gold()); //this makes it so that you have enough money to buy the card
-            p1.playCard(new Gold()); //same
+            p1.playCard(gold1); //this makes it so that you have enough money to buy the card
+            p1.playCard(gold2); //same
             int moneyBefore = p1.moneyLeft();
             int cost = purchase.getPrice();
             p1.buyCard(purchase);
@@ -528,14 +527,13 @@ namespace UnitTestProject2
             Player p1 = new HumanPlayer();
             Card purchase = new Estate();  //2
             ArrayList tempHand = new ArrayList();
-            tempHand.Add(new Gold());
-            tempHand.Add(new Gold());
-            tempHand.Add(new Gold());
-            tempHand.Add(new Gold());
-            tempHand.Add(new Gold());
+            Card gold1 = new Gold();
+            Card gold2 = new Gold();
+            tempHand.Add(gold1);
+            tempHand.Add(gold2);
             p1.setHand(tempHand);
-            p1.playCard(new Gold()); //this makes it so that you have enough money to buy the card
-            p1.playCard(new Gold()); //same
+            p1.playCard(gold1); //this makes it so that you have enough money to buy the card
+            p1.playCard(gold2); //same
             int moneyBefore = p1.moneyLeft();
             int cost = purchase.getPrice();
             p1.buyCard(purchase);
@@ -557,14 +555,13 @@ namespace UnitTestProject2
             Player p1 = new HumanPlayer();
             Card purchase = new Laboratory();  //5
             ArrayList tempHand = new ArrayList();
-            tempHand.Add(new Gold());
-            tempHand.Add(new Gold());
-            tempHand.Add(new Gold());
-            tempHand.Add(new Gold());
-            tempHand.Add(new Gold());
+            Card gold1 = new Gold();
+            Card gold2 = new Gold();
+            tempHand.Add(gold1);
+            tempHand.Add(gold2);
             p1.setHand(tempHand);
-            p1.playCard(new Gold()); //this makes it so that you have enough money to buy the card
-            p1.playCard(new Gold()); //same
+            p1.playCard(gold1); //this makes it so that you have enough money to buy the card
+            p1.playCard(gold2); //same
             Assert.IsTrue(p1.buyCard(purchase));
                      
         }
