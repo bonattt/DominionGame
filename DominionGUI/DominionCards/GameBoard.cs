@@ -36,7 +36,9 @@ namespace DominionCards
 
         public Player NextPlayer()
         {
-            return null;
+            Player nextPlayer = turnOrder.Dequeue();
+            turnOrder.Enqueue(nextPlayer);
+            return nextPlayer;
         }
         public Boolean AddPlayer(Player p)
         {
