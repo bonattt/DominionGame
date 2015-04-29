@@ -11,7 +11,22 @@ namespace UnitTestProject2
         [TestMethod]
         public void TestTurnOrderDoesNotChange()
         {
-            Assert.Fail("test not implemented");
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            GameBoard board = new GameBoard(cards);
+
+            Player p1 = new HumanPlayer(1);
+            board.AddPlayer(p1);
+            Player p2 = new HumanPlayer(1);
+            board.AddPlayer(p2);
+            Player p3 = new HumanPlayer(1);
+            board.AddPlayer(p3);
+            Player p4 = new HumanPlayer(1);
+            board.AddPlayer(p4);
+
+            Assert.AreSame(p1, board.NextPlayer());
+            Assert.AreSame(p2, board.NextPlayer());
+            Assert.AreSame(p3, board.NextPlayer());
+            Assert.AreSame(p4, board.NextPlayer());
         }
         [TestMethod]
         public void TestAddPlayerAddsAPlayer()
