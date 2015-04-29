@@ -10,6 +10,7 @@ namespace DominionCards
 {
     public abstract class Player
     {
+        private int number;
         private Stack<Card> deck = new Stack<Card>();
         private ArrayList hand = new ArrayList();
         private ArrayList discard = new ArrayList();
@@ -27,6 +28,14 @@ namespace DominionCards
                 deck.Push(new KingdomCards.Copper());
             }
             // TODO shuffle the deck
+        }
+        public void setNumber(int numb)
+        {
+            number = numb;
+        }
+        public int getNumber()
+        {
+            return number;
         }
         public Card drawCard()
         {

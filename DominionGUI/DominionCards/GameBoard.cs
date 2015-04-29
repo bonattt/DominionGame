@@ -28,5 +28,20 @@ namespace DominionCards
         {
             return cards.Count;
         }
+
+        public Player NextPlayer()
+        {
+            return null;
+        }
+        public Boolean AddPlayer(Player p)
+        {
+            if (turnOrder.Contains(p))
+            {
+                Console.WriteLine("that player has already been added!");
+                return false;
+            }
+            turnOrder.Enqueue(p);
+            return true;
+        }
     }
 }
