@@ -490,7 +490,7 @@ namespace UnitTestProject2
         }
 
         [TestMethod]
-        public void buyingACard()
+        public void buyingAddsCardToDiscard()
         {
             Player p1 = new HumanPlayer();
             p1.setDiscard(new ArrayList());
@@ -498,7 +498,7 @@ namespace UnitTestProject2
             Card laboratory = new Laboratory();
             discard.Add(laboratory);
             p1.buyCard(laboratory);
-            Assert.AreEqual(discard, p1.getDeck());
+            Assert.AreEqual(discard, p1.getDiscard());
         }
 
         [TestMethod]
