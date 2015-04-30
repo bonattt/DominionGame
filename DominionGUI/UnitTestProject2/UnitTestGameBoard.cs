@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DominionCards;
 using System.Collections.Generic;
+using Rhino.Mocks;
 
 namespace UnitTestProject2
 {
@@ -53,6 +54,13 @@ namespace UnitTestProject2
             Player p1 = new HumanPlayer(1);
             board.AddPlayer(p1);
             Assert.IsFalse(board.AddPlayer(p1));
+        }
+        [TestMethod]
+        public void TestTurnOrderUsingMocks()
+        {
+            MockRepository mocks = new MockRepository();
+            Player fakePlayer1 = mocks.StrictMock<Player>();
+
         }
     }
 }

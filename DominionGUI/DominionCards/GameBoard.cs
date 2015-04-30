@@ -46,5 +46,13 @@ namespace DominionCards
             turnOrder.Enqueue(p);
             return true;
         }
+        public void PlayGame()
+        {
+            // TODO make this work
+        }
+        public bool GameIsOver()
+        {
+            return true;
+        }
     }
 }
