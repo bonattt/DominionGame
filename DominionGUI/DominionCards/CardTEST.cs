@@ -11,6 +11,8 @@ namespace DominionCards
     [TestFixture()]
     class CardTEST
     {
+        /*
+        [Test()]
         public void testThatCardsWorkInDictionaries()
         {
             Dictionary<Card, int> dict = new Dictionary<Card, int>();

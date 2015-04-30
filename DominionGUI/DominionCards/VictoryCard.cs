@@ -21,13 +21,5 @@ namespace DominionCards
         {
             // TODO implement this
         }
-        public override void addToDeck()
-        {
-            // TODO implement this
-        }
-        public override void trash()
-        {
-            // TODO implement this
-        }
     }
 }

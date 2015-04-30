@@ -13,6 +13,7 @@ namespace DominionCards
     [TestFixture()]
     class PlayerTest
     {
+        /*
         [Test()]
         public void TestFiveCardsDrawnEvenIfDeckEmpty()
         {
@@ -568,5 +569,6 @@ namespace DominionCards
             }
             return count;
         }
+         */
     }
 }

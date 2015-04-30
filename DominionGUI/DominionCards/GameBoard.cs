@@ -25,18 +25,9 @@ namespace DominionCards
             cards.Add(c, 10);
         }
 
-        public Queue<Player> getPlayerQueue()
-        {
-            return turnOrder;
-        }
         public int getCardsLeft(Card c)
         {
             return cards[c];
-        }
-
-        public int size()
-        {
-            return cards.Count;
         }
 
         public Player NextPlayer()
