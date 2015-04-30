@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DominionCards;
+using DominionCards.KingdomCards;
 using System.Collections.Generic;
 using Rhino.Mocks;
 
@@ -59,8 +60,26 @@ namespace UnitTestProject2
         public void TestTurnOrderUsingMocks()
         {
             MockRepository mocks = new MockRepository();
-            Player fakePlayer1 = mocks.StrictMock<Player>();
+            Player p1 = mocks.StrictMock<Player>();
+            Player p2 = mocks.StrictMock<Player>();
+            Dictionary<Card, int> cards = GetTestDeck();
+            GameBoard board = new GameBoard(cards);
+        }
 
+        private static Dictionary<Card, int> GetTestDeck()
+        {
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            cards[new Cellar()] = 10;
+            cards[new Moat()] = 10;
+            cards[new Woodcutter()] = 10;
+            cards[new Village()] = 10;
+            cards[new Militia()] = 10;
+            cards[new Mine()] = 10;
+            cards[new Remodel()] = 10;
+            cards[new Feast()] = 10;
+            cards[new Workshop()] = 10;
+            cards[new Market()] = 10;
+            return cards;
         }
     }
 }
