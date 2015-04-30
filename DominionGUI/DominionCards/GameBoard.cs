@@ -48,17 +48,17 @@ namespace DominionCards
         }
         public void PlayGame()
         {
-            int testingCutOffCounter = 0;
+//            int testingCutOffCounter = 0;
             while (!GameIsOver())
             {
                 NextPlayer().TakeTurn();
-                if (testingCutOffCounter++ >= 20)
-                {
-                    break;
-                }
+//                if (testingCutOffCounter++ >= 20)
+//                {
+//                    break;
+//                }
             }
         }
-        public bool GameIsOver()
+        public virtual bool GameIsOver()
         {
             return false;
         }

@@ -60,24 +60,27 @@ namespace UnitTestProject2
         public void TestTurnOrderUsingMocks()
         {
             MockRepository mocks = new MockRepository();
+            GameBoard fakeBoard = mocks.DynamicMock<GameBoard>();
             Player p1 = mocks.DynamicMock<Player>();
             Player p2 = mocks.DynamicMock<Player>();
             Dictionary<Card, int> cards = GetTestDeck();
-
+            
             using (mocks.Ordered())
             {
+                fakeBoard.PlayGame();
                 for (int i = 0; i < 10; i++)
                 {
                     p1.TakeTurn();
                     p2.TakeTurn();
                 }
             }
+            Expect.Call(fakeBoard.AddPlayer(p1)).CallOriginalMethod();
+            Expect.Call(fakeBoard.AddPlayer(p2)).CallOriginalMethod();
+            Expect.Call((()=>fakeBoard.PlayGame())).CallOriginalMethod();
+            Expect.Call(fakeBoard.GameIsOver()).Repeat.Times(20).Return(false);
+            Expect.Call(fakeBoard.GameIsOver()).Return(true);
             mocks.ReplayAll();
-            GameBoard board = new GameBoard(cards);
-            board.AddPlayer(p1);
-            board.AddPlayer(p2);
-            Console.WriteLine("about to PlayGame");
-            board.PlayGame();
+            fakeBoard.PlayGame();
             mocks.VerifyAll();
         }
 
