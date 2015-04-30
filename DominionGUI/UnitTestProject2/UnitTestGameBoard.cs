@@ -60,10 +60,24 @@ namespace UnitTestProject2
         public void TestTurnOrderUsingMocks()
         {
             MockRepository mocks = new MockRepository();
-            Player p1 = mocks.StrictMock<Player>();
-            Player p2 = mocks.StrictMock<Player>();
+            Player p1 = mocks.DynamicMock<Player>();
+            Player p2 = mocks.DynamicMock<Player>();
             Dictionary<Card, int> cards = GetTestDeck();
+
+            using (mocks.Ordered())
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    p1.TakeTurn();
+                    p2.TakeTurn();
+                }
+            }
+            mocks.ReplayAll();
             GameBoard board = new GameBoard(cards);
+            board.AddPlayer(p1);
+            board.AddPlayer(p2);
+            board.PlayGame();
+            mocks.VerifyAll();
         }
 
         private static Dictionary<Card, int> GetTestDeck()

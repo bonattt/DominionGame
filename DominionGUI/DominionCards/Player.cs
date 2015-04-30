@@ -220,5 +220,9 @@ namespace DominionCards
             }
             return deck;
         }
+        public void TakeTurn()
+        {
+            // TODO implement this method.
+        }
     }
 }
