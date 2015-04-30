@@ -76,6 +76,7 @@ namespace UnitTestProject2
             GameBoard board = new GameBoard(cards);
             board.AddPlayer(p1);
             board.AddPlayer(p2);
+            Console.WriteLine("about to PlayGame");
             board.PlayGame();
             mocks.VerifyAll();
         }
