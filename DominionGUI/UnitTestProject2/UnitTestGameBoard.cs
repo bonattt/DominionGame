@@ -85,8 +85,8 @@ namespace UnitTestProject2
                 fakeBoard.PlayGame();
                 for (int i = 0; i < 10; i++)
                 {
-                    p1.TakeTurn();
-                    p2.TakeTurn();
+                    p1.TakeTurn(fakeBoard);
+                    p2.TakeTurn(fakeBoard);
                 }
             }
             Expect.Call(fakeBoard.AddPlayer(p1)).CallOriginalMethod();
@@ -129,25 +129,33 @@ namespace UnitTestProject2
         public void IntegrationTestPlayGameAndGameIsOverUsingCustomPlayerMock()
         {
             MockRepository mocks = new MockRepository();
-            GameBoard fakeBoard = mocks.DynamicMock<GameBoard>();
-            Player p1 = mocks.DynamicMock<Player>();
-            Player p2 = mocks.DynamicMock<Player>();
             Dictionary<Card, int> cards = GetTestCards();
+            GameBoard board = new GameBoard(cards);
+            Player p1 = new SpecialPlayerMock();
+            Player p2 = new SpecialPlayerMock();
+            Player p3 = new SpecialPlayerMock();
 
-            // private mock of player implemented to take a province every turn.
-            private class PlayerMock {
-                public PlayerMock()
-                {
-                    // do nothing
-                }
-                public override void TakeTurn(GameBoard board)
-                {
-                    board.GetCards()[new Province()] -= 1;
-                }
+            board.AddPlayer(p1);
+            board.AddPlayer(p2);
+            board.AddPlayer(p3);
+            board.PlayGame();
 
+            Assert.AreEqual(4, ((SpecialPlayerMock)p1).numbTimesCalled);
+            Assert.AreEqual(3, ((SpecialPlayerMock)p2).numbTimesCalled);
+            Assert.AreEqual(3, ((SpecialPlayerMock)p3).numbTimesCalled);
+        }
+        public class SpecialPlayerMock : HumanPlayer
+        {
+            public int numbTimesCalled;
+            public SpecialPlayerMock() : base()
+            {
+                numbTimesCalled = 0;
+            }
+            public override void TakeTurn(GameBoard board)
+            {
+                numbTimesCalled++;
+                board.GetCards()[new Province()] -= 1;
             }
         }
-
-
     }
 }
