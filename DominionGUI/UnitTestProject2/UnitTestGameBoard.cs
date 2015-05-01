@@ -63,7 +63,7 @@ namespace UnitTestProject2
             GameBoard fakeBoard = mocks.DynamicMock<GameBoard>();
             Player p1 = mocks.DynamicMock<Player>();
             Player p2 = mocks.DynamicMock<Player>();
-            Dictionary<Card, int> cards = GetTestDeck();
+            Dictionary<Card, int> cards = GetTestCards();
             
             using (mocks.Ordered())
             {
@@ -83,8 +83,35 @@ namespace UnitTestProject2
             fakeBoard.PlayGame();
             mocks.VerifyAll();
         }
+        [TestMethod]
+        public void TestGameEndsTrueWhenProvincesRunOut()
+        {
+            Dictionary<Card, int> cards = GetTestCards();
+            GameBoard board = new GameBoard(cards);
+            cards[new Province()] = 0;
+            Assert.IsTrue(board.GameIsOver());
+        }
+        [TestMethod]
+        public void TestGameEndsTrueWhenThreePilesRunOut()
+        {
+            Dictionary<Card, int> cards = GetTestCards();
+            GameBoard board = new GameBoard(cards);
+            cards[new Cellar()] = 0;
+            cards[new Moat()] = 0;
+            cards[new Woodcutter()] = 0;
+            Assert.IsTrue(board.GameIsOver());
+        }
+        [TestMethod]
+        public void TestEndsFalseIfOnlyTwoStacksEmpty()
+        {
+            Dictionary<Card, int> cards = GetTestCards();
+            GameBoard board = new GameBoard(cards);
+            cards[new Cellar()] = 0;
+            cards[new Estate()] = 0;
+            Assert.IsFalse(board.GameIsOver());
+        }
 
-        private static Dictionary<Card, int> GetTestDeck()
+        private static Dictionary<Card, int> GetTestCards()
         {
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
             cards[new Cellar()] = 10;

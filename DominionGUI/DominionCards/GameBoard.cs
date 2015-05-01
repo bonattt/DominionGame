@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DominionCards.KingdomCards;
 
 namespace DominionCards
 {
@@ -15,22 +16,31 @@ namespace DominionCards
             this.cards = cards;
             turnOrder = new Queue<Player>();
         }
+        private void AddStandardKingdomCards()
+        {
+            cards.Add(new Copper(), 100);
+            cards.Add(new Silver(), 50);
+            cards.Add(new Gold(), 30);
+            cards.Add(new Estate(), 30);
+            cards.Add(new Duchy(), 15);
+            cards.Add(new Province(), 10);
+        }
         public GameBoard(Dictionary<Card, int> cards, Queue<Player> turnOrder)
         {
             this.turnOrder = turnOrder;
             this.cards = cards;
         }
-        public void addCard(Card c)
+        public virtual  void addCard(Card c)
         {
             cards.Add(c, 10);
         }
 
-        public int getCardsLeft(Card c)
+        public virtual  int getCardsLeft(Card c)
         {
             return cards[c];
         }
 
-        public Player NextPlayer()
+        public virtual  Player NextPlayer()
         {
             Player nextPlayer = turnOrder.Dequeue();
             turnOrder.Enqueue(nextPlayer);
@@ -46,7 +56,7 @@ namespace DominionCards
             turnOrder.Enqueue(p);
             return true;
         }
-        public void PlayGame()
+        public virtual void PlayGame()
         {
 //            int testingCutOffCounter = 0;
             while (!GameIsOver())
