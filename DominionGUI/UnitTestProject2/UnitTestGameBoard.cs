@@ -102,7 +102,7 @@ namespace UnitTestProject2
             Assert.IsTrue(board.GameIsOver());
         }
         [TestMethod]
-        public void TestEndsFalseIfOnlyTwoStacksEmpty()
+        public void TestGameEndsFalseIfOnlyTwoStacksEmpty()
         {
             Dictionary<Card, int> cards = GetTestCards();
             GameBoard board = new GameBoard(cards);

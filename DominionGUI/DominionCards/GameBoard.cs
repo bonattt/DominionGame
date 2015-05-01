@@ -15,6 +15,7 @@ namespace DominionCards
         {
             this.cards = cards;
             turnOrder = new Queue<Player>();
+            AddStandardKingdomCards();
         }
         private void AddStandardKingdomCards()
         {
@@ -70,6 +71,28 @@ namespace DominionCards
         }
         public virtual bool GameIsOver()
         {
+            Card province = new KingdomCards.Province();
+            if (!cards.ContainsKey(province))
+            {
+                return true;
+            }
+
+            if (cards[province] == 0)
+            {
+                return true;
+            }
+            int emptyPiles = 0;
+            foreach(Card c in cards.Keys)
+            {
+                if (cards[c] == 0)
+                {
+                    emptyPiles++;
+                }   
+            }
+            if (emptyPiles >= 3)
+            {
+                return true;
+            }
             return false;
         }
     }
