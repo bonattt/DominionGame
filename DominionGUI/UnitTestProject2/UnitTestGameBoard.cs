@@ -10,6 +10,21 @@ namespace UnitTestProject2
     [TestClass]
     public class UnitTestGameBoard
     {
+        private static Dictionary<Card, int> GetTestCards()
+        {
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            cards[new Cellar()] = 10;
+            cards[new Moat()] = 10;
+            cards[new Woodcutter()] = 10;
+            cards[new Village()] = 10;
+            cards[new Militia()] = 10;
+            cards[new Mine()] = 10;
+            cards[new Remodel()] = 10;
+            cards[new Feast()] = 10;
+            cards[new Workshop()] = 10;
+            cards[new Market()] = 10;
+            return cards;
+        }
         [TestMethod]
         public void TestTurnOrderDoesNotChange()
         {
@@ -110,21 +125,29 @@ namespace UnitTestProject2
             cards[new Estate()] = 0;
             Assert.IsFalse(board.GameIsOver());
         }
-
-        private static Dictionary<Card, int> GetTestCards()
+        [TestMethod]
+        public void IntegrationTestPlayGameAndGameIsOverUsingCustomPlayerMock()
         {
-            Dictionary<Card, int> cards = new Dictionary<Card, int>();
-            cards[new Cellar()] = 10;
-            cards[new Moat()] = 10;
-            cards[new Woodcutter()] = 10;
-            cards[new Village()] = 10;
-            cards[new Militia()] = 10;
-            cards[new Mine()] = 10;
-            cards[new Remodel()] = 10;
-            cards[new Feast()] = 10;
-            cards[new Workshop()] = 10;
-            cards[new Market()] = 10;
-            return cards;
+            MockRepository mocks = new MockRepository();
+            GameBoard fakeBoard = mocks.DynamicMock<GameBoard>();
+            Player p1 = mocks.DynamicMock<Player>();
+            Player p2 = mocks.DynamicMock<Player>();
+            Dictionary<Card, int> cards = GetTestCards();
+
+            // private mock of player implemented to take a province every turn.
+            private class PlayerMock {
+                public PlayerMock()
+                {
+                    // do nothing
+                }
+                public override void TakeTurn(GameBoard board)
+                {
+                    board.GetCards()[new Province()] -= 1;
+                }
+
+            }
         }
+
+
     }
 }

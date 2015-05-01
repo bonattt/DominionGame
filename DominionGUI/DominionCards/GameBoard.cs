@@ -31,17 +31,17 @@ namespace DominionCards
             this.turnOrder = turnOrder;
             this.cards = cards;
         }
-        public virtual  void addCard(Card c)
+        public virtual void addCard(Card c)
         {
             cards.Add(c, 10);
         }
 
-        public virtual  int getCardsLeft(Card c)
+        public virtual int getCardsLeft(Card c)
         {
             return cards[c];
         }
 
-        public virtual  Player NextPlayer()
+        public virtual Player NextPlayer()
         {
             Player nextPlayer = turnOrder.Dequeue();
             turnOrder.Enqueue(nextPlayer);
@@ -59,14 +59,14 @@ namespace DominionCards
         }
         public virtual void PlayGame()
         {
-//            int testingCutOffCounter = 0;
+            //            int testingCutOffCounter = 0;
             while (!GameIsOver())
             {
-                NextPlayer().TakeTurn();
-//                if (testingCutOffCounter++ >= 20)
-//                {
-//                    break;
-//                }
+                NextPlayer().TakeTurn(this);
+                //                if (testingCutOffCounter++ >= 20)
+                //                {
+                //                    break;
+                //                }
             }
         }
         public virtual bool GameIsOver()
@@ -82,18 +82,22 @@ namespace DominionCards
                 return true;
             }
             int emptyPiles = 0;
-            foreach(Card c in cards.Keys)
+            foreach (Card c in cards.Keys)
             {
                 if (cards[c] == 0)
                 {
                     emptyPiles++;
-                }   
+                }
             }
             if (emptyPiles >= 3)
             {
                 return true;
             }
             return false;
+        }
+        public Dictionary<Card, int> GetCards()
+        {
+            return cards;
         }
     }
 }

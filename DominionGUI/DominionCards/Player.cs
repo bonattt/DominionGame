@@ -220,7 +220,7 @@ namespace DominionCards
             }
             return deck;
         }
-        public virtual void TakeTurn()
+        public virtual void TakeTurn(GameBoard board)
         {
             Console.WriteLine("player" + number + " taking turn.");
             // TODO implement this method.
