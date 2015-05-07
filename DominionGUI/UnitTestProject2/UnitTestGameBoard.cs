@@ -166,6 +166,22 @@ namespace UnitTestProject2
             Assert.AreEqual(p1, board.PlayGame());
 
         }
+
+        [TestMethod]
+        public void IntegrationTestPlayCountVPWhenGameIsOverUsingPlayerMockWithTie()
+        {
+            MockRepository mocks = new MockRepository();
+            Dictionary<Card, int> cards = GetTestCards();
+            GameBoard board = new GameBoard(cards);
+            Player p1 = new SpecialPlayerMock();
+            Player p2 = new SpecialPlayerMock();
+
+            board.AddPlayer(p1);
+            board.AddPlayer(p2);
+            p2.getDiscard().Add(new Gold());
+            Assert.AreEqual(p2, board.PlayGame());
+
+        }
         public class SpecialPlayerMock : HumanPlayer
         {
             public int numbTimesCalled;
