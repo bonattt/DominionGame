@@ -78,7 +78,10 @@ namespace DominionCards
 
                 if (currentPlayerVP == highestVP)
                 {
-                    //TODO
+                    if (turnOrder.Peek().getTotalMoney() > currentHightestPlayer.getTotalMoney())
+                    {
+                        currentHightestPlayer = turnOrder.Peek();
+                    }
                 }
                 if (currentPlayerVP > highestVP)
                 {
