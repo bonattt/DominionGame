@@ -182,6 +182,29 @@ namespace UnitTestProject2
             Assert.AreEqual(p2, board.PlayGame());
 
         }
+        [TestMethod]
+        public void IntegrationTestTieIsThrownOnTrueTie()
+        {
+            MockRepository mocks = new MockRepository();
+            Dictionary<Card, int> cards = GetTestCards();
+            GameBoard board = new GameBoard(cards);
+            Player p1 = new SpecialPlayerMock();
+            Player p2 = new SpecialPlayerMock();
+
+            board.AddPlayer(p1);
+            board.AddPlayer(p2);
+            try
+            {
+                board.PlayGame();
+            }
+            catch (TieException e)
+            {
+                Assert.AreEqual(2, e.getArraySize());
+                return;
+            }
+            Assert.Fail("expected an exception");
+
+        }
         public class SpecialPlayerMock : HumanPlayer
         {
             public int numbTimesCalled;

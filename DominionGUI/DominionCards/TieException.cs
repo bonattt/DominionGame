@@ -49,5 +49,21 @@ namespace DominionCards
         {
             return TiedPlayers.Count;
         }
+        public void PrintWinners()
+        {
+            Console.Write("Player ");
+            Console.Write(((Player)TiedPlayers[0]).getNumber());
+            for (int i = 0; i < TiedPlayers.Count - 1; i++)
+            {
+                Console.Write(", ");
+                Console.Write("Player ");
+                Console.Write(((Player)TiedPlayers[i]).getNumber());
+            }
+            Console.Write("and Player ");
+            Console.Write(((Player)TiedPlayers[TiedPlayers.Count - 1]).getNumber());
+            Console.Write("all tied for winner! \n");
+        }
+
+
     }
 }

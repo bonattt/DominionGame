@@ -64,33 +64,69 @@ namespace DominionCards
                 Player next = NextPlayer();
                 next.TakeTurn(this);
             }
-            return FindWinningPlayer();
+            try
+            {
+                return FindWinningPlayer();
+            }
+            catch (TieException e)
+            {
+                e.PrintWinners();
+                throw e;
+            }
         }
 
         public Player FindWinningPlayer()
         {
             Player firstCounted = NextPlayer();
             Player currentHightestPlayer = firstCounted;
+            TieException tie = null;
             int highestVP = currentHightestPlayer.countVictoryPoints();
+            int highestMoney = currentHightestPlayer.getTotalMoney();
             do
             {
-                int currentPlayerVP = turnOrder.Peek().countVictoryPoints();
-
-                if (currentPlayerVP == highestVP)
+                if (tie != null)
                 {
-                    if (turnOrder.Peek().getTotalMoney() > currentHightestPlayer.getTotalMoney())
+                    // calling tie.BreaksTie(player) will automatically add that player to the tie IFF they tie.
+                    Boolean tieBroken = tie.BreaksTie(turnOrder.Peek());
+                    if (tieBroken)
                     {
+                        tie = null;
                         currentHightestPlayer = turnOrder.Peek();
+                        highestMoney = currentHightestPlayer.getTotalMoney();
+                        highestVP = currentHightestPlayer.countVictoryPoints();
                     }
                 }
-                if (currentPlayerVP > highestVP)
-                {
-                    currentHightestPlayer = turnOrder.Peek();
-                    highestVP = currentPlayerVP;
+                else
+                { // TODO compartmentalize this.
+                    int currentPlayerVP = turnOrder.Peek().countVictoryPoints();
+                    if (currentPlayerVP == highestVP)
+                    {
+                        int currentPlayerMoney = turnOrder.Peek().getTotalMoney();
+                        if (currentPlayerMoney > highestMoney)
+                        {
+                            currentHightestPlayer = turnOrder.Peek();
+                        }
+                        else if (currentPlayerMoney == highestMoney)
+                        {
+                            tie = new TieException(currentHightestPlayer, turnOrder.Peek(), highestVP, currentPlayerMoney);
+                        }
+                    }
+                    if (currentPlayerVP > highestVP)
+                    {
+                        currentHightestPlayer = turnOrder.Peek();
+                        highestVP = currentPlayerVP;
+                    }
                 }
                 NextPlayer();
-            } while (turnOrder.Peek() != firstCounted);
+
+            } while (turnOrder.Peek() != firstCounted); // do while
+
+            if (tie != null)
+            {
+                throw tie;
+            }
             return currentHightestPlayer;
+
         }
         public virtual bool GameIsOver()
         {
