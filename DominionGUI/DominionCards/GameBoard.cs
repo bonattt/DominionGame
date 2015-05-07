@@ -59,14 +59,10 @@ namespace DominionCards
         }
         public virtual void PlayGame()
         {
-            //            int testingCutOffCounter = 0;
             while (!GameIsOver())
             {
-                NextPlayer().TakeTurn(this);
-                //                if (testingCutOffCounter++ >= 20)
-                //                {
-                //                    break;
-                //                }
+                Player next = NextPlayer();
+                next.TakeTurn(this);
             }
         }
         public virtual bool GameIsOver()

@@ -4,6 +4,7 @@ using DominionCards;
 using DominionCards.KingdomCards;
 using System.Collections.Generic;
 using Rhino.Mocks;
+using Rhino.Mocks.Interfaces;
 
 namespace UnitTestProject2
 {
@@ -75,23 +76,27 @@ namespace UnitTestProject2
         public void TestTurnOrderUsingMocks()
         {
             MockRepository mocks = new MockRepository();
-            GameBoard fakeBoard = mocks.DynamicMock<GameBoard>();
-            Player p1 = mocks.DynamicMock<Player>();
-            Player p2 = mocks.DynamicMock<Player>();
             Dictionary<Card, int> cards = GetTestCards();
+            GameBoard fakeBoard = mocks.DynamicMock<GameBoard>(cards);
+
+            Player p1 = mocks.DynamicMock<HumanPlayer>(1);
+            Player p2 = mocks.DynamicMock<HumanPlayer>(2);
             
             using (mocks.Ordered())
             {
                 fakeBoard.PlayGame();
                 for (int i = 0; i < 10; i++)
                 {
-                    p1.TakeTurn(fakeBoard);
-                    p2.TakeTurn(fakeBoard);
+                    Expect.Call(()=>p1.TakeTurn(fakeBoard)).CallOriginalMethod(OriginalCallOptions.CreateExpectation);
+                    Expect.Call(()=>p2.TakeTurn(fakeBoard)).CallOriginalMethod(OriginalCallOptions.CreateExpectation);
+                    //p1.TakeTurn(fakeBoard);
+                    //p2.TakeTurn(fakeBoard);
                 }
             }
-            Expect.Call(fakeBoard.AddPlayer(p1)).CallOriginalMethod();
-            Expect.Call(fakeBoard.AddPlayer(p2)).CallOriginalMethod();
-            Expect.Call((()=>fakeBoard.PlayGame())).CallOriginalMethod();
+            Expect.Call(fakeBoard.AddPlayer(p1)).CallOriginalMethod(OriginalCallOptions.NoExpectation);
+            Expect.Call(fakeBoard.AddPlayer(p2)).CallOriginalMethod(OriginalCallOptions.NoExpectation);
+            Expect.Call((()=>fakeBoard.PlayGame())).CallOriginalMethod(OriginalCallOptions.NoExpectation);
+            Expect.Call(fakeBoard.NextPlayer()).CallOriginalMethod(OriginalCallOptions.CreateExpectation);
             Expect.Call(fakeBoard.GameIsOver()).Repeat.Times(20).Return(false);
             Expect.Call(fakeBoard.GameIsOver()).Return(true);
             mocks.ReplayAll();

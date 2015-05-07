@@ -225,5 +225,9 @@ namespace DominionCards
             Console.WriteLine("player" + number + " taking turn.");
             // TODO implement this method.
         }
+        public override string ToString()
+        {
+            return "Player " + number;
+        }
     }
 }
