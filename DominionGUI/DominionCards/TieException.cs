@@ -28,12 +28,26 @@ namespace DominionCards
          */
         public Boolean BreaksTie(Player p)
         {
-            return false;
+            int playerVP = p.countVictoryPoints();
+            int playerMoney = p.getTotalMoney();
+            if (playerVP == VictoryPoints && playerMoney == Money)
+            {
+                TiedPlayers.Add(p);
+                return false;
+            }
+            else if(playerVP < VictoryPoints || (playerVP == VictoryPoints && playerMoney < Money))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         public int getArraySize()
         {
-            return -1;
+            return TiedPlayers.Count;
         }
     }
 }
