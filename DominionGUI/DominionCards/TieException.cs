@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +9,16 @@ namespace DominionCards
 {
     public class TieException : Exception
     {
-        public TieException(Player p1, Player p2) : base() 
+
+        private ArrayList TiedPlayers = new ArrayList();
+        private int VictoryPoints, Money;
+
+        public TieException(Player p1, Player p2, int VPs, int money) : base() 
         {
-            // TODO
+            Money = money;
+            VictoryPoints = VPs;
+            TiedPlayers.Add(p1);
+            TiedPlayers.Add(p2);
         }
         /**
          * returns true if player broke the tie (beat the players that tied.)
@@ -21,6 +29,11 @@ namespace DominionCards
         public Boolean BreaksTie(Player p)
         {
             return false;
+        }
+
+        public int getArraySize()
+        {
+            return -1;
         }
     }
 }

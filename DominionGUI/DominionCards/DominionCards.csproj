@@ -82,6 +82,7 @@
     <Compile Include="Player.cs" />
     <Compile Include="PlayerTest.cs" />
     <Compile Include="TestAddCards.cs" />
+    <Compile Include="TieException.cs" />
     <Compile Include="VictoryCard.cs" />
     <Compile Include="TreasureCard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
