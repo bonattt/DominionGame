@@ -10,11 +10,12 @@ namespace DominionCards
 {
     public abstract class Player
     {
+        private int number;
         private Stack<Card> deck = new Stack<Card>();
         private ArrayList hand = new ArrayList();
         private ArrayList discard = new ArrayList();
         private Stack<Card> attack = new Stack<Card>();
-        private String name;
+
         public int actions, buys, money; // TODO set this to public temporarily so code would compile. 
         public Player()
         {
@@ -27,6 +28,14 @@ namespace DominionCards
                 deck.Push(new KingdomCards.Copper());
             }
             // TODO shuffle the deck
+        }
+        public void setNumber(int numb)
+        {
+            number = numb;
+        }
+        public int getNumber()
+        {
+            return number;
         }
         public Card drawCard()
         {
@@ -64,6 +73,51 @@ namespace DominionCards
         public abstract void buyPhase();
         public abstract void selectToDiscard();
 
+        public int getTotalMoney()
+        {
+            int money = 0;
+            // get money from cards in deck
+            Stack<Card> tempStack = new Stack<Card>();
+            while (deck.Count > 0)
+            {
+                Card card = deck.Pop();
+                tempStack.Push(card);
+                int cardID = card.getID();
+                if (cardID == 0 || cardID == 1 || cardID == 2)
+                {
+                    money += ((TreasureCard)card).getValue();
+                }
+            }
+            while (tempStack.Count > 0)
+            {
+                // rebuild deck after counting money
+                deck.Push(tempStack.Pop());
+            }
+
+            // get money for cards in discard
+            for (int i = 0; i < discard.Count; i++)
+            {
+
+                Card card = (Card)discard[i];
+                int cardID = card.getID();
+                if (cardID == 0 || cardID == 1 || cardID == 2)
+                {
+                    money += ((TreasureCard)card).getValue();
+                }
+            }
+            // get money for cards in hand
+            for (int i = 0; i < hand.Count; i++)
+            {
+                Card card = (Card)hand[i];
+                int cardID = card.getID();
+                if (cardID == 0 || cardID == 1 || cardID == 2)
+                {
+                    money += ((TreasureCard)card).getValue();
+                }
+            }
+            return money;
+        }
+
         public ArrayList getHand()
         {
             return hand;
@@ -92,10 +146,6 @@ namespace DominionCards
         {
             return attack;
         }
-        public String getName()
-        {
-            return name;
-        }
         public int actionsLeft()
         {
             return actions;
@@ -109,11 +159,17 @@ namespace DominionCards
             return money;
         }
 
-        public void buyCard(Card card)
+        public bool buyCard(Card card)
         {
-            discard.Add(card);
-            buys--;
-            //todo modify money spent/verify that user has enough money to buy the card
+            if (this.money < card.getPrice())
+            {
+                return false;
+            }
+                  discard.Add(card);
+                buys--;
+                this.money -= card.getPrice();
+                return true;
+            
         }
 
         public void addCardToHand(Card card)
@@ -208,6 +264,15 @@ namespace DominionCards
                 deck.Push((Card)s.Pop());
             }
             return deck;
+        }
+        public virtual void TakeTurn(GameBoard board)
+        {
+            Console.WriteLine("player" + number + " taking turn.");
+            // TODO implement this method.
+        }
+        public override string ToString()
+        {
+            return "Player " + number;
         }
     }
 }

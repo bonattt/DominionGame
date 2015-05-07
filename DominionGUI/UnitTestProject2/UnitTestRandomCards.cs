@@ -1,41 +1,39 @@
 ﻿using System;
-using System.Collections;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using RandomGenerateCards;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
+using System.Collections;
 
-namespace RandomGenerateCards
+namespace UnitTestProject2
 {
-    [TestFixture()]
-    class RandomCardsTest
+    [TestClass]
+    public class UnitTestRandomCards
     {
-        /*
-        [Test()]
+        [TestMethod]
         public void testRandomList1()
         {
-            List<int> theList = GenerateRandom.GenerateRandomList(25,15);
-            Boolean israndom =  theList.Distinct().Count() == theList.Count();
-            Assert.AreEqual(true,israndom);
+            List<int> theList = GenerateRandom.GenerateRandomList(25, 15);
+            Boolean israndom = theList.Distinct().Count() == theList.Count();
+            Assert.AreEqual(true, israndom);
         }
-        [Test()]
+        [TestMethod]
         public void testRandomList2()
         {
-            List<int> theList = GenerateRandom.GenerateRandomList(100,10);
+            List<int> theList = GenerateRandom.GenerateRandomList(100, 10);
             Boolean israndom = theList.Distinct().Count() == theList.Count();
             Assert.AreEqual(true, israndom);
         }
 
-        [Test()]
+        [TestMethod]
         public void testSelectRandomWhenStartGame()
         {
-            List<int> theList = GenerateRandom.GenerateRandomList(25,5);
+            List<int> theList = GenerateRandom.GenerateRandomList(25, 5);
             Boolean israndom = theList.Distinct().Count() == theList.Count();
             Assert.AreEqual(true, israndom);
         }
 
-        [Test()]
+        [TestMethod]
         public void testSuffleDeckSize5()
         {
             ArrayList theList = new ArrayList();
@@ -68,11 +66,11 @@ namespace RandomGenerateCards
             Assert.AreEqual(true, israndom);
         }
 
-        [Test()]
+        [TestMethod]
         public void testSuffleDeckSize10()
         {
             ArrayList theList = new ArrayList();
-            List<int> randomsize10list = GenerateRandom.GenerateRandomList(10,10);
+            List<int> randomsize10list = GenerateRandom.GenerateRandomList(10, 10);
             for (int i = 0; i < 10; i++)
             {
                 theList.Add(randomsize10list[i]);
@@ -99,7 +97,7 @@ namespace RandomGenerateCards
             Assert.AreEqual(true, israndom);
         }
 
-        [Test()]
+        [TestMethod]
         public void testSuffleDeckSize100()
         {
             ArrayList theList = new ArrayList();
@@ -129,6 +127,5 @@ namespace RandomGenerateCards
             }
             Assert.AreEqual(true, israndom);
         }
-        */
     }
 }

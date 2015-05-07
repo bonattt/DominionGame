@@ -11,7 +11,13 @@ namespace DominionCards
         public HumanPlayer()
             : base()
         {
+            setNumber(1);
             // TODO implement
+        }
+        public HumanPlayer(int playerNumber)
+            : base()
+        {
+            setNumber(playerNumber);
         }
         public override void actionPhase()
         {

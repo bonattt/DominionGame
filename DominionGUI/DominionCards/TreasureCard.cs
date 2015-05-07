@@ -22,15 +22,6 @@ namespace DominionCards
         {
             return 0;
         }
-        
-        public override void addToDeck()
-        {
-            // TODO implement this
-        }
-        public override void trash()
-        {
-            // TODO implement this
-        }
         public int getValue()
         {
             Console.WriteLine("returning value of treasure card");

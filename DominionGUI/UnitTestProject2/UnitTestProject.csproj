@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Rhino.Mocks">
+      <HintPath>..\..\..\..\Lab4\CSSE376Mocking\Rhino.Mocks.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -51,7 +54,13 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+<<<<<<< HEAD
     <Compile Include="UnitTest1.cs" />
+=======
+    <Compile Include="UnitTestException.cs" />
+    <Compile Include="UnitTestRandomCards.cs" />
+    <Compile Include="UnitTestGameBoard.cs" />
+>>>>>>> origin/master
     <Compile Include="UnitTestCard.cs" />
     <Compile Include="UnitTestPlayer.cs" />
   </ItemGroup>
