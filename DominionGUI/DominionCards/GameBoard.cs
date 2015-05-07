@@ -74,7 +74,12 @@ namespace DominionCards
             int highestVP = currentHightestPlayer.countVictoryPoints();
             do
             {
-                int currentPlayerVP = turnOrder.Peek().countVictoryPoints(); 
+                int currentPlayerVP = turnOrder.Peek().countVictoryPoints();
+
+                if (currentPlayerVP == highestVP)
+                {
+                    //TODO
+                }
                 if (currentPlayerVP > highestVP)
                 {
                     currentHightestPlayer = turnOrder.Peek();

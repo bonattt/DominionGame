@@ -73,6 +73,11 @@ namespace DominionCards
         public abstract void buyPhase();
         public abstract void selectToDiscard();
 
+        public int getTotalMoney()
+        {
+            return -1;
+        }
+
         public ArrayList getHand()
         {
             return hand;

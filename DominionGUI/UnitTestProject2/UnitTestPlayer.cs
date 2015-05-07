@@ -236,6 +236,27 @@ namespace UnitTestProject2
             hand.Add(new Province());
             Assert.AreEqual(13, p1.countVictoryPoints());
         }
+
+        [TestMethod]
+        public void testCountTotalMoneyinDeck()
+        {
+            Player p1 = new HumanPlayer();
+            Stack<Card> deck = new Stack<Card>();
+            deck.Push(new Gold());
+            p1.setDeck(deck);
+            Assert.AreEqual(3, p1.getTotalMoney());
+        }
+
+        [TestMethod]
+        public void testCountTotalMoneyWithCardsinDiscard()
+        {
+            Player p1 = new HumanPlayer();
+            Stack<Card> deck = new Stack<Card>();
+            ArrayList discard = p1.getDiscard();
+            discard.Add(new Gold());
+            p1.setDeck(deck);
+            Assert.AreEqual(3, p1.getTotalMoney());
+        }
         [TestMethod]
         public void playingTreasureCardAddsMoney()
         {
