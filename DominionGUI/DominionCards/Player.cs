@@ -75,7 +75,39 @@ namespace DominionCards
 
         public int getTotalMoney()
         {
-            return -1;
+            int money = 0;
+            // get money from cards in deck
+            while (deck.Count > 0)
+            {
+                Card card = deck.Pop();
+                int cardID = card.getID();
+                if (cardID == 0 || cardID == 1 || cardID == 2)
+                {
+                    money += ((TreasureCard)card).getValue();
+                }
+            }
+            // get money for cards in discard
+            for (int i = 0; i < discard.Count; i++)
+            {
+
+                Card card = (Card)discard[i];
+                int cardID = card.getID();
+                if (cardID == 0 || cardID == 1 || cardID == 2)
+                {
+                    money += ((TreasureCard)card).getValue();
+                }
+            }
+            // get money for cards in hand
+            for (int i = 0; i < hand.Count; i++)
+            {
+                Card card = (Card)hand[i];
+                int cardID = card.getID();
+                if (cardID == 0 || cardID == 1 || cardID == 2)
+                {
+                    money += ((TreasureCard)card).getValue();
+                }
+            }
+            return money;
         }
 
         public ArrayList getHand()
