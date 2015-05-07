@@ -64,7 +64,25 @@ namespace DominionCards
                 Player next = NextPlayer();
                 next.TakeTurn(this);
             }
-            return null;
+            return FindWinningPlayer();
+        }
+
+        public Player FindWinningPlayer()
+        {
+            Player firstCounted = NextPlayer();
+            Player currentHightestPlayer = firstCounted;
+            int highestVP = currentHightestPlayer.countVictoryPoints();
+            do
+            {
+                int currentPlayerVP = turnOrder.Peek().countVictoryPoints(); 
+                if (currentPlayerVP > highestVP)
+                {
+                    currentHightestPlayer = turnOrder.Peek();
+                    highestVP = currentPlayerVP;
+                }
+                NextPlayer();
+            } while (turnOrder.Peek() != firstCounted);
+            return currentHightestPlayer;
         }
         public virtual bool GameIsOver()
         {
