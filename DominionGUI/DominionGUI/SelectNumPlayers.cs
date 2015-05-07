@@ -23,8 +23,6 @@ namespace DominionGUI
         {
             INSTANCE = this;
             InitializeComponent();
-            board = new DominionCards.GameBoard(new Dictionary<DominionCards.Card, int>(),
-                    new Queue<DominionCards.Player>());
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -106,7 +104,10 @@ namespace DominionGUI
         {
             if (checkBox4.Checked)
             {
-                addRandomCards();
+                var myForm = MainBoard.getinstance();
+                myForm.determine();
+                myForm.Update();
+                myForm.Show();
             }
             else if (checkBox5.Checked)
             {
@@ -121,30 +122,20 @@ namespace DominionGUI
                 myFrom.Update();
                 myFrom.Show();
             }
-            
-            /*board.addCard(new DominionCards.KingdomCards.Woodcutter());
-            if (board.cards.ContainsKey(new DominionCards.KingdomCards.Woodcutter()))
-            {
-                Close();
-            }*/
-
         }
         private void gameplay(Object sender, EventArgs e)
         {
-
             Button clickedButton = (Button)sender;
             discardsize = discardsize + 1;
             discarddeck.Text = "Discard Cards Size: " + discardsize;
-            clickedButton.Visible = false;
-            
-            
-            
-            
+            clickedButton.Visible = false;          
         }
-        public void addRandomCards(){
-                string kingdomCards = "";
-                var myForm = new MainBoard();         
-
+        public void addRandomCards()
+        {
+                var myForm = MainBoard.getinstance();
+                myForm.determine();
+                //DominionGUI.MainBoard.
+                /*
                 List<int> numList = new List<int>();
                 numList = RandomGenerateCards.GenerateRandom.GenerateRandomList(25,5);
                 numList.Add(24);
@@ -160,389 +151,6 @@ namespace DominionGUI
                 discarddeck.Parent = myForm;
                 myForm.Update();
                 myForm.Show();
-
-                
-
-
-                if (numList.Contains(0))
-                {
-                    kingdomCards = kingdomCards + "Workshop" + "\n";
-                    Button newButton = new Button();
-                    newButton.Image = DominionGUI.Properties.Resources.WorkshopHalf;
-                    newButton.Height = 179;
-                    newButton.Width = 256;
-                    newButton.Location = new Point(xValue, yValue);
-                    xValue = xValue + 256;
-                    newButton.Parent = myForm;
-                    myForm.Update();
-                    board.addCard(new DominionCards.KingdomCards.Workshop());
-                    newButton.Click += new EventHandler(this.gameplay);
-                   
-
-                }
-
-
-
-                if (numList.Contains(1)){
-                    kingdomCards = kingdomCards + "Adventurer" + "\n";
-                    Button newButton = new Button();
-                    newButton.Image = DominionGUI.Properties.Resources.AdventurerHalfNew;
-                    newButton.Height = 179;
-                    newButton.Width = 256;
-                    newButton.Location = new Point(xValue, yValue);
-                    xValue = xValue + 256;
-                    newButton.Parent = myForm;
-                    myForm.Update();
-                    board.addCard(new DominionCards.KingdomCards.Adventurer());
-                    newButton.Click += new EventHandler(this.gameplay);
-                }
-
-                if (numList.Contains(2))
-                {
-                    kingdomCards = kingdomCards + "Bureaucrat" + "\n";
-                    Button newButton = new Button();
-                    newButton.Image = DominionGUI.Properties.Resources.BureaucratHalf;
-                    newButton.Height = 179;
-                    newButton.Width = 256;
-                    newButton.Location = new Point(xValue, yValue);
-                    xValue += 256;
-                    newButton.Parent = myForm;
-                    myForm.Update();
-                    board.addCard(new DominionCards.KingdomCards.Bureaucrat());
-                    newButton.Click += new EventHandler(this.gameplay);
-                }
-
-                if (numList.Contains(3))
-                {
-                    kingdomCards = kingdomCards + "Cellar" + "\n";
-                    Button newButton = new Button();
-                    newButton.Image = DominionGUI.Properties.Resources.CellarHalf;
-                    newButton.Height = 179;
-                    newButton.Width = 256;
-                    newButton.Location = new Point(xValue, yValue);
-                    xValue += 256;
-                    newButton.Parent = myForm;
-                    myForm.Update();
-                    board.addCard(new DominionCards.KingdomCards.Cellar());
-                    newButton.Click += new EventHandler(this.gameplay);
-                }
-
-                if (numList.Contains(4))
-                {
-                    kingdomCards = kingdomCards + "Chancellor" + "\n";
-                    Button newButton = new Button();
-                    newButton.Image = DominionGUI.Properties.Resources.ChancellorHalf;
-                    newButton.Height = 179;
-                    newButton.Width = 256;
-                    newButton.Location = new Point(xValue, yValue);
-                    xValue += 256;
-                    newButton.Parent = myForm;
-                    myForm.Update();
-                    board.addCard(new DominionCards.KingdomCards.Chancellor());
-                    newButton.Click += new EventHandler(this.gameplay);
-                }
-
-                if (numList.Contains(5))
-                {
-                    kingdomCards = kingdomCards + "Chapel" + "\n";
-                    Button newButton = new Button();
-                    newButton.Image = DominionGUI.Properties.Resources.ChapelHalf;
-                    newButton.Height = 179;
-                    newButton.Width = 256;
-                    newButton.Location = new Point(xValue, yValue);
-                    xValue += 256;
-                    newButton.Parent = myForm;
-                    myForm.Update();
-                    board.addCard(new DominionCards.KingdomCards.Chapel());
-                    newButton.Click += new EventHandler(this.gameplay);
-                }
-
-                if (numList.Contains(6))
-                {
-                    kingdomCards = kingdomCards + "Council Room" + "\n";
-                    Button newButton = new Button();
-                    newButton.Image = DominionGUI.Properties.Resources.CouncilroomHalf;
-                    newButton.Height = 179;
-                    newButton.Width = 256;
-                    newButton.Location = new Point(xValue, yValue);
-                    xValue += 256;
-                    newButton.Parent = myForm;
-                    myForm.Update();
-                    board.addCard(new DominionCards.KingdomCards.CouncilRoom());
-                    newButton.Click += new EventHandler(this.gameplay);
-                }
-
-                if (numList.Contains(7))
-                {
-                    kingdomCards = kingdomCards + "Feast" + "\n";
-                    Button newButton = new Button();
-                    newButton.Image = DominionGUI.Properties.Resources.FeastHalf;
-                    newButton.Height = 179;
-                    newButton.Width = 256;
-                    newButton.Location = new Point(xValue, yValue);
-                    xValue += 256;
-                    newButton.Parent = myForm;
-                    myForm.Update();
-                    board.addCard(new DominionCards.KingdomCards.Feast());
-                    newButton.Click += new EventHandler(this.gameplay);
-                }
-
-                if (numList.Contains(8))
-                {
-                    kingdomCards = kingdomCards + "Festival" + "\n";
-                    Button newButton = new Button();
-                    newButton.Image = DominionGUI.Properties.Resources.FestivalHalf;
-                    newButton.Height = 179;
-                    newButton.Width = 256;
-                    newButton.Location = new Point(xValue, yValue);
-                    xValue += 256;
-                    newButton.Parent = myForm;
-                    myForm.Update();
-                    board.addCard(new DominionCards.KingdomCards.Festival());
-                    newButton.Click += new EventHandler(this.gameplay);
-                }
-
-                if (numList.Contains(9))
-                {
-                    kingdomCards = kingdomCards + "Gardens" + "\n";
-                    Button newButton = new Button();
-                    newButton.Image = DominionGUI.Properties.Resources.GardensHalf;
-                    newButton.Height = 179;
-                    newButton.Width = 256;
-                    newButton.Location = new Point(xValue, yValue);
-                    xValue += 256;
-                    newButton.Parent = myForm;
-                    myForm.Update();
-                    board.addCard(new DominionCards.KingdomCards.Gardens());
-                    newButton.Click += new EventHandler(this.gameplay);
-                }
-
-                if (numList.Contains(10))
-                {
-                    kingdomCards = kingdomCards + "Laboratory" + "\n";
-                    Button newButton = new Button();
-                    newButton.Image = DominionGUI.Properties.Resources.LaboratoryHalf;
-                    newButton.Height = 179;
-                    newButton.Width = 256;
-                    newButton.Location = new Point(xValue, yValue);
-                    xValue += 256;
-                    newButton.Parent = myForm;
-                    myForm.Update();
-                    board.addCard(new DominionCards.KingdomCards.Laboratory());
-                    newButton.Click += new EventHandler(this.gameplay);
-                }
-
-                if (numList.Contains(11))
-                {
-                    kingdomCards = kingdomCards + "Library" + "\n";
-                    Button newButton = new Button();
-                    newButton.Image = DominionGUI.Properties.Resources.LibraryHalf;
-                    newButton.Height = 179;
-                    newButton.Width = 256;
-                    newButton.Location = new Point(xValue, yValue);
-                    xValue += 256;
-                    newButton.Parent = myForm;
-                    myForm.Update();
-                    board.addCard(new DominionCards.KingdomCards.Library());
-                    newButton.Click += new EventHandler(this.gameplay);
-                }
-
-                if (numList.Contains(12))
-                {
-                    kingdomCards = kingdomCards + "Market" + "\n";
-                    Button newButton = new Button();
-                    newButton.Image = DominionGUI.Properties.Resources.MarketHalf;
-                    newButton.Height = 179;
-                    newButton.Width = 256;
-                    newButton.Location = new Point(xValue, yValue);
-                    xValue += 256;
-                    newButton.Parent = myForm;
-                    myForm.Update();
-                    board.addCard(new DominionCards.KingdomCards.Market());
-                    newButton.Click += new EventHandler(this.gameplay);
-                }
-
-                if (numList.Contains(13))
-                {
-                    kingdomCards = kingdomCards + "Militia" + "\n";
-                    Button newButton = new Button();
-                    newButton.Image = DominionGUI.Properties.Resources.MilitiaHalf;
-                    newButton.Height = 179;
-                    newButton.Width = 256;
-                    newButton.Location = new Point(xValue, yValue);
-                    xValue += 256;
-                    newButton.Parent = myForm;
-                    myForm.Update();
-                    board.addCard(new DominionCards.KingdomCards.Militia());
-                    newButton.Click += new EventHandler(this.gameplay);
-                }
-
-                if (numList.Contains(14))
-                {
-                    kingdomCards = kingdomCards + "Mine" + "\n";
-                    Button newButton = new Button();
-                    newButton.Image = DominionGUI.Properties.Resources.MineHalf;
-                    newButton.Height = 179;
-                    newButton.Width = 256;
-                    newButton.Location = new Point(xValue, yValue);
-                    xValue += 256;
-                    newButton.Parent = myForm;
-                    myForm.Update();
-                    board.addCard(new DominionCards.KingdomCards.Mine());
-                    newButton.Click += new EventHandler(this.gameplay);
-                }
-
-                if (numList.Contains(15))
-                {
-                    kingdomCards = kingdomCards + "Moat" + "\n";
-                    Button newButton = new Button();
-                    newButton.Image = DominionGUI.Properties.Resources.MoatHalf;
-                    newButton.Height = 179;
-                    newButton.Width = 256;
-                    newButton.Location = new Point(xValue, yValue);
-                    xValue += 256;
-                    newButton.Parent = myForm;
-                    myForm.Update();
-                    board.addCard(new DominionCards.KingdomCards.Moat());
-                    newButton.Click += new EventHandler(this.gameplay);
-                }
-
-                if (numList.Contains(16))
-                {
-                    kingdomCards = kingdomCards + "Moneylender" + "\n";
-                    Button newButton = new Button();
-                    newButton.Image = DominionGUI.Properties.Resources.MoneylenderHalf;
-                    newButton.Height = 179;
-                    newButton.Width = 256;
-                    newButton.Location = new Point(xValue, yValue);
-                    xValue += 256;
-                    newButton.Parent = myForm;
-                    myForm.Update();
-                    board.addCard(new DominionCards.KingdomCards.MoneyLender());
-                    newButton.Click += new EventHandler(this.gameplay);
-                }
-
-                if (numList.Contains(17))
-                {
-                    kingdomCards = kingdomCards + "Remodel" + "\n";
-                    Button newButton = new Button();
-                    newButton.Image = DominionGUI.Properties.Resources.RemodelHalf;
-                    newButton.Height = 179;
-                    newButton.Width = 256;
-                    newButton.Location = new Point(xValue, yValue);
-                    xValue += 256;
-                    newButton.Parent = myForm;
-                    myForm.Update();
-                    board.addCard(new DominionCards.KingdomCards.Remodel());
-                    newButton.Click += new EventHandler(this.gameplay);
-                }
-
-                if (numList.Contains(18))
-                {
-                    kingdomCards = kingdomCards + "Smithy" + "\n";
-                    Button newButton = new Button();
-                    newButton.Image = DominionGUI.Properties.Resources.SmithyHalf;
-                    newButton.Height = 179;
-                    newButton.Width = 256;
-                    newButton.Location = new Point(xValue, yValue);
-                    xValue += 256;
-                    newButton.Parent = myForm;
-                    myForm.Update();
-                    board.addCard(new DominionCards.KingdomCards.Smithy());
-                    newButton.Click += new EventHandler(this.gameplay);
-                }
-
-                if (numList.Contains(19))
-                {
-                    kingdomCards = kingdomCards + "Spy" + "\n";
-                    Button newButton = new Button();
-                    newButton.Image = DominionGUI.Properties.Resources.SpyHalf;
-                    newButton.Height = 179;
-                    newButton.Width = 256;
-                    newButton.Location = new Point(xValue, yValue);
-                    xValue += 256;
-                    newButton.Parent = myForm;
-                    myForm.Update();
-                    board.addCard(new DominionCards.KingdomCards.Spy());
-                    newButton.Click += new EventHandler(this.gameplay);
-                }
-
-                if (numList.Contains(20))
-                {
-                    kingdomCards = kingdomCards + "Thief" + "\n";
-                    Button newButton = new Button();
-                    newButton.Image = DominionGUI.Properties.Resources.ThiefHalf;
-                    newButton.Height = 179;
-                    newButton.Width = 256;
-                    newButton.Location = new Point(xValue, yValue);
-                    xValue += 256;
-                    newButton.Parent = myForm;
-                    myForm.Update();
-                    board.addCard(new DominionCards.KingdomCards.Thief());
-                    newButton.Click += new EventHandler(this.gameplay);
-                }
-
-                if (numList.Contains(21))
-                {
-                    kingdomCards = kingdomCards + "Throne Room" + "\n";
-                    Button newButton = new Button();
-                    newButton.Image = DominionGUI.Properties.Resources.ThroneroomHalf;
-                    newButton.Height = 179;
-                    newButton.Width = 256;
-                    newButton.Location = new Point(xValue, yValue);
-                    xValue += 256;
-                    newButton.Parent = myForm;
-                    myForm.Update();
-                    board.addCard(new DominionCards.KingdomCards.ThroneRoom());
-                    newButton.Click += new EventHandler(this.gameplay);
-                }
-
-                if (numList.Contains(22))
-                {
-                    kingdomCards = kingdomCards + "Village" + "\n";
-                    Button newButton = new Button();
-                    newButton.Image = DominionGUI.Properties.Resources.VillageHalf;
-                    newButton.Height = 179;
-                    newButton.Width = 256;
-                    newButton.Location = new Point(xValue, yValue);
-                    xValue += 256;
-                    newButton.Parent = myForm;
-                    myForm.Update();
-                    board.addCard(new DominionCards.KingdomCards.Village());
-                    newButton.Click += new EventHandler(this.gameplay);
-                }
-
-                if (numList.Contains(23))
-                {
-                    kingdomCards = kingdomCards + "Witch" + "\n";
-                    Button newButton = new Button();
-                    newButton.Image = DominionGUI.Properties.Resources.WitchHalf;
-                    newButton.Height = 179;
-                    newButton.Width = 256;
-                    newButton.Location = new Point(xValue, yValue);
-                    xValue += 256;
-                    newButton.Parent = myForm;
-                    myForm.Update();
-                    board.addCard(new DominionCards.KingdomCards.Witch());
-                    newButton.Click += new EventHandler(this.gameplay);
-                }
-
-                DominionCards.KingdomCards.Woodcutter woodcutter = new DominionCards.KingdomCards.Woodcutter();
-                Button WoodcutterButton = new Button();
-                if (numList.Contains(24))
-                {
-                    kingdomCards = kingdomCards + "Woodcutter" + "\n";
-                    
-                    WoodcutterButton.Image = DominionGUI.Properties.Resources.WoodcutterHalf;
-                    WoodcutterButton.Height = 179;
-                    WoodcutterButton.Width = 256;
-                    WoodcutterButton.Location = new Point(700, 700);
-                    xValue += 256;
-                    WoodcutterButton.Parent = myForm;
-                    myForm.Update();
-                    board.addCard(woodcutter);
-                    WoodcutterButton.Click += new EventHandler(this.gameplay);
-                }
                     
                 Label countCard1Remaining = new Label();
                 countCard1Remaining.Text = "Cards Remaining: " + board.getCardsLeft(woodcutter);
@@ -551,11 +159,12 @@ namespace DominionGUI
                 countCard1Remaining.Parent = myForm;
                 myForm.Update();
                 myForm.Show();
-
+                */
                 
-            } }
+         } 
+    }
             
 
-        }
+}
     
 
