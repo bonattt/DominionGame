@@ -149,6 +149,23 @@ namespace UnitTestProject2
             Assert.AreEqual(3, ((SpecialPlayerMock)p2).numbTimesCalled);
             Assert.AreEqual(3, ((SpecialPlayerMock)p3).numbTimesCalled);
         }
+
+        [TestMethod]
+        public void IntegrationTestPlayCountVPWhenGameIsOverUsingPlayerMock()
+        {
+            MockRepository mocks = new MockRepository();
+            Dictionary<Card, int> cards = GetTestCards();
+            GameBoard board = new GameBoard(cards);
+            Player p1 = new SpecialPlayerMock();
+            Player p2 = new SpecialPlayerMock();
+            Player p3 = new SpecialPlayerMock();
+
+            board.AddPlayer(p1);
+            board.AddPlayer(p2);
+            board.AddPlayer(p3);
+            Assert.AreEqual(p1, board.PlayGame());
+
+        }
         public class SpecialPlayerMock : HumanPlayer
         {
             public int numbTimesCalled;
@@ -160,6 +177,7 @@ namespace UnitTestProject2
             {
                 numbTimesCalled++;
                 board.GetCards()[new Province()] -= 1;
+                getDiscard().Add(new Province());
             }
         }
     }

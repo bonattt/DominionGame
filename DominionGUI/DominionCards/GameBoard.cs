@@ -57,13 +57,14 @@ namespace DominionCards
             turnOrder.Enqueue(p);
             return true;
         }
-        public virtual void PlayGame()
+        public virtual Player PlayGame()
         {
             while (!GameIsOver())
             {
                 Player next = NextPlayer();
                 next.TakeTurn(this);
             }
+            return null;
         }
         public virtual bool GameIsOver()
         {
