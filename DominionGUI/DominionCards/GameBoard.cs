@@ -71,25 +71,48 @@ namespace DominionCards
         {
             Player firstCounted = NextPlayer();
             Player currentHightestPlayer = firstCounted;
+            TieException tie = null;
             int highestVP = currentHightestPlayer.countVictoryPoints();
+            int highestMoney = currentHightestPlayer.getTotalMoney();
             do
             {
-                int currentPlayerVP = turnOrder.Peek().countVictoryPoints();
-
-                if (currentPlayerVP == highestVP)
+                int currentVP = turnOrder.Peek().countVictoryPoints();
+                int currentMoney = turnOrder.Peek().getTotalMoney();
+                if (tie != null)
                 {
-                    if (turnOrder.Peek().getTotalMoney() > currentHightestPlayer.getTotalMoney())
+                    // tie.BreakTie(player) will automatically add the new player to the3 tie if he ties with the tie.
+                    if (tie.BreaksTie(turnOrder.Peek()))
                     {
                         currentHightestPlayer = turnOrder.Peek();
+                        highestVP = currentVP;
+                        highestMoney = currentMoney;
                     }
                 }
-                if (currentPlayerVP > highestVP)
+                else if (currentVP == highestVP)
+                {
+                    if (currentMoney > highestMoney)
+                    {
+                    }
+                    else if (currentMoney == highestMoney)
+                    {
+                        tie = new TieException(currentHightestPlayer, turnOrder.Peek(), currentVP, currentMoney);
+                    }
+                    // ELSE, nothing happens.
+                }
+
+                else if (currentVP > highestVP)
                 {
                     currentHightestPlayer = turnOrder.Peek();
-                    highestVP = currentPlayerVP;
+                    highestVP = currentVP;
+                    highestMoney = currentMoney;
                 }
                 NextPlayer();
             } while (turnOrder.Peek() != firstCounted);
+
+            if (tie != null)
+            {
+                throw tie;
+            }
             return currentHightestPlayer;
         }
         public virtual bool GameIsOver()
