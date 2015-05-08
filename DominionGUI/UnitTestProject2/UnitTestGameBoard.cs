@@ -190,6 +190,29 @@ namespace UnitTestProject2
             GameBoard board = new GameBoard(cards);
             Player p1 = new SpecialPlayerMock(1);
             Player p2 = new SpecialPlayerMock(2);
+
+            board.AddPlayer(p1);
+            board.AddPlayer(p2);
+            try
+            {
+                board.PlayGame();
+            }
+            catch (TieException e)
+            {
+                Assert.AreEqual(2, e.getArraySize());
+                return;
+            }
+            Assert.Fail("expected an exception");
+
+        } 
+        [TestMethod]
+        public void IntegrationTestTieIsThrownOnTrueTieWithFivePlayers()
+        {
+//            MockRepository mocks = new MockRepository();
+            Dictionary<Card, int> cards = GetTestCards();
+            GameBoard board = new GameBoard(cards);
+            Player p1 = new SpecialPlayerMock(1);
+            Player p2 = new SpecialPlayerMock(2);
             Player p3 = new SpecialPlayerMock(3);
             Player p4 = new SpecialPlayerMock(4);
             Player p5 = new SpecialPlayerMock(5);
