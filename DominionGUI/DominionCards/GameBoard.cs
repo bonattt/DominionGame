@@ -94,12 +94,16 @@ namespace DominionCards
                         currentHightestPlayer = turnOrder.Peek();
                         highestVP = currentVP;
                         highestMoney = currentMoney;
+                        tie = null;
                     }
                 }
                 else if (currentVP == highestVP)
                 {
                     if (currentMoney > highestMoney)
                     {
+                        currentHightestPlayer = turnOrder.Peek();
+                        highestVP = currentVP;
+                        highestMoney = currentMoney;
                     }
                     else if (currentMoney == highestMoney)
                     {
