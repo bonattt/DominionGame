@@ -54,8 +54,13 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+<<<<<<< HEAD
+    <Compile Include="UnitTest1.cs" />
+=======
+    <Compile Include="UnitTestException.cs" />
     <Compile Include="UnitTestRandomCards.cs" />
     <Compile Include="UnitTestGameBoard.cs" />
+>>>>>>> origin/master
     <Compile Include="UnitTestCard.cs" />
     <Compile Include="UnitTestPlayer.cs" />
   </ItemGroup>

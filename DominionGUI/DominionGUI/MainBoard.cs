@@ -7,21 +7,67 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Collections;
 
 namespace DominionGUI
 {
     public partial class MainBoard : Form
     {
 
-        
 
+        private static MainBoard instance;
+        public DominionCards.GameBoard board;
+
+        private System.Drawing.Bitmap[] imageadd;
+        private System.Type[] cardsadd;
+        private int discardsize = 0;
+        private Label discarddeck = new Label();
         public MainBoard()
         {
             
             InitializeComponent();
             button1.Image = DominionGUI.Properties.Resources.WorkshopHalf;
             drawCorrectImage(button1);
-            
+            board = new DominionCards.GameBoard(new Dictionary<DominionCards.Card, int>(),new Queue<DominionCards.Player>());
+            imageadd = new System.Drawing.Bitmap[] { DominionGUI.Properties.Resources.WorkshopHalf, DominionGUI.Properties.Resources.AdventurerHalfNew, DominionGUI.Properties.Resources.BureaucratHalf, DominionGUI.Properties.Resources.CellarHalf, DominionGUI.Properties.Resources.ChancellorHalf, DominionGUI.Properties.Resources.ChapelHalf, DominionGUI.Properties.Resources.CouncilroomHalf, DominionGUI.Properties.Resources.FeastHalf, DominionGUI.Properties.Resources.FestivalHalf, DominionGUI.Properties.Resources.GardensHalf, DominionGUI.Properties.Resources.LaboratoryHalf, DominionGUI.Properties.Resources.LibraryHalf, DominionGUI.Properties.Resources.MarketHalf, DominionGUI.Properties.Resources.MilitiaHalf, DominionGUI.Properties.Resources.MineHalf, DominionGUI.Properties.Resources.MoatHalf, DominionGUI.Properties.Resources.MoneylenderHalf, DominionGUI.Properties.Resources.RemodelHalf, DominionGUI.Properties.Resources.SmithyHalf, DominionGUI.Properties.Resources.SpyHalf, DominionGUI.Properties.Resources.ThiefHalf, DominionGUI.Properties.Resources.ThroneroomHalf, DominionGUI.Properties.Resources.VillageHalf, DominionGUI.Properties.Resources.WitchHalf, DominionGUI.Properties.Resources.WoodcutterHalf };
+            cardsadd = new System.Type[] { typeof(DominionCards.KingdomCards.Workshop),typeof(DominionCards.KingdomCards.Adventurer),typeof(DominionCards.KingdomCards.Bureaucrat),typeof(DominionCards.KingdomCards.Cellar),typeof(DominionCards.KingdomCards.Chancellor),typeof(DominionCards.KingdomCards.Chapel),typeof(DominionCards.KingdomCards.CouncilRoom),typeof(DominionCards.KingdomCards.Feast),typeof(DominionCards.KingdomCards.Festival),typeof(DominionCards.KingdomCards.Gardens),typeof(DominionCards.KingdomCards.Laboratory),typeof(DominionCards.KingdomCards.Library),typeof(DominionCards.KingdomCards.Market),typeof(DominionCards.KingdomCards.Militia),typeof(DominionCards.KingdomCards.Mine),typeof(DominionCards.KingdomCards.Moat),typeof(DominionCards.KingdomCards.MoneyLender),typeof(DominionCards.KingdomCards.Remodel),typeof(DominionCards.KingdomCards.Smithy),typeof(DominionCards.KingdomCards.Spy),typeof(DominionCards.KingdomCards.Thief),typeof(DominionCards.KingdomCards.ThroneRoom),typeof(DominionCards.KingdomCards.Village),typeof(DominionCards.KingdomCards.Witch),typeof(DominionCards.KingdomCards.Woodcutter)};      
+        }
+        public void determine()
+        {
+            List<int> numList = new List<int>();
+            numList = RandomGenerateCards.GenerateRandom.GenerateRandomList(25, 5);
+            int xValue = 95;
+            int yValue = 50;
+            for (int i = 0; i < 25; i++)
+            {
+                if (numList.Contains(i))
+                {
+                    Button newButton = new Button();
+                    newButton.Image = imageadd[i];
+                    board.addCard((DominionCards.Card)Activator.CreateInstance(cardsadd[i]));
+                    newButton.Click += new EventHandler(this.gameplay);
+                    newButton.Height = 179;
+                    newButton.Width = 256;
+                    newButton.Location = new Point(xValue, yValue);
+                    xValue = xValue + 256;
+                    newButton.Parent = instance;
+                    instance.Update();
+                    instance.Show();
+                }
+            }                
+        }
+        private void gameplay(Object sender, EventArgs e)
+        {
+            Button clickedButton = (Button)sender;
+            discardsize = discardsize + 1;
+            discarddeck.Text = "Discard Cards Size: " + discardsize;
+            clickedButton.Visible = false;
+        }
+        public static MainBoard getinstance()
+        {
+            if (instance == null)
+                instance = new MainBoard();
+            return instance;
         }
 
         private void drawCorrectImage(Button button)
