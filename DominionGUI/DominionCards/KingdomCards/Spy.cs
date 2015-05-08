@@ -8,8 +8,9 @@ namespace DominionCards.KingdomCards
 {
     public class Spy : ActionCard
     {
+        private static int ID = 24;
         public Spy()
-            : base(1, 0, 0, 1, 4, 24)
+            : base(1, 0, 0, 1, 4, ID)
         {
             // TODO implement
         }

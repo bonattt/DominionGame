@@ -8,7 +8,9 @@ namespace DominionCards.KingdomCards
 {
     public class Silver : TreasureCard
     {
-        public Silver() : base (2, 3, 1)
+
+        private static int ID = 1;
+        public Silver() : base (2, 3, ID)
         {
             // NOTHING HAPPENS
         }

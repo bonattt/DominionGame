@@ -8,8 +8,9 @@ namespace DominionCards.KingdomCards
 {
     public class Market : ActionCard
     {
+        private static int ID = 17;
         public Market()
-            : base(1, 1, 1, 1, 5, 17)
+            : base(1, 1, 1, 1, 5, ID)
         {
             // TODO implement
         }

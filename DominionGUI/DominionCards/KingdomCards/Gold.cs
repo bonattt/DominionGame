@@ -8,7 +8,8 @@ namespace DominionCards.KingdomCards
 {
     public class Gold : TreasureCard
     {
-        public Gold() : base (3, 6, 2)
+        private static int ID = 2;
+        public Gold() : base (3, 6, ID)
         {
             // NOTHING HAPPENS
         }

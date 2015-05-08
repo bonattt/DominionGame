@@ -9,8 +9,9 @@ namespace DominionCards.KingdomCards
 {
     public class Moat : ActionCard
     {
+        private static int ID = 20;
         public Moat()
-            : base(2, 0, 0, 0, 2, 20)
+            : base(2, 0, 0, 0, 2, ID)
         {
             // TODO implement
         }

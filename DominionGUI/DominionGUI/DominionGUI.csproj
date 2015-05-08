@@ -48,6 +48,9 @@
     <Compile Include="CardButon.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="CardButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="KingdomCardSelection.cs">
       <SubType>Form</SubType>
     </Compile>

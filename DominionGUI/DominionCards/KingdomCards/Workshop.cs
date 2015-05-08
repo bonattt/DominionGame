@@ -9,8 +9,9 @@ namespace DominionCards.KingdomCards
 {
     public class Workshop : ActionCard
     {
+    private static int ID = 31;
         public Workshop()
-            : base(0, 0, 0, 0, 3, 31)
+            : base(0, 0, 0, 0, 3, ID)
         {
             // TODO implement
         }

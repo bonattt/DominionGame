@@ -8,8 +8,9 @@ namespace DominionCards.KingdomCards
 {
     public class Militia : ActionCard
     {
+        private static int ID = 18;
         public Militia()
-            : base(0, 0, 0, 0, 4, 18)
+            : base(0, 0, 0, 0, 4, ID)
         {
             // TODO implement
         }

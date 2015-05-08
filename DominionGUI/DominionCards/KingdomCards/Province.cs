@@ -8,7 +8,8 @@ namespace DominionCards.KingdomCards
 {
     public class Province : VictoryCard
     {
-        public Province() : base (6, 8, 5)
+        private static int ID = 5;
+        public Province() : base (6, 8, ID)
         {
             // NOTHING HAPPENS
         }
