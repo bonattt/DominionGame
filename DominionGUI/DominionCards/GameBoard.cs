@@ -64,7 +64,15 @@ namespace DominionCards
                 Player next = NextPlayer();
                 next.TakeTurn(this);
             }
-            return FindWinningPlayer();
+            try
+            {
+                return FindWinningPlayer();
+            }
+            catch (TieException e)
+            {
+                e.PrintWinners();
+                throw e;
+            }            
         }
 
         public Player FindWinningPlayer()
@@ -86,12 +94,18 @@ namespace DominionCards
                         currentHightestPlayer = turnOrder.Peek();
                         highestVP = currentVP;
                         highestMoney = currentMoney;
+                        tie = null;
                     }
                 }
                 else if (currentVP == highestVP)
                 {
                     if (currentMoney > highestMoney)
                     {
+
+                        currentHightestPlayer = turnOrder.Peek();
+                        highestVP = currentVP;
+                        highestMoney = currentMoney;
+
                     }
                     else if (currentMoney == highestMoney)
                     {
