@@ -185,26 +185,27 @@ namespace UnitTestProject2
         [TestMethod]
         public void IntegrationTestTieIsThrownOnTrueTie()
         {
-            MockRepository mocks = new MockRepository();
+//            MockRepository mocks = new MockRepository();
             Dictionary<Card, int> cards = GetTestCards();
             GameBoard board = new GameBoard(cards);
-            Player p1 = new SpecialPlayerMock();
-            Player p2 = new SpecialPlayerMock();
-            Player p3 = new SpecialPlayerMock();
-            p1.setNumber(1);
-            p2.setNumber(2);
-            p3.setNumber(3);
+            Player p1 = new SpecialPlayerMock(1);
+            Player p2 = new SpecialPlayerMock(2);
+            Player p3 = new SpecialPlayerMock(3);
+            Player p4 = new SpecialPlayerMock(4);
+            Player p5 = new SpecialPlayerMock(5);
 
             board.AddPlayer(p1);
             board.AddPlayer(p2);
             board.AddPlayer(p3);
+            board.AddPlayer(p4);
+            board.AddPlayer(p5);
             try
             {
                 board.PlayGame();
             }
             catch (TieException e)
             {
-                Assert.AreEqual(3, e.getArraySize());
+                Assert.AreEqual(5, e.getArraySize());
                 return;
             }
             Assert.Fail("expected an exception");
@@ -214,6 +215,10 @@ namespace UnitTestProject2
         {
             public int numbTimesCalled;
             public SpecialPlayerMock() : base()
+            {
+                numbTimesCalled = 0;
+            }
+            public SpecialPlayerMock(int n) : base(n)
             {
                 numbTimesCalled = 0;
             }
