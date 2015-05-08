@@ -76,15 +76,21 @@ namespace DominionCards
         public int getTotalMoney()
         {
             int money = 0;
+            Stack<Card> tempStack = new Stack<Card>();
             // get money from cards in deck
             while (deck.Count > 0)
             {
                 Card card = deck.Pop();
+                tempStack.Push(card);
                 int cardID = card.getID();
                 if (cardID == 0 || cardID == 1 || cardID == 2)
                 {
                     money += ((TreasureCard)card).getValue();
                 }
+            }
+            while (tempStack.Count > 0)
+            {
+                deck.Push(tempStack.Pop());
             }
             // get money for cards in discard
             for (int i = 0; i < discard.Count; i++)
