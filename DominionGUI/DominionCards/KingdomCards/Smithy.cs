@@ -8,8 +8,10 @@ namespace DominionCards.KingdomCards
 {
     public class Smithy : ActionCard
     {
+
+        private static int ID = 23;
         public Smithy()
-            : base(3, 0, 0, 0, 4, 23)
+            : base(3, 0, 0, 0, 4, ID)
         {
             // TODO implement
         }
