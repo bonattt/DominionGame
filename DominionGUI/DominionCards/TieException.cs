@@ -53,15 +53,16 @@ namespace DominionCards
         {
             Console.Write("Player ");
             Console.Write(((Player)TiedPlayers[0]).getNumber());
-            for (int i = 0; i < TiedPlayers.Count - 1; i++)
+            for (int i = 1; i < TiedPlayers.Count; i++)
             {
                 Console.Write(", ");
                 Console.Write("Player ");
                 Console.Write(((Player)TiedPlayers[i]).getNumber());
+                i++;
             }
-            Console.Write("and Player ");
-            Console.Write(((Player)TiedPlayers[TiedPlayers.Count - 1]).getNumber());
-            Console.Write("all tied for winner! \n");
+            //Console.Write("and Player ");
+            //Console.Write(((Player)TiedPlayers[TiedPlayers.Count - 1]).getNumber());
+            Console.Write(" tied for winner! \n");
         }
 
 

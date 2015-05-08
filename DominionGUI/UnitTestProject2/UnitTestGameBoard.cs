@@ -190,16 +190,21 @@ namespace UnitTestProject2
             GameBoard board = new GameBoard(cards);
             Player p1 = new SpecialPlayerMock();
             Player p2 = new SpecialPlayerMock();
+            Player p3 = new SpecialPlayerMock();
+            p1.setNumber(1);
+            p2.setNumber(2);
+            p3.setNumber(3);
 
             board.AddPlayer(p1);
             board.AddPlayer(p2);
+            board.AddPlayer(p3);
             try
             {
                 board.PlayGame();
             }
             catch (TieException e)
             {
-                Assert.AreEqual(2, e.getArraySize());
+                Assert.AreEqual(3, e.getArraySize());
                 return;
             }
             Assert.Fail("expected an exception");
