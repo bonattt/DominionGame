@@ -6,13 +6,22 @@ using System.Threading.Tasks;
 
 namespace DominionCards.KingdomCards
 {
-    public class Militia : ActionCard
+    public class Militia : AttackCard
     {
         private static int ID = 18;
         public Militia()
             : base(0, 0, 0, 0, 4, ID)
         {
             // TODO implement
+        }
+
+        public override void play(Player player)
+        {
+            // TODO
+        }
+        public override void MakeAttack(Player p)
+        {
+            // TODO
         }
     }
 }

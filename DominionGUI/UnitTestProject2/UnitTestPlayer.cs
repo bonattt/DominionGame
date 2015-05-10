@@ -5,12 +5,29 @@ using System.Collections;
 using RandomGenerateCards;
 using DominionCards;
 using DominionCards.KingdomCards;
+using Rhino.Mocks;
 
 namespace UnitTestProject2
 {
     [TestClass]
     public class UnitTestPlayer
     {
+        [TestMethod]
+        public void TestIfPlayerGetsAttackedWhenAttackCardPlayed()
+        {
+            Player p1 = new HumanPlayer(1);
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            MockRepository mocks = new MockRepository();
+            GameBoard fakeBoard = mocks.DynamicMock<GameBoard>(cards);
+            AttackCard attack = mocks.StrictMock<Militia>();
+            using (mocks.Ordered())
+            {
+                attack.MakeAttack(p1);
+            }
+            mocks.ReplayAll();
+            p1.TakeTurn(fakeBoard);
+            mocks.VerifyAll();
+        }
         [TestMethod]
         public void TestFiveCardsDrawnEvenIfDeckEmpty()
         {
