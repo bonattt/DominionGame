@@ -17,7 +17,19 @@ namespace DominionCards
 
         public void PushAttackToAttacks(Player p)
         {
-            //TODO implement this method
+            GameBoard board = GameBoard.getInstance();
+            while (board.turnOrder.Peek() != p)
+            {
+                Player current = board.NextPlayer();
+                current.getAttacks().Push(this);
+            }
+            board.NextPlayer();
+        }
+
+        public override void play(Player player)
+        {
+            base.play(player);
+            PushAttackToAttacks(player);
         }
 
     }
