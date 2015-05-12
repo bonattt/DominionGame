@@ -13,7 +13,7 @@ namespace DominionCards.KingdomCards
         {
             
         }
-        public override void play(Player player)
+        public override void Play(Player player)
         {
             int cardsAdded = 0;
             while (cardsAdded != 2)

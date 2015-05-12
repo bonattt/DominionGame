@@ -683,6 +683,50 @@ namespace UnitTestProject2
             CollectionAssert.AreEqual(count, expct);
         }
 
+        [TestMethod]
+        public void testPlayingAttackMakesOpponentQueueBigger()
+        {
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            GameBoard board = new GameBoard(cards);
+            Player p1 = new HumanPlayer(1);
+            Player p2 = new HumanPlayer(2);
+            Player p3 = new HumanPlayer(3);
+            Player p4 = new HumanPlayer(4);
+            board.AddPlayer(p1);
+            board.AddPlayer(p2); 
+            board.AddPlayer(p3); 
+            board.AddPlayer(p4);
+            int p2AttackSize = p2.getAttacks().Count;
+            int p3AttackSize = p3.getAttacks().Count;
+            int p4AttackSize = p4.getAttacks().Count;
+            Card militia = new Militia();
+            p1.getHand().Add(militia);
+            p1.playCard(militia);
+            Assert.AreEqual(p2AttackSize + 1, p2.getAttacks().Count);
+            Assert.AreEqual(p3AttackSize + 1, p3.getAttacks().Count);
+            Assert.AreEqual(p4AttackSize + 1, p4.getAttacks().Count);
+        }
+
+        [TestMethod]
+        public void testPlayingAttackDoesNotMakeYourQueueBigger()
+        {
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            GameBoard board = new GameBoard(cards);
+            Player p1 = new HumanPlayer(1);
+            Player p2 = new HumanPlayer(2);
+            Player p3 = new HumanPlayer(3);
+            Player p4 = new HumanPlayer(4);
+            board.AddPlayer(p1);
+            board.AddPlayer(p2);
+            board.AddPlayer(p3);
+            board.AddPlayer(p4);
+            int p1AttackSize = p1.getAttacks().Count;
+            Card militia = new Militia();
+            p1.getHand().Add(militia);
+            p1.playCard(militia);
+            Assert.AreEqual(p1AttackSize, p1.getAttacks().Count);
+        }
+
         private Dictionary<int, int> countCards(Stack<Card> deck)
         {
             Dictionary<int, int> count = new Dictionary<int, int>();
@@ -709,5 +753,7 @@ namespace UnitTestProject2
             }
             return count;
         }
+
+
     }
 }

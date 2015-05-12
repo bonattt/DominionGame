@@ -8,12 +8,17 @@ namespace DominionCards
 {
     public abstract class AttackCard : ActionCard
     {
+        Stack<Player> targets;
         public AttackCard(int extraCards, int extraMoney, int extraBuys, int extraActions, int price, int idNumb)
             : base(extraCards, extraMoney, extraBuys, extraActions, price, idNumb)
         {
             // TODO implement this class
         }
         public abstract void MakeAttack(Player p);
+        public bool needsAction() {
+
+            return false;
+        }
 
         public void PushAttackToAttacks(Player p)
         {
@@ -26,9 +31,18 @@ namespace DominionCards
             board.NextPlayer();
         }
 
-        public override void play(Player player)
+        public virtual void GetAttackerDecision(Player attacker, Player target)
         {
-            base.play(player);
+            // does nothing by default.
+        }
+        public virtual void GetResponse(Player target)
+        {
+            // does nothing.
+        }
+
+        public override void Play(Player player)
+        {
+            base.Play(player);
             PushAttackToAttacks(player);
         }
 

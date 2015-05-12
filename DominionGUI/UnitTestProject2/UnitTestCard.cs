@@ -26,7 +26,7 @@ namespace UnitTestProject2
             p.addCardToHand(c);
             p.drawHand();
             int count = p.getHand().Count;
-            c.play(p);
+            c.Play(p);
             Assert.AreEqual(count + 2, p.getHand().Count);
         }
         [TestMethod]
@@ -42,7 +42,7 @@ namespace UnitTestProject2
             Player p = new HumanPlayer();
             p.addCardToHand(c);
             p.drawHand();
-            c.play(p);
+            c.Play(p);
             Assert.AreEqual(7, p.getHand().Count);
         }
         [TestMethod]

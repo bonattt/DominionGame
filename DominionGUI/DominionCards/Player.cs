@@ -242,7 +242,7 @@ namespace DominionCards
             actions += card.actions;
             buys += card.buys;
             money += card.money;
-            card.play(this);
+            card.Play(this);
             return actions;
         }
         public static Stack<Card> Shuffle(ArrayList discard)
@@ -271,6 +271,10 @@ namespace DominionCards
         public override string ToString()
         {
             return "Player " + number;
+        }
+        public void ProcessAttack()
+        {
+
         }
     }
 }

@@ -15,7 +15,7 @@ namespace DominionCards.KingdomCards
             // TODO implement
 
         }
-        public override void play(Player player)
+        public override void Play(Player player)
         {
             Console.WriteLine("I'm a lumberjack and I'm okay!");
 

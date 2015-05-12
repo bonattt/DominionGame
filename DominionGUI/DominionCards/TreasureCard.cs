@@ -14,7 +14,7 @@ namespace DominionCards
         {
             value = money;
         }
-        public override void play(Player p)
+        public override void Play(Player p)
         {
             // TODO implement this
         }
