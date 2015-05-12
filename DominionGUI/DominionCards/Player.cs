@@ -14,7 +14,7 @@ namespace DominionCards
         private Stack<Card> deck = new Stack<Card>();
         private ArrayList hand = new ArrayList();
         private ArrayList discard = new ArrayList();
-        private Queue<Card> attacks = new Queue<Card>();
+        private Queue<AttackCard> attacks = new Queue<AttackCard>();
 
         public int actions, buys, money; // TODO set this to public temporarily so code would compile. 
         public Player()
@@ -140,7 +140,7 @@ namespace DominionCards
         {
             return discard;
         }
-        public Queue<Card> getAttacks()
+        public Queue<AttackCard> getAttacks()
         {
             return attacks;
         }
@@ -273,9 +273,13 @@ namespace DominionCards
         {
             return "Player " + number;
         }
-        public void ProcessAttack()
+        public void ProcessAttacks()
         {
-
+            while (attacks.Count > 0)
+            {
+                AttackCard card = attacks.Dequeue();
+                card.MakeDelayedAttack(this);
+            }
         }
     }
 }

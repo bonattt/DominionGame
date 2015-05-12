@@ -7,13 +7,12 @@ using System.Collections.Generic;
 namespace UnitTestProject2
 {
     [TestClass]
-    public class UnitTestKingdomCards
+    public class UnitTestBureaucrat
     {
         GameBoard board;
         Player p1;
         Player p2;
         Player p3;
-        Player p4;
         Card card;
 
         [TestInitialize]
@@ -35,6 +34,7 @@ namespace UnitTestProject2
         public void TestNextCardIsSilverAfterPlayingBeaureauqwertyuiop()
         {
             p1.playCard(card);
+            ProcessAllAttacks();
             Assert.AreEqual(new Silver(), p1.GetNextCard());
         }
         [TestMethod]
@@ -45,6 +45,7 @@ namespace UnitTestProject2
             p3.setDeck(new Stack<Card>());
             p3.addCardToHand(new Copper());
             p1.playCard(card);
+            ProcessAllAttacks();
 
             int cardID2 = p2.GetNextCard().getID();
             int cardID3 = p3.GetNextCard().getID();
@@ -66,6 +67,7 @@ namespace UnitTestProject2
             p3.addCardToHand(new Copper());
 
             p1.playCard(card);
+            ProcessAllAttacks();
 
             Assert.IsFalse(p2.getHand().Contains(new Estate()));
             Assert.IsFalse(p3.getHand().Contains(new Estate()));
@@ -77,8 +79,16 @@ namespace UnitTestProject2
             p2.addCardToHand(new Estate());
             p3.addCardToHand(new Estate());
             p1.playCard(card);
+            ProcessAllAttacks();
             Assert.AreEqual(new Estate(), p2.GetNextCard());
             Assert.AreEqual(new Estate(), p3.GetNextCard());
+        }
+
+        private void ProcessAllAttacks()
+        {
+            p1.ProcessAttacks();
+            p2.ProcessAttacks();
+            p3.ProcessAttacks();
         }
     }
 }
