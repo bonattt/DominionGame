@@ -29,11 +29,6 @@ namespace DominionCards
             cards.Add(new Duchy(), 15);
             cards.Add(new Province(), 10);
         }
-        public GameBoard(Dictionary<Card, int> cards, Queue<Player> turnOrder)
-        {
-            this.turnOrder = turnOrder;
-            this.cards = cards;
-        }
         public virtual void addCard(Card c)
         {
             cards.Add(c, 10);
