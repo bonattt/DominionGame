@@ -20,13 +20,16 @@ namespace DominionCards
             return false;
         }
 
-        public void PushAttackToAttacks(Player p)
+        public void EnqueueAttacks(Player p)
         {
             GameBoard board = GameBoard.getInstance();
             board.NextPlayer();
             while (board.turnOrder.Peek() != p){
                 Player current = board.NextPlayer();
-                current.getAttacks().Enqueue(this);
+                if (!current.getHand().Contains(new KingdomCards.Moat()))
+                {
+                    current.getAttacks().Enqueue(this);
+                }
             } 
             board.NextPlayer();
         }
@@ -43,7 +46,7 @@ namespace DominionCards
         public override void Play(Player player)
         {
             base.Play(player);
-            PushAttackToAttacks(player);
+            EnqueueAttacks(player);
         }
 
     }
