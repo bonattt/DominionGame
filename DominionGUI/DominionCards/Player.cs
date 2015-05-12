@@ -216,6 +216,7 @@ namespace DominionCards
                 if (hand[i] == c)
                 {
                     hand.Remove(c);
+                    discard.Add(c);
                     break;
                 }
             }
