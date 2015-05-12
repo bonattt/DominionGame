@@ -708,6 +708,27 @@ namespace UnitTestProject2
         }
 
         [TestMethod]
+        public void TestPlayerIgnoresAttacksWithMoat()
+        {
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            GameBoard board = new GameBoard(cards);
+            Player p1 = new HumanPlayer(1);
+            Player p2 = new HumanPlayer(2);
+            Player p3 = new HumanPlayer(3);
+            board.AddPlayer(p1);
+            board.AddPlayer(p2);
+            board.AddPlayer(p3);
+            int p2AttackSize = p2.getAttacks().Count;
+            int p3AttackSize = p3.getAttacks().Count;
+            Card militia = new Militia();
+            p1.getHand().Add(militia);
+            p2.getHand().Add(new Moat());
+            p1.playCard(militia);
+            Assert.AreEqual(p2AttackSize, p2.getAttacks().Count);
+            Assert.AreEqual(p3AttackSize + 1, p3.getAttacks().Count);
+        }
+
+        [TestMethod]
         public void testPlayingAttackDoesNotMakeYourQueueBigger()
         {
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
