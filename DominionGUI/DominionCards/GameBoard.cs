@@ -9,6 +9,8 @@ namespace DominionCards
 {
     public class GameBoard
     {
+        private static GameBoard boardInstance;
+
         public Queue<Player> turnOrder;
         public Dictionary<Card, int> cards;
         public GameBoard(Dictionary<Card, int> cards)
@@ -16,6 +18,7 @@ namespace DominionCards
             this.cards = cards;
             turnOrder = new Queue<Player>();
             AddStandardKingdomCards();
+            boardInstance = this;
         }
         private void AddStandardKingdomCards()
         {
@@ -156,6 +159,15 @@ namespace DominionCards
         public Dictionary<Card, int> GetCards()
         {
             return cards;
+        }
+
+        public static GameBoard getInstance()
+        {
+            if (boardInstance == null)
+            {
+                return null; //add an exception here in the future
+            }
+            return boardInstance;
         }
     }
 }

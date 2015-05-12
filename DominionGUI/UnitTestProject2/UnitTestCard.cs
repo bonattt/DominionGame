@@ -163,27 +163,6 @@ namespace UnitTestProject2
             Assert.AreEqual(village, new Village());
             Assert.AreEqual(smithy, new Smithy());
         }
-
-        /*[TestMethod]
-        public void testGetPriceVictoryCard()
-        {
-            int vPrice = 2;
-            Card v = new VictoryCard(1, vPrice, Card.GENERIC_CARD_ID);
-            Assert.AreEqual(v.getPrice(), vPrice);
-        }
-        [TestMethod]
-        public void testGetPriceTreasureCard()
-        {
-            int tPrice = 2;
-            Card t = new TreasureCard(1, tPrice, Card.GENERIC_CARD_ID);
-            Assert.AreEqual(t.getPrice(), tPrice);
-        }
-        [TestMethod]
-        public void testGetPriceActionCard()
-        {
-            int aPrice = 2;
-            Card a = new ActionCard(1, 1, 1, 1, aPrice, Card.GENERIC_CARD_ID);
-            Assert.AreEqual(a.getPrice(), aPrice);
-        }*/
+        
     }
 }
