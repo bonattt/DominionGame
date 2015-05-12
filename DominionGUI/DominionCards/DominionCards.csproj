@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AttackCard.cs" />
     <Compile Include="Card.cs" />
     <Compile Include="CardTEST.cs" />
     <Compile Include="ActionCard.cs" />
