@@ -14,13 +14,14 @@ namespace DominionGUI
     public partial class SelectNumPlayers : Form
     {
         public DominionCards.GameBoard board;
-        DominionCards.Player player;
         public static SelectNumPlayers INSTANCE;
         int discardsize = 0;
         Label discarddeck = new Label();
         CheckBox lastChecked;
+        private int numberplayers = -1;
         public SelectNumPlayers()
         {
+            board = new DominionCards.GameBoard(new Dictionary<DominionCards.Card, int>(), new Queue<DominionCards.Player>());
             INSTANCE = this;
             InitializeComponent();
         }
@@ -65,6 +66,7 @@ namespace DominionGUI
                 checkBox2.Enabled = false;
                 checkBox3.Enabled = false;
                 lastChecked = checkBox1;
+                numberplayers = 2;
             }
             else if (checkBox2.Checked)
             {
@@ -72,6 +74,7 @@ namespace DominionGUI
                 checkBox1.Enabled = false;
                 checkBox3.Enabled = false;
                 lastChecked = checkBox2;
+                numberplayers = 3;
             }
             else if (checkBox3.Checked)
             {
@@ -79,6 +82,7 @@ namespace DominionGUI
                 checkBox1.Enabled = false;
                 checkBox2.Enabled = false;
                 lastChecked = checkBox3;
+                numberplayers = 4;
             }
             if(!lastChecked.Equals(null))
                 if (lastChecked.Equals(checkBox1) && !checkBox1.Checked)
@@ -99,11 +103,19 @@ namespace DominionGUI
             if(movies.Length>0)
                 MessageBox.Show(movies);
         }
+        public void createplayers(int numberplayer)
+        {
+            for (int i = 0; i < numberplayer; i++)
+            {
+                this.board.AddPlayer(new DominionCards.HumanPlayer(i + 1));
+            }
+        }
 
         private void CardSelectOption(object sender, EventArgs e)
         {
             if (checkBox4.Checked)
             {
+                createplayers(numberplayers);
                 var myForm = MainBoard.getinstance();
                 myForm.determine();
                 myForm.Update();
@@ -125,10 +137,10 @@ namespace DominionGUI
         }
         private void gameplay(Object sender, EventArgs e)
         {
-            Button clickedButton = (Button)sender;
+            /*Button clickedButton = (Button)sender;
             discardsize = discardsize + 1;
             discarddeck.Text = "Discard Cards Size: " + discardsize;
-            clickedButton.Visible = false;          
+            clickedButton.Visible = false;   */       
         }
         public void addRandomCards()
         {

@@ -90,7 +90,7 @@
             this.deck.Name = "deck";
             this.deck.Size = new System.Drawing.Size(62, 13);
             this.deck.TabIndex = 19;
-            this.deck.Text = "Deck Size: ";
+            this.deck.Text = "Deck Size: "+ DominionCards.GameBoard.getInstance().turnOrder.Peek().getDeck().Count;
             // 
             // actionleft
             // 
