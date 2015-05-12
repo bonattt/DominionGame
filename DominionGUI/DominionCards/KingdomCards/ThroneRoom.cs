@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace DominionCards.KingdomCards
 {
@@ -13,6 +14,12 @@ namespace DominionCards.KingdomCards
             : base(0, 0, 0, 0, 4, ID)
         {
             // TODO implement
+        }
+
+        public override void Play(Player player)
+        {
+            base.Play(player);
+            MessageBox.Show("do the thing", "ThroneRoom", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
         }
     }
 }

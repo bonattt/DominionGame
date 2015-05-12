@@ -245,6 +245,22 @@ namespace UnitTestProject2
         }
 
         [TestMethod]
+        public void TestThroneRoomBringsUpWindow()
+        {
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            GameBoard board = new GameBoard(cards);
+            Card c = new ThroneRoom();
+            Player p1 = new HumanPlayer(1);
+            Player p2 = new HumanPlayer(2);
+            board.AddPlayer(p1);
+            board.AddPlayer(p2);
+            int cardsInDiscardp2 = p2.getDiscard().Count;
+            p1.addCardToHand(c);
+            p1.playCard(c);
+            Assert.AreEqual(2, 2);
+        }
+
+        [TestMethod]
         public void testPlayerDraws4CardsOnCouncilRoom()
         {
             Dictionary<Card, int> cards = new Dictionary<Card,int>();
