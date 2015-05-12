@@ -15,7 +15,7 @@ namespace DominionCards.KingdomCards
             // TODO implement
         }
 
-        public override void MakeAttack(Player p)
+        public override void MakeDelayedAttack(Player playerAttacked)
         {
             // TODO
         }

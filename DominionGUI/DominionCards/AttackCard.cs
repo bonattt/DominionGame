@@ -14,12 +14,14 @@ namespace DominionCards
         {
             // TODO implement this class
         }
-        public abstract void MakeAttack(Player p);
-        public bool needsAction() {
-
-            return false;
+        public virtual void MakeDelayedAttack(Player playerAttacked)
+        {
+            // does nothing. May or may not be overriden.
         }
-
+        public virtual void MakeImmediateAttack(Player playerAttacked)
+        {
+            // does nothing. May or may not be overriden.
+        }
         public void EnqueueAttacks(Player p)
         {
             GameBoard board = GameBoard.getInstance();
@@ -28,6 +30,7 @@ namespace DominionCards
                 Player current = board.NextPlayer();
                 if (!current.getHand().Contains(new KingdomCards.Moat()))
                 {
+                    MakeImmediateAttack(current);
                     current.getAttacks().Enqueue(this);
                 }
             } 
