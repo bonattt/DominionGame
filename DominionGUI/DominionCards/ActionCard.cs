@@ -21,7 +21,7 @@ namespace DominionCards
         {
             return 0;
         }
-        public override void play(Player player)
+        public override void Play(Player player)
         {
             Console.WriteLine("I am just an action card!!");
         }

@@ -15,7 +15,7 @@ namespace DominionCards.KingdomCards
         {
             // TODO implement
         }
-        public override void play(Player player)
+        public override void Play(Player player)
         {
             ArrayList hand = player.getHand();
             for (int i = 0; i < hand.Count; i++)

@@ -99,9 +99,11 @@ namespace DominionCards
                 {
                     if (currentMoney > highestMoney)
                     {
+
                         currentHightestPlayer = turnOrder.Peek();
                         highestVP = currentVP;
                         highestMoney = currentMoney;
+
                     }
                     else if (currentMoney == highestMoney)
                     {
@@ -109,7 +111,7 @@ namespace DominionCards
                     }
                     // ELSE, nothing happens.
                 }
-                
+
                 else if (currentVP > highestVP)
                 {
                     currentHightestPlayer = turnOrder.Peek();
@@ -118,7 +120,7 @@ namespace DominionCards
                 }
                 NextPlayer();
             } while (turnOrder.Peek() != firstCounted);
-            
+
             if (tie != null)
             {
                 throw tie;

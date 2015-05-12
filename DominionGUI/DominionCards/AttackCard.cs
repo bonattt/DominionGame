@@ -8,28 +8,43 @@ namespace DominionCards
 {
     public abstract class AttackCard : ActionCard
     {
+        Stack<Player> targets;
         public AttackCard(int extraCards, int extraMoney, int extraBuys, int extraActions, int price, int idNumb)
             : base(extraCards, extraMoney, extraBuys, extraActions, price, idNumb)
         {
             // TODO implement this class
         }
         public abstract void MakeAttack(Player p);
+        public bool needsAction() {
 
-        public void PushAttackToAttacks(Player p)
-        {
-            GameBoard board = GameBoard.getInstance();
-            while (board.turnOrder.Peek() != p)
-            {
-                Player current = board.NextPlayer();
-                current.getAttacks().Push(this);
-            }
-            board.NextPlayer();
+            return false;
         }
 
-        public override void play(Player player)
+        public void EnqueueAttacks(Player p)
         {
-            base.play(player);
-            PushAttackToAttacks(player);
+            GameBoard board = GameBoard.getInstance();
+            board.NextPlayer();
+            while (board.turnOrder.Peek() != p){
+                Player current = board.NextPlayer();
+                if (!current.getHand().Contains(new KingdomCards.Moat()))
+                {
+                    current.getAttacks().Enqueue(this);
+                }
+            } 
+        }
+
+        public virtual void GetAttackerDecision(Player attacker, Player target)
+        {
+            // does nothing by default.
+        }
+        public virtual void GetResponse(Player target)
+        {
+            // does nothing.
+        }
+
+        public override void Play(Player player)
+        {
+            EnqueueAttacks(player);
         }
 
     }

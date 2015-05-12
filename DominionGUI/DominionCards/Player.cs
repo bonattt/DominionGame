@@ -14,7 +14,7 @@ namespace DominionCards
         private Stack<Card> deck = new Stack<Card>();
         private ArrayList hand = new ArrayList();
         private ArrayList discard = new ArrayList();
-        private Stack<Card> attacks = new Stack<Card>();
+        private Queue<Card> attacks = new Queue<Card>();
 
         public int actions, buys, money; // TODO set this to public temporarily so code would compile. 
         public Player()
@@ -37,7 +37,7 @@ namespace DominionCards
         {
             return number;
         }
-        public Card drawCard()
+        public Card GetNextCard()
         {
             if (deck.Count == 0)
             {
@@ -56,7 +56,7 @@ namespace DominionCards
             // draw five new cards
             for (int i = 0; i < 5; i++)
             {
-                hand.Add(drawCard());
+                hand.Add(GetNextCard());
             }
         }
         private void drawCardsFromPartialDeck()
@@ -140,7 +140,7 @@ namespace DominionCards
         {
             return discard;
         }
-        public Stack<Card> getAttacks()
+        public Queue<Card> getAttacks()
         {
             return attacks;
         }
@@ -237,12 +237,12 @@ namespace DominionCards
             actions--;
             for (int i = 0; i < card.cards; i++)
             {
-                hand.Add(drawCard());
+                hand.Add(GetNextCard());
             }
             actions += card.actions;
             buys += card.buys;
             money += card.money;
-            card.play(this);
+            card.Play(this);
             return actions;
         }
         public static Stack<Card> Shuffle(ArrayList discard)
@@ -271,6 +271,10 @@ namespace DominionCards
         public override string ToString()
         {
             return "Player " + number;
+        }
+        public void ProcessAttack()
+        {
+
         }
     }
 }

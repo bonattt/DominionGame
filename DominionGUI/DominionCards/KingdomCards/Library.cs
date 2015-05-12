@@ -14,7 +14,7 @@ namespace DominionCards.KingdomCards
         {
             // TODO implement
         }
-        public override void play(Player player)
+        public override void Play(Player player)
         {
             int handSize = player.getHand().Count;
             while (handSize < 7)
