@@ -31,7 +31,6 @@ namespace DominionCards
                     current.getAttacks().Enqueue(this);
                 }
             } 
-            board.NextPlayer();
         }
 
         public virtual void GetAttackerDecision(Player attacker, Player target)
@@ -45,7 +44,6 @@ namespace DominionCards
 
         public override void Play(Player player)
         {
-            base.Play(player);
             EnqueueAttacks(player);
         }
 

@@ -37,7 +37,7 @@ namespace DominionCards
         {
             return number;
         }
-        public Card drawCard()
+        public Card GetNextCard()
         {
             if (deck.Count == 0)
             {
@@ -56,7 +56,7 @@ namespace DominionCards
             // draw five new cards
             for (int i = 0; i < 5; i++)
             {
-                hand.Add(drawCard());
+                hand.Add(GetNextCard());
             }
         }
         private void drawCardsFromPartialDeck()
@@ -237,7 +237,7 @@ namespace DominionCards
             actions--;
             for (int i = 0; i < card.cards; i++)
             {
-                hand.Add(drawCard());
+                hand.Add(GetNextCard());
             }
             actions += card.actions;
             buys += card.buys;

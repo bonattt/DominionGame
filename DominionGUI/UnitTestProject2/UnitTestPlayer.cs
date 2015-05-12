@@ -13,22 +13,6 @@ namespace UnitTestProject2
     public class UnitTestPlayer
     {
         [TestMethod]
-        public void TestIfPlayerGetsAttackedWhenAttackCardPlayed()
-        {
-            Player p1 = new HumanPlayer(1);
-            Dictionary<Card, int> cards = new Dictionary<Card, int>();
-            MockRepository mocks = new MockRepository();
-            GameBoard fakeBoard = mocks.DynamicMock<GameBoard>(cards);
-            AttackCard attack = mocks.StrictMock<Militia>();
-            using (mocks.Ordered())
-            {
-                attack.MakeAttack(p1);
-            }
-            mocks.ReplayAll();
-            p1.TakeTurn(fakeBoard);
-            mocks.VerifyAll();
-        }
-        [TestMethod]
         public void TestFiveCardsDrawnEvenIfDeckEmpty()
         {
             Player p = new HumanPlayer();
@@ -99,7 +83,7 @@ namespace UnitTestProject2
             }
             p.setDiscard(newDiscard);
             int discardSize = newDiscard.Count;
-            p.drawCard();
+            p.GetNextCard();
             Assert.AreEqual(discardSize - 1, p.getDeck().Count);
         }
         [TestMethod]
@@ -114,7 +98,7 @@ namespace UnitTestProject2
             }
             p.setDiscard(newDiscard);
             int discardSize = newDiscard.Count;
-            p.drawCard();
+            p.GetNextCard();
             Assert.AreEqual(0, p.getDiscard().Count);
         }
         [TestMethod]
@@ -361,7 +345,7 @@ namespace UnitTestProject2
             Player p1 = new HumanPlayer();
             Stack<Card> deck = p1.getDeck();
             int initialDeckSize = deck.Count;
-            p1.drawCard();
+            p1.GetNextCard();
             Assert.AreEqual(initialDeckSize - 1, deck.Count);
         }
         [TestMethod]
@@ -726,6 +710,27 @@ namespace UnitTestProject2
             p1.playCard(militia);
             Assert.AreEqual(p2AttackSize, p2.getAttacks().Count);
             Assert.AreEqual(p3AttackSize + 1, p3.getAttacks().Count);
+        }
+
+        [TestMethod]
+        public void TestPlayerIsSameBeforeAndAfterAttack()
+        {
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            GameBoard board = new GameBoard(cards);
+            Player p1 = new HumanPlayer(1);
+            Player p2 = new HumanPlayer(2);
+            Player p3 = new HumanPlayer(3);
+            board.AddPlayer(p1);
+            board.AddPlayer(p2);
+            board.AddPlayer(p3);
+            int p2AttackSize = p2.getAttacks().Count;
+            int p3AttackSize = p3.getAttacks().Count;
+            Card militia = new Militia();
+            p1.getHand().Add(militia);
+            Player before = board.turnOrder.Peek();
+            p1.playCard(militia);
+            Assert.AreSame(before, board.turnOrder.Peek());
+            
         }
 
         [TestMethod]

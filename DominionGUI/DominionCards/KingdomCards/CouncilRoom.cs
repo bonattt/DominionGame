@@ -11,7 +11,18 @@ namespace DominionCards.KingdomCards
         public CouncilRoom()
             : base(4, 0, 1, 0, 5, 11)
         {
-            //todo - will treat as an attack
+            //does nothing
+        }
+
+        public override void Play(Player player)
+        {
+            GameBoard board = GameBoard.getInstance();
+            board.NextPlayer();
+            while (board.turnOrder.Peek() != player)
+            {
+                Player current = board.NextPlayer();
+                current.getHand().Add(current.GetNextCard());
+            }
         }
     }
 }
