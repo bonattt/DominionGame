@@ -111,6 +111,10 @@ namespace DominionGUI
             }
         }
 
+        public DominionCards.GameBoard getboard()
+        {
+            return this.board;
+        }
         private void CardSelectOption(object sender, EventArgs e)
         {
             if (checkBox4.Checked)
