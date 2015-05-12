@@ -21,7 +21,7 @@ namespace DominionGUI
         private int numberplayers = -1;
         public SelectNumPlayers()
         {
-            board = new DominionCards.GameBoard(new Dictionary<DominionCards.Card, int>(), new Queue<DominionCards.Player>());
+            board = new DominionCards.GameBoard(new Dictionary<DominionCards.Card, int>());
             INSTANCE = this;
             InitializeComponent();
         }
