@@ -23,11 +23,11 @@ namespace DominionCards
         public void PushAttackToAttacks(Player p)
         {
             GameBoard board = GameBoard.getInstance();
-            while (board.turnOrder.Peek() != p)
-            {
+            board.NextPlayer();
+            while (board.turnOrder.Peek() != p){
                 Player current = board.NextPlayer();
-                current.getAttacks().Push(this);
-            }
+                current.getAttacks().Enqueue(this);
+            } 
             board.NextPlayer();
         }
 

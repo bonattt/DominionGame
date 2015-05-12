@@ -15,10 +15,6 @@ namespace DominionCards.KingdomCards
             // TODO implement
         }
 
-        public override void Play(Player player)
-        {
-            // TODO
-        }
         public override void MakeAttack(Player p)
         {
             // TODO
