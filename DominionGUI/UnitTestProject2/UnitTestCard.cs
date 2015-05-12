@@ -181,6 +181,70 @@ namespace UnitTestProject2
         }
 
         [TestMethod]
+        public void TestWitchAddsCurseToOtherPlayers()
+        {
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            GameBoard board = new GameBoard(cards);
+            Card c = new Witch();
+            Player p1 = new HumanPlayer(1);
+            Player p2 = new HumanPlayer(2);
+            Player p3 = new HumanPlayer(3);
+            board.AddPlayer(p1);
+            board.AddPlayer(p2);
+            board.AddPlayer(p3);
+            int cardsInDiscardp2 = p2.getDiscard().Count;
+            int cardsInDiscardp3 = p3.getDiscard().Count;
+            p1.addCardToHand(c);
+            p1.playCard(c);
+            Assert.AreEqual(cardsInDiscardp2 + 1, p2.getDiscard().Count);
+            Assert.AreEqual(cardsInDiscardp3 + 1, p3.getDiscard().Count);
+            Assert.IsTrue(p2.getDiscard().Contains(new Curse()));
+            Assert.IsTrue(p3.getDiscard().Contains(new Curse()));
+        }
+
+        [TestMethod]
+        public void TestWitchDoesNotAddCurseToMe()
+        {
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            GameBoard board = new GameBoard(cards);
+            Card c = new Witch();
+            Player p1 = new HumanPlayer(1);
+            Player p2 = new HumanPlayer(2);
+            Player p3 = new HumanPlayer(3);
+            board.AddPlayer(p1);
+            board.AddPlayer(p2);
+            board.AddPlayer(p3);
+            int cardsInDiscardp1 = p1.getDiscard().Count;
+            p1.addCardToHand(c);
+            p1.playCard(c);
+            Assert.AreEqual(cardsInDiscardp1 + 1, p1.getDiscard().Count);
+            Assert.IsFalse(p1.getDiscard().Contains(new Curse()));
+        }
+
+        [TestMethod]
+        public void TestWitchDoesNotAddCurseToOtherPlayersWithMoats()
+        {
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            GameBoard board = new GameBoard(cards);
+            Card c = new Witch();
+            Player p1 = new HumanPlayer(1);
+            Player p2 = new HumanPlayer(2);
+            Player p3 = new HumanPlayer(3);
+            board.AddPlayer(p1);
+            board.AddPlayer(p2);
+            board.AddPlayer(p3);
+            int cardsInDiscardp2 = p2.getDiscard().Count;
+            int cardsInDiscardp3 = p3.getDiscard().Count;
+            p2.addCardToHand(new Moat());
+            p1.addCardToHand(c);
+            p1.playCard(c);
+            Assert.AreEqual(cardsInDiscardp2, p2.getDiscard().Count);
+            Assert.AreEqual(cardsInDiscardp3 + 1, p3.getDiscard().Count);
+            Assert.IsFalse(p2.getDiscard().Contains(new Curse()));
+            Assert.IsTrue(p3.getDiscard().Contains(new Curse()));
+        }
+
+        [TestMethod]
         public void testPlayerDraws4CardsOnCouncilRoom()
         {
             Dictionary<Card, int> cards = new Dictionary<Card,int>();
