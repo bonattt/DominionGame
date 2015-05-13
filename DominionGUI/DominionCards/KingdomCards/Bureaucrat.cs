@@ -15,6 +15,7 @@ namespace DominionCards.KingdomCards
         }
         public override void Play(Player player)
         {
+            base.Play(player);
             player.getDeck().Push(new Silver());
         }
 
