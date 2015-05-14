@@ -162,6 +162,21 @@ namespace UnitTestProject2
             deck.Push(new Province());
             Assert.AreEqual(10, p1.countVictoryPoints());
         }
+
+        [TestMethod]
+        public void testCountVictoryPointsCountsGardens()
+        {
+            Player p1 = new HumanPlayer();
+            Stack<Card> deck = new Stack<Card>();
+            p1.setDeck(deck);
+            p1.setHand(new ArrayList());
+            for (int i = 0; i < 10; i++)
+            {
+                deck.Push(new Gardens());
+            }
+            Assert.AreEqual(1, p1.countVictoryPoints());
+        }
+
         [TestMethod]
         public void drawFiveCardsWhenDeckRunsOut()
         {
