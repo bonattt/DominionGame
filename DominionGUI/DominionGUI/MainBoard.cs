@@ -13,8 +13,6 @@ namespace DominionGUI
 {
     public partial class MainBoard : Form
     {
-        private static int xValue, yValue;
-
         private static MainBoard instance;
         public DominionCards.GameBoard board;
         private System.Drawing.Bitmap[] imageadd;
@@ -29,6 +27,28 @@ namespace DominionGUI
         private Label[] firstRowLabels = new Label[6];
         private Label[] secondRowLabels = new Label[6];
         private Label[] thirdRowLabels = new Label[5];
+
+        public DominionCards.Card GetCardPlayed()
+        {
+            // TODO ///////////////////////////////////////////////////////////////////////////////////////////
+            CardButton buttonPressed = new CardButton(null);
+            if (!buttonPressed.ForSale)
+            {
+                return buttonPressed.card;
+            }
+            return null;
+        }
+
+        public DominionCards.Card GetCardBought()
+        {
+            // TODO ///////////////////////////////////////////////////////////////////////////////////////////
+            CardButton buttonPressed = new CardButton(null);
+            if (buttonPressed.ForSale)
+            {
+                return buttonPressed.card;
+            }
+            return null;
+        }
 
         public MainBoard()
         {
@@ -93,17 +113,17 @@ namespace DominionGUI
         }
 
         private void DrawBuyableCards(){
-            xValue = 120;
-            yValue = 100;
-            DrawingHelper(firstRow, firstRowLabels);
+            int xValue = 120;
+            int yValue = 100;
+            DrawingHelper(firstRow, firstRowLabels, xValue, yValue);
             xValue = 120;
             yValue = 300;
-            DrawingHelper(secondRow, secondRowLabels);
+            DrawingHelper(secondRow, secondRowLabels, xValue, yValue);
             xValue = 220;
             yValue = 500;
-            DrawingHelper(thirdRow, thirdRowLabels);
+            DrawingHelper(thirdRow, thirdRowLabels, xValue, yValue);
         }
-        private void DrawingHelper(CardButton[] buttons, Label[] labels)
+        private void DrawingHelper(CardButton[] buttons, Label[] labels, int xValue, int yValue)
         {
             for (int i = 0; i < buttons.Length; i++)
             {
@@ -115,11 +135,12 @@ namespace DominionGUI
                 buttons[i].BackgroundImageLayout = ImageLayout.Stretch;
                 Controls.Add(buttons[i]);
                 buttons[i].Parent = this;
-
-                labels[i].Location = new Point(xValue + 50, yValue + 155);
-                Controls.Add(labels[i]);
-                labels[i].Parent = this;
-                
+                if (labels != null)
+                {
+                    labels[i].Location = new Point(xValue + 50, yValue + 155);
+                    Controls.Add(labels[i]);
+                    labels[i].Parent = this;
+                }
                 xValue += 256;
             }
         }
@@ -175,7 +196,15 @@ namespace DominionGUI
         }
         public void determine()
         {
-            List<int> numList = new List<int>();
+            CardButton[] hand = GetCurrentPlayerHand();
+            int xValue = 120;
+            int yValue = 850;
+            for (int i = 0; i < hand.Length; i++)
+            {
+                DrawingHelper(hand, null, xValue, yValue);
+            }
+
+            /*List<int> numList = new List<int>();
             numList = RandomGenerateCards.GenerateRandom.GenerateRandomList(25, 5);
             int xValue = 220;
             int yValue = 800;
@@ -199,7 +228,7 @@ namespace DominionGUI
                     this.Update();
                     this.Show();
                 }
-            }                
+            }*/                
         }
         private void gameplay(Object sender, EventArgs e)
         {

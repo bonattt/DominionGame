@@ -152,24 +152,52 @@ namespace DominionGUI
         }
         private Dictionary<DominionCards.Card, int> CreateRandomCardDictionary()
         {
+            int numberOfVictoryCards;
+            int numberOfCurses;
+            if (numberplayers == 2)
+            {
+                numberOfVictoryCards = 8;
+                numberOfCurses = 10;
+            }
+            else if (numberplayers == 3)
+            {
+                numberOfVictoryCards = 12;
+                numberOfCurses = 10;
+            }
+            else if (numberplayers == 4)
+            {
+                numberOfVictoryCards = 99;
+                numberOfCurses = 40;
+            }
+            else
+            {
+                numberOfVictoryCards = 0;
+                numberOfCurses = 0;
+            }
+            
             Dictionary<DominionCards.Card, int> dict = new Dictionary<DominionCards.Card, int>();
             List<int> numList = new List<int>();
-            dict.Add(new DominionCards.KingdomCards.Copper(), 100);
-            dict.Add(new DominionCards.KingdomCards.Silver(), 50);
+            dict.Add(new DominionCards.KingdomCards.Copper(), 60);
+            dict.Add(new DominionCards.KingdomCards.Silver(), 40);
             dict.Add(new DominionCards.KingdomCards.Gold(), 30);
-            dict.Add(new DominionCards.KingdomCards.Estate(), 30);
-            dict.Add(new DominionCards.KingdomCards.Duchy(), 15);
-            dict.Add(new DominionCards.KingdomCards.Province(), 10);
-            dict.Add(new DominionCards.KingdomCards.Curse(), 30);
-
-
+            dict.Add(new DominionCards.KingdomCards.Estate(), numberOfVictoryCards);
+            dict.Add(new DominionCards.KingdomCards.Duchy(), numberOfVictoryCards);
+            dict.Add(new DominionCards.KingdomCards.Province(), numberOfVictoryCards);
+            dict.Add(new DominionCards.KingdomCards.Curse(), numberOfCurses);
+            
             numList = RandomGenerateCards.GenerateRandom.GenerateRandomList(25, 10);
             for (int i = 0; i < 25; i++)
             {
                 if (numList.Contains(i))
                 {
+                    int numCards = 10;
                     DominionCards.Card card = (DominionCards.Card)Activator.CreateInstance(cardsadd[i]);
-                    dict.Add(card, 10);
+                    if (card.Equals(new DominionCards.KingdomCards.Gardens()))
+                    {
+                        numCards = numberOfVictoryCards;
+                    }
+                    
+                    dict.Add(card, numCards);
                 }
             }
             return dict;
