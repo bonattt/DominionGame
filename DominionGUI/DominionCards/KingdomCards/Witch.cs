@@ -17,7 +17,14 @@ namespace DominionCards.KingdomCards
 
         public override void MakeImmediateAttack(Player playerAttacked)
         {
-            playerAttacked.getDiscard().Add(new KingdomCards.Curse());
+
+            Dictionary<Card, int> dict = GameBoard.getInstance().GetCards();
+            if (dict[new Curse()] > 0)
+            {
+                playerAttacked.getDiscard().Add(new KingdomCards.Curse());
+                dict[new Curse()] -= 1;
+            }
+
         }
     }
 }
