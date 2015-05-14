@@ -24,7 +24,9 @@ namespace UnitTestProject2
             p1 = new HumanPlayer(1);
             p1.setHand(new ArrayList());
             p2 = new HumanPlayer(2);
+            p1.setHand(new ArrayList());
             p3 = new HumanPlayer(3);
+            p1.setHand(new ArrayList());
             board.AddPlayer(p1);
             board.AddPlayer(p2);
             board.AddPlayer(p3);
@@ -43,20 +45,19 @@ namespace UnitTestProject2
         public void TestNextCardPlayingBeaureauqwertyuiopDoesNothingToPlayerWithNoVictoryCards()
         {
             p2.setDeck(new Stack<Card>());
+            p2.setHand(new ArrayList());
             p2.addCardToHand(new Copper());
+            p2.getDeck().Push(new Militia());
             p3.setDeck(new Stack<Card>());
+            p3.setHand(new ArrayList());
+            p3.getDeck().Push(new Market());
             p3.addCardToHand(new Copper());
             p1.playCard(card);
             ProcessAllAttacks();
 
-            int cardID2 = p2.GetNextCard().getID();
-            int cardID3 = p3.GetNextCard().getID();
-            Assert.AreNotEqual(3, cardID2);
-            Assert.AreNotEqual(4, cardID2);
-            Assert.AreNotEqual(5, cardID2);
-            Assert.AreNotEqual(3, cardID3);
-            Assert.AreNotEqual(4, cardID3);
-            Assert.AreNotEqual(5, cardID3);
+            Assert.AreEqual(18, p2.GetNextCard().getID());
+            Assert.AreEqual(17, p3.GetNextCard().getID());
+
         }
         [TestMethod]
         public void TestNextCardPlayingBeaureauqwertyuiopRemovesVictoryCardFromHand()
