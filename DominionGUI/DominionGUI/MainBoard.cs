@@ -335,7 +335,7 @@ namespace DominionGUI
             this.moneyleft.Text = "Money: " + current.moneyLeft();
             this.decksize.Text = "Deck Size: " + current.getDeck().Count;
             this.discardsize.Text = "Discard Size: " + current.getDiscard().Count;
-            this.playerLabel.Text = "It is player " + current.getNumber() + "'s turn.";
+            this.playerLabel.Text = "It is player " + current.getNumber() + "'s turn. -- Action Phase";
         }
 
         private void UpdateCardLabelsHelper(CardButton[] cardButtons, Label[] labels)

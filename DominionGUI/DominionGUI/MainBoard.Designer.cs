@@ -49,7 +49,7 @@
             //
             this.playerLabel.AutoSize = true;
             this.playerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.playerLabel.Location = new System.Drawing.Point((this.Width / 2), 150);
+            this.playerLabel.Location = new System.Drawing.Point((this.Width), 25);
             this.playerLabel.Name = "player";
             this.playerLabel.Size = new System.Drawing.Size(148, 31);
             this.playerLabel.TabIndex = 24;
@@ -163,6 +163,7 @@
             this.Controls.Add(this.deckImage);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.exitButton);
+            this.Controls.Add(this.playerLabel);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainBoard";
             this.Text = "Dominion Game Board";
