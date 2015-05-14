@@ -184,6 +184,7 @@ namespace UnitTestProject2
         public void TestWitchAddsCurseToOtherPlayers()
         {
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            cards.Add(new Curse(), 30);
             GameBoard board = new GameBoard(cards);
             Card c = new Witch();
             Player p1 = new HumanPlayer(1);
@@ -200,12 +201,34 @@ namespace UnitTestProject2
             Assert.AreEqual(cardsInDiscardp3 + 1, p3.getDiscard().Count);
             Assert.IsTrue(p2.getDiscard().Contains(new Curse()));
             Assert.IsTrue(p3.getDiscard().Contains(new Curse()));
+        }[TestMethod]
+        public void TestWitchDoesNotAddCursesIfNoCursesAreLeft()
+        {
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            cards.Add(new Curse(), 0);
+            GameBoard board = new GameBoard(cards);
+            Card c = new Witch();
+            Player p1 = new HumanPlayer(1);
+            Player p2 = new HumanPlayer(2);
+            Player p3 = new HumanPlayer(3);
+            board.AddPlayer(p1);
+            board.AddPlayer(p2);
+            board.AddPlayer(p3);
+            int cardsInDiscardp2 = p2.getDiscard().Count;
+            int cardsInDiscardp3 = p3.getDiscard().Count;
+            p1.addCardToHand(c);
+            p1.playCard(c);
+            Assert.AreEqual(cardsInDiscardp2, p2.getDiscard().Count);
+            Assert.AreEqual(cardsInDiscardp3, p3.getDiscard().Count);
+            Assert.IsFalse(p2.getDiscard().Contains(new Curse()));
+            Assert.IsFalse(p3.getDiscard().Contains(new Curse()));
         }
 
         [TestMethod]
         public void TestWitchDoesNotAddCurseToMe()
         {
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            cards.Add(new Curse(), 30);
             GameBoard board = new GameBoard(cards);
             Card c = new Witch();
             Player p1 = new HumanPlayer(1);
@@ -225,6 +248,7 @@ namespace UnitTestProject2
         public void TestWitchDoesNotAddCurseToOtherPlayersWithMoats()
         {
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            cards.Add(new Curse(), 30);
             GameBoard board = new GameBoard(cards);
             Card c = new Witch();
             Player p1 = new HumanPlayer(1);
