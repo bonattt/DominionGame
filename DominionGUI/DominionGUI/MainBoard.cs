@@ -19,6 +19,14 @@ namespace DominionGUI
         private System.Type[] cardsadd;
         private System.Type[] basiccard;
         private int discardsize = 0;
+
+        private CardButton[] firstRow = new CardButton[7];
+        private CardButton[] secondRow = new CardButton[5];
+        private CardButton[] thirdRow = new CardButton[5];
+        private Label[] firstRowLabels = new Label[7];
+        private Label[] secondRowLabels = new Label[5];
+        private Label[] thirdRowLabels = new Label[5];
+
         public MainBoard()
         {
             InitializeComponent();
@@ -127,6 +135,61 @@ namespace DominionGUI
                 instance = new MainBoard();
             return instance;
         }
+
+
+        /**
+         * private helper, returns an array of buttons that should be drawn to the Form.
+         */
+        private CardButton[] GetCurrentPlayerHand()
+        {
+            DominionCards.Player current = DominionCards.GameBoard.getInstance().turnOrder.Peek();
+            CardButton[] buttons = new CardButton[current.getHand().Count];
+            for (int i = 0; i < buttons.Length; i++)
+            {
+                buttons[i] = new CardButton((DominionCards.Card)current.getHand()[i]);
+            }
+            return buttons;
+        }
+
+        /**
+         * get all buyable cards
+         */
+        private void SetBuyableCards()
+        {
+            int count = 0;
+            foreach (DominionCards.Card card in DominionCards.GameBoard.getInstance().GetCards().Keys)
+            {
+                count = 0;
+                Dictionary<DominionCards.Card, int> dict = DominionCards.GameBoard.getInstance().GetCards();
+                if (count < 7)
+                {
+                    int index = count;
+                    firstRow[index] = new CardButton(card);
+                    Label newLabel = new Label();
+                    newLabel.Text = "Cards Left: " + dict[card];
+                    firstRowLabels[index] = newLabel;
+
+                }
+                else if (count < 12)
+                {
+                    int index = count - 7;
+                    secondRow[index] = new CardButton(card);
+                    Label newLabel = new Label();
+                    newLabel.Text = "Cards Left: " + dict[card];
+                    secondRowLabels[index] = newLabel;
+                }
+                else
+                {
+                    int index = count - 12;
+                    thirdRow[index] = new CardButton(card);
+                    Label newLabel = new Label();
+                    newLabel.Text = "Cards Left: " + dict[card];
+                    thirdRowLabels[index] = newLabel;
+                }
+                count++;
+            }
+        }
+
 
         private void drawCorrectImage(Button button)
         {
