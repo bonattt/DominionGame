@@ -269,27 +269,25 @@ namespace UnitTestProject2
             Player p1 = new HumanPlayer();
             Stack<Card> deck = new Stack<Card>();
             ArrayList discard = new ArrayList();
-            p1.setDeck(deck);
-            p1.setDiscard(discard);
+            ArrayList hand = new ArrayList();
 
-            // add 3 Estate cards to the deck
-            for (int i = 0; i < 3; i++)
-            {
-                deck.Push(new Estate());
-            }
-            // add 3 copper cards to the discard
-            for (int i = 0; i < 3; i++)
+            deck.Push(new Witch());
+            deck.Push(new Gold());
+            
+            for (int i = 0; i < 5; i++)
             {
                 discard.Add(new Copper());
             }
+
+            p1.setHand(hand);
+            p1.setDeck(deck);
+            p1.setDiscard(discard);
+
             p1.drawHand();
 
-            ArrayList hand = p1.getHand();
-            Assert.AreEqual(3, ((Card)hand[0]).getID());
-            Assert.AreEqual(3, ((Card)hand[1]).getID());
-            Assert.AreEqual(3, ((Card)hand[2]).getID());
-            Assert.AreEqual(0, ((Card)hand[3]).getID());
-            Assert.AreEqual(0, ((Card)hand[4]).getID());
+            hand = p1.getHand();
+            Assert.AreEqual(new Gold(), hand[0]);
+            Assert.AreEqual(new Witch(), hand[1]);
         }
         [TestMethod]
         public void testCountVictoryPointsWhenCardsInDiscard(){
