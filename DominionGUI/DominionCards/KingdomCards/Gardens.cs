@@ -12,7 +12,7 @@ namespace DominionCards.KingdomCards
         public Gardens()
             : base(0, 4, ID)
         {
-            // TODO implement
+            // implemented in countVictoryPoints() in Player
         }
     }
 }

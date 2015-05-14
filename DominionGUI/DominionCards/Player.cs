@@ -178,11 +178,18 @@ namespace DominionCards
         public int countVictoryPoints()
         {
             int vps = 0;
+            int numGardens = 0;
+            double deckCount = 0;
             Stack<Card> tempStack = new Stack<Card>();
             // get points from cards in deck
             while (deck.Count > 0)
             {
                 Card card = deck.Pop();
+                deckCount++;
+                if (card.getID() == 14)
+                {
+                    numGardens++;
+                }
                 vps += card.getVictoryPoints();
                 tempStack.Push(card);
             }
@@ -201,7 +208,8 @@ namespace DominionCards
             {
                 vps += ((Card)hand[i]).getVictoryPoints();
             }
-            return vps;
+            deckCount = Math.Floor(deckCount);
+            return (vps + (numGardens * ((int) deckCount) / 10));
         }
         public int playCard(Card c)
         {

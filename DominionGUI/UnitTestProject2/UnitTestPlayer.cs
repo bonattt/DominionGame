@@ -170,11 +170,73 @@ namespace UnitTestProject2
             Stack<Card> deck = new Stack<Card>();
             p1.setDeck(deck);
             p1.setHand(new ArrayList());
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 9; i++)
             {
-                deck.Push(new Gardens());
+                deck.Push(new Militia());
             }
+            deck.Push(new Gardens());
             Assert.AreEqual(1, p1.countVictoryPoints());
+        }
+
+        [TestMethod]
+        public void testCountVictoryPointsCountsGardensRoundsDown()
+        {
+            Player p1 = new HumanPlayer();
+            Stack<Card> deck = new Stack<Card>();
+            p1.setDeck(deck);
+            p1.setHand(new ArrayList());
+            for (int i = 0; i < 8; i++)
+            {
+                deck.Push(new Militia());
+            }
+            deck.Push(new Gardens());
+            Assert.AreEqual(0, p1.countVictoryPoints());
+        }
+
+        [TestMethod]
+        public void testCountVictoryPointsCountsGardensDoesntRoundUp()
+        {
+            Player p1 = new HumanPlayer();
+            Stack<Card> deck = new Stack<Card>();
+            p1.setDeck(deck);
+            p1.setHand(new ArrayList());
+            for (int i = 0; i < 11; i++)
+            {
+                deck.Push(new Militia());
+            }
+            deck.Push(new Gardens());
+            Assert.AreEqual(1, p1.countVictoryPoints());
+        }
+
+        [TestMethod]
+        public void testCountVictoryPointsCountsGardensCanBeMoreThanOne()
+        {
+            Player p1 = new HumanPlayer();
+            Stack<Card> deck = new Stack<Card>();
+            p1.setDeck(deck);
+            p1.setHand(new ArrayList());
+            for (int i = 0; i < 22; i++)
+            {
+                deck.Push(new Militia());
+            }
+            deck.Push(new Gardens());
+            Assert.AreEqual(2, p1.countVictoryPoints());
+        }
+
+        [TestMethod]
+        public void testCountVictoryPointsCountsGardensWithMultipleGardens()
+        {
+            Player p1 = new HumanPlayer();
+            Stack<Card> deck = new Stack<Card>();
+            p1.setDeck(deck);
+            p1.setHand(new ArrayList());
+            for (int i = 0; i < 9; i++)
+            {
+                deck.Push(new Militia());
+            }
+            deck.Push(new Gardens());
+            deck.Push(new Gardens());
+            Assert.AreEqual(2, p1.countVictoryPoints());
         }
 
         [TestMethod]
