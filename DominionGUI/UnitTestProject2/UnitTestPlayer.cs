@@ -602,7 +602,7 @@ namespace UnitTestProject2
             Player p1 = new HumanPlayer();
             int m = p1.moneyLeft();
             ArrayList hand = new ArrayList();
-            hand.Add(new Chapel());
+            hand.Add(new Laboratory());
             p1.setHand(hand);
             
             p1.playCard((Card)hand[0]);
