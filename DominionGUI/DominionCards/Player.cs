@@ -276,10 +276,9 @@ namespace DominionCards
             }
             return deck;
         }
-        public virtual void TakeTurn(GameBoard board)
+        public virtual void TakeTurn()
         {
-            Console.WriteLine("player" + number + " taking turn.");
-            // TODO implement this method.
+            // TODO
         }
         public override string ToString()
         {

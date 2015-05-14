@@ -260,10 +260,10 @@ namespace UnitTestProject2
             {
                 numbTimesCalled = 0;
             }
-            public override void TakeTurn(GameBoard board)
+            public override void TakeTurn()
             {
                 numbTimesCalled++;
-                board.GetCards()[new Province()] -= 1;
+                GameBoard.getInstance().GetCards()[new Province()] -= 1;
                 getDiscard().Add(new Province());
             }
         }

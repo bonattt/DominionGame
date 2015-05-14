@@ -13,6 +13,63 @@ namespace UnitTestProject2
     public class UnitTestPlayer
     {
         [TestMethod]
+        public void TestIsActionPhaseWheneverPlayerHasTreasure()
+        {
+            Dictionary<Card, int> dict = new Dictionary<Card, int>();
+            GameBoard board = new GameBoard(dict);
+            HumanPlayer p1 = new HumanPlayer(1);
+            p1.actions = 0;
+            ArrayList hand = new ArrayList();
+            hand.Add(new Copper());
+            hand.Add(new Estate());
+            p1.setHand(hand);
+
+            HumanPlayerTurn turn = new HumanPlayerTurn(p1);
+            Assert.IsTrue(turn.IsActionPhase());
+        }
+        [TestMethod]
+        public void TestIsActionPhaseIsFalseWithoutActionCard()
+        {
+            Dictionary<Card, int> dict = new Dictionary<Card, int>();
+            GameBoard board = new GameBoard(dict);
+            HumanPlayer p1 = new HumanPlayer(1);
+            ArrayList hand = new ArrayList();
+            hand.Add(new Estate());
+            p1.setHand(hand);
+
+            HumanPlayerTurn turn = new HumanPlayerTurn(p1);
+            Assert.IsFalse(turn.IsActionPhase());
+        }
+        [TestMethod]
+        public void TestIsActionPhaseIsFalseWithoutAction()
+        {
+            Dictionary<Card, int> dict = new Dictionary<Card, int>();
+            GameBoard board = new GameBoard(dict);
+            HumanPlayer p1 = new HumanPlayer(1);
+            ArrayList hand = new ArrayList();
+            hand.Add(new Estate());
+            hand.Add(new Witch());
+            p1.actions = 0;
+            p1.setHand(hand);
+            HumanPlayerTurn turn = new HumanPlayerTurn(p1);
+            Assert.IsFalse(turn.IsActionPhase());
+        }
+        [TestMethod]
+        public void TestIsActionPhaseIsTrueWithActionsAndCards()
+        {
+            Dictionary<Card, int> dict = new Dictionary<Card, int>();
+            GameBoard board = new GameBoard(dict);
+            HumanPlayer p1 = new HumanPlayer(1);
+            ArrayList hand = new ArrayList();
+            hand.Add(new Estate());
+            hand.Add(new Witch());
+            p1.setHand(hand);
+
+            HumanPlayerTurn turn = new HumanPlayerTurn(p1);
+            Assert.IsTrue(turn.IsActionPhase());
+        }
+
+        [TestMethod]
         public void TestFiveCardsDrawnEvenIfDeckEmpty()
         {
             Player p = new HumanPlayer();

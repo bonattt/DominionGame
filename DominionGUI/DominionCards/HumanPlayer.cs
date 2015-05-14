@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace DominionCards
@@ -21,15 +22,23 @@ namespace DominionCards
         }
         public override void actionPhase()
         {
-            // TODO implement
+            Console.WriteLine("Action Phase called on player " + getNumber());
         }
         public override void buyPhase()
         {
-            // TODO implement
+            Console.WriteLine("Buy Phase called on player " + getNumber());
         }
         public override void selectToDiscard()
         {
             // TODO implement
         }
+        public override void TakeTurn()
+        {
+            Console.WriteLine("\nplayer" + getNumber() + " taking turn.");
+            HumanPlayerTurn work = new HumanPlayerTurn(this);
+            Thread t = new Thread(new ThreadStart(work.Run));
+            t.Start();
+        }
+
     }
 }

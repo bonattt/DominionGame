@@ -28,28 +28,6 @@ namespace DominionGUI
         private Label[] secondRowLabels = new Label[5];
         private Label[] thirdRowLabels = new Label[5];
 
-        public DominionCards.Card GetCardPlayed()
-        {
-            // TODO ///////////////////////////////////////////////////////////////////////////////////////////
-            CardButton buttonPressed = new CardButton(null);
-            if (!buttonPressed.ForSale)
-            {
-                return buttonPressed.card;
-            }
-            return null;
-        }
-
-        public DominionCards.Card GetCardBought()
-        {
-            // TODO ///////////////////////////////////////////////////////////////////////////////////////////
-            CardButton buttonPressed = new CardButton(null);
-            if (buttonPressed.ForSale)
-            {
-                return buttonPressed.card;
-            }
-            return null;
-        }
-
         public GraphicsBoard()
         {
             InitializeComponent();
@@ -67,6 +45,7 @@ namespace DominionGUI
             UpdateLabels();
             this.Update();
             this.Show();
+            board.turnOrder.Peek().TakeTurn();
             
             /*discarddeck.Location = new Point(98, 769);
             discarddeck.Width = 20;
@@ -249,7 +228,7 @@ namespace DominionGUI
                     this.Update();
                     this.Show();
                 }
-            }*/                
+            }*/   
         }
         private void gameplay(Object sender, EventArgs e)
         {
