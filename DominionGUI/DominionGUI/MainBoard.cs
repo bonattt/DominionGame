@@ -53,7 +53,7 @@ namespace DominionGUI
         public MainBoard()
         {
             InitializeComponent();
-            drawCorrectImage(exitButton);
+            //drawCorrectImage(exitButton);
             board = DominionCards.GameBoard.getInstance();
             Console.WriteLine("\nTHE NUMBER OF PLAYERS IN THIS GAME IS: " + board.turnOrder.Count + "\n");
             SetUpImagesDictionary();

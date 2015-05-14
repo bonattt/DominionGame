@@ -146,7 +146,7 @@ namespace UnitTestProject2
             int cards = hand.Count;
             p1.setHand(hand);
             p1.playCard((Card)hand[0]);
-            Assert.AreEqual(cards - 1, p1.actionsLeft());
+            Assert.AreEqual(cards - 1, p1.getHand().Count);
         }
         [TestMethod]
         public void testCountVictoryPointsCountsBasicVictoryCards(){
