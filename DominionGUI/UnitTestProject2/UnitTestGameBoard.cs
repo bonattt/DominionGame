@@ -3,8 +3,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DominionCards;
 using DominionCards.KingdomCards;
 using System.Collections.Generic;
-using Rhino.Mocks;
-using Rhino.Mocks.Interfaces;
+//using Rhino.Mocks;
+//using Rhino.Mocks.Interfaces;
 
 namespace UnitTestProject2
 {
@@ -14,6 +14,13 @@ namespace UnitTestProject2
         private static Dictionary<Card, int> GetTestCards()
         {
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            cards[new Gold()] = 30;
+            cards[new Silver()] = 40;
+            cards[new Copper()] = 60;
+            cards[new Province()] = 10;
+            cards[new Duchy()] = 12;
+            cards[new Estate()] = 12;
+            cards[new Curse()] = 30;
             cards[new Cellar()] = 10;
             cards[new Moat()] = 10;
             cards[new Woodcutter()] = 10;
@@ -138,7 +145,7 @@ namespace UnitTestProject2
             cards[new Estate()] = 0;
             Assert.IsFalse(board.GameIsOver());
         }
-        [TestMethod]
+        /*[TestMethod]
         public void IntegrationTestPlayGameAndGameIsOverUsingCustomPlayerMock()
         {
             MockRepository mocks = new MockRepository();
@@ -189,7 +196,7 @@ namespace UnitTestProject2
             p2.getDiscard().Add(new Gold());
             Assert.AreEqual(p2, board.PlayGame());
 
-        }
+        }*/
         [TestMethod]
         public void IntegrationTestTieIsThrownOnTrueTie()
         {

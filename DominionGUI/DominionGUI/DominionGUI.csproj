@@ -45,9 +45,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CardButon.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="CardButton.cs">
       <SubType>Component</SubType>
     </Compile>
