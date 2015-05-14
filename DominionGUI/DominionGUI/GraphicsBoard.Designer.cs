@@ -1,6 +1,6 @@
 ﻿namespace DominionGUI
 {
-    partial class MainBoard
+    partial class GraphicsBoard
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainBoard));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GraphicsBoard));
             this.exitButton = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.deckImage = new System.Windows.Forms.PictureBox();

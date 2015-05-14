@@ -11,9 +11,9 @@ using System.Collections;
 using DominionGUI.Properties;
 namespace DominionGUI
 {
-    public partial class MainBoard : Form
+    public partial class GraphicsBoard : Form
     {
-        private static MainBoard instance;
+        private static GraphicsBoard instance;
         public DominionCards.GameBoard board;
         private System.Drawing.Bitmap[] imageadd;
         private System.Type[] cardsadd;
@@ -50,7 +50,7 @@ namespace DominionGUI
             return null;
         }
 
-        public MainBoard()
+        public GraphicsBoard()
         {
             InitializeComponent();
             //drawCorrectImage(exitButton);
@@ -259,10 +259,10 @@ namespace DominionGUI
             clickedButton.Visible = true;
         }
 
-        public static MainBoard getinstance()
+        public static GraphicsBoard getinstance()
         {
             if (instance == null)
-                instance = new MainBoard();
+                instance = new GraphicsBoard();
             return instance;
         }
 
