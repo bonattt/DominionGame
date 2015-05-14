@@ -17,9 +17,10 @@ namespace DominionCards
         {
             this.cards = cards;
             turnOrder = new Queue<Player>();
-            AddStandardKingdomCards();
+            //AddStandardKingdomCards();
             boardInstance = this;
         }
+
         private void AddStandardKingdomCards()
         {
             cards.Add(new Copper(), 100);
@@ -28,6 +29,7 @@ namespace DominionCards
             cards.Add(new Estate(), 30);
             cards.Add(new Duchy(), 15);
             cards.Add(new Province(), 10);
+            cards.Add(new Curse(), 30);
         }
         public virtual void addCard(Card c)
         {
