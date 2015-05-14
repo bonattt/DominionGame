@@ -72,7 +72,7 @@ namespace UnitTestProject2
             board.AddPlayer(p1);
             Assert.IsFalse(board.AddPlayer(p1));
         }
-        [TestMethod]
+/*        [TestMethod]
         public void TestTurnOrderUsingMocks()
         {
             MockRepository mocks = new MockRepository();
@@ -110,7 +110,7 @@ namespace UnitTestProject2
                 // nothing, this is an expected exception.
             }
             mocks.VerifyAll();
-        }
+        }*/
         [TestMethod]
         public void TestGameEndsTrueWhenProvincesRunOut()
         {
