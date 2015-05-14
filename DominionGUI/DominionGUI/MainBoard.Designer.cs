@@ -7,6 +7,8 @@
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
+        private static int infoLabelsyValue = 550;
+
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -29,28 +31,42 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainBoard));
-            this.button1 = new System.Windows.Forms.Button();
+            this.exitButton = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.deck = new System.Windows.Forms.Label();
+            this.deckImage = new System.Windows.Forms.PictureBox();
+            this.discardImage = new System.Windows.Forms.PictureBox();
+            this.decksize = new System.Windows.Forms.Label();
             this.actionleft = new System.Windows.Forms.Label();
             this.buyleft = new System.Windows.Forms.Label();
             this.moneyleft = new System.Windows.Forms.Label();
-            this.discarddeck = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.discardsize = new System.Windows.Forms.Label();
+            this.playerLabel = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.deckImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.discardImage)).BeginInit();
             this.SuspendLayout();
+            //
+            // playerLabel
+            //
+            this.playerLabel.AutoSize = true;
+            this.playerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.playerLabel.Location = new System.Drawing.Point((this.Width / 2), 150);
+            this.playerLabel.Name = "player";
+            this.playerLabel.Size = new System.Drawing.Size(148, 31);
+            this.playerLabel.TabIndex = 24;
+            this.playerLabel.Text = "It's Player 1's turn.";
+
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(30, 500);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(154, 95);
-            this.button1.TabIndex = 0;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.exitButton.Location = new System.Drawing.Point(30, 450);
+            this.exitButton.Margin = new System.Windows.Forms.Padding(2);
+            this.exitButton.Name = "button1";
+            this.exitButton.Text = "exit game";
+            this.exitButton.Font = new System.Drawing.Font("Times New Roman", 14, System.Drawing.FontStyle.Regular);
+            this.exitButton.Size = new System.Drawing.Size(100, 50);
+            this.exitButton.TabIndex = 0;
+            this.exitButton.UseVisualStyleBackColor = true;
+            this.exitButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -65,39 +81,39 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(57, 802);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(127, 185);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 17;
-            this.pictureBox1.TabStop = false;
+            this.deckImage.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.deckImage.Location = new System.Drawing.Point(15, 600);
+            this.deckImage.Name = "pictureBox1";
+            this.deckImage.Size = new System.Drawing.Size(127, 185);
+            this.deckImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.deckImage.TabIndex = 17;
+            this.deckImage.TabStop = false;
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(1635, 817);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(127, 185);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 18;
-            this.pictureBox2.TabStop = false;
+            this.discardImage.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.discardImage.Location = new System.Drawing.Point(1200, 600);
+            this.discardImage.Name = "pictureBox2";
+            this.discardImage.Size = new System.Drawing.Size(127, 185);
+            this.discardImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.discardImage.TabIndex = 18;
+            this.discardImage.TabStop = false;
             // 
             // deck
             // 
-            this.deck.AutoSize = true;
-            this.deck.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.deck.Location = new System.Drawing.Point(51, 751);
-            this.deck.Name = "deck";
-            this.deck.Size = new System.Drawing.Size(148, 31);
-            this.deck.TabIndex = 19;
-            this.deck.Text = "Deck size: " + DominionCards.GameBoard.getInstance().turnOrder.Peek().getDeck().Count;
+            this.decksize.AutoSize = true;
+            this.decksize.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.decksize.Location = new System.Drawing.Point(15, infoLabelsyValue);
+            this.decksize.Name = "deck";
+            this.decksize.Size = new System.Drawing.Size(148, 31);
+            this.decksize.TabIndex = 19;
+            this.decksize.Text = "Deck size: " + DominionCards.GameBoard.getInstance().turnOrder.Peek().getDeck().Count;
             // 
             // actionleft
             // 
             this.actionleft.AutoSize = true;
             this.actionleft.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.actionleft.Location = new System.Drawing.Point(303, 751);
+            this.actionleft.Location = new System.Drawing.Point(315, infoLabelsyValue);
             this.actionleft.Name = "actionleft";
             this.actionleft.Size = new System.Drawing.Size(158, 31);
             this.actionleft.TabIndex = 20;
@@ -107,7 +123,7 @@
             // 
             this.buyleft.AutoSize = true;
             this.buyleft.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.buyleft.Location = new System.Drawing.Point(681, 751);
+            this.buyleft.Location = new System.Drawing.Point(598, infoLabelsyValue);
             this.buyleft.Name = "buyleft";
             this.buyleft.Size = new System.Drawing.Size(129, 31);
             this.buyleft.TabIndex = 21;
@@ -117,7 +133,7 @@
             // 
             this.moneyleft.AutoSize = true;
             this.moneyleft.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.moneyleft.Location = new System.Drawing.Point(1067, 751);
+            this.moneyleft.Location = new System.Drawing.Point(882, infoLabelsyValue);
             this.moneyleft.Name = "moneyleft";
             this.moneyleft.Size = new System.Drawing.Size(163, 31);
             this.moneyleft.TabIndex = 22;
@@ -125,35 +141,35 @@
             // 
             // discarddeck
             // 
-            this.discarddeck.AutoSize = true;
-            this.discarddeck.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.discarddeck.Location = new System.Drawing.Point(1579, 751);
-            this.discarddeck.Name = "discarddeck";
-            this.discarddeck.Size = new System.Drawing.Size(248, 31);
-            this.discarddeck.TabIndex = 23;
-            this.discarddeck.Text = "Discard Deck size: ";
+            this.discardsize.AutoSize = true;
+            this.discardsize.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.discardsize.Location = new System.Drawing.Point(1165, infoLabelsyValue);
+            this.discardsize.Name = "discarddeck";
+            this.discardsize.Size = new System.Drawing.Size(248, 31);
+            this.discardsize.TabIndex = 23;
+            this.discardsize.Text = "Discard Deck size: ";
             // 
             // MainBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1874, 1054);
-            this.Controls.Add(this.discarddeck);
-            this.Controls.Add(this.deck);
+            this.Controls.Add(this.discardsize);
+            this.Controls.Add(this.decksize);
             this.Controls.Add(this.actionleft);
             this.Controls.Add(this.buyleft);
             this.Controls.Add(this.moneyleft);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.discardImage);
+            this.Controls.Add(this.deckImage);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.exitButton);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainBoard";
             this.Text = "Dominion Game Board";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MainBoard_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deckImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.discardImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -161,15 +177,16 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Label deck;
+        private System.Windows.Forms.PictureBox deckImage;
+        private System.Windows.Forms.PictureBox discardImage;
+        private System.Windows.Forms.Label decksize;
         private System.Windows.Forms.Label actionleft;
         private System.Windows.Forms.Label buyleft;
         private System.Windows.Forms.Label moneyleft;
-        private System.Windows.Forms.Label discarddeck;
+        private System.Windows.Forms.Label discardsize;
+        private System.Windows.Forms.Label playerLabel;
       
     }
 }

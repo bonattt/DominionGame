@@ -21,11 +21,11 @@ namespace DominionGUI
 
         private Dictionary<DominionCards.Card, System.Drawing.Bitmap> cardImages;
 
-        private CardButton[] firstRow = new CardButton[6];
-        private CardButton[] secondRow = new CardButton[6];
+        private CardButton[] firstRow = new CardButton[7];
+        private CardButton[] secondRow = new CardButton[5];
         private CardButton[] thirdRow = new CardButton[5];
-        private Label[] firstRowLabels = new Label[6];
-        private Label[] secondRowLabels = new Label[6];
+        private Label[] firstRowLabels = new Label[7];
+        private Label[] secondRowLabels = new Label[5];
         private Label[] thirdRowLabels = new Label[5];
 
         public DominionCards.Card GetCardPlayed()
@@ -53,8 +53,7 @@ namespace DominionGUI
         public MainBoard()
         {
             InitializeComponent();
-            button1.Image = DominionGUI.Properties.Resources.WorkshopHalf;
-            drawCorrectImage(button1);
+            drawCorrectImage(exitButton);
             board = DominionCards.GameBoard.getInstance();
 
             SetUpImagesDictionary();
@@ -65,6 +64,7 @@ namespace DominionGUI
             //addRandomtencards();
             SetBuyableCards();
             DrawBuyableCards();
+            UpdateLabels();
             this.Update();
             this.Show();
             
@@ -113,10 +113,10 @@ namespace DominionGUI
         }
 
         private void DrawBuyableCards(){
-            int xValue = 120;
+            int xValue = 50;
             int yValue = 100;
             DrawingHelper(firstRow, firstRowLabels, xValue, yValue);
-            xValue = 120;
+            xValue = 220;
             yValue = 300;
             DrawingHelper(secondRow, secondRowLabels, xValue, yValue);
             xValue = 220;
@@ -135,13 +135,34 @@ namespace DominionGUI
                 buttons[i].BackgroundImageLayout = ImageLayout.Stretch;
                 Controls.Add(buttons[i]);
                 buttons[i].Parent = this;
-                if (labels != null)
-                {
-                    labels[i].Location = new Point(xValue + 50, yValue + 155);
-                    Controls.Add(labels[i]);
-                    labels[i].Parent = this;
-                }
+                
+                labels[i].Location = new Point(xValue + 50, yValue + 155);
+                Controls.Add(labels[i]);
+                labels[i].Parent = this;
                 xValue += 256;
+            }
+        }
+        private void HandDrawingHelper(CardButton[] buttons, int xValue, int yValue)
+        {
+            int startingX = xValue;
+            int numberColumns = 3;
+            int xIncriment = 220;
+            for (int i = 0; i < buttons.Length; i++)
+            {
+                buttons[i].Height = 155;
+                buttons[i].Width = 200;
+                buttons[i].Location = new Point(xValue, yValue);
+
+                buttons[i].BackgroundImage = new System.Drawing.Bitmap(cardImages[buttons[i].card]);
+                buttons[i].BackgroundImageLayout = ImageLayout.Stretch;
+                Controls.Add(buttons[i]);
+                buttons[i].Parent = this;
+                xValue += xIncriment;
+                if (xValue > startingX + (xIncriment * (numberColumns-1)))
+                {
+                    xValue = startingX;
+                    yValue += 165;
+                }
             }
         }
 
@@ -197,11 +218,11 @@ namespace DominionGUI
         public void determine()
         {
             CardButton[] hand = GetCurrentPlayerHand();
-            int xValue = 120;
-            int yValue = 850;
+            int xValue = 220;
+            int yValue = 725;
             for (int i = 0; i < hand.Length; i++)
             {
-                DrawingHelper(hand, null, xValue, yValue);
+                HandDrawingHelper(hand, xValue, yValue);
             }
 
             /*List<int> numList = new List<int>();
@@ -269,7 +290,7 @@ namespace DominionGUI
             foreach (DominionCards.Card card in DominionCards.GameBoard.getInstance().GetCards().Keys)
             {
                 Dictionary<DominionCards.Card, int> dict = DominionCards.GameBoard.getInstance().GetCards();
-                if (count < 6)
+                if (count < 7)
                 {
                     int index = count;
                     firstRow[index] = new CardButton(card);
@@ -279,7 +300,7 @@ namespace DominionGUI
                 }
                 else if (count < 12)
                 {
-                    int index = count - 6;
+                    int index = count - 7;
                     secondRow[index] = new CardButton(card);
                     Label newLabel = new Label();
                     newLabel.Text = "Cards Left: " + dict[card];
@@ -299,13 +320,25 @@ namespace DominionGUI
 
         private void UpdateLabels()
         {
-            UpdateLabelsHelper(firstRow, firstRowLabels);
-            UpdateLabelsHelper(secondRow, secondRowLabels);
-            UpdateLabelsHelper(thirdRow, thirdRowLabels);
+            UpdateCardLabelsHelper(firstRow, firstRowLabels);
+            UpdateCardLabelsHelper(secondRow, secondRowLabels);
+            UpdateCardLabelsHelper(thirdRow, thirdRowLabels);
+            UpdateMiscLabels();
             this.Update();
             this.Show();
         }
-        private void UpdateLabelsHelper(CardButton[] cardButtons, Label[] labels)
+        private void UpdateMiscLabels()
+        {
+            DominionCards.Player current = board.turnOrder.Peek();
+            this.actionleft.Text = "Actions: " + current.actionsLeft();
+            this.buyleft.Text = "Buys: " + current.buysLeft();
+            this.moneyleft.Text = "Money: " + current.moneyLeft();
+            this.decksize.Text = "Deck Size: " + current.getDeck().Count;
+            this.discardsize.Text = "Discard Size: " + current.getDiscard().Count;
+            this.playerLabel.Text = "It is player " + current.getNumber() + "'s turn.";
+        }
+
+        private void UpdateCardLabelsHelper(CardButton[] cardButtons, Label[] labels)
         {
             Dictionary<DominionCards.Card, int> dict = DominionCards.GameBoard.getInstance().GetCards();
             for (int i = 0; i < cardButtons.Length; i++)
@@ -338,16 +371,22 @@ namespace DominionGUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Close();
+            EndGame();
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            Close();
+            EndGame();
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void EndGame()
+        {
+            Close();
+            SelectNumPlayers.GetInstance().Dispose();
         }
 
     }

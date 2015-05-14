@@ -19,6 +19,9 @@ namespace DominionCards
         public int actions, buys, money; // TODO set this to public temporarily so code would compile. 
         public Player()
         {
+            actions = 1;
+            buys = 1;
+            money = 1;
             for (int i = 0; i < 3; i++)
             {
                 discard.Add(new KingdomCards.Estate());
