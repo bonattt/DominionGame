@@ -59,6 +59,7 @@
     </Compile>
     <Compile Include="GameBoard.cs" />
     <Compile Include="HumanPlayer.cs" />
+    <Compile Include="HumanPlayerTurn.cs" />
     <Compile Include="KingdomCards\Adventurer.cs" />
     <Compile Include="KingdomCards\Bureaucrat.cs" />
     <Compile Include="KingdomCards\Cellar.cs" />

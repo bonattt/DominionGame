@@ -60,11 +60,11 @@
     <Compile Include="SelectNumPlayers.Designer.cs">
       <DependentUpon>SelectNumPlayers.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainBoard.cs">
+    <Compile Include="GraphicsBoard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainBoard.Designer.cs">
-      <DependentUpon>MainBoard.cs</DependentUpon>
+    <Compile Include="GraphicsBoard.Designer.cs">
+      <DependentUpon>GraphicsBoard.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,8 +72,8 @@
     <EmbeddedResource Include="KingdomCardSelection.resx">
       <DependentUpon>KingdomCardSelection.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainBoard.resx">
-      <DependentUpon>MainBoard.cs</DependentUpon>
+    <EmbeddedResource Include="GraphicsBoard.resx">
+      <DependentUpon>GraphicsBoard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SelectNumPlayers.resx">
       <DependentUpon>SelectNumPlayers.cs</DependentUpon>

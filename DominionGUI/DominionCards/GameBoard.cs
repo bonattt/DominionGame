@@ -9,6 +9,7 @@ namespace DominionCards
 {
     public class GameBoard
     {
+        public static Card lastCardPlayed, lastCardBought;
         private static GameBoard boardInstance;
 
         public Queue<Player> turnOrder;
@@ -50,7 +51,7 @@ namespace DominionCards
             while (!GameIsOver())
             {
                 Player next = NextPlayer();
-                next.TakeTurn(this);
+                next.TakeTurn();
             }
             try
             {
