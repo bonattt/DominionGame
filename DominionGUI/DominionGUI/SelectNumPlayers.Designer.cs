@@ -85,7 +85,7 @@
             this.checkBox4.TabIndex = 12;
             this.checkBox4.Text = "Random";
             this.checkBox4.UseVisualStyleBackColor = true;
-            this.checkBox4.CheckedChanged += new System.EventHandler(this.CardSelectOption);
+            this.checkBox4.CheckedChanged += new System.EventHandler(this.RunGame);
             // 
             // checkBox5
             // 
@@ -97,7 +97,7 @@
             this.checkBox5.TabIndex = 13;
             this.checkBox5.Text = "Select";
             this.checkBox5.UseVisualStyleBackColor = true;
-            this.checkBox5.CheckedChanged += new System.EventHandler(this.CardSelectOption);
+            this.checkBox5.CheckedChanged += new System.EventHandler(this.RunGame);
             // 
             // checkBox6
             // 
@@ -109,7 +109,7 @@
             this.checkBox6.TabIndex = 14;
             this.checkBox6.Text = "Random and Modify";
             this.checkBox6.UseVisualStyleBackColor = true;
-            this.checkBox6.CheckedChanged += new System.EventHandler(this.CardSelectOption);
+            this.checkBox6.CheckedChanged += new System.EventHandler(this.RunGame);
             // 
             // button1
             // 
@@ -120,7 +120,7 @@
             this.button1.TabIndex = 15;
             this.button1.Text = "Play!";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.button1.Click += new System.EventHandler(this.RunGame);
             // 
             // label2
             // 

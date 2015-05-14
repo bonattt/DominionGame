@@ -151,7 +151,36 @@ namespace DominionGUI
         {
             return this.board;
         }
-        private void CardSelectOption(object sender, EventArgs e)
+        private void RunGame(object sender, EventArgs e)
+        {
+            if (checkBox4.Checked)
+            {
+                board = new DominionCards.GameBoard(CreateRandomCardDictionary());
+                createplayers(numberplayers);
+                var myForm = MainBoard.getinstance();
+                myForm.determine();
+                myForm.Update();
+                myForm.Show();
+            }
+            else if (checkBox5.Checked)
+            {
+                board = new DominionCards.GameBoard(CreateRandomCardDictionary());
+                createplayers(numberplayers);
+                var myFrom = new KingdomCardSelection();
+                myFrom.Update();
+                myFrom.Show();
+
+            }
+            else if (checkBox6.Checked)
+            {
+                board = new DominionCards.GameBoard(CreateRandomCardDictionary());
+                createplayers(numberplayers);
+                var myFrom = new KingdomCardSelection();
+                myFrom.Update();
+                myFrom.Show();
+            }
+        }
+        private void RunGame(EventArgs e)
         {
             if (checkBox4.Checked)
             {
