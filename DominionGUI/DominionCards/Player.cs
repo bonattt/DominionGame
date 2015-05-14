@@ -76,6 +76,7 @@ namespace DominionCards
         public abstract void actionPhase();
         public abstract void buyPhase();
         public abstract void selectToDiscard();
+        public abstract ArrayList SelectCards(ArrayList cards);
 
         public int getTotalMoney()
         {
