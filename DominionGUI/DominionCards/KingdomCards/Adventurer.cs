@@ -18,7 +18,7 @@ namespace DominionCards.KingdomCards
             int cardsAdded = 0;
             while (cardsAdded != 2)
             {
-                Card c = player.getDeck().Pop();
+                Card c = player.GetNextCard();
                 if (c.getID() == 0 || c.getID() == 1 || c.getID() == 2)
                 {
                     player.addCardToHand(c);

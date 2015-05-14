@@ -21,12 +21,13 @@ namespace DominionCards
         {
             for (int i = 0; i < 3; i++)
             {
-                deck.Push(new KingdomCards.Estate());
+                discard.Add(new KingdomCards.Estate());
             }
             for (int i = 0; i < 7; i++)
             {
-                deck.Push(new KingdomCards.Copper());
+                discard.Add(new KingdomCards.Copper());
             }
+            drawHand();
             // TODO shuffle the deck
         }
         public void setNumber(int numb)

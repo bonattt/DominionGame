@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DominionCards;
 using DominionCards.KingdomCards;
 using System.Collections.Generic;
+using System.Collections;
 
 namespace UnitTestProject2
 {
@@ -21,6 +22,7 @@ namespace UnitTestProject2
             Dictionary<Card, int> dict = new Dictionary<Card, int>();
             board = new GameBoard(dict);
             p1 = new HumanPlayer(1);
+            p1.setHand(new ArrayList());
             p2 = new HumanPlayer(2);
             p3 = new HumanPlayer(3);
             board.AddPlayer(p1);
