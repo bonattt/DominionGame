@@ -38,7 +38,7 @@ namespace UnitTestProject2
             p1.setHand(hand);
 
             HumanPlayerTurn turn = new HumanPlayerTurn(p1);
-            Assert.IsTrue(turn.IsActionPhase());
+            Assert.IsFalse(turn.IsActionPhase());
         }
         [TestMethod]
         public void TestIsActionPhaseIsFalseWithoutAction()
