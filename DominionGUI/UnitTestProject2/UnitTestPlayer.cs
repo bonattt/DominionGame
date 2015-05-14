@@ -57,19 +57,24 @@ namespace UnitTestProject2
         [TestMethod]
         public void DeckShufflesWhenHandDrawnFromTooSmallDeck_DeckHasCorrectNumbCards()
         {
-            Player p = new HumanPlayer();
-            Stack<Card> deck = p.getDeck();
+            Player p1 = new HumanPlayer();
+            Stack<Card> deck = p1.getDeck();
+            ArrayList hand = p1.getHand();
             ArrayList newDiscard = new ArrayList();
             while (deck.Count > 2)
             {
                 newDiscard.Add(deck.Pop());
             }
-            p.setDiscard(newDiscard);
+            for (int i = 0; i < hand.Count; i++){
+                newDiscard.Add(hand[i]);
+            }
+            p1.setHand(new ArrayList());
+            p1.setDiscard(newDiscard);
             int discardCount = newDiscard.Count;
-            int deckCount = p.getDeck().Count;
+            int deckCount = p1.getDeck().Count;
             int expectedShuffledDeckSize = discardCount - 5 + deckCount;
-            p.drawHand();
-            Assert.AreEqual(expectedShuffledDeckSize, p.getDeck().Count);
+            p1.drawHand();
+            Assert.AreEqual(expectedShuffledDeckSize, p1.getDeck().Count);
         }
         [TestMethod]
         public void testDiscardGoesToDeckWhenCardIsDrawnAndDeckIsEmpty()
@@ -148,6 +153,7 @@ namespace UnitTestProject2
             Player p1 = new HumanPlayer();
             Stack<Card> deck = new Stack<Card>();
             p1.setDeck(deck);
+            p1.setHand(new ArrayList());
             Assert.AreEqual(0, p1.countVictoryPoints());
             deck.Push(new Estate());
             Assert.AreEqual(1, p1.countVictoryPoints());
@@ -211,6 +217,7 @@ namespace UnitTestProject2
         [TestMethod]
         public void testCountVictoryPointsWhenCardsInDiscard(){
             Player p1 = new HumanPlayer();
+            p1.setHand(new ArrayList());
             Stack<Card> deck = new Stack<Card>();
             ArrayList discard = p1.getDiscard();
             p1.setDeck(deck);
@@ -243,6 +250,7 @@ namespace UnitTestProject2
         {
             Player p1 = new HumanPlayer();
             Stack<Card> deck = new Stack<Card>();
+            p1.setHand(new ArrayList());
             deck.Push(new Gold());
             p1.setDeck(deck);
             Assert.AreEqual(3, p1.getTotalMoney());
@@ -253,6 +261,7 @@ namespace UnitTestProject2
         {
             Player p1 = new HumanPlayer();
             Stack<Card> deck = new Stack<Card>();
+            p1.setHand(new ArrayList());
             ArrayList discard = p1.getDiscard();
             discard.Add(new Gold());
             p1.setDeck(deck);
@@ -294,6 +303,7 @@ namespace UnitTestProject2
         {
             Player p1 = new HumanPlayer();
             Stack<Card> deck = p1.getDeck();
+            ArrayList hand = p1.getHand();
             int numbEstates = 0;
             while (deck.Count > 0)
             {
@@ -302,7 +312,15 @@ namespace UnitTestProject2
                     numbEstates++;
                 }
             }
-            Assert.AreEqual(3, numbEstates);
+            for (int i = 0; i < hand.Count; i++)
+            {
+                int id = ((Card)hand[i]).getID();
+                if (id == 3)
+                {
+                    numbEstates++;
+                }
+            }
+                Assert.AreEqual(3, numbEstates);
         }
         [TestMethod]
         public void testPlayerStartsWithCorrectNumberOfCopper()
@@ -317,14 +335,23 @@ namespace UnitTestProject2
                     numbCopper++;
                 }
             }
-            Assert.AreEqual(7, numbCopper);
+            for (int i = 0; i < p1.getHand().Count; i++)
+            {
+                int id = ((Card) p1.getHand()[i]).getID();
+                if (id == 0)
+                {
+                    numbCopper++;
+                }
+            }
+                Assert.AreEqual(7, numbCopper);
         }
         [TestMethod]
         public void testPlayerStartsWithCorrectNumberOfCards()
         {
             Player p1 = new HumanPlayer();
             Stack<Card> deck = p1.getDeck();
-            Assert.AreEqual(10, deck.Count);
+            Assert.AreEqual(5, deck.Count);
+            Assert.AreEqual(5, p1.getHand().Count);
         }
         [TestMethod]
         public void testPlayerStartsWithOnlyEstatesAndCopper()
@@ -354,10 +381,11 @@ namespace UnitTestProject2
             Player p1 = new HumanPlayer();
             ArrayList hand = p1.getHand();
 
-            hand.Add(new Smithy());
+            Card c = new Smithy();
+            hand.Add(c);
             int initialDeckSize = hand.Count;
             p1.setHand(hand);
-            p1.playCard((Card)hand[0]);
+            p1.playCard(c);
 
             Assert.AreEqual(initialDeckSize + 2, hand.Count);
         }
@@ -448,7 +476,10 @@ namespace UnitTestProject2
             Console.WriteLine(expct);
             Console.WriteLine(count);
 
-            CollectionAssert.AreEqual(expct, count);
+            foreach (int id in count.Keys)
+            {
+                Assert.AreEqual(expct[id], count[id]);
+            }
         }
         private static void CompareCounts(Dictionary<Card, int> expect, Dictionary<Card, int> cardCount)
 // TODO MARKED FOR DEMOLITION
@@ -633,11 +664,10 @@ namespace UnitTestProject2
         {
             Player p1 = new HumanPlayer();
             p1.setHand(new ArrayList());
-            ArrayList hand = new ArrayList();
-            Card laboratory = new Laboratory();
-            hand.Add(laboratory);
-            p1.addCardToHand(laboratory);
-            Assert.AreEqual(hand, p1.getHand());
+            int handCountBefore = p1.getHand().Count;
+            p1.addCardToHand(new Library());
+            Assert.AreEqual(handCountBefore + 1, p1.getHand().Count);
+            Assert.IsTrue(p1.getHand().Contains(new Library()));
         }
         private void printCardStats(ActionCard c)
         {

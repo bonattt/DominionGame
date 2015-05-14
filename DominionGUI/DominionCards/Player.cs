@@ -14,19 +14,20 @@ namespace DominionCards
         private Stack<Card> deck = new Stack<Card>();
         private ArrayList hand = new ArrayList();
         private ArrayList discard = new ArrayList();
-        private Queue<Card> attacks = new Queue<Card>();
+        private Queue<AttackCard> attacks = new Queue<AttackCard>();
 
         public int actions, buys, money; // TODO set this to public temporarily so code would compile. 
         public Player()
         {
             for (int i = 0; i < 3; i++)
             {
-                deck.Push(new KingdomCards.Estate());
+                discard.Add(new KingdomCards.Estate());
             }
             for (int i = 0; i < 7; i++)
             {
-                deck.Push(new KingdomCards.Copper());
+                discard.Add(new KingdomCards.Copper());
             }
+            drawHand();
             // TODO shuffle the deck
         }
         public void setNumber(int numb)
@@ -140,7 +141,7 @@ namespace DominionCards
         {
             return discard;
         }
-        public Queue<Card> getAttacks()
+        public Queue<AttackCard> getAttacks()
         {
             return attacks;
         }
@@ -273,9 +274,13 @@ namespace DominionCards
         {
             return "Player " + number;
         }
-        public void ProcessAttack()
+        public void ProcessAttacks()
         {
-
+            while (attacks.Count > 0)
+            {
+                AttackCard card = attacks.Dequeue();
+                card.MakeDelayedAttack(this);
+            }
         }
     }
 }
