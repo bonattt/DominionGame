@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +20,7 @@ namespace DominionCards.KingdomCards
         public override void Play(Player player)
         {
             base.Play(player);
-            Form1 form = new Form1();
+            Form1 form = new Form1(player.getHand(), "Select one card to trash", 1);
             form.TopMost = true;
             form.ShowDialog();
 
