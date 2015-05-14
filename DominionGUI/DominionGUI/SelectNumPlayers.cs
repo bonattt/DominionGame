@@ -29,8 +29,6 @@ namespace DominionGUI
 
         public SelectNumPlayers()
         {
-            
-            board = new DominionCards.GameBoard(CreateRandomCardDictionary());
             INSTANCE = this;
             InitializeComponent();
         }
@@ -62,7 +60,36 @@ namespace DominionGUI
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            Close();
+            if (checkBox4.Checked)
+            {
+
+                board = new DominionCards.GameBoard(CreateRandomCardDictionary());
+                createplayers(numberplayers);
+                var myForm = MainBoard.getinstance();
+                myForm.determine();
+                myForm.Update();
+                myForm.Show();
+            }
+            else if (checkBox5.Checked)
+            {
+                board = new DominionCards.GameBoard(CreateRandomCardDictionary());
+                createplayers(numberplayers);
+                var myFrom = new KingdomCardSelection();
+                myFrom.Update();
+                myFrom.Show();
+
+            }
+            else if (checkBox6.Checked)
+            {
+                board = new DominionCards.GameBoard(CreateRandomCardDictionary());
+                createplayers(numberplayers);
+                var myFrom = new KingdomCardSelection();
+                myFrom.Update();
+                myFrom.Show();
+            }
+            //////////////
+            // Close(); //
+            //////////////
         }
 
         private void Playeroption(object sender, EventArgs e)
@@ -128,6 +155,7 @@ namespace DominionGUI
         {
             if (checkBox4.Checked)
             {
+                board = new DominionCards.GameBoard(CreateRandomCardDictionary());
                 createplayers(numberplayers);
                 var myForm = MainBoard.getinstance();
                 myForm.determine();
@@ -136,6 +164,8 @@ namespace DominionGUI
             }
             else if (checkBox5.Checked)
             {
+                board = new DominionCards.GameBoard(CreateRandomCardDictionary());
+                createplayers(numberplayers);
                 var myFrom = new KingdomCardSelection();
                 myFrom.Update();
                 myFrom.Show();
@@ -143,6 +173,8 @@ namespace DominionGUI
             }
             else if (checkBox6.Checked)
             {
+                board = new DominionCards.GameBoard(CreateRandomCardDictionary());
+                createplayers(numberplayers);
                 var myFrom = new KingdomCardSelection();
                 myFrom.Update();
                 myFrom.Show();
@@ -167,17 +199,17 @@ namespace DominionGUI
             else if (numberplayers == 3)
             {
                 numberOfVictoryCards = 12;
-                numberOfCurses = 10;
+                numberOfCurses = 20;
             }
             else if (numberplayers == 4)
             {
-                numberOfVictoryCards = 99;
-                numberOfCurses = 40;
+                numberOfVictoryCards = 12;
+                numberOfCurses = 30;
             }
             else
             {
-                numberOfVictoryCards = 0;
-                numberOfCurses = 0;
+                numberOfVictoryCards = 999;
+                numberOfCurses = 999;
             }
             
             Dictionary<DominionCards.Card, int> dict = new Dictionary<DominionCards.Card, int>();
