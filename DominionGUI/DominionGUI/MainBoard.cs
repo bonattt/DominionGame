@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections;
-
+using DominionGUI.Properties;
 namespace DominionGUI
 {
     public partial class MainBoard : Form
@@ -40,7 +40,11 @@ namespace DominionGUI
         public void addbasiccards()
         {
             CardButon Gold = new CardButon((DominionCards.Card)Activator.CreateInstance(basiccard[0]));
-            //Gold.BackgroundImage = DominionGUI.Properties.Resources.
+            Gold.BackgroundImage = new System.Drawing.Bitmap(DominionGUI.Properties.Resources.GoldHalf);
+            Gold.Click += new EventHandler(this.gameplay);
+            Gold.BackgroundImageLayout = ImageLayout.Stretch;
+            Gold.Height = 155;
+            Gold.Width = 200;
             CardButon Silver = new CardButon((DominionCards.Card)Activator.CreateInstance(basiccard[1]));
             CardButon Copper = new CardButon((DominionCards.Card)Activator.CreateInstance(basiccard[2]));
             CardButon Province = new CardButon((DominionCards.Card)Activator.CreateInstance(basiccard[3]));
