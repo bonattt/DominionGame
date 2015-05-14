@@ -34,9 +34,10 @@ namespace DominionCards
         }
         public override void TakeTurn()
         {
-            ///Console.WriteLine("player" + getNumber() + " taking turn.");
-            //HumanPlayerTurn work = new HumanPlayerTurn(this);
-            //Thread t = new Thread(work.ActionPhase());
+            Console.WriteLine("\nplayer" + getNumber() + " taking turn.");
+            HumanPlayerTurn work = new HumanPlayerTurn(this);
+            Thread t = new Thread(new ThreadStart(work.Run));
+            t.Start();
         }
 
     }

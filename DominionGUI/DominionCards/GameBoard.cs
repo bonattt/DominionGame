@@ -10,6 +10,7 @@ namespace DominionCards
     public class GameBoard
     {
         public static Card lastCardPlayed, lastCardBought;
+        public static bool AbortPhase = false;
         private static GameBoard boardInstance;
 
         public Queue<Player> turnOrder;

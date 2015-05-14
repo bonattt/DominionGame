@@ -14,6 +14,11 @@ namespace DominionCards
         {
             player = p;
         }
+        public void Run()
+        {
+            ActionPhase();
+            BuyPhase();
+        }
 
         public void ActionPhase()
         {
@@ -22,6 +27,11 @@ namespace DominionCards
 
         public bool IsActionPhase()
         {
+            if (GameBoard.AbortPhase)
+            {
+                GameBoard.AbortPhase = false;
+                return true;
+            }
             for (int i = 0; i < player.getHand().Count; i++)
             {
                 Card card = (Card) player.getHand()[i];
@@ -47,7 +57,7 @@ namespace DominionCards
         }
 
         public void BuyPhase(){
-            Console.WriteLine("Buy Phase: Player " + player.getNumber());
+            Console.WriteLine("Buy Phase: Player " + player.getNumber() + "\n");
         }
 
 

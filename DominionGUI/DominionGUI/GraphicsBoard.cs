@@ -45,6 +45,7 @@ namespace DominionGUI
             UpdateLabels();
             this.Update();
             this.Show();
+            board.turnOrder.Peek().TakeTurn();
             
             /*discarddeck.Location = new Point(98, 769);
             discarddeck.Width = 20;
