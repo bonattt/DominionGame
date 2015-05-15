@@ -269,6 +269,22 @@ namespace UnitTestProject2
         }
 
         [TestMethod]
+        public void TestChapelDiscardThree()
+        {
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            GameBoard board = new GameBoard(cards);
+            Card c = new Chapel();
+            Player p1 = new HumanPlayer(1);
+            board.AddPlayer(p1);
+            int cardsInDiscard = p1.getDiscard().Count;
+            int cardsInHand = p1.getHand().Count;
+            p1.addCardToHand(c);
+            p1.playCard(c);
+            Assert.AreEqual(cardsInDiscard, p1.getDiscard().Count);
+            Assert.AreEqual(cardsInHand - 3, p1.getHand().Count);
+        }
+
+        [TestMethod]
         public void TestThroneRoomBringsUpWindow()
         {
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
