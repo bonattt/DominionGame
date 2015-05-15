@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace DominionCards
 {
@@ -41,10 +42,19 @@ namespace DominionCards
             lock (GameBoard.ActionPhaseLock)
             {
                 Console.WriteLine("PLAYER: Action Phase called on player " + getNumber());
+                GameBoard.gamePhase = 1;
                 Monitor.Wait(GameBoard.ActionPhaseLock);
+                GameBoard.gamePhase = 0;
                 Console.WriteLine("PLAYER: Button pulse recieved.");
                 Card cardPlayed = GameBoard.lastCardPlayed;
-                playCard(cardPlayed);
+                try
+                {
+                    playCard(cardPlayed);
+                }
+                catch (CardCannotBePlayedException e)
+                {
+                    MessageBox.Show(e.Message);
+                }
                 Monitor.PulseAll(GameBoard.ActionPhaseLock);
                 Console.WriteLine("PLAYER: finished playing card, pulse sent.");
                 Console.WriteLine("Playing a card with ID " + cardPlayed.getID());
@@ -53,14 +63,36 @@ namespace DominionCards
         public override void buyPhase()
         {
             Console.WriteLine("Buy Phase called on player " + getNumber());
+            lock (GameBoard.BuyPhaseLock)
+            {
+                Console.WriteLine("PLAYER: Action Phase called on player " + getNumber());
+                GameBoard.gamePhase = 2;
+                Monitor.Wait(GameBoard.BuyPhaseLock);
+                GameBoard.gamePhase = 0;
+                Console.WriteLine("PLAYER: Button pulse recieved.");
+                Card cardBought = GameBoard.lastCardBought;
+                try
+                {
+                    buyCard(cardBought);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                }
+                Monitor.PulseAll(GameBoard.BuyPhaseLock);
+                Console.WriteLine("PLAYER: finished playing card, pulse sent.");
+                Console.WriteLine("Buying a card with ID " + cardBought.getID());
+            }
         }
         public override void TakeTurn()
         {
             Console.WriteLine("\nplayer" + getNumber() + " taking turn.");
+            MessageBox.Show("It is player " + getNumber() + "'s turn. \n   Action Phase.");
             while (IsActionPhase())
             {
                 actionPhase();
             }
+            MessageBox.Show("buy phase!\nbuy some cards.");
             while (IsBuyPhase())
             {
                 buyPhase();
@@ -69,49 +101,6 @@ namespace DominionCards
 //            HumanPlayerTurn work = new HumanPlayerTurn(this);
 //            Thread t = new Thread(new ThreadStart(work.Run));
 //            t.Start();
-        }
-        public bool IsActionPhase()
-        {
-            if (GameBoard.AbortPhase)
-            {
-                GameBoard.AbortPhase = false;
-                return false;
-            }
-            for (int i = 0; i < this.getHand().Count; i++)
-            {
-                Card card = (Card)this.getHand()[i];
-                int id = card.getID();
-                if (id == 0 || id == 1 || id == 2)
-                {
-                    return true; // treasure cards do not require an action to play. If you have any, keep playing.
-                }
-                else if (id == 3 || id == 4 || id == 5 || id == 14)
-                {
-                    continue; // if card is victory card, do nothing.
-                }
-                else // card is action card
-                {
-                    if (this.actionsLeft() > 0)
-                    {
-                        return true;
-                        // if you have an action card and an action, it's still your action phase.
-                    }
-                }
-            }
-            return false;
-        }
-        public bool IsBuyPhase()
-        {
-            return false;
-        }
-
-        private Card GetCardToBuy()
-        {
-            return null;
-        }
-        private Card GetCardToPlay()
-        {
-            return null;
         }
     }
 }

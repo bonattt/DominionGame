@@ -48,5 +48,17 @@ namespace DominionCards
             }
             return false;
         }
+        public virtual bool IsTreasure()
+        {
+            return false;
+        }
+        public virtual bool IsAction()
+        {
+            return false;
+        }
+        public virtual bool IsVictory()
+        {
+            return false;
+        }
     }
 }

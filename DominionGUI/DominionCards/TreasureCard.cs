@@ -8,7 +8,7 @@ namespace DominionCards
 {
     public abstract class TreasureCard : Card
     {
-        int value;
+        public int value;
         public TreasureCard(int money, int price, int idNumb)
             : base(price, idNumb)
         {
@@ -27,5 +27,11 @@ namespace DominionCards
             Console.WriteLine("returning value of treasure card");
             return value;
         }
+        public override bool IsTreasure()
+        {
+            return true;
+        }
+
+        public int money { get; set; }
     }
 }

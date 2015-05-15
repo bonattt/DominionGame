@@ -21,7 +21,7 @@ namespace DominionCards
         {
             actions = 1;
             buys = 1;
-            money = 1;
+            money = 0;
             for (int i = 0; i < 3; i++)
             {
                 discard.Add(new KingdomCards.Estate());
@@ -158,9 +158,25 @@ namespace DominionCards
         }
         public int moneyLeft()
         {
-            return money;
+            int moneyInHand = 0;
+            for (int i = 0; i < hand.Count; i++)
+            {
+                Card card = (Card) hand[i];
+                if (card.IsTreasure())
+                {
+                    moneyInHand += ((TreasureCard)card).value;
+                }
+            }
+                return money + moneyInHand;
         }
-
+        public bool IsBuyPhase()
+        {
+            if (buysLeft() == 0)
+            {
+                return false;
+            }
+            return true;
+        }
         public bool buyCard(Card card)
         {
             if (this.money < card.getPrice())
@@ -218,9 +234,13 @@ namespace DominionCards
         {
             // finds the card that was played in the player's hand, then removes it.
             int handSize = hand.Count;
-            if (c.getID() == 3 || c.getID() == 4 || c.getID() == 5 || c.getID() == 14)
+            if (c.IsVictory())
             {
-                throw new Exception("you cannot play victory cards!!");
+                throw new CardCannotBePlayedException("you cannot play victory cards!!");
+            }
+            if (c.IsTreasure())
+            {
+                throw new CardCannotBePlayedException("You cannot play treasure cards!!");
             }
 
             for (int i = 0; i < hand.Count; i++)
@@ -237,15 +257,6 @@ namespace DominionCards
             {
                 throw new Exception("tried to play a card not in your hand!!!"); // USE A BETTER EXCEPTION
             }
-            // check if card is treasure, and handle it specially
-            if (c.getID() == 0 || c.getID() == 1 || c.getID() == 2)
-            {
-                Console.WriteLine("treasure card played, value " + ((TreasureCard)c).getValue());
-                money += ((TreasureCard)c).getValue();
-                return actions;
-            }
-
-            // resolves generic card effects
             ActionCard card = (ActionCard) c;
             actions--;
             for (int i = 0; i < card.cards; i++)
@@ -293,5 +304,27 @@ namespace DominionCards
                 card.MakeDelayedAttack(this);
             }
         }
+        public bool IsActionPhase()
+        {
+            if (GameBoard.AbortPhase)
+            {
+                GameBoard.AbortPhase = false;
+                return false;
+            }
+            if (actions == 0)
+            {
+                return false;
+            }
+            for (int i = 0; i < this.getHand().Count; i++)
+            {
+                Card card = (Card)this.getHand()[i];
+                if (card.IsAction())
+                {
+                    return true; // if you still have action cards, it's still the action phase.
+                }
+            }
+            return false;
+        }
+
     }
 }

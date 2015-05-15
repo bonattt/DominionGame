@@ -33,7 +33,7 @@ namespace UnitTestProject2
             Thread t = new Thread(p1.buyPhase);
             t.Start();
             GameBoard.lastCardBought = new Witch();
-            Monitor.PulseAll(new BuyButtonSignal());
+            //Monitor.PulseAll(new BuyButtonSignal());
             
 
             Assert.AreEqual(9, board.GetCards()[new Witch()]);
@@ -57,7 +57,7 @@ namespace UnitTestProject2
             Thread t = new Thread(p1.actionPhase);
             t.Start();
             GameBoard.lastCardPlayed = new Witch();
-            Monitor.PulseAll(new PlayButtonSignal());
+            //Monitor.PulseAll(new PlayButtonSignal());
             
             Assert.IsFalse(p2.getDiscard().Contains(new Witch()));
         }

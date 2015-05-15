@@ -21,5 +21,9 @@ namespace DominionCards
         {
             // TODO implement this
         }
+        public override bool IsVictory()
+        {
+            return true;
+        }
     }
 }

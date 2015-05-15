@@ -25,5 +25,9 @@ namespace DominionCards
         {
             Console.WriteLine("I am just an action card!!");
         }
+        public override bool IsAction()
+        {
+            return true;
+        }
     }
 }

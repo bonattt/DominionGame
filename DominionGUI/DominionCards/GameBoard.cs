@@ -9,6 +9,8 @@ namespace DominionCards
 {
     public class GameBoard
     {
+        public static int gamePhase = 0; // 0 - between phases. 1 - action phase. 2 - buy phase.
+
         public static Card lastCardPlayed, lastCardBought;
         public static bool AbortPhase = false;
         private static GameBoard boardInstance;

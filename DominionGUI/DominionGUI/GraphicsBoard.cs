@@ -121,6 +121,7 @@ namespace DominionGUI
                 buttons[i].BackgroundImageLayout = ImageLayout.Stretch;
                 Controls.Add(buttons[i]);
                 buttons[i].Parent = this;
+                buttons[i].InitializeEventHandler();
 
                 labels[i].Location = new Point(xValue + 50, yValue + 155);
                 Controls.Add(labels[i]);
@@ -143,6 +144,8 @@ namespace DominionGUI
                 buttons[i].BackgroundImageLayout = ImageLayout.Stretch;
                 Controls.Add(buttons[i]);
                 buttons[i].Parent = this;
+                buttons[i].InitializeEventHandler();
+
                 xValue += xIncriment;
                 if (xValue > startingX + (xIncriment * (numberColumns-1)))
                 {

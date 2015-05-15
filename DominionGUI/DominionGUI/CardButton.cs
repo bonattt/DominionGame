@@ -18,6 +18,10 @@ namespace DominionGUI
         public CardButton(Card card) : base()
         {
             this.card = card;
+        }
+
+        public void InitializeEventHandler()
+        {
             if (ForSale)
             {
                 this.Click += new System.EventHandler(BuyThisCard);
@@ -30,17 +34,29 @@ namespace DominionGUI
 
         internal void BuyThisCard(object sender, EventArgs e)
         {
-                Console.WriteLine("tried to buy a card with id " + card.getID());
-                GameBoard.lastCardBought = card;
-                lock (GameBoard.BuyPhaseLock)
-                {
-                    Monitor.PulseAll(GameBoard.BuyPhaseLock);
-                    Monitor.Wait(GameBoard.BuyPhaseLock);
-                }
+            if (GameBoard.gamePhase != 2)
+            {
+                Console.WriteLine("buy button ignored because game in wrong state");
+                return;
+            }
+            Console.WriteLine("\n                       BUTTON PUSH BUY!!!\n");
+            Console.WriteLine("tried to buy a card with id " + card.getID());
+            GameBoard.lastCardBought = card;
+            lock (GameBoard.BuyPhaseLock)
+            {
+                Monitor.PulseAll(GameBoard.BuyPhaseLock);
+                Monitor.Wait(GameBoard.BuyPhaseLock);
+            }
         }
 
         internal void PlayThisCard(object sender, EventArgs e)
         {   
+            if (GameBoard.gamePhase != 1)
+            {
+                Console.WriteLine("play button ignored because game in wrong state");
+                return;
+            }
+            Console.WriteLine("\n                       BUTTON PUSH PLAY!!!\n");
             Console.WriteLine("in the player's hand");
             GameBoard.lastCardPlayed = card;
             lock (GameBoard.ActionPhaseLock)
