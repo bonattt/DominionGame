@@ -331,7 +331,7 @@ namespace UnitTestProject2
         }
 
         [TestMethod]
-        public void testRemodelDoesntIncludeCardsMoreThanFiveCost()
+        public void testRemodelDoesntIncludeCardsMoreThanFourCost()
         {
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
             cards.Add(new Copper(), 1);
@@ -344,6 +344,37 @@ namespace UnitTestProject2
             int numdiscard = p1.getDiscard().Count;
             p1.playCard(c);
             Assert.AreEqual(numdiscard + 2, p1.getDiscard().Count);
+        }
+
+        [TestMethod]
+        public void testFeastTrashesFeastAndAddsNewToDiscard()
+        {
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            cards.Add(new Copper(), 1);
+            GameBoard board = new GameBoard(cards);
+            Card c = new Feast();
+            Player p1 = new HumanPlayer(1);
+            board.AddPlayer(p1);
+            p1.addCardToHand(c);
+            int numdiscard = p1.getDiscard().Count;
+            p1.playCard(c);
+            Assert.AreEqual(numdiscard + 1, p1.getDiscard().Count);
+        }
+
+        [TestMethod]
+        public void testFeastDoesntIncludeCardsMoreThanFiveCost()
+        {
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            cards.Add(new Copper(), 1);
+            cards.Add(new Gold(), 1);
+            GameBoard board = new GameBoard(cards);
+            Card c = new Feast();
+            Player p1 = new HumanPlayer(1);
+            board.AddPlayer(p1);
+            p1.addCardToHand(c);
+            int numdiscard = p1.getDiscard().Count;
+            p1.playCard(c);
+            Assert.AreEqual(numdiscard + 1, p1.getDiscard().Count);
         }
 
         [TestMethod]
