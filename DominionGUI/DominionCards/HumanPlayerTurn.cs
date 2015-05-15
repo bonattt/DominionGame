@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -61,15 +60,6 @@ namespace DominionCards
             Console.WriteLine("Buy Phase: Player " + player.getNumber() + "\n");
         }
 
-        public ArrayList SelectCards(ArrayList cards)
-        {
-            Form1 form = new Form1(player.getHand(), "Select one card to trash", 1);
-            form.TopMost = true;
-            form.ShowDialog();
-
-
-            return null;
-        }
 
     }
 }

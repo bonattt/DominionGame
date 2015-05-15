@@ -18,13 +18,5 @@ namespace DominionCards
         {
 
         }
-
-        public ArrayList SelectFrom()
-        {
-            ArrayList list = new ArrayList();
-
-            return list
-        }
-
     }
 }
