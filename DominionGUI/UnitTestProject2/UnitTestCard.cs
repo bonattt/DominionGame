@@ -285,6 +285,50 @@ namespace UnitTestProject2
         }
 
         [TestMethod]
+        public void TestMineGiveUpCopperForSilver()
+        {
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            GameBoard board = new GameBoard(cards);
+            Card c = new Mine();
+            Player p1 = new HumanPlayer(1);
+            board.AddPlayer(p1);
+            ArrayList newHand = new ArrayList();
+            newHand.Add(new Copper());
+            newHand.Add(new Copper());
+            newHand.Add(new Copper());
+            newHand.Add(new Mine());
+            p1.setHand(newHand);
+            int cardsInHand = p1.getHand().Count;
+            int moneyInHand = p1.getTotalMoney();
+            p1.playCard(c);
+            Assert.IsTrue(p1.getHand().Contains(new Silver()));
+            Assert.AreEqual(moneyInHand + 1, p1.getTotalMoney());
+            Assert.AreEqual(cardsInHand - 1, p1.getHand().Count);
+        }
+
+        [TestMethod]
+        public void TestMineGiveUpSilverForGold()
+        {
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            GameBoard board = new GameBoard(cards);
+            Card c = new Mine();
+            Player p1 = new HumanPlayer(1);
+            board.AddPlayer(p1);
+            ArrayList newHand = new ArrayList();
+            newHand.Add(new Silver());
+            newHand.Add(new Silver());
+            newHand.Add(new Silver());
+            newHand.Add(new Mine());
+            p1.setHand(newHand);
+            int cardsInHand = p1.getHand().Count;
+            int moneyInHand = p1.getTotalMoney();
+            p1.playCard(c);
+            Assert.IsTrue(p1.getHand().Contains(new Gold()));
+            Assert.AreEqual(moneyInHand + 1, p1.getTotalMoney());
+            Assert.AreEqual(cardsInHand - 1, p1.getHand().Count);
+        }
+
+        [TestMethod]
         public void TestThroneRoomBringsUpWindow()
         {
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
