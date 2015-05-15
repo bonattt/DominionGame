@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
+using System.Windows.Forms;
 
 namespace DominionCards.KingdomCards
 {
@@ -17,19 +18,32 @@ namespace DominionCards.KingdomCards
         }
         public override void Play(Player player)
         {
-            ArrayList hand = player.getHand();
-            for (int i = 0; i < hand.Count; i++)
+            DialogResult result1 = MessageBox.Show("You played a moneylender. Would you like to trash a copper now?",
+                "You played a moneylender",
+                MessageBoxButtons.YesNo);
+            string result = result1.ToString();
+            Console.WriteLine(result);
+
+            if (result.ToLower().Equals("yes"))
             {
-                Card c;
-                try {
-                    c = (Card) hand[i];
-                } catch (InvalidCastException) {
-                    continue;
-                }
-                if (c.getID() == 0){
-                    hand.Remove(c);
-                    player.money += 3;
-                    return;
+                ArrayList hand = player.getHand();
+                for (int i = 0; i < hand.Count; i++)
+                {
+                    Card c;
+                    try
+                    {
+                        c = (Card)hand[i];
+                    }
+                    catch (InvalidCastException)
+                    {
+                        continue;
+                    }
+                    if (c.getID() == 0)
+                    {
+                        hand.Remove(c);
+                        player.money += 3;
+                        return;
+                    }
                 }
             }
         }

@@ -36,6 +36,37 @@ namespace UnitTestProject2
             Assert.AreEqual(0, c.getVictoryPoints());
         }
         [TestMethod]
+        public void testWorkshopPutsNewCardInDiscard()
+        {
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            cards.Add(new Copper(), 1);
+            GameBoard board = new GameBoard(cards);
+            Card c = new Workshop();
+            Player p = new HumanPlayer(1);
+            board.AddPlayer(p);
+            p.addCardToHand(c);
+            int numdiscard = p.getDiscard().Count;
+            p.playCard(c);
+            Assert.AreEqual(numdiscard + 2, p.getDiscard().Count);
+        }
+        [TestMethod]
+        public void testWorkshopDoesntChargeForNewCard()
+        {
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            cards.Add(new Copper(), 1);
+            GameBoard board = new GameBoard(cards);
+            Card c = new Workshop();
+            Player p1 = new HumanPlayer(1);
+            board.AddPlayer(p1);
+            p1.addCardToHand(c);
+            int spendPoints = p1.moneyLeft();
+            p1.playCard(c);
+            Assert.AreEqual(spendPoints, p1.moneyLeft());
+        }
+
+
+
+        [TestMethod]
         public void testLibrary()
         {
             Card c = new Library();
@@ -52,7 +83,7 @@ namespace UnitTestProject2
             Assert.AreEqual(0, c.getVictoryPoints());
         }
         [TestMethod]
-        public void testMoneyLenderAddsMoneyIfThereIsCopper()
+        public void testMoneyLenderAddsMoneyIfThereIsCopperAndYes()
         {
             Card c = new MoneyLender();
             Player p = new HumanPlayer();
@@ -70,7 +101,25 @@ namespace UnitTestProject2
             ///////////////////////////////////
         }
         [TestMethod]
-        public void testMoneyLenderDoesNotAddMoneyIfThereIsNoCopper()
+        public void testMoneyLenderDoesNotAddMoneyIfThereIsNoCopperAndYes()
+        {
+            Card c = new MoneyLender();
+            Player p = new HumanPlayer();
+            ArrayList newHand = new ArrayList();
+            newHand.Add(new Estate());
+            newHand.Add(new Estate());
+            newHand.Add(new Estate());
+            newHand.Add(new Village());
+            p.setHand(newHand);
+            p.addCardToHand(c);
+            int moneyBefore = p.moneyLeft();
+            p.playCard(c);
+            Assert.AreEqual(moneyBefore, p.moneyLeft());
+            ///////////////////////////////////
+        }
+
+        [TestMethod]
+        public void testMoneyLenderDoesNotAddMoneyIfNo()
         {
             Card c = new MoneyLender();
             Player p = new HumanPlayer();
@@ -285,6 +334,83 @@ namespace UnitTestProject2
         }
 
         [TestMethod]
+        public void testRemodelPutsNewAndPlayedCardsInDiscard()
+        {
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            cards.Add(new Copper(), 1);
+            GameBoard board = new GameBoard(cards);
+            Card c = new Remodel();
+            Player p1 = new HumanPlayer(1);
+            board.AddPlayer(p1);
+            p1.addCardToHand(c);
+            int numdiscard = p1.getDiscard().Count;
+            p1.playCard(c);
+            Assert.AreEqual(numdiscard + 2, p1.getDiscard().Count);
+        }
+
+        [TestMethod]
+        public void testRemodelDoesntIncludeCardsMoreThanFourCost()
+        {
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            cards.Add(new Copper(), 1);
+            cards.Add(new Witch(), 1);
+            GameBoard board = new GameBoard(cards);
+            Card c = new Remodel();
+            Player p1 = new HumanPlayer(1);
+            board.AddPlayer(p1);
+            p1.addCardToHand(c);
+            int numdiscard = p1.getDiscard().Count;
+            p1.playCard(c);
+            Assert.AreEqual(numdiscard + 2, p1.getDiscard().Count);
+        }
+
+        [TestMethod]
+        public void testFeastTrashesFeastAndAddsNewToDiscard()
+        {
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            cards.Add(new Copper(), 1);
+            GameBoard board = new GameBoard(cards);
+            Card c = new Feast();
+            Player p1 = new HumanPlayer(1);
+            board.AddPlayer(p1);
+            p1.addCardToHand(c);
+            int numdiscard = p1.getDiscard().Count;
+            p1.playCard(c);
+            Assert.AreEqual(numdiscard + 1, p1.getDiscard().Count);
+        }
+
+        [TestMethod]
+        public void testFeastDoesntIncludeCardsMoreThanFiveCost()
+        {
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            cards.Add(new Copper(), 1);
+            cards.Add(new Gold(), 1);
+            GameBoard board = new GameBoard(cards);
+            Card c = new Feast();
+            Player p1 = new HumanPlayer(1);
+            board.AddPlayer(p1);
+            p1.addCardToHand(c);
+            int numdiscard = p1.getDiscard().Count;
+            p1.playCard(c);
+            Assert.AreEqual(numdiscard + 1, p1.getDiscard().Count);
+        }
+
+        [TestMethod]
+        public void testRemodelDoesntChargeForNewCard()
+        {
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            cards.Add(new Copper(), 1);
+            GameBoard board = new GameBoard(cards);
+            Card c = new Remodel();
+            Player p1 = new HumanPlayer(1);
+            board.AddPlayer(p1);
+            p1.addCardToHand(c);
+            int spendPoints = p1.moneyLeft();
+            p1.playCard(c);
+            Assert.AreEqual(spendPoints, p1.moneyLeft());
+        }
+
+        [TestMethod]
         public void TestMineGiveUpCopperForSilver()
         {
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
@@ -305,6 +431,80 @@ namespace UnitTestProject2
             Assert.IsTrue(p1.getHand().Contains(new Silver()));
             Assert.AreEqual(moneyInHand + 1, p1.getTotalMoney());
             Assert.AreEqual(cardsInHand - 1, p1.getHand().Count);
+        }
+
+        [TestMethod]
+        public void TestCellarGainsOneActionWithNoDiscard()
+        {
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            GameBoard board = new GameBoard(cards);
+            Card c = new Cellar();
+            Player p1 = new HumanPlayer(1);
+            board.AddPlayer(p1);
+            p1.addCardToHand(c);
+            int actions = p1.actionsLeft();
+            p1.playCard(c);
+            Assert.AreEqual(actions, p1.actionsLeft());
+        }
+
+        [TestMethod]
+        public void TestCellarGainsTwoActionsWithOneTrash()
+        {
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            GameBoard board = new GameBoard(cards);
+            Card c = new Cellar();
+            Player p1 = new HumanPlayer(1);
+            board.AddPlayer(p1);
+            p1.addCardToHand(c);
+            int actions = p1.actionsLeft();
+            p1.playCard(c);
+            Assert.AreEqual(actions + 1, p1.actionsLeft());
+        }
+
+        [TestMethod]
+        public void TestCellarGainsThreeActionsWithOTwoTrashes()
+        {
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            GameBoard board = new GameBoard(cards);
+            Card c = new Cellar();
+            Player p1 = new HumanPlayer(1);
+            board.AddPlayer(p1);
+            p1.addCardToHand(c);
+            int actions = p1.actionsLeft();
+            p1.playCard(c);
+            Assert.AreEqual(actions + 2, p1.actionsLeft());
+        }
+
+        [TestMethod]
+        public void TestChancellorDiscardsHandOnYes()
+        {
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            GameBoard board = new GameBoard(cards);
+            Card c = new Chancellor();
+            Player p1 = new HumanPlayer(1);
+            board.AddPlayer(p1);
+            p1.addCardToHand(c);
+            int discardCount = p1.getDiscard().Count;
+            int deckCount = p1.getDeck().Count;
+            p1.playCard(c);
+            Assert.AreEqual(discardCount + deckCount + 1, p1.getDiscard().Count);
+            Assert.AreEqual(0, p1.getDeck().Count);
+        }
+
+        [TestMethod]
+        public void TestChancellorDoesntDiscardsHandOnNo()
+        {
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            GameBoard board = new GameBoard(cards);
+            Card c = new Chancellor();
+            Player p1 = new HumanPlayer(1);
+            board.AddPlayer(p1);
+            p1.addCardToHand(c);
+            int discardCount = p1.getDiscard().Count;
+            int deckCount = p1.getDeck().Count;
+            p1.playCard(c);
+            Assert.AreEqual(discardCount + 1, p1.getDiscard().Count);
+            Assert.AreEqual(deckCount, p1.getDeck().Count);
         }
 
         [TestMethod]

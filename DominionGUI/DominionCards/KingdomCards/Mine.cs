@@ -33,7 +33,7 @@ namespace DominionCards.KingdomCards
                 MessageBox.Show("You have no cards to play with the mine!");
                 return;
             }
-            ArrayList cards = player.SelectCards(treasureCards, "Mine", 1);
+            ArrayList cards = player.SelectCards(treasureCards, "Choose a card to upgrade.", 1);
             Card cardSelected = (Card)cards[0];
 
             if (cardSelected.getID() == 0)
