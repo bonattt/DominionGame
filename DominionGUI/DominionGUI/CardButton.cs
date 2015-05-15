@@ -22,15 +22,18 @@ namespace DominionGUI
 
         internal void setCard(object sender, EventArgs e)
         {
-            if (ForSale)
+            lock (GameBoard.syncObject)
             {
-                GameBoard.lastCardBought = card;
+                if (ForSale)
+                {
+                    GameBoard.lastCardBought = card;
+                }
+                else
+                {
+                    GameBoard.lastCardPlayed = card;
+                }
+                Monitor.PulseAll(this);
             }
-            else
-            {
-                GameBoard.lastCardPlayed = card;
-            }
-            Monitor.PulseAll(this);
         }
     }
 }

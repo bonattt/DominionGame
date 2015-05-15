@@ -12,6 +12,7 @@ namespace DominionCards
         public static Card lastCardPlayed, lastCardBought;
         public static bool AbortPhase = false;
         private static GameBoard boardInstance;
+        public static Object syncObject = new Object();
 
         public Queue<Player> turnOrder;
         public Dictionary<Card, int> cards;

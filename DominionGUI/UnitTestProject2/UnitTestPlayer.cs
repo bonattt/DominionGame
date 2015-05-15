@@ -27,10 +27,15 @@ namespace UnitTestProject2
             GameBoard board = new GameBoard(dict);
             Player p1 = new HumanPlayer(1);
             p1.money = 5;
-            GameBoard.lastCardBought = new Witch();
-            p1.TakeTurn();
+            GameBoard.lastCardBought = new Copper();
 
-            Monitor.PulseAll(new Witch());
+            
+            Thread t = new Thread(p1.buyPhase);
+            t.Start();
+            GameBoard.lastCardBought = new Witch();
+            Monitor.PulseAll(new BuyButtonSignal());
+            
+
             Assert.AreEqual(9, board.GetCards()[new Witch()]);
         }
         [TestMethod]
@@ -45,12 +50,15 @@ namespace UnitTestProject2
             board.AddPlayer(p2);
 
             p1.actions = 0;
-            GameBoard.lastCardBought = new Witch();
             p1.addCardToHand(new Witch());
-
-            p1.TakeTurn();
-            Monitor.PulseAll(new Witch());
-
+            p1.addCardToHand(new Copper());
+            GameBoard.lastCardPlayed = new Copper();
+            
+            Thread t = new Thread(p1.actionPhase);
+            t.Start();
+            GameBoard.lastCardPlayed = new Witch();
+            Monitor.PulseAll(new PlayButtonSignal());
+            
             Assert.IsFalse(p2.getDiscard().Contains(new Witch()));
         }
         [TestMethod]
@@ -58,18 +66,26 @@ namespace UnitTestProject2
         {
             Dictionary<Card, int> dict = new Dictionary<Card, int>();
             dict.Add(new Witch(), 10);
+            dict.Add(new Curse(), 10);
             GameBoard board = new GameBoard(dict);
             Player p1 = new HumanPlayer(1);
             Player p2 = new HumanPlayer(2);
             board.AddPlayer(p1);
             board.AddPlayer(p2);
-
-            GameBoard.lastCardBought = new Witch();
+            GameBoard.lastCardPlayed = new Copper();
+            
             p1.addCardToHand(new Witch());
             p1.addCardToHand(new Copper());
-
-            p1.TakeTurn();
-            Monitor.PulseAll(new Witch());
+            
+            Thread t = new Thread(p1.actionPhase);
+            t.Start();
+            GameBoard.lastCardPlayed = new Witch();
+            
+            lock (GameBoard.syncObject){
+                Thread.Sleep(10000);
+                Monitor.PulseAll(GameBoard.syncObject);
+                Monitor.Wait(GameBoard.syncObject);
+            }
 
             Assert.IsTrue(p2.getDiscard().Contains(new Witch()));
         }
@@ -86,8 +102,7 @@ namespace UnitTestProject2
             cardList.Add(new Estate());
             p1.setHand(cardList);
 
-            HumanPlayerTurn turn = new HumanPlayerTurn(p1);
-            Assert.IsTrue(turn.IsActionPhase());
+            Assert.IsTrue(p1.IsActionPhase());
         }
         [TestMethod]
         public void TestIsActionPhaseIsFalseWithoutActionCard()
@@ -99,8 +114,7 @@ namespace UnitTestProject2
             hand.Add(new Estate());
             p1.setHand(hand);
 
-            HumanPlayerTurn turn = new HumanPlayerTurn(p1);
-            Assert.IsFalse(turn.IsActionPhase());
+            Assert.IsFalse(p1.IsActionPhase());
         }
         [TestMethod]
         public void TestIsActionPhaseIsFalseWithoutAction()
@@ -113,8 +127,8 @@ namespace UnitTestProject2
             hand.Add(new Witch());
             p1.actions = 0;
             p1.setHand(hand);
-            HumanPlayerTurn turn = new HumanPlayerTurn(p1);
-            Assert.IsFalse(turn.IsActionPhase());
+            
+            Assert.IsFalse(p1.IsActionPhase());
         }
         [TestMethod]
         public void TestIsActionPhaseIsTrueWithActionsAndCards()
@@ -127,8 +141,7 @@ namespace UnitTestProject2
             hand.Add(new Witch());
             p1.setHand(hand);
 
-            HumanPlayerTurn turn = new HumanPlayerTurn(p1);
-            Assert.IsTrue(turn.IsActionPhase());
+            Assert.IsTrue(p1.IsActionPhase());
         }
 
         [TestMethod]

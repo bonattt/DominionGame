@@ -225,7 +225,7 @@ namespace DominionCards
 
             for (int i = 0; i < hand.Count; i++)
             {
-                if (hand[i] == c)
+                if (hand[i].Equals(c))
                 {
                     hand.Remove(c);
                     discard.Add(c);

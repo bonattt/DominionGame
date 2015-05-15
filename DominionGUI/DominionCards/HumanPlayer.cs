@@ -38,10 +38,15 @@ namespace DominionCards
         }
         public override void actionPhase()
         {
-            Console.WriteLine("Action Phase called on player " + getNumber());
-            Monitor.Wait(new System.Windows.Forms.Button());
-            Card cardPlayed = GameBoard.lastCardPlayed;
-            Console.WriteLine("Playing a card with ID " + cardPlayed.getID());
+            lock (GameBoard.syncObject)
+            {
+                Console.WriteLine("Action Phase called on player " + getNumber());
+                Monitor.Wait(GameBoard.syncObject);
+                Card cardPlayed = GameBoard.lastCardPlayed;
+                playCard(cardPlayed);
+                Monitor.PulseAll(GameBoard.syncObject);
+                Console.WriteLine("Playing a card with ID " + cardPlayed.getID());
+            }
         }
         public override void buyPhase()
         {
@@ -50,10 +55,61 @@ namespace DominionCards
         public override void TakeTurn()
         {
             Console.WriteLine("\nplayer" + getNumber() + " taking turn.");
-            HumanPlayerTurn work = new HumanPlayerTurn(this);
-            Thread t = new Thread(new ThreadStart(work.Run));
-            t.Start();
+            while (IsActionPhase())
+            {
+                actionPhase();
+            }
+            while (IsBuyPhase())
+            {
+                buyPhase();
+            }
+
+//            HumanPlayerTurn work = new HumanPlayerTurn(this);
+//            Thread t = new Thread(new ThreadStart(work.Run));
+//            t.Start();
+        }
+        public bool IsActionPhase()
+        {
+            if (GameBoard.AbortPhase)
+            {
+                GameBoard.AbortPhase = false;
+                return false;
+            }
+            for (int i = 0; i < this.getHand().Count; i++)
+            {
+                Card card = (Card)this.getHand()[i];
+                int id = card.getID();
+                if (id == 0 || id == 1 || id == 2)
+                {
+                    return true; // treasure cards do not require an action to play. If you have any, keep playing.
+                }
+                else if (id == 3 || id == 4 || id == 5 || id == 14)
+                {
+                    continue; // if card is victory card, do nothing.
+                }
+                else // card is action card
+                {
+                    if (this.actionsLeft() > 0)
+                    {
+                        return true;
+                        // if you have an action card and an action, it's still your action phase.
+                    }
+                }
+            }
+            return false;
+        }
+        public bool IsBuyPhase()
+        {
+            return false;
         }
 
+        private Card GetCardToBuy()
+        {
+            return null;
+        }
+        private Card GetCardToPlay()
+        {
+            return null;
+        }
     }
 }
