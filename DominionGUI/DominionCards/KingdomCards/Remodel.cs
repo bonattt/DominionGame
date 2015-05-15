@@ -52,7 +52,7 @@ namespace DominionCards.KingdomCards
                 MessageBox.Show("You have no cards to buy with the remodel!");
                 return;
             }
-            ArrayList cards2 = player.SelectCards(buyableCards, "Choose a card to gain", 1);
+            ArrayList cards2 = player.SelectCards(buyableCards, "Choose a card to gain.", 1);
             Card cardSelected2 = (Card)cards[0];
 
             player.getDiscard().Add(cardSelected2);

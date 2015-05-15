@@ -416,6 +416,32 @@ namespace UnitTestProject2
         }
 
         [TestMethod]
+        public void TestCellarGainsOneActionWithNoDiscard()
+        {
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            GameBoard board = new GameBoard(cards);
+            Card c = new Cellar();
+            Player p1 = new HumanPlayer(1);
+            board.AddPlayer(p1);
+            int actions = p1.actionsLeft();
+            p1.playCard(c);
+            Assert.AreEqual(actions + 1, p1.actionsLeft());
+        }
+
+        [TestMethod]
+        public void TestCellarGainsTwoActionsWithOneTrash()
+        {
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            GameBoard board = new GameBoard(cards);
+            Card c = new Cellar();
+            Player p1 = new HumanPlayer(1);
+            board.AddPlayer(p1);
+            int actions = p1.actionsLeft();
+            p1.playCard(c);
+            Assert.AreEqual(actions + 2, p1.actionsLeft());
+        }
+
+        [TestMethod]
         public void TestMineGiveUpSilverForGold()
         {
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
