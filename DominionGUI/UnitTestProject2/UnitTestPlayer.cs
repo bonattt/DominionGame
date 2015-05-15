@@ -5,6 +5,7 @@ using System.Collections;
 using RandomGenerateCards;
 using DominionCards;
 using DominionCards.KingdomCards;
+using System.Threading;
 //using Rhino.Mocks;
 
 namespace UnitTestProject2
@@ -12,6 +13,67 @@ namespace UnitTestProject2
     [TestClass]
     public class UnitTestPlayer
     {
+        [TestMethod]
+        public void TestThatBuyPhaseBuysMostRecentBoughtCard()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod]
+        public void TestThatBuyPhaseBuysDoesNotBuyCardWithoutEnoughMoney()
+        {
+            Dictionary<Card, int> dict = new Dictionary<Card, int>();
+            dict.Add(new Witch(), 10);
+            GameBoard board = new GameBoard(dict);
+            Player p1 = new HumanPlayer(1);
+            p1.money = 5;
+            GameBoard.lastCardBought = new Witch();
+            p1.TakeTurn();
+
+            Monitor.PulseAll(new Witch());
+            Assert.AreEqual(9, board.GetCards()[new Witch()]);
+        }
+        [TestMethod]
+        public void TestThatActionPhasePhaseDoesNotPlayCardWithoutEnoughMoneyActions()
+        {
+            Dictionary<Card, int> dict = new Dictionary<Card, int>();
+            dict.Add(new Witch(), 10);
+            GameBoard board = new GameBoard(dict);
+            Player p1 = new HumanPlayer(1);
+            Player p2 = new HumanPlayer(2);
+            board.AddPlayer(p1);
+            board.AddPlayer(p2);
+
+            p1.actions = 0;
+            GameBoard.lastCardBought = new Witch();
+            p1.addCardToHand(new Witch());
+
+            p1.TakeTurn();
+            Monitor.PulseAll(new Witch());
+
+            Assert.IsFalse(p2.getDiscard().Contains(new Witch()));
+        }
+        [TestMethod]
+        public void TestThatActionPhasePhasePlaysCardLastClicked()
+        {
+            Dictionary<Card, int> dict = new Dictionary<Card, int>();
+            dict.Add(new Witch(), 10);
+            GameBoard board = new GameBoard(dict);
+            Player p1 = new HumanPlayer(1);
+            Player p2 = new HumanPlayer(2);
+            board.AddPlayer(p1);
+            board.AddPlayer(p2);
+
+            GameBoard.lastCardBought = new Witch();
+            p1.addCardToHand(new Witch());
+            p1.addCardToHand(new Copper());
+
+            p1.TakeTurn();
+            Monitor.PulseAll(new Witch());
+
+            Assert.IsTrue(p2.getDiscard().Contains(new Witch()));
+        }
+
         [TestMethod]
         public void TestIsActionPhaseWheneverPlayerHasTreasure()
         {
