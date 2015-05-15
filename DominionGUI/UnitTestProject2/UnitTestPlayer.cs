@@ -19,10 +19,10 @@ namespace UnitTestProject2
             GameBoard board = new GameBoard(dict);
             HumanPlayer p1 = new HumanPlayer(1);
             p1.actions = 0;
-            ArrayList hand = new ArrayList();
-            hand.Add(new Copper());
-            hand.Add(new Estate());
-            p1.setHand(hand);
+            ArrayList cardList = new ArrayList();
+            cardList.Add(new Copper());
+            cardList.Add(new Estate());
+            p1.setHand(cardList);
 
             HumanPlayerTurn turn = new HumanPlayerTurn(p1);
             Assert.IsTrue(turn.IsActionPhase());

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,19 @@ namespace DominionCards
 {
     public class HumanPlayer : Player
     {
+
+        public override ArrayList SelectCards(ArrayList cards, String name, int numCards)
+        {
+            SelectCardsForm form = new SelectCardsForm(cards, name, numCards);
+            form.GetSelection(); // mutates ArrayList cards
+            Console.WriteLine("Player finished selecting cards.");
+            for (int i = 0; i < cards.Count; i++)
+            {
+                Console.WriteLine("Card ID " + ((Card)cards[i]).getID() + " selected");
+            }
+            return cards;
+        }
+
         public HumanPlayer()
             : base()
         {
@@ -27,10 +41,6 @@ namespace DominionCards
         public override void buyPhase()
         {
             Console.WriteLine("Buy Phase called on player " + getNumber());
-        }
-        public override void selectToDiscard()
-        {
-            // TODO implement
         }
         public override void TakeTurn()
         {

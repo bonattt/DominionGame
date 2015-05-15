@@ -2,14 +2,14 @@
 using System.Collections;
 namespace DominionCards
 {
-    partial class Form1
+    partial class SelectCardsForm
     {
         ArrayList cardsToList;
         string instructions;
         int numToSelect;
-        public Form1(ArrayList cards, string inst, int num) : base()
+        public SelectCardsForm(ArrayList cards, string inst, int num) : base()
         {
-            checkboxes = new List<System.Windows.Forms.CheckBox>();
+            checkboxes = new List<CardCheckBox>();
             cardsToList = cards;
             instructions = inst;
             numToSelect = num;
@@ -44,7 +44,7 @@ namespace DominionCards
         {
             for (int i = 0; i < cardsToList.Count; i++)
             {
-                checkboxes.Add(new System.Windows.Forms.CheckBox());
+                checkboxes.Add(new CardCheckBox((Card) cardsToList[i]));
                 checkboxes[i].AutoSize = true;
                 checkboxes[i].Location = new System.Drawing.Point(100, 60 + i*25);
                 checkboxes[i].Name = "checkBox" + i;
@@ -73,6 +73,7 @@ namespace DominionCards
             this.button1.Size = new System.Drawing.Size(10, 30);
             this.button1.TabIndex = 2;
             this.button1.Text = "Select";
+            this.button1.Click += new System.EventHandler(this.SelectAndMutate);
             // 
             // Form1
             // 
@@ -93,8 +94,10 @@ namespace DominionCards
         }
 
         #endregion
-        List<System.Windows.Forms.CheckBox> checkboxes;
+        List<CardCheckBox> checkboxes;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
     }
+
+
 }

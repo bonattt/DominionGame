@@ -20,19 +20,27 @@ namespace DominionCards.KingdomCards
         public override void Play(Player player)
         {
             ArrayList actionCards = new ArrayList();
-            foreach (var card in player.getHand()){
-                int id = ((Card)card).getID();
+            foreach (Card card in player.getHand()){
+                int id = card.getID();
                 if (id > 5 && id != 14){
                     actionCards.Add(card);
                 }
             }
-            ArrayList cards = player.SelectCards(actionCards);
+            if (actionCards.Count == 0)
+            {
+                MessageBox.Show("You have no cards to play with the throne room!");
+                return;
+            }
+            ArrayList cards = player.SelectCards(actionCards, "Throne Room", 1);
             Card cardPlayed = (Card) cards[0];
 
+            player.actions += 2;
             player.playCard(cardPlayed);
             player.addCardToHand(cardPlayed);
             player.getDiscard().Remove(cardPlayed);
             player.playCard(cardPlayed);
+
+
         }
     }
 }
