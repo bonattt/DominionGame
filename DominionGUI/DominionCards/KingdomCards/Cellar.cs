@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace DominionCards.KingdomCards
 {
@@ -11,6 +13,28 @@ namespace DominionCards.KingdomCards
         public Cellar() : base(0, 0, 0, 1, 2, 8) 
         {
             // TODO implement
+        }
+
+        public override void Play(Player player)
+        {
+            ArrayList trashableCards = new ArrayList();
+            foreach (Card card in player.getHand())
+            {
+                trashableCards.Add(card);
+                
+            }
+            if (trashableCards.Count == 0)
+            {
+                MessageBox.Show("You have no cards to play with the cellar");
+                return;
+            }
+            ArrayList cards = player.SelectCards(trashableCards, "Choose cards to trash.", 1);
+            for (int i = 0; i < cards.Count; i++)
+            {
+                player.actions += 1;
+                Card cardSelected = (Card)cards[i];
+                player.getHand().Remove(cardSelected);
+            }
         }
     }
 }

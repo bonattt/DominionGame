@@ -423,9 +423,10 @@ namespace UnitTestProject2
             Card c = new Cellar();
             Player p1 = new HumanPlayer(1);
             board.AddPlayer(p1);
+            p1.addCardToHand(c);
             int actions = p1.actionsLeft();
             p1.playCard(c);
-            Assert.AreEqual(actions + 1, p1.actionsLeft());
+            Assert.AreEqual(actions, p1.actionsLeft());
         }
 
         [TestMethod]
@@ -436,6 +437,21 @@ namespace UnitTestProject2
             Card c = new Cellar();
             Player p1 = new HumanPlayer(1);
             board.AddPlayer(p1);
+            p1.addCardToHand(c);
+            int actions = p1.actionsLeft();
+            p1.playCard(c);
+            Assert.AreEqual(actions + 1, p1.actionsLeft());
+        }
+
+        [TestMethod]
+        public void TestCellarGainsThreeActionsWithOTwoTrashes()
+        {
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            GameBoard board = new GameBoard(cards);
+            Card c = new Cellar();
+            Player p1 = new HumanPlayer(1);
+            board.AddPlayer(p1);
+            p1.addCardToHand(c);
             int actions = p1.actionsLeft();
             p1.playCard(c);
             Assert.AreEqual(actions + 2, p1.actionsLeft());
