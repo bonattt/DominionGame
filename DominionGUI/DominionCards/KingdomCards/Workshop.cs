@@ -32,7 +32,7 @@ namespace DominionCards.KingdomCards
                 MessageBox.Show("You have no cards to play with the workshop!");
                 return;
             }
-            ArrayList cards = player.SelectCards(buyableCards, "Workshop", 1);
+            ArrayList cards = player.SelectCards(buyableCards, "Choose a card to gain", 1);
             Card cardSelected = (Card)cards[0];
 
             player.getDiscard().Add(cardSelected);

@@ -31,7 +31,7 @@ namespace DominionCards.KingdomCards
                 MessageBox.Show("You have no cards to play with the throne room!");
                 return;
             }
-            ArrayList cards = player.SelectCards(actionCards, "Throne Room", 1);
+            ArrayList cards = player.SelectCards(actionCards, "Choose a card to play twice", 1);
             Card cardPlayed = (Card) cards[0];
 
             player.actions += 2;
