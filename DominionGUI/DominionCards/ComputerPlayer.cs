@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,10 +8,6 @@ namespace DominionCards
 {
     class ComputerPlayer : Player
     {
-        public override ArrayList SelectCards(ArrayList list)
-        {
-            return null;
-        }
         public ComputerPlayer()
             : base()
         {

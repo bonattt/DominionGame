@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -39,15 +38,6 @@ namespace DominionCards
             HumanPlayerTurn work = new HumanPlayerTurn(this);
             Thread t = new Thread(new ThreadStart(work.Run));
             t.Start();
-        }
-        public override ArrayList SelectCards(ArrayList cards)
-        {
-            Form1 form = new Form1(player.getHand(), "Select one card to trash", 1);
-            form.TopMost = true;
-            form.ShowDialog();
-
-
-            return null;
         }
 
     }
