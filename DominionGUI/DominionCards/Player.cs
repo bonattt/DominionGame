@@ -75,7 +75,7 @@ namespace DominionCards
 
         public abstract void actionPhase();
         public abstract void buyPhase();
-        public abstract void selectToDiscard();
+        public abstract ArrayList SelectCards(ArrayList cards, String name, int numCards);
 
         public int getTotalMoney()
         {
@@ -261,12 +261,13 @@ namespace DominionCards
         public static Stack<Card> Shuffle(ArrayList discard)
         {
             Stack<Card> newDeck; // = new Stack<Card>();
+
             Stack temp = GenerateRandom.SuffleDeck(discard);
             newDeck = ConvertStackToCardStack(temp);
             discard.Clear();
             return newDeck;
         }
-
+        
         public static Stack<Card> ConvertStackToCardStack(Stack s)
         {
             Stack<Card> deck = new Stack<Card>();

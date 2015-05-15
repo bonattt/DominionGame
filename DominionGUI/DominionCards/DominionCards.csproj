@@ -50,12 +50,15 @@
     <Compile Include="Card.cs" />
     <Compile Include="CardTEST.cs" />
     <Compile Include="ActionCard.cs" />
+    <Compile Include="CardCheckBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ComputerPlayer.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="SelectCardsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="SelectCardsForm.Designer.cs">
+      <DependentUpon>SelectCardsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="GameBoard.cs" />
     <Compile Include="HumanPlayer.cs" />
@@ -111,8 +114,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="SelectCardsForm.resx">
+      <DependentUpon>SelectCardsForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -269,7 +269,86 @@ namespace UnitTestProject2
         }
 
         [TestMethod]
+        public void TestChapelDiscardThree()
+        {
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            GameBoard board = new GameBoard(cards);
+            Card c = new Chapel();
+            Player p1 = new HumanPlayer(1);
+            board.AddPlayer(p1);
+            p1.addCardToHand(c);
+            int cardsInDiscard = p1.getDiscard().Count;
+            int cardsInHand = p1.getHand().Count;
+            p1.playCard(c);
+            Assert.AreEqual(cardsInDiscard + 1, p1.getDiscard().Count);
+            Assert.AreEqual(cardsInHand - 4, p1.getHand().Count);
+        }
+
+        [TestMethod]
+        public void TestMineGiveUpCopperForSilver()
+        {
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            cards.Add(new Silver(), 1);
+            GameBoard board = new GameBoard(cards);
+            Card c = new Mine();
+            Player p1 = new HumanPlayer(1);
+            board.AddPlayer(p1);
+            ArrayList newHand = new ArrayList();
+            newHand.Add(new Copper());
+            newHand.Add(new Copper());
+            newHand.Add(new Copper());
+            newHand.Add(c);
+            p1.setHand(newHand);
+            int cardsInHand = p1.getHand().Count;
+            int moneyInHand = p1.getTotalMoney();
+            p1.playCard(c);
+            Assert.IsTrue(p1.getHand().Contains(new Silver()));
+            Assert.AreEqual(moneyInHand + 1, p1.getTotalMoney());
+            Assert.AreEqual(cardsInHand - 1, p1.getHand().Count);
+        }
+
+        [TestMethod]
+        public void TestMineGiveUpSilverForGold()
+        {
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            cards.Add(new Gold(), 1);
+            GameBoard board = new GameBoard(cards);
+            Card c = new Mine();
+            Player p1 = new HumanPlayer(1);
+            board.AddPlayer(p1);
+            ArrayList newHand = new ArrayList();
+            newHand.Add(new Silver());
+            newHand.Add(new Silver());
+            newHand.Add(new Silver());
+            newHand.Add(c);
+            p1.setHand(newHand);
+            int cardsInHand = p1.getHand().Count;
+            int moneyInHand = p1.getTotalMoney();
+            p1.playCard(c);
+            Assert.IsTrue(p1.getHand().Contains(new Gold()));
+            Assert.AreEqual(moneyInHand + 1, p1.getTotalMoney());
+            Assert.AreEqual(cardsInHand - 1, p1.getHand().Count);
+        }
+
+        [TestMethod]
         public void TestThroneRoomBringsUpWindow()
+        {
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            GameBoard board = new GameBoard(cards);
+            Card c = new ThroneRoom();
+            Player p1 = new HumanPlayer(1);
+            Player p2 = new HumanPlayer(2);
+            board.AddPlayer(p1);
+            board.AddPlayer(p2);
+            int cardsInDiscardp2 = p2.getDiscard().Count;
+            p1.addCardToHand(c);
+            p1.addCardToHand(new Village());
+            p1.addCardToHand(new Market());
+            p1.playCard(c);
+            Assert.AreEqual(2, 2);
+        }
+        [TestMethod]
+        public void TestThroneMakesDialogueWhenNoOtherActionCardsAvailible()
         {
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
             GameBoard board = new GameBoard(cards);

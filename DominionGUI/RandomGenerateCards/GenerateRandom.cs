@@ -34,7 +34,7 @@ namespace RandomGenerateCards
                 olddeck.Push(theList[i]);
             }
             Console.WriteLine(olddeck.Count);
-            Stack randomdeck = GenerateRandom.SuffleDeck(theList);
+            Stack randomdeck = GenerateRandom.SuffleDeck((ArrayList)theList);
             while (olddeck.Count > 0)
             {
                  Console.WriteLine("Olddeck: " + olddeck.Pop()+"        Newdeck: "  + randomdeck.Pop());
