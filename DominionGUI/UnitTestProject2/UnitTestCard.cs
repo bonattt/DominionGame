@@ -83,7 +83,7 @@ namespace UnitTestProject2
             Assert.AreEqual(0, c.getVictoryPoints());
         }
         [TestMethod]
-        public void testMoneyLenderAddsMoneyIfThereIsCopper()
+        public void testMoneyLenderAddsMoneyIfThereIsCopperAndYes()
         {
             Card c = new MoneyLender();
             Player p = new HumanPlayer();
@@ -101,7 +101,25 @@ namespace UnitTestProject2
             ///////////////////////////////////
         }
         [TestMethod]
-        public void testMoneyLenderDoesNotAddMoneyIfThereIsNoCopper()
+        public void testMoneyLenderDoesNotAddMoneyIfThereIsNoCopperAndYes()
+        {
+            Card c = new MoneyLender();
+            Player p = new HumanPlayer();
+            ArrayList newHand = new ArrayList();
+            newHand.Add(new Estate());
+            newHand.Add(new Estate());
+            newHand.Add(new Estate());
+            newHand.Add(new Village());
+            p.setHand(newHand);
+            p.addCardToHand(c);
+            int moneyBefore = p.moneyLeft();
+            p.playCard(c);
+            Assert.AreEqual(moneyBefore, p.moneyLeft());
+            ///////////////////////////////////
+        }
+
+        [TestMethod]
+        public void testMoneyLenderDoesNotAddMoneyIfNo()
         {
             Card c = new MoneyLender();
             Player p = new HumanPlayer();
