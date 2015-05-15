@@ -109,12 +109,14 @@ namespace DominionGUI
                 buttons[i].Height = 155;
                 buttons[i].Width = 200;
                 buttons[i].Location = new Point(xValue, yValue);
+                buttons[i].ForSale = true;
 
                 buttons[i].BackgroundImage = new System.Drawing.Bitmap(cardImages[buttons[i].card]);
                 buttons[i].BackgroundImageLayout = ImageLayout.Stretch;
                 Controls.Add(buttons[i]);
                 buttons[i].Parent = this;
-                
+                buttons[i].Click += new System.EventHandler(buttons[i].setCard);
+
                 labels[i].Location = new Point(xValue + 50, yValue + 155);
                 Controls.Add(labels[i]);
                 labels[i].Parent = this;
