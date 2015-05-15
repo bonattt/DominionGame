@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,9 +22,29 @@ namespace DominionCards.KingdomCards
         }
         public override void Play(Player player)
         {
-            DialogResult result1 = MessageBox.Show("You played a chapel?", 
-                "You played a chapel",
-                MessageBoxButtons.YesNo);
+            ArrayList cardsToList = new ArrayList();
+            foreach (Card card in player.getHand())
+            {
+                cardsToList.Add(card);
+                
+            }
+            if (cardsToList.Count == 0)
+            {
+                MessageBox.Show("You have no cards to play with the chapel!");
+                return;
+            }
+            ArrayList cards = player.SelectCards(cardsToList, "Chapel", 4);
+            for (int i = 0; i < cards.Count; i++)
+            {
+                Card toTrash = (Card)cards[i];
+                player.getHand().Remove(toTrash);
+            }
+
+            
+            
+            
+
+            
         }
     }
 }

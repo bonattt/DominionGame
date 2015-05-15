@@ -276,12 +276,12 @@ namespace UnitTestProject2
             Card c = new Chapel();
             Player p1 = new HumanPlayer(1);
             board.AddPlayer(p1);
+            p1.addCardToHand(c);
             int cardsInDiscard = p1.getDiscard().Count;
             int cardsInHand = p1.getHand().Count;
-            p1.addCardToHand(c);
             p1.playCard(c);
-            Assert.AreEqual(cardsInDiscard, p1.getDiscard().Count);
-            Assert.AreEqual(cardsInHand - 3, p1.getHand().Count);
+            Assert.AreEqual(cardsInDiscard + 1, p1.getDiscard().Count);
+            Assert.AreEqual(cardsInHand - 4, p1.getHand().Count);
         }
 
         [TestMethod]
