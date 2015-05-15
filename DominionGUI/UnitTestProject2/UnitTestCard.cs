@@ -36,6 +36,29 @@ namespace UnitTestProject2
             Assert.AreEqual(0, c.getVictoryPoints());
         }
         [TestMethod]
+        public void testWorkshopPutsNewCardInDiscard()
+        {
+            Card c = new Workshop();
+            Player p = new HumanPlayer();
+            p.addCardToHand(c);
+            int numdiscard = p.getDiscard().Count;
+            c.Play(p);
+            Assert.AreEqual(numdiscard + 1, p.getDiscard().Count);
+        }
+        [TestMethod]
+        public void testWorkshopDoesntChargeForNewCard()
+        {
+            Card c = new Workshop();
+            Player p = new HumanPlayer();
+            p.addCardToHand(c);
+            int spendPoints = p.getTotalMoney();
+            c.Play(p);
+            Assert.AreEqual(spendPoints, p.getTotalMoney());
+        }
+
+
+
+        [TestMethod]
         public void testLibrary()
         {
             Card c = new Library();
