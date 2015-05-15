@@ -481,14 +481,11 @@ namespace UnitTestProject2
             Assert.AreEqual(3, p1.getTotalMoney());
         }
         [TestMethod]
-        public void playingTreasureCardAddsMoney()
+        public void HavingTreasureCardAddsMoney()
         {
             Player p1 = new HumanPlayer();
             int m = p1.moneyLeft();
-            ArrayList hand = new ArrayList();
-            hand.Add(new Silver());
-            p1.setHand(hand);
-            p1.playCard((Card)hand[0]);
+            p1.addCardToHand(new Silver());
             Assert.AreEqual(m + 2, p1.moneyLeft());
         }
         [TestMethod]
@@ -661,10 +658,8 @@ namespace UnitTestProject2
         {
             Player p1 = new HumanPlayer();
             int m = p1.moneyLeft();
-            ArrayList hand = new ArrayList();
-            hand.Add(new Festival());
-            p1.setHand(hand);
-            p1.playCard((Card)hand[0]);
+            p1.addCardToHand(new Festival());
+            p1.playCard(new Festival());
             Assert.AreEqual(m+2, p1.moneyLeft());
         }
         [TestMethod]
@@ -737,11 +732,8 @@ namespace UnitTestProject2
         {
             Player p1 = new HumanPlayer();
             int m = p1.moneyLeft();
-            ArrayList hand = new ArrayList();
-            hand.Add(new Laboratory());
-            p1.setHand(hand);
-            
-            p1.playCard((Card)hand[0]);
+            p1.addCardToHand(new Laboratory());
+            p1.playCard(new Laboratory());
             Assert.AreEqual(m, p1.moneyLeft());
         }
         [TestMethod]
