@@ -308,6 +308,28 @@ namespace UnitTestProject2
         }
 
         [TestMethod]
+        public void testRemodelPutsNewAndPlayedCardsInDiscard()
+        {
+            Card c = new Workshop();
+            Player p = new HumanPlayer();
+            p.addCardToHand(c);
+            int numdiscard = p.getDiscard().Count;
+            c.Play(p);
+            Assert.AreEqual(numdiscard + 2, p.getDiscard().Count);
+        }
+
+        [TestMethod]
+        public void testRemodelDoesntChargeForNewCard()
+        {
+            Card c = new Workshop();
+            Player p = new HumanPlayer();
+            p.addCardToHand(c);
+            int spendPoints = p.getTotalMoney();
+            c.Play(p);
+            Assert.AreEqual(spendPoints, p.getTotalMoney());
+        }
+
+        [TestMethod]
         public void TestMineGiveUpCopperForSilver()
         {
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
