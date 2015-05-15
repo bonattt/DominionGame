@@ -288,6 +288,7 @@ namespace UnitTestProject2
         public void TestMineGiveUpCopperForSilver()
         {
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            cards.Add(new Silver(), 1);
             GameBoard board = new GameBoard(cards);
             Card c = new Mine();
             Player p1 = new HumanPlayer(1);
@@ -296,7 +297,7 @@ namespace UnitTestProject2
             newHand.Add(new Copper());
             newHand.Add(new Copper());
             newHand.Add(new Copper());
-            newHand.Add(new Mine());
+            newHand.Add(c);
             p1.setHand(newHand);
             int cardsInHand = p1.getHand().Count;
             int moneyInHand = p1.getTotalMoney();
@@ -310,6 +311,7 @@ namespace UnitTestProject2
         public void TestMineGiveUpSilverForGold()
         {
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            cards.Add(new Gold(), 1);
             GameBoard board = new GameBoard(cards);
             Card c = new Mine();
             Player p1 = new HumanPlayer(1);
@@ -318,7 +320,7 @@ namespace UnitTestProject2
             newHand.Add(new Silver());
             newHand.Add(new Silver());
             newHand.Add(new Silver());
-            newHand.Add(new Mine());
+            newHand.Add(c);
             p1.setHand(newHand);
             int cardsInHand = p1.getHand().Count;
             int moneyInHand = p1.getTotalMoney();
