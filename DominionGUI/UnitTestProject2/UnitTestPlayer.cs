@@ -73,26 +73,27 @@ namespace UnitTestProject2
             board.AddPlayer(p1);
             board.AddPlayer(p2);
             GameBoard.lastCardPlayed = new Copper();
-            
-            p1.addCardToHand(new Witch());
+            Card witch = new Witch();
+            p1.addCardToHand(witch);
             p1.addCardToHand(new Copper());
             
             Thread t = new Thread(new ThreadStart(p1.actionPhase));
             t.Start();
-            Console.WriteLine("TEST: thread launched successfully");
-            GameBoard.lastCardPlayed = new Witch();
-            Console.Write("about to enter sync block.");
+            Console.WriteLine("TEST: thread launched successfully. Entering 5 second sleep.");
+            Thread.Sleep(1000);
+            Console.WriteLine("TEST: woke up. Setting 'CardPlayed' to witch.");
+            GameBoard.lastCardPlayed = witch;
+            Console.Write("about to enter sync block.....");
             
-            lock (GameBoard.syncObject){
+            lock (GameBoard.ActionPhaseLock){
                 Console.WriteLine("Entering sync block");
-                Thread.Sleep(5000);
-                Monitor.PulseAll(GameBoard.syncObject);
+                Monitor.PulseAll(GameBoard.ActionPhaseLock);
                 Console.WriteLine("Button pressed!");
-                Monitor.Wait(GameBoard.syncObject);
+                Monitor.Wait(GameBoard.ActionPhaseLock);
                 Console.WriteLine("finished waiting.");
             }
-
-            Assert.IsTrue(p2.getDiscard().Contains(new Witch()));
+            Assert.IsTrue(p2.getDiscard().Contains(new Curse()));
+            Assert.IsTrue(p1.getDiscard().Contains(new Witch()));
         }
 
         [TestMethod]

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections;
+using System.Threading;
 using DominionGUI.Properties;
 namespace DominionGUI
 {
@@ -45,7 +46,12 @@ namespace DominionGUI
             UpdateLabels();
             this.Update();
             this.Show();
-            board.turnOrder.Peek().TakeTurn();
+            
+            
+            Thread thread = new Thread(board.PlayGame);
+            thread.Start();
+            
+
             
             /*discarddeck.Location = new Point(98, 769);
             discarddeck.Width = 20;
@@ -115,7 +121,6 @@ namespace DominionGUI
                 buttons[i].BackgroundImageLayout = ImageLayout.Stretch;
                 Controls.Add(buttons[i]);
                 buttons[i].Parent = this;
-                buttons[i].Click += new System.EventHandler(buttons[i].setCard);
 
                 labels[i].Location = new Point(xValue + 50, yValue + 155);
                 Controls.Add(labels[i]);
@@ -299,7 +304,7 @@ namespace DominionGUI
             }
         }
 
-        private void UpdateLabels()
+        public void UpdateLabels()
         {
             UpdateCardLabelsHelper(firstRow, firstRowLabels);
             UpdateCardLabelsHelper(secondRow, secondRowLabels);

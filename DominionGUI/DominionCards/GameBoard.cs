@@ -12,7 +12,8 @@ namespace DominionCards
         public static Card lastCardPlayed, lastCardBought;
         public static bool AbortPhase = false;
         private static GameBoard boardInstance;
-        public static Object syncObject = new Object();
+        public static Object ActionPhaseLock = new Object();
+        public static Object BuyPhaseLock = new Object();
 
         public Queue<Player> turnOrder;
         public Dictionary<Card, int> cards;
@@ -48,7 +49,7 @@ namespace DominionCards
             turnOrder.Enqueue(p);
             return true;
         }
-        public virtual Player PlayGame()
+        public virtual void PlayGame()
         {
             while (!GameIsOver())
             {
@@ -57,12 +58,12 @@ namespace DominionCards
             }
             try
             {
-                return FindWinningPlayer();
+                Player p = FindWinningPlayer();
+                Console.WriteLine("Player " + p.getNumber() + " won!");
             }
             catch (TieException e)
             {
                 e.PrintWinners();
-                throw e;
             }            
         }
 

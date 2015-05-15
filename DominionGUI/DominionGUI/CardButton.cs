@@ -18,22 +18,37 @@ namespace DominionGUI
         public CardButton(Card card) : base()
         {
             this.card = card;
+            if (ForSale)
+            {
+                this.Click += new System.EventHandler(BuyThisCard);
+            }
+            else
+            {
+                this.Click += new System.EventHandler(PlayThisCard);
+            }
         }
 
-        internal void setCard(object sender, EventArgs e)
+        internal void BuyThisCard(object sender, EventArgs e)
         {
-            lock (GameBoard.syncObject)
+                Console.WriteLine("tried to buy a card with id " + card.getID());
+                GameBoard.lastCardBought = card;
+                lock (GameBoard.BuyPhaseLock)
+                {
+                    Monitor.PulseAll(GameBoard.BuyPhaseLock);
+                    Monitor.Wait(GameBoard.BuyPhaseLock);
+                }
+        }
+
+        internal void PlayThisCard(object sender, EventArgs e)
+        {   
+            Console.WriteLine("in the player's hand");
+            GameBoard.lastCardPlayed = card;
+            lock (GameBoard.ActionPhaseLock)
             {
-                if (ForSale)
-                {
-                    GameBoard.lastCardBought = card;
-                }
-                else
-                {
-                    GameBoard.lastCardPlayed = card;
-                }
-                Monitor.PulseAll(this);
+                Monitor.PulseAll(GameBoard.ActionPhaseLock);
+                Monitor.Wait(GameBoard.ActionPhaseLock);
             }
+            GraphicsBoard.getinstance().UpdateLabels();
         }
     }
 }

@@ -38,14 +38,14 @@ namespace DominionCards
         }
         public override void actionPhase()
         {
-            lock (GameBoard.syncObject)
+            lock (GameBoard.ActionPhaseLock)
             {
                 Console.WriteLine("PLAYER: Action Phase called on player " + getNumber());
-                Monitor.Wait(GameBoard.syncObject);
+                Monitor.Wait(GameBoard.ActionPhaseLock);
                 Console.WriteLine("PLAYER: Button pulse recieved.");
                 Card cardPlayed = GameBoard.lastCardPlayed;
                 playCard(cardPlayed);
-                Monitor.PulseAll(GameBoard.syncObject);
+                Monitor.PulseAll(GameBoard.ActionPhaseLock);
                 Console.WriteLine("PLAYER: finished playing card, pulse sent.");
                 Console.WriteLine("Playing a card with ID " + cardPlayed.getID());
             }
