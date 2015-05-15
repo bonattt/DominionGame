@@ -458,6 +458,38 @@ namespace UnitTestProject2
         }
 
         [TestMethod]
+        public void TestChancellorDiscardsHandOnYes()
+        {
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            GameBoard board = new GameBoard(cards);
+            Card c = new Chancellor();
+            Player p1 = new HumanPlayer(1);
+            board.AddPlayer(p1);
+            p1.addCardToHand(c);
+            int discardCount = p1.getDiscard().Count;
+            int deckCount = p1.getDeck().Count;
+            p1.playCard(c);
+            Assert.AreEqual(discardCount + deckCount + 1, p1.getDiscard().Count);
+            Assert.AreEqual(0, p1.getDeck().Count);
+        }
+
+        [TestMethod]
+        public void TestChancellorDoesntDiscardsHandOnNo()
+        {
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            GameBoard board = new GameBoard(cards);
+            Card c = new Chancellor();
+            Player p1 = new HumanPlayer(1);
+            board.AddPlayer(p1);
+            p1.addCardToHand(c);
+            int discardCount = p1.getDiscard().Count;
+            int deckCount = p1.getDeck().Count;
+            p1.playCard(c);
+            Assert.AreEqual(discardCount + 1, p1.getDiscard().Count);
+            Assert.AreEqual(deckCount, p1.getDeck().Count);
+        }
+
+        [TestMethod]
         public void TestMineGiveUpSilverForGold()
         {
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
