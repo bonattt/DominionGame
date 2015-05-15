@@ -66,7 +66,6 @@ namespace DominionGUI
                 board = new DominionCards.GameBoard(CreateRandomCardDictionary());
                 createplayers(numberplayers);
                 var myForm = GraphicsBoard.getinstance();
-                myForm.determine();
                 myForm.Update();
                 myForm.Show();
             }
@@ -158,7 +157,7 @@ namespace DominionGUI
                 board = new DominionCards.GameBoard(CreateRandomCardDictionary());
                 createplayers(numberplayers);
                 var myForm = GraphicsBoard.getinstance();
-                myForm.determine();
+                myForm.DrawHand();
                 myForm.Update();
                 myForm.Show();
             }
@@ -187,7 +186,7 @@ namespace DominionGUI
                 board = new DominionCards.GameBoard(CreateRandomCardDictionary());
                 createplayers(numberplayers);
                 var myForm = GraphicsBoard.getinstance();
-                myForm.determine();
+                myForm.DrawHand();
                 myForm.Update();
                 myForm.Show();
             }
@@ -271,7 +270,7 @@ namespace DominionGUI
         public void addRandomCards()
         {
                 var myForm = GraphicsBoard.getinstance();
-                myForm.determine();
+                myForm.DrawHand();
                 //DominionGUI.MainBoard.
                 /*
                 List<int> numList = new List<int>();

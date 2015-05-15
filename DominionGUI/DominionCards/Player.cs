@@ -179,7 +179,7 @@ namespace DominionCards
         }
         public bool buyCard(Card card)
         {
-            if (this.money < card.getPrice())
+            if (this.moneyLeft() < card.getPrice())
             {
                 return false;
             }
@@ -187,7 +187,6 @@ namespace DominionCards
                 buys--;
                 this.money -= card.getPrice();
                 return true;
-            
         }
 
         public void addCardToHand(Card card)
@@ -303,6 +302,13 @@ namespace DominionCards
                 AttackCard card = attacks.Dequeue();
                 card.MakeDelayedAttack(this);
             }
+        }
+        protected void EndTurn()
+        {
+            money = 0;
+            actions = 1;
+            buys = 1;
+            drawHand();
         }
         public bool IsActionPhase()
         {

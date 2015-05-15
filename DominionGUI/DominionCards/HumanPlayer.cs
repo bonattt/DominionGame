@@ -44,7 +44,7 @@ namespace DominionCards
                 Console.WriteLine("PLAYER: Action Phase called on player " + getNumber());
                 GameBoard.gamePhase = 1;
                 Monitor.Wait(GameBoard.ActionPhaseLock);
-                GameBoard.gamePhase = 0;
+                GameBoard.gamePhase = 2;
                 Console.WriteLine("PLAYER: Button pulse recieved.");
                 Card cardPlayed = GameBoard.lastCardPlayed;
                 try
@@ -66,14 +66,17 @@ namespace DominionCards
             lock (GameBoard.BuyPhaseLock)
             {
                 Console.WriteLine("PLAYER: Action Phase called on player " + getNumber());
-                GameBoard.gamePhase = 2;
+                GameBoard.gamePhase = 3;
                 Monitor.Wait(GameBoard.BuyPhaseLock);
                 GameBoard.gamePhase = 0;
                 Console.WriteLine("PLAYER: Button pulse recieved.");
                 Card cardBought = GameBoard.lastCardBought;
                 try
                 {
-                    buyCard(cardBought);
+                    if (!buyCard(cardBought))
+                    {
+                        MessageBox.Show("You do not have enough money to buy that!");
+                    }
                 }
                 catch (Exception e)
                 {
@@ -97,10 +100,7 @@ namespace DominionCards
             {
                 buyPhase();
             }
-
-//            HumanPlayerTurn work = new HumanPlayerTurn(this);
-//            Thread t = new Thread(new ThreadStart(work.Run));
-//            t.Start();
+            EndTurn();
         }
     }
 }

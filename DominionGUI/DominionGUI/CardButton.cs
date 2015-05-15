@@ -34,7 +34,7 @@ namespace DominionGUI
 
         internal void BuyThisCard(object sender, EventArgs e)
         {
-            if (GameBoard.gamePhase != 2)
+            if (GameBoard.gamePhase != 3)
             {
                 Console.WriteLine("buy button ignored because game in wrong state");
                 return;
@@ -47,6 +47,7 @@ namespace DominionGUI
                 Monitor.PulseAll(GameBoard.BuyPhaseLock);
                 Monitor.Wait(GameBoard.BuyPhaseLock);
             }
+            GraphicsBoard.getinstance().UpdateLabelsAndHand();
         }
 
         internal void PlayThisCard(object sender, EventArgs e)
@@ -64,7 +65,7 @@ namespace DominionGUI
                 Monitor.PulseAll(GameBoard.ActionPhaseLock);
                 Monitor.Wait(GameBoard.ActionPhaseLock);
             }
-            GraphicsBoard.getinstance().UpdateLabels();
+            GraphicsBoard.getinstance().UpdateLabelsAndHand();
         }
     }
 }

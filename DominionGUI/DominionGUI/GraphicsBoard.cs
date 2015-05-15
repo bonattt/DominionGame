@@ -25,9 +25,11 @@ namespace DominionGUI
         private CardButton[] firstRow = new CardButton[7];
         private CardButton[] secondRow = new CardButton[5];
         private CardButton[] thirdRow = new CardButton[5];
+        private List<CardButton> currentHand = new List<CardButton>(10);
         private Label[] firstRowLabels = new Label[7];
         private Label[] secondRowLabels = new Label[5];
         private Label[] thirdRowLabels = new Label[5];
+        public bool gameOver;
 
         public GraphicsBoard()
         {
@@ -43,15 +45,13 @@ namespace DominionGUI
             //addRandomtencards();
             SetBuyableCards();
             DrawBuyableCards();
-            UpdateLabels();
+            UpdateLabelsAndHand();
             this.Update();
             this.Show();
             
             
-            Thread thread = new Thread(board.PlayGame);
-            thread.Start();
-            
-
+            Thread thread1 = new Thread(board.PlayGame);
+            thread1.Start();
             
             /*discarddeck.Location = new Point(98, 769);
             discarddeck.Width = 20;
@@ -129,12 +129,12 @@ namespace DominionGUI
                 xValue += 256;
             }
         }
-        private void HandDrawingHelper(CardButton[] buttons, int xValue, int yValue)
+        private void HandDrawingHelper(List<CardButton> buttons, int xValue, int yValue)
         {
             int startingX = xValue;
             int numberColumns = 3;
             int xIncriment = 220;
-            for (int i = 0; i < buttons.Length; i++)
+            for (int i = 0; i < buttons.Count; i++)
             {
                 buttons[i].Height = 155;
                 buttons[i].Width = 200;
@@ -204,14 +204,14 @@ namespace DominionGUI
                 }
             }
         }
-        public void determine()
+        public void DrawHand()
         {
-            CardButton[] hand = GetCurrentPlayerHand();
+            SetCurrentPlayerHand();
             int xValue = 220;
             int yValue = 725;
-            for (int i = 0; i < hand.Length; i++)
+            for (int i = 0; i < currentHand.Count; i++)
             {
-                HandDrawingHelper(hand, xValue, yValue);
+                HandDrawingHelper(currentHand, xValue, yValue);
             }
 
             /*List<int> numList = new List<int>();
@@ -259,15 +259,15 @@ namespace DominionGUI
         /**
          * private helper, returns an array of buttons that should be drawn to the Form.
          */
-        private CardButton[] GetCurrentPlayerHand()
+        private void SetCurrentPlayerHand()
         {
             DominionCards.Player current = DominionCards.GameBoard.getInstance().turnOrder.Peek();
-            CardButton[] buttons = new CardButton[current.getHand().Count];
-            for (int i = 0; i < buttons.Length; i++)
+            ArrayList playerHand = current.getHand();
+            currentHand = new List<CardButton>(10);
+            for (int i = 0; i < playerHand.Count; i++)
             {
-                buttons[i] = new CardButton((DominionCards.Card)current.getHand()[i]);
+                currentHand.Add(new CardButton((DominionCards.Card)playerHand[i]));
             }
-            return buttons;
         }
 
         /**
@@ -307,15 +307,25 @@ namespace DominionGUI
             }
         }
 
-        public void UpdateLabels()
+        public void UpdateLabelsAndHand()
         {
             UpdateCardLabelsHelper(firstRow, firstRowLabels);
             UpdateCardLabelsHelper(secondRow, secondRowLabels);
             UpdateCardLabelsHelper(thirdRow, thirdRowLabels);
             UpdateMiscLabels();
+            UpdateHand();
             this.Update();
             this.Show();
         }
+        private void UpdateHand()
+        {
+            for (int i = 0; i < currentHand.Count; i++)
+            {
+                this.Controls.Remove(currentHand[i]);
+            }
+            DrawHand();
+        }
+
         private void UpdateMiscLabels()
         {
             DominionCards.Player current = board.turnOrder.Peek();
@@ -324,7 +334,23 @@ namespace DominionGUI
             this.moneyleft.Text = "Money: " + current.moneyLeft();
             this.decksize.Text = "Deck Size: " + current.getDeck().Count;
             this.discardsize.Text = "Discard Size: " + current.getDiscard().Count;
-            this.playerLabel.Text = "It is player " + current.getNumber() + "'s turn. -- Action Phase";
+            this.playerLabel.Text = "It is player " + current.getNumber() + "'s turn. -- " + GetGamePhaseText();
+        }
+        private string GetGamePhaseText()
+        {
+            if (DominionCards.GameBoard.gamePhase == 0 || DominionCards.GameBoard.gamePhase == 1)
+            {
+                return "Action Phase";
+            }
+            else if (DominionCards.GameBoard.gamePhase == 2 || DominionCards.GameBoard.gamePhase == 3)
+            {
+                return "Buy Phase";
+            }
+            else 
+            {
+                throw new Exception("Game entered an invalid state");
+            }
+
         }
 
         private void UpdateCardLabelsHelper(CardButton[] cardButtons, Label[] labels)
@@ -377,6 +403,5 @@ namespace DominionGUI
             Close();
             SelectNumPlayers.GetInstance().Dispose();
         }
-
     }
 }

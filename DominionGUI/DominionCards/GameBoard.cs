@@ -55,8 +55,9 @@ namespace DominionCards
         {
             while (!GameIsOver())
             {
-                Player next = NextPlayer();
-                next.TakeTurn();
+                gamePhase = 0;
+                turnOrder.Peek().TakeTurn();
+                NextPlayer();
             }
             try
             {
