@@ -77,14 +77,19 @@ namespace UnitTestProject2
             p1.addCardToHand(new Witch());
             p1.addCardToHand(new Copper());
             
-            Thread t = new Thread(p1.actionPhase);
+            Thread t = new Thread(new ThreadStart(p1.actionPhase));
             t.Start();
+            Console.WriteLine("TEST: thread launched successfully");
             GameBoard.lastCardPlayed = new Witch();
+            Console.Write("about to enter sync block.");
             
             lock (GameBoard.syncObject){
-                Thread.Sleep(10000);
+                Console.WriteLine("Entering sync block");
+                Thread.Sleep(5000);
                 Monitor.PulseAll(GameBoard.syncObject);
+                Console.WriteLine("Button pressed!");
                 Monitor.Wait(GameBoard.syncObject);
+                Console.WriteLine("finished waiting.");
             }
 
             Assert.IsTrue(p2.getDiscard().Contains(new Witch()));

@@ -40,11 +40,13 @@ namespace DominionCards
         {
             lock (GameBoard.syncObject)
             {
-                Console.WriteLine("Action Phase called on player " + getNumber());
+                Console.WriteLine("PLAYER: Action Phase called on player " + getNumber());
                 Monitor.Wait(GameBoard.syncObject);
+                Console.WriteLine("PLAYER: Button pulse recieved.");
                 Card cardPlayed = GameBoard.lastCardPlayed;
                 playCard(cardPlayed);
                 Monitor.PulseAll(GameBoard.syncObject);
+                Console.WriteLine("PLAYER: finished playing card, pulse sent.");
                 Console.WriteLine("Playing a card with ID " + cardPlayed.getID());
             }
         }
