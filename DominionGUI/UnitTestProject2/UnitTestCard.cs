@@ -38,22 +38,30 @@ namespace UnitTestProject2
         [TestMethod]
         public void testWorkshopPutsNewCardInDiscard()
         {
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            cards.Add(new Copper(), 1);
+            GameBoard board = new GameBoard(cards);
             Card c = new Workshop();
-            Player p = new HumanPlayer();
+            Player p = new HumanPlayer(1);
+            board.AddPlayer(p);
             p.addCardToHand(c);
             int numdiscard = p.getDiscard().Count;
-            c.Play(p);
-            Assert.AreEqual(numdiscard + 1, p.getDiscard().Count);
+            p.playCard(c);
+            Assert.AreEqual(numdiscard + 2, p.getDiscard().Count);
         }
         [TestMethod]
         public void testWorkshopDoesntChargeForNewCard()
         {
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            cards.Add(new Copper(), 1);
+            GameBoard board = new GameBoard(cards);
             Card c = new Workshop();
-            Player p = new HumanPlayer();
-            p.addCardToHand(c);
-            int spendPoints = p.getTotalMoney();
-            c.Play(p);
-            Assert.AreEqual(spendPoints, p.getTotalMoney());
+            Player p1 = new HumanPlayer(1);
+            board.AddPlayer(p1);
+            p1.addCardToHand(c);
+            int spendPoints = p1.moneyLeft();
+            p1.playCard(c);
+            Assert.AreEqual(spendPoints, p1.moneyLeft());
         }
 
 
@@ -310,23 +318,47 @@ namespace UnitTestProject2
         [TestMethod]
         public void testRemodelPutsNewAndPlayedCardsInDiscard()
         {
-            Card c = new Workshop();
-            Player p = new HumanPlayer();
-            p.addCardToHand(c);
-            int numdiscard = p.getDiscard().Count;
-            c.Play(p);
-            Assert.AreEqual(numdiscard + 2, p.getDiscard().Count);
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            cards.Add(new Copper(), 1);
+            GameBoard board = new GameBoard(cards);
+            Card c = new Remodel();
+            Player p1 = new HumanPlayer(1);
+            board.AddPlayer(p1);
+            p1.addCardToHand(c);
+            int numdiscard = p1.getDiscard().Count;
+            p1.playCard(c);
+            Assert.AreEqual(numdiscard + 2, p1.getDiscard().Count);
+        }
+
+        [TestMethod]
+        public void testRemodelDoesntIncludeCardsMoreThanFiveCost()
+        {
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            cards.Add(new Copper(), 1);
+            cards.Add(new Witch(), 1);
+            GameBoard board = new GameBoard(cards);
+            Card c = new Remodel();
+            Player p1 = new HumanPlayer(1);
+            board.AddPlayer(p1);
+            p1.addCardToHand(c);
+            int numdiscard = p1.getDiscard().Count;
+            p1.playCard(c);
+            Assert.AreEqual(numdiscard + 2, p1.getDiscard().Count);
         }
 
         [TestMethod]
         public void testRemodelDoesntChargeForNewCard()
         {
-            Card c = new Workshop();
-            Player p = new HumanPlayer();
-            p.addCardToHand(c);
-            int spendPoints = p.getTotalMoney();
-            c.Play(p);
-            Assert.AreEqual(spendPoints, p.getTotalMoney());
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            cards.Add(new Copper(), 1);
+            GameBoard board = new GameBoard(cards);
+            Card c = new Remodel();
+            Player p1 = new HumanPlayer(1);
+            board.AddPlayer(p1);
+            p1.addCardToHand(c);
+            int spendPoints = p1.moneyLeft();
+            p1.playCard(c);
+            Assert.AreEqual(spendPoints, p1.moneyLeft());
         }
 
         [TestMethod]
