@@ -39,8 +39,6 @@ namespace DominionCards.KingdomCards
             player.addCardToHand(cardPlayed);
             player.getDiscard().Remove(cardPlayed);
             player.playCard(cardPlayed);
-
-
         }
     }
 }

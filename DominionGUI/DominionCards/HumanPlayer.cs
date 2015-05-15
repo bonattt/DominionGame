@@ -1,5 +1,7 @@
+﻿
 ﻿using System;
 using System.Collections;
+
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -37,6 +39,9 @@ namespace DominionCards
         public override void actionPhase()
         {
             Console.WriteLine("Action Phase called on player " + getNumber());
+            Monitor.Wait(new System.Windows.Forms.Button());
+            Card cardPlayed = GameBoard.lastCardPlayed;
+            Console.WriteLine("Playing a card with ID " + cardPlayed.getID());
         }
         public override void buyPhase()
         {
