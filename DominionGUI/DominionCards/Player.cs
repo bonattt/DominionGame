@@ -183,10 +183,15 @@ namespace DominionCards
             {
                 return false;
             }
-                  discard.Add(card);
-                buys--;
-                this.money -= card.getPrice();
-                return true;
+            if (GameBoard.getInstance().getCardsLeft(card) == 0)
+            {
+                return false;
+            }
+            discard.Add(card);
+            GameBoard.getInstance().GetCards()[card] -= 1;
+            buys--;
+            this.money -= card.getPrice();
+            return true;
         }
 
         public void addCardToHand(Card card)

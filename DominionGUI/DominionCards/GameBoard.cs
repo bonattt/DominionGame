@@ -163,5 +163,14 @@ namespace DominionCards
             }
             return boardInstance;
         }
+        public void PrintOutDictionary()
+        {
+            Console.Write("PRINTING DICTIONARY");
+            foreach (Card c in cards.Keys)
+            {
+                Console.Write(cards[c] + " ");
+            }
+            Console.WriteLine();
+        }
     }
 }

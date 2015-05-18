@@ -90,7 +90,13 @@ namespace DominionCards
         public override void TakeTurn()
         {
             Console.WriteLine("\nplayer" + getNumber() + " taking turn.");
-            MessageBox.Show("It is player " + getNumber() + "'s turn. \n   Action Phase.");
+            Console.Write("Player has cards ");
+            for (int i = 0; i < getHand().Count; i++)
+            {
+                Console.Write(((Card)getHand()[i]).getID() + " ");
+            }
+            Console.WriteLine(" in his hand");
+                MessageBox.Show("It is player " + getNumber() + "'s turn. \n   Action Phase.");
             while (IsActionPhase())
             {
                 actionPhase();

@@ -25,7 +25,8 @@ namespace DominionGUI
         private CardButton[] firstRow = new CardButton[7];
         private CardButton[] secondRow = new CardButton[5];
         private CardButton[] thirdRow = new CardButton[5];
-        private List<CardButton> currentHand = new List<CardButton>(10);
+        private List<CardButton> currentHand = new List<CardButton>();
+        //private List<CardButton> currentHand = new List<CardButton>(10);
         private Label[] firstRowLabels = new Label[7];
         private Label[] secondRowLabels = new Label[5];
         private Label[] thirdRowLabels = new Label[5];
@@ -145,6 +146,8 @@ namespace DominionGUI
                 Controls.Add(buttons[i]);
                 buttons[i].Parent = this;
                 buttons[i].InitializeEventHandler();
+
+               //currentHand.Add(buttons[i]);
 
                 xValue += xIncriment;
                 if (xValue > startingX + (xIncriment * (numberColumns-1)))
@@ -315,7 +318,6 @@ namespace DominionGUI
             UpdateMiscLabels();
             UpdateHand();
             this.Update();
-            this.Show();
         }
         private void UpdateHand()
         {
