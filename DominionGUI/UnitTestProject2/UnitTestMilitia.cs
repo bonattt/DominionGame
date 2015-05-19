@@ -38,6 +38,7 @@ namespace UnitTestProject2
             int handcount = p2.getHand().Count;
             p1.playCard(militia);
             // TODO process attack
+            p2.ProcessAttacks();
             Assert.IsTrue(handcount > p2.getHand().Count);
         }
         [TestMethod]
@@ -47,6 +48,7 @@ namespace UnitTestProject2
             int handcount = p2.getHand().Count;
             p1.playCard(militia);
             // TODO process attack
+            p2.ProcessAttacks();
             Assert.AreEqual(handcount, p2.getHand().Count);
         }
         [TestMethod]
@@ -55,6 +57,7 @@ namespace UnitTestProject2
             int handcount = p1.getHand().Count;
             p1.playCard(militia);
             // TODO process attack
+            p1.ProcessAttacks();
             Assert.AreEqual(handcount - 1, p1.getHand().Count);
         }
 
@@ -63,6 +66,7 @@ namespace UnitTestProject2
         {
             p1.playCard(militia);
             // TODO process attack
+            p2.ProcessAttacks();
             Assert.AreEqual(3, p2.getHand().Count);
         }
         [TestMethod]
@@ -71,6 +75,7 @@ namespace UnitTestProject2
             p2.getHand().Add(p2.GetNextCard());
             p1.playCard(militia);
             // TODO process attack
+            p2.ProcessAttacks();
             Assert.AreEqual(3, p2.getHand().Count);
         }
         [TestMethod]
@@ -83,6 +88,7 @@ namespace UnitTestProject2
             p2.setHand(list);
             p1.playCard(militia);
             // TODO process attack
+            p2.ProcessAttacks();
             Assert.AreEqual(3, p2.getHand().Count);
         }
     }

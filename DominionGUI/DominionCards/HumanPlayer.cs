@@ -16,14 +16,15 @@ namespace DominionCards
 
         public override ArrayList SelectCards(ArrayList cards, String name, int numCards)
         {
-            SelectCardsForm form = new SelectCardsForm(cards, name, numCards);
+            ArrayList copyCards = (ArrayList)cards.Clone();
+            SelectCardsForm form = new SelectCardsForm(copyCards, name, numCards);
             form.GetSelection(); // mutates ArrayList cards
             Console.WriteLine("Player finished selecting cards.");
             for (int i = 0; i < cards.Count; i++)
             {
                 Console.WriteLine("Card ID " + ((Card)cards[i]).getID() + " selected");
             }
-            return cards;
+            return copyCards;
         }
 
         public HumanPlayer()
