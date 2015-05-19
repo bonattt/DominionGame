@@ -56,11 +56,10 @@ namespace DominionGUI
 
         private void Playeroption(object sender, EventArgs e)
         {
-            string movies = "";
+            
             
             if (checkBox1.Checked)
             {
-                movies = movies + checkBox1.Text;
                 checkBox2.Enabled = false;
                 checkBox3.Enabled = false;
                 lastChecked = checkBox1;
@@ -68,7 +67,6 @@ namespace DominionGUI
             }
             else if (checkBox2.Checked)
             {
-                movies = movies + checkBox2.Text;
                 checkBox1.Enabled = false;
                 checkBox3.Enabled = false;
                 lastChecked = checkBox2;
@@ -76,7 +74,6 @@ namespace DominionGUI
             }
             else if (checkBox3.Checked)
             {
-                movies = movies + checkBox3.Text;
                 checkBox1.Enabled = false;
                 checkBox2.Enabled = false;
                 lastChecked = checkBox3;
@@ -98,8 +95,6 @@ namespace DominionGUI
                     checkBox1.Enabled = true;
                     checkBox2.Enabled = true;
                 }
-            if(movies.Length>0)
-                MessageBox.Show(movies);
         }
         public void createplayers(int numberplayer)
         {

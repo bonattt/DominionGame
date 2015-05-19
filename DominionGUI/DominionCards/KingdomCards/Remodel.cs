@@ -63,7 +63,7 @@ namespace DominionCards.KingdomCards
                 DialogResult result1 = MessageBox.Show("You may only select 1 card to gain.  Try again");
                 cards2 = player.SelectCards(buyableCards, "Choose a card to gain.", 1);
             }
-            Card cardSelected2 = (Card)cards[0];
+            Card cardSelected2 = (Card)cards2[0];
             player.getDiscard().Add(cardSelected2);
             GameBoard.getInstance().GetCards()[cardSelected2] -= 1;
 
