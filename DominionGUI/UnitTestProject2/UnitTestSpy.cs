@@ -41,5 +41,19 @@ namespace UnitTestProject2
             p1.playCard(card);
             Assert.AreEqual(discardCount, p2.getDiscard().Count);
         }
+        [TestMethod]
+        public void TestSpyDoesNotDiscardsOwnCard()
+        {
+            int discardCount = p1.getDiscard().Count;
+            p1.playCard(card);
+            Assert.AreEqual(discardCount, p1.getDiscard().Count);
+        }
+        [TestMethod]
+        public void TestSpyDoesDoesDiscardsOwnCard()
+        {
+            int discardCount = p1.getDiscard().Count;
+            p1.playCard(card);
+            Assert.AreEqual(discardCount - 1, p1.getDiscard().Count);
+        }
     }
 }
