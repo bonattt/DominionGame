@@ -71,7 +71,7 @@
             //
             // skip Button
             //
-            this.skipTurnButton.Location = new System.Drawing.Point(1000, 100);
+            this.skipTurnButton.Location = new System.Drawing.Point(1150, 450);
             this.skipTurnButton.Margin = new System.Windows.Forms.Padding(2);
             this.skipTurnButton.Name = "end Phase";
             this.skipTurnButton.Size = new System.Drawing.Size(150, 50);
