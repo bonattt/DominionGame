@@ -49,10 +49,17 @@ namespace DominionGUI
             UpdateLabelsAndHand();
             this.Update();
             this.Show();
-            
-            
-            Thread thread1 = new Thread(board.PlayGame);
-            thread1.Start();
+
+            try
+            {
+                Thread thread1 = new Thread(board.PlayGame);
+                thread1.Start();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("The game is over");
+                EndGame();
+            }
             
             /*discarddeck.Location = new Point(98, 769);
             discarddeck.Width = 20;

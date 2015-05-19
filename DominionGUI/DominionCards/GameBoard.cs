@@ -39,7 +39,7 @@ namespace DominionCards
         }
         public static void SignalToUpdateGraphics()
         {
-            Thread.Sleep(250);
+            Thread.Sleep(50);
             lock (GameBoard.UpdateGraphicsLock)
             {
                 Monitor.PulseAll(GameBoard.UpdateGraphicsLock);
@@ -75,11 +75,14 @@ namespace DominionCards
             try
             {
                 Player p = FindWinningPlayer();
-                Console.WriteLine("Player " + p.getNumber() + " won!");
+                string winnerMessage = "Player " + p.getNumber() + " won!";
+                Console.WriteLine(winnerMessage);
+                System.Windows.Forms.MessageBox.Show(winnerMessage);
             }
             catch (TieException e)
             {
-                e.PrintWinners();
+                String str = e.PrintWinners();
+                System.Windows.Forms.MessageBox.Show(str);
             }            
         }
 
