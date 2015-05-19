@@ -14,6 +14,11 @@ namespace DominionCards.KingdomCards
             //does nothing
         }
 
+        public override String ToString()
+        {
+            return "Council Room";
+        }
+
         public override void Play(Player player)
         {
             GameBoard board = GameBoard.getInstance();

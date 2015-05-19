@@ -15,9 +15,9 @@ namespace DominionCards.KingdomCards
             // TODO implement
 
         }
-        public override void Play(Player player)
+        public override String ToString()
         {
-
+            return "Woodcutter";
         }
 
     }

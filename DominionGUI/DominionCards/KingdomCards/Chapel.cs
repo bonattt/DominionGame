@@ -16,6 +16,10 @@ namespace DominionCards.KingdomCards
             // TODO implement
         }
 
+        public override String ToString()
+        {
+            return "Chapel";
+        }
         public void textEffect()
         {
             //todo

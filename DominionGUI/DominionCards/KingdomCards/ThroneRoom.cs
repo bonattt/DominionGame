@@ -45,5 +45,9 @@ namespace DominionCards.KingdomCards
             player.getDiscard().Remove(cardPlayed);
             player.playCard(cardPlayed);
         }
+        public override String ToString()
+        {
+            return "ThroneRoom";
+        }
     }
 }

@@ -16,6 +16,11 @@ namespace DominionCards.KingdomCards
         {
             // TODO implement
         }
+
+        public override String ToString()
+        {
+            return "mine";
+        }
         public override void Play(Player player)
         {
 

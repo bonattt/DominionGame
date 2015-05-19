@@ -69,5 +69,9 @@ namespace DominionCards.KingdomCards
 
 
         }
+        public override String ToString()
+        {
+            return "Remodel";
+        }
     }
 }

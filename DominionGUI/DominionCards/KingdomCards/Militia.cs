@@ -15,6 +15,10 @@ namespace DominionCards.KingdomCards
             // TODO implement
         }
 
+        public override String ToString()
+        {
+            return "Militia";
+        }
         public override void MakeDelayedAttack(Player playerAttacked)
         {
             // TODO

@@ -15,6 +15,11 @@ namespace DominionCards.KingdomCards
         {
             // TODO implement
         }
+
+        public override String ToString()
+        {
+            return "Chancellor";
+        }
         public override void Play(Player player)
         {
             DialogResult result1 = MessageBox.Show("You played a chancellor. Would you like to discard your hand now?",

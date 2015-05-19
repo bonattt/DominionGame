@@ -19,6 +19,10 @@ namespace DominionGUI
         {
             this.card = card;
         }
+        public override String ToString()
+        {
+            return "Card Button (" + card.ToString() + ")";
+        }
 
         public void InitializeEventHandler()
         {

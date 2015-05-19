@@ -14,5 +14,9 @@ namespace DominionCards.KingdomCards
         {
             // DONE
         }
+        public override String ToString()
+        {
+            return "Laboratory";
+        }
     }
 }

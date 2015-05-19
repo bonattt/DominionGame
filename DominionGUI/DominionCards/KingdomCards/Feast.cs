@@ -16,6 +16,10 @@ namespace DominionCards.KingdomCards
         {
             // TODO implement
         }
+        public override String ToString()
+        {
+            return "Feast";
+        }
 
         public override void Play(Player player)
         {

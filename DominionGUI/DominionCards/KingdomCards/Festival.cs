@@ -14,5 +14,10 @@ namespace DominionCards.KingdomCards
         {
             // TODO implement
         }
+
+        public override String ToString()
+        {
+            return "Festival";
+        }
     }
 }

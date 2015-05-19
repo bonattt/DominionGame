@@ -150,22 +150,24 @@ namespace DominionGUI
                 xValue += 256;
             }
         }
-        private void HandDrawingHelper(List<CardButton> buttons, int xValue, int yValue)
+        private void HandDrawingHelper()
         {
+            int xValue = 220;
+            int yValue = 725;
             int startingX = xValue;
-            int numberColumns = 3;
+            int numberColumns = 6;
             int xIncriment = 220;
-            for (int i = 0; i < buttons.Count; i++)
+            for (int i = 0; i < currentHand.Count; i++)
             {
-                buttons[i].Height = 155;
-                buttons[i].Width = 200;
-                buttons[i].Location = new Point(xValue, yValue);
+                currentHand[i].Height = 155;
+                currentHand[i].Width = 200;
+                currentHand[i].Location = new Point(xValue, yValue);
 
-                buttons[i].BackgroundImage = new System.Drawing.Bitmap(cardImages[buttons[i].card]);
-                buttons[i].BackgroundImageLayout = ImageLayout.Stretch;
-                Controls.Add(buttons[i]);
-                buttons[i].Parent = this;
-                buttons[i].InitializeEventHandler();
+                currentHand[i].BackgroundImage = new System.Drawing.Bitmap(cardImages[currentHand[i].card]);
+                currentHand[i].BackgroundImageLayout = ImageLayout.Stretch;
+                currentHand[i].Parent = this;
+                currentHand[i].InitializeEventHandler();
+                Controls.Add(currentHand[i]);
 
                //currentHand.Add(buttons[i]);
 
@@ -230,12 +232,7 @@ namespace DominionGUI
         public void DrawHand()
         {
             SetCurrentPlayerHand();
-            int xValue = 220;
-            int yValue = 725;
-            for (int i = 0; i < currentHand.Count; i++)
-            {
-                HandDrawingHelper(currentHand, xValue, yValue);
-            } 
+            HandDrawingHelper();
         }
         private void gameplay(Object sender, EventArgs e)
         {
@@ -259,10 +256,14 @@ namespace DominionGUI
             DominionCards.Player current = DominionCards.GameBoard.getInstance().turnOrder.Peek();
             ArrayList playerHand = current.getHand();
             currentHand = new List<CardButton>(10);
+            Console.WriteLine();
             for (int i = 0; i < playerHand.Count; i++)
             {
-                currentHand.Add(new CardButton((DominionCards.Card)playerHand[i]));
+                CardButton butt = new CardButton((DominionCards.Card)playerHand[i]);
+                currentHand.Add(butt);
+                Console.WriteLine(butt + " was addded!");
             }
+            Console.WriteLine();
         }
 
         /**
@@ -313,10 +314,18 @@ namespace DominionGUI
         }
         private void UpdateHand()
         {
-            for (int i = 0; i < currentHand.Count; i++)
+            int i;
+            Console.WriteLine();
+            for (i = 0; i < currentHand.Count; i++)
             {
+                Console.WriteLine(currentHand[i] + " was removed!");
                 this.Controls.Remove(currentHand[i]);
             }
+            Console.WriteLine();
+            Update();
+            Refresh();
+            Show();
+            MessageBox.Show("just want to pause here. i = " + i);
             DrawHand();
         }
 
@@ -379,6 +388,12 @@ namespace DominionGUI
                     Monitor.PulseAll(DominionCards.GameBoard.BuyPhaseLock);
                 }
             }
+            lock (DominionCards.GameBoard.UpdateGraphicsLock)
+                {
+                    DominionCards.GameBoard.AbortPhase = true;
+                    Monitor.PulseAll(DominionCards.GameBoard.UpdateGraphicsLock);
+                }
+
             Thread.Sleep(500);
             UpdateLabelsAndHand();
             
@@ -389,6 +404,7 @@ namespace DominionGUI
         }
         private void EndGame()
         {
+            DominionCards.GameBoard.AbortGame = true;
             if (DominionCards.GameBoard.gamePhase == 1)
             {
                 lock (DominionCards.GameBoard.ActionPhaseLock)
@@ -403,12 +419,12 @@ namespace DominionGUI
                     Monitor.PulseAll(DominionCards.GameBoard.BuyPhaseLock);
                 }
             }
+            Thread.Sleep(250);
             lock (DominionCards.GameBoard.UpdateGraphicsLock)
             {
                 Monitor.PulseAll(DominionCards.GameBoard.UpdateGraphicsLock);
             }
 
-            DominionCards.GameBoard.AbortGame = true;
             Close();
             SelectNumPlayers.GetInstance().Dispose();
         }

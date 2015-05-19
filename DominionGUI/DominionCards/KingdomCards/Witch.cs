@@ -24,7 +24,10 @@ namespace DominionCards.KingdomCards
                 playerAttacked.getDiscard().Add(new KingdomCards.Curse());
                 dict[new Curse()] -= 1;
             }
-
+        }
+        public override String ToString()
+        {
+            return "Witch";
         }
     }
 }

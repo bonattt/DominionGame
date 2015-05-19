@@ -15,6 +15,11 @@ namespace DominionCards.KingdomCards
             // TODO implement
         }
 
+        public override String ToString()
+        {
+            return "Cellar";
+        }
+
         public override void Play(Player player)
         {
             ArrayList trashableCards = new ArrayList();

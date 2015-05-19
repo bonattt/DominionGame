@@ -43,5 +43,9 @@ namespace DominionCards.KingdomCards
             player.getDiscard().Add(cardSelected);
             GameBoard.getInstance().GetCards()[cardSelected] -= 1;
         }
+        public override String ToString()
+        {
+            return "Workshop";
+        }
     }
 }

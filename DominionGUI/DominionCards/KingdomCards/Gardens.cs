@@ -14,5 +14,9 @@ namespace DominionCards.KingdomCards
         {
             // implemented in countVictoryPoints() in Player
         }
+        public override String ToString()
+        {
+            return "Gardens";
+        }
     }
 }

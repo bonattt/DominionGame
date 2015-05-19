@@ -14,6 +14,10 @@ namespace DominionCards.KingdomCards
         {
             // TODO implement
         }
+        public override String ToString()
+        {
+            return "Library";
+        }
         public override void Play(Player player)
         {
             int handSize = player.getHand().Count;
