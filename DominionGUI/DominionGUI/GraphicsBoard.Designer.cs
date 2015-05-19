@@ -67,7 +67,7 @@
             this.exitButton.Size = new System.Drawing.Size(100, 50);
             this.exitButton.TabIndex = 0;
             this.exitButton.UseVisualStyleBackColor = true;
-            this.exitButton.Click += new System.EventHandler(this.button1_Click); 
+            this.exitButton.Click += new System.EventHandler(this.exitButtonClick); 
             //
             // skip Button
             //

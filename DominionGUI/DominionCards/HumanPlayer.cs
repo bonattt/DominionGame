@@ -49,6 +49,11 @@ namespace DominionCards
                 Card cardPlayed = GameBoard.lastCardPlayed;
                 try
                 {
+                    if (cardPlayed == null)
+                    {
+                        Console.WriteLine("Action Phase terminated.");
+                        return;
+                    }
                     playCard(cardPlayed);
                 }
                 catch (CardCannotBePlayedException e)
@@ -73,6 +78,11 @@ namespace DominionCards
                 Card cardBought = GameBoard.lastCardBought;
                 try
                 {
+                    if (cardBought == null)
+                    {
+                        Console.WriteLine("Buy Phase terminated.");
+                        return;
+                    }
                     if (!buyCard(cardBought))
                     {
                         MessageBox.Show("You do not have enough money to buy that!");
@@ -83,6 +93,7 @@ namespace DominionCards
                     MessageBox.Show(e.Message);
                 }
                 Monitor.PulseAll(GameBoard.BuyPhaseLock);
+                
                 Console.WriteLine("PLAYER: finished playing card, pulse sent.");
                 Console.WriteLine("Buying a card with ID " + cardBought.getID());
             }

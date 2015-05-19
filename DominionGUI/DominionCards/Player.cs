@@ -171,6 +171,11 @@ namespace DominionCards
         }
         public bool IsBuyPhase()
         {
+            if (GameBoard.AbortPhase || GameBoard.AbortGame)
+            {
+                GameBoard.AbortPhase = false;
+                return false;
+            }
             if (buysLeft() == 0)
             {
                 return false;
@@ -317,7 +322,7 @@ namespace DominionCards
         }
         public bool IsActionPhase()
         {
-            if (GameBoard.AbortPhase)
+            if (GameBoard.AbortPhase || GameBoard.AbortGame)
             {
                 GameBoard.AbortPhase = false;
                 return false;

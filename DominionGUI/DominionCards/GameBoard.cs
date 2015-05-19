@@ -13,6 +13,7 @@ namespace DominionCards
 
         public static Card lastCardPlayed, lastCardBought;
         public static bool AbortPhase = false;
+        public static bool AbortGame = false;
         private static GameBoard boardInstance;
         public static Object ActionPhaseLock = new Object();
         public static Object BuyPhaseLock = new Object();
@@ -126,6 +127,10 @@ namespace DominionCards
         }
         public virtual bool GameIsOver()
         {
+            if (AbortGame)
+            {
+                return true;
+            }
             Card province = new KingdomCards.Province();
             if (!cards.ContainsKey(province))
             {
