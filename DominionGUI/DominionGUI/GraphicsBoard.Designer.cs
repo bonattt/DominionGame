@@ -33,6 +33,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GraphicsBoard));
             this.exitButton = new System.Windows.Forms.Button();
             this.playButton = new System.Windows.Forms.Button();
+            this.skipTurnButton = new System.Windows.Forms.Button();
             this.deckImage = new System.Windows.Forms.PictureBox();
             this.discardImage = new System.Windows.Forms.PictureBox();
             this.decksize = new System.Windows.Forms.Label();
@@ -66,10 +67,21 @@
             this.exitButton.Size = new System.Drawing.Size(100, 50);
             this.exitButton.TabIndex = 0;
             this.exitButton.UseVisualStyleBackColor = true;
-            this.exitButton.Click += new System.EventHandler(this.button1_Click);
+            this.exitButton.Click += new System.EventHandler(this.button1_Click); 
+            //
+            // skip Button
+            //
+            this.skipTurnButton.Location = new System.Drawing.Point(1000, 100);
+            this.skipTurnButton.Margin = new System.Windows.Forms.Padding(2);
+            this.skipTurnButton.Name = "end Phase";
+            this.skipTurnButton.Size = new System.Drawing.Size(150, 50);
+            this.skipTurnButton.TabIndex = 16;
+            this.skipTurnButton.Font = new System.Drawing.Font("Times New Roman", 14, System.Drawing.FontStyle.Regular);
+            this.skipTurnButton.Text = "End Phase";
+            this.skipTurnButton.Click += new System.EventHandler(this.SkipPhase);
             // 
             // button2
-            // 
+            /*/ 
             this.playButton.Location = new System.Drawing.Point(1787, 874);
             this.playButton.Margin = new System.Windows.Forms.Padding(2);
             this.playButton.Name = "button2";
@@ -78,7 +90,7 @@
             this.playButton.Text = "Play!";
             this.playButton.UseVisualStyleBackColor = true;
             this.playButton.Click += new System.EventHandler(this.button2_Click);
-            // 
+            /*/ 
             // pictureBox1
             // 
             this.deckImage.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
@@ -156,6 +168,7 @@
             this.ClientSize = new System.Drawing.Size(1874, 1054);
             this.Controls.Add(this.discardsize);
             this.Controls.Add(this.decksize);
+            this.Controls.Add(this.skipTurnButton);
             this.Controls.Add(this.actionleft);
             this.Controls.Add(this.buyleft);
             this.Controls.Add(this.moneyleft);
@@ -188,6 +201,6 @@
         private System.Windows.Forms.Label moneyleft;
         private System.Windows.Forms.Label discardsize;
         private System.Windows.Forms.Label playerLabel;
-      
+        private System.Windows.Forms.Button skipTurnButton;
     }
 }

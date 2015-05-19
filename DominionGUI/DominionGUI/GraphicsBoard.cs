@@ -386,6 +386,11 @@ namespace DominionGUI
 
         }
 
+        private void SkipPhase(object sender, EventArgs e)
+        {
+            DominionCards.GameBoard.AbortPhase = true;
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             EndGame();

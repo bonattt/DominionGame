@@ -61,7 +61,7 @@ namespace UnitTestProject2
             
             Assert.IsFalse(p2.getDiscard().Contains(new Witch()));
         }
-        [TestMethod]
+        //[TestMethod]
         public void TestThatActionPhasePhasePlaysCardLastClicked()
         {
             Dictionary<Card, int> dict = new Dictionary<Card, int>();
