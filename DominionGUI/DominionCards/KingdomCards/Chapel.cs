@@ -33,7 +33,12 @@ namespace DominionCards.KingdomCards
                 MessageBox.Show("You have no cards to play with the chapel!");
                 return;
             }
-            ArrayList cards = player.SelectCards(cardsToList, "Chapel", 4);
+            ArrayList cards = player.SelectCards(cardsToList, "Select up to 4 cards to trash.", 4);
+            while (cards.Count > 4)
+            {
+                DialogResult result1 = MessageBox.Show("You may only select up to 4 cards to trash.  Try again");
+                cards = player.SelectCards(cardsToList, "Select up to 4 cards to trash.", 4);
+            }
             for (int i = 0; i < cards.Count; i++)
             {
                 Card toTrash = (Card)cards[i];

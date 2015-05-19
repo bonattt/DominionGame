@@ -32,6 +32,11 @@ namespace DominionCards.KingdomCards
                 return;
             }
             ArrayList cards = player.SelectCards(actionCards, "Choose a card to play twice.", 1);
+            while (cards.Count > 1)
+            {
+                DialogResult result1 = MessageBox.Show("You may only select 1 card to play twice.  Try again");
+                cards = player.SelectCards(actionCards, "Choose a card to play twice.", 1);
+            }
             Card cardPlayed = (Card) cards[0];
 
             player.actions += 2;

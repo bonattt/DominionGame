@@ -12,7 +12,7 @@ namespace DominionCards.KingdomCards
         public Village()
             : base(1, 0, 0, 2, 3, ID)
         {
-            // TODO implement
+            // DONE
 
         }
     }

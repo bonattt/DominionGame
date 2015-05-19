@@ -13,7 +13,7 @@ namespace DominionCards.KingdomCards
         public Smithy()
             : base(3, 0, 0, 0, 4, ID)
         {
-            // TODO implement
+            // DONE
         }
     }
 }

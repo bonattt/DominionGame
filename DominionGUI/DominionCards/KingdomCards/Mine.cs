@@ -34,6 +34,11 @@ namespace DominionCards.KingdomCards
                 return;
             }
             ArrayList cards = player.SelectCards(treasureCards, "Choose a card to upgrade.", 1);
+            while (cards.Count > 1)
+            {
+                DialogResult result1 = MessageBox.Show("You may only select 1 card to upgrade.  Try again");
+                cards = player.SelectCards(treasureCards, "Choose a card to upgrade.", 1);
+            }
             Card cardSelected = (Card)cards[0];
 
             if (cardSelected.getID() == 0)

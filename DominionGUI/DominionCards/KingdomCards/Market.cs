@@ -12,7 +12,7 @@ namespace DominionCards.KingdomCards
         public Market()
             : base(1, 1, 1, 1, 5, ID)
         {
-            // TODO implement
+            // DONE
         }
     }
 }
