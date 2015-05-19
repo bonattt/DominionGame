@@ -32,7 +32,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GraphicsBoard));
             this.exitButton = new System.Windows.Forms.Button();
-            this.playButton = new System.Windows.Forms.Button();
             this.skipTurnButton = new System.Windows.Forms.Button();
             this.deckImage = new System.Windows.Forms.PictureBox();
             this.discardImage = new System.Windows.Forms.PictureBox();
@@ -62,7 +61,7 @@
             this.exitButton.Location = new System.Drawing.Point(30, 450);
             this.exitButton.Margin = new System.Windows.Forms.Padding(2);
             this.exitButton.Name = "button1";
-            this.exitButton.Text = "exit game";
+            this.exitButton.Text = "Exit Game";
             this.exitButton.Font = new System.Drawing.Font("Times New Roman", 14, System.Drawing.FontStyle.Regular);
             this.exitButton.Size = new System.Drawing.Size(100, 50);
             this.exitButton.TabIndex = 0;
@@ -164,7 +163,6 @@
             this.Controls.Add(this.moneyleft);
             this.Controls.Add(this.discardImage);
             this.Controls.Add(this.deckImage);
-            this.Controls.Add(this.playButton);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.playerLabel);
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -182,7 +180,6 @@
         #endregion
 
         private System.Windows.Forms.Button exitButton;
-        private System.Windows.Forms.Button playButton;
         private System.Windows.Forms.PictureBox deckImage;
         private System.Windows.Forms.PictureBox discardImage;
         private System.Windows.Forms.Label decksize;
