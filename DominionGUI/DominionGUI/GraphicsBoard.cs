@@ -212,39 +212,11 @@ namespace DominionGUI
             for (int i = 0; i < currentHand.Count; i++)
             {
                 HandDrawingHelper(currentHand, xValue, yValue);
-            }
-
-            /*List<int> numList = new List<int>();
-            numList = RandomGenerateCards.GenerateRandom.GenerateRandomList(25, 5);
-            int xValue = 220;
-            int yValue = 800;
-            for (int i = 0; i < 25; i++)
-            {
-                if (numList.Contains(i))
-                {
-                    CardButton newButton = new CardButton((DominionCards.Card)Activator.CreateInstance(cardsadd[i]));
-                    newButton.BackgroundImage = imageadd[i];
-                    newButton.Click += new EventHandler(this.gameplay);
-                    //newButton.Height = 179;
-                   // newButton.Width = 256;
-                    newButton.BackgroundImageLayout = ImageLayout.Stretch;
-                    newButton.Height = 155;
-                    newButton.Width = 200;
-                 
-                    newButton.Location = new Point(xValue, yValue);
-                    xValue = xValue + 256;
-                    Controls.Add(newButton);
-                    newButton.Parent = this;
-                    this.Update();
-                    this.Show();
-                }
-            }*/   
+            } 
         }
         private void gameplay(Object sender, EventArgs e)
         {
             Button clickedButton = (Button)sender;
-            /*discardsize = discardsize + 1;
-            discarddeck.Text = "Discard Cards Size: " + discardsize;*/
             clickedButton.Visible = true;
         }
 
