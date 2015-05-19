@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DominionCards.KingdomCards
 {
-    public class Spy : ActionCard
+    public class Spy : AttackCard
     {
         private static int ID = 24;
         public Spy()
@@ -17,6 +17,11 @@ namespace DominionCards.KingdomCards
         public override String ToString()
         {
             return "Spy";
+        }
+
+        public override void MakeImmediateAttack(Player playerAttacked)
+        {
+            //TODO
         }
     }
 }
