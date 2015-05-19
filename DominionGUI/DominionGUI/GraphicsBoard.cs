@@ -360,10 +360,27 @@ namespace DominionGUI
 
         private void SkipPhase(object sender, EventArgs e)
         {
-            DominionCards.GameBoard.AbortPhase = true;
+            
+            if (DominionCards.GameBoard.gamePhase == 1)
+            {
+                lock (DominionCards.GameBoard.ActionPhaseLock)
+                {   
+                    DominionCards.GameBoard.AbortPhase = true;
+                    Monitor.PulseAll(DominionCards.GameBoard.ActionPhaseLock);
+                }
+            }
+            if (DominionCards.GameBoard.gamePhase == 3)
+            {
+                lock (DominionCards.GameBoard.BuyPhaseLock)
+                {
+                    DominionCards.GameBoard.AbortPhase = true;
+                    Monitor.PulseAll(DominionCards.GameBoard.BuyPhaseLock);
+                }
+            }
+            
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void exitButtonClick(object sender, EventArgs e)
         {
             EndGame();
         }
@@ -379,6 +396,22 @@ namespace DominionGUI
 
         private void EndGame()
         {
+            if (DominionCards.GameBoard.gamePhase == 1)
+            {
+                lock (DominionCards.GameBoard.ActionPhaseLock)
+                {
+                    Monitor.PulseAll(DominionCards.GameBoard.ActionPhaseLock);
+                }
+            }
+            if (DominionCards.GameBoard.gamePhase == 3)
+            {
+                lock (DominionCards.GameBoard.BuyPhaseLock)
+                {
+                    Monitor.PulseAll(DominionCards.GameBoard.BuyPhaseLock);
+                }
+            }
+
+            DominionCards.GameBoard.AbortGame = true;
             Close();
             SelectNumPlayers.GetInstance().Dispose();
         }
