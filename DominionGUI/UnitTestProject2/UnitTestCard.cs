@@ -40,6 +40,7 @@ namespace UnitTestProject2
         {
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
             cards.Add(new Copper(), 1);
+            cards.Add(new Estate(), 1);
             GameBoard board = new GameBoard(cards);
             Card c = new Workshop();
             Player p = new HumanPlayer(1);
@@ -338,6 +339,8 @@ namespace UnitTestProject2
         {
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
             cards.Add(new Copper(), 1);
+            cards.Add(new Estate(), 1);
+            cards.Add(new Witch(), 1);
             GameBoard board = new GameBoard(cards);
             Card c = new Remodel();
             Player p1 = new HumanPlayer(1);
@@ -369,6 +372,7 @@ namespace UnitTestProject2
         {
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
             cards.Add(new Copper(), 1);
+            cards.Add(new Silver(), 1);
             GameBoard board = new GameBoard(cards);
             Card c = new Feast();
             Player p1 = new HumanPlayer(1);
@@ -393,21 +397,6 @@ namespace UnitTestProject2
             int numdiscard = p1.getDiscard().Count;
             p1.playCard(c);
             Assert.AreEqual(numdiscard + 1, p1.getDiscard().Count);
-        }
-
-        [TestMethod]
-        public void testRemodelDoesntChargeForNewCard()
-        {
-            Dictionary<Card, int> cards = new Dictionary<Card, int>();
-            cards.Add(new Copper(), 1);
-            GameBoard board = new GameBoard(cards);
-            Card c = new Remodel();
-            Player p1 = new HumanPlayer(1);
-            board.AddPlayer(p1);
-            p1.addCardToHand(c);
-            int spendPoints = p1.moneyLeft();
-            p1.playCard(c);
-            Assert.AreEqual(spendPoints, p1.moneyLeft());
         }
 
         [TestMethod]

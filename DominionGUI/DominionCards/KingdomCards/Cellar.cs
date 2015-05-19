@@ -28,7 +28,8 @@ namespace DominionCards.KingdomCards
                 MessageBox.Show("You have no cards to play with the cellar");
                 return;
             }
-            ArrayList cards = player.SelectCards(trashableCards, "Choose cards to trash.", 1);
+            ArrayList cards = player.SelectCards(trashableCards, "Choose cards to trash.", player.getHand().Count);
+            //This doesn't need a check to make sure you didn't check too many boxes because you can check all of them
             for (int i = 0; i < cards.Count; i++)
             {
                 player.actions += 1;

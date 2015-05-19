@@ -37,11 +37,19 @@ namespace DominionCards.KingdomCards
                 return;
             }
             ArrayList cards = player.SelectCards(buyableCards, "Choose a card to gain.", 1);
+            while (cards.Count > 1)
+            {
+                DialogResult result1 = MessageBox.Show("You may only select 1 card to gain.  Try again");
+                cards = player.SelectCards(buyableCards, "Choose a card to gain.", 1);
+            }
             Card cardSelected = (Card)cards[0];
             player.getDiscard().Add(cardSelected);
             GameBoard.getInstance().GetCards()[cardSelected] -= 1;
 
 
         }
+        private int checkCounter;
+
+
     }
 }

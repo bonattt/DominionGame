@@ -13,7 +13,7 @@ namespace DominionCards.KingdomCards
         public Moat()
             : base(2, 0, 0, 0, 2, ID)
         {
-            // TODO implement
+            // DONE
         }
     }
 }

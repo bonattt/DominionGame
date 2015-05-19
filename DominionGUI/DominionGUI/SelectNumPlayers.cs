@@ -16,7 +16,7 @@ namespace DominionGUI
         private static System.Drawing.Bitmap[] imageadd = new System.Drawing.Bitmap[] { DominionGUI.Properties.Resources.WorkshopHalf, DominionGUI.Properties.Resources.AdventurerHalfNew, DominionGUI.Properties.Resources.BureaucratHalf, DominionGUI.Properties.Resources.CellarHalf, DominionGUI.Properties.Resources.ChancellorHalf, DominionGUI.Properties.Resources.ChapelHalf, DominionGUI.Properties.Resources.CouncilroomHalf, DominionGUI.Properties.Resources.FeastHalf, DominionGUI.Properties.Resources.FestivalHalf, DominionGUI.Properties.Resources.GardensHalf, DominionGUI.Properties.Resources.LaboratoryHalf, DominionGUI.Properties.Resources.LibraryHalf, DominionGUI.Properties.Resources.MarketHalf, DominionGUI.Properties.Resources.MilitiaHalf, DominionGUI.Properties.Resources.MineHalf, DominionGUI.Properties.Resources.MoatHalf, DominionGUI.Properties.Resources.MoneylenderHalf, DominionGUI.Properties.Resources.RemodelHalf, DominionGUI.Properties.Resources.SmithyHalf, DominionGUI.Properties.Resources.SpyHalf, DominionGUI.Properties.Resources.ThiefHalf, DominionGUI.Properties.Resources.ThroneroomHalf, DominionGUI.Properties.Resources.VillageHalf, DominionGUI.Properties.Resources.WitchHalf, DominionGUI.Properties.Resources.WoodcutterHalf };
         private static System.Type[] cardsadd = new System.Type[] { typeof(DominionCards.KingdomCards.Workshop),typeof(DominionCards.KingdomCards.Adventurer),typeof(DominionCards.KingdomCards.Bureaucrat),typeof(DominionCards.KingdomCards.Cellar),typeof(DominionCards.KingdomCards.Chancellor),typeof(DominionCards.KingdomCards.Chapel),typeof(DominionCards.KingdomCards.CouncilRoom),typeof(DominionCards.KingdomCards.Feast),typeof(DominionCards.KingdomCards.Festival),typeof(DominionCards.KingdomCards.Gardens),typeof(DominionCards.KingdomCards.Laboratory),typeof(DominionCards.KingdomCards.Library),typeof(DominionCards.KingdomCards.Market),typeof(DominionCards.KingdomCards.Militia),typeof(DominionCards.KingdomCards.Mine),typeof(DominionCards.KingdomCards.Moat),typeof(DominionCards.KingdomCards.MoneyLender),typeof(DominionCards.KingdomCards.Remodel),typeof(DominionCards.KingdomCards.Smithy),typeof(DominionCards.KingdomCards.Spy),typeof(DominionCards.KingdomCards.Thief),typeof(DominionCards.KingdomCards.ThroneRoom),typeof(DominionCards.KingdomCards.Village),typeof(DominionCards.KingdomCards.Witch),typeof(DominionCards.KingdomCards.Woodcutter)};
         private static System.Type[] basiccard = new System.Type[] { typeof(DominionCards.KingdomCards.Gold), typeof(DominionCards.KingdomCards.Silver), typeof(DominionCards.KingdomCards.Copper) ,typeof(DominionCards.KingdomCards.Province),typeof(DominionCards.KingdomCards.Duchy),typeof(DominionCards.KingdomCards.Estate),typeof(DominionCards.KingdomCards.Curse)};
-        
+        private bool button1WasClicked = false;
         public DominionCards.GameBoard board;
         public static SelectNumPlayers INSTANCE;
         Label discarddeck = new Label();
@@ -38,10 +38,6 @@ namespace DominionGUI
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-         }
-
         private void button4_Click(object sender, EventArgs e)
         {
             Close();
@@ -56,39 +52,6 @@ namespace DominionGUI
         private void SelectNumPlayers_Load(object sender, EventArgs e)
         {
 
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            if (checkBox4.Checked)
-            {
-
-                board = new DominionCards.GameBoard(CreateRandomCardDictionary());
-                createplayers(numberplayers);
-                var myForm = GraphicsBoard.getinstance();
-                myForm.Update();
-                myForm.Show();
-            }
-            else if (checkBox5.Checked)
-            {
-                board = new DominionCards.GameBoard(CreateRandomCardDictionary());
-                createplayers(numberplayers);
-                var myFrom = new KingdomCardSelection();
-                myFrom.Update();
-                myFrom.Show();
-
-            }
-            else if (checkBox6.Checked)
-            {
-                board = new DominionCards.GameBoard(CreateRandomCardDictionary());
-                createplayers(numberplayers);
-                var myFrom = new KingdomCardSelection();
-                myFrom.Update();
-                myFrom.Show();
-            }
-            //////////////
-            // Close(); //
-            //////////////
         }
 
         private void Playeroption(object sender, EventArgs e)
@@ -150,70 +113,18 @@ namespace DominionGUI
         {
             return this.board;
         }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            button1WasClicked = true;
+        }
         private void RunGame(object sender, EventArgs e)
         {
-            if (checkBox4.Checked)
-            {
                 board = new DominionCards.GameBoard(CreateRandomCardDictionary());
                 createplayers(numberplayers);
                 var myForm = GraphicsBoard.getinstance();
                 myForm.DrawHand();
                 myForm.Update();
                 myForm.Show();
-            }
-            else if (checkBox5.Checked)
-            {
-                board = new DominionCards.GameBoard(CreateRandomCardDictionary());
-                createplayers(numberplayers);
-                var myFrom = new KingdomCardSelection();
-                myFrom.Update();
-                myFrom.Show();
-
-            }
-            else if (checkBox6.Checked)
-            {
-                board = new DominionCards.GameBoard(CreateRandomCardDictionary());
-                createplayers(numberplayers);
-                var myFrom = new KingdomCardSelection();
-                myFrom.Update();
-                myFrom.Show();
-            }
-        }
-        private void RunGame(EventArgs e)
-        {
-            if (checkBox4.Checked)
-            {
-                board = new DominionCards.GameBoard(CreateRandomCardDictionary());
-                createplayers(numberplayers);
-                var myForm = GraphicsBoard.getinstance();
-                myForm.DrawHand();
-                myForm.Update();
-                myForm.Show();
-            }
-            else if (checkBox5.Checked)
-            {
-                board = new DominionCards.GameBoard(CreateRandomCardDictionary());
-                createplayers(numberplayers);
-                var myFrom = new KingdomCardSelection();
-                myFrom.Update();
-                myFrom.Show();
-                
-            }
-            else if (checkBox6.Checked)
-            {
-                board = new DominionCards.GameBoard(CreateRandomCardDictionary());
-                createplayers(numberplayers);
-                var myFrom = new KingdomCardSelection();
-                myFrom.Update();
-                myFrom.Show();
-            }
-        }
-        private void gameplay(Object sender, EventArgs e)
-        {
-            /*Button clickedButton = (Button)sender;
-            discardsize = discardsize + 1;
-            discarddeck.Text = "Discard Cards Size: " + discardsize;
-            clickedButton.Visible = false;   */       
         }
         private Dictionary<DominionCards.Card, int> CreateRandomCardDictionary()
         {
@@ -270,34 +181,7 @@ namespace DominionGUI
         public void addRandomCards()
         {
                 var myForm = GraphicsBoard.getinstance();
-                myForm.DrawHand();
-                //DominionGUI.MainBoard.
-                /*
-                List<int> numList = new List<int>();
-                numList = RandomGenerateCards.GenerateRandom.GenerateRandomList(25,5);
-                numList.Add(24);
-                
-              
-                int xValue = 95;
-                int yValue = 50;
-
-               
-                
-                discarddeck.Location = new Point(500, 650);
-                discarddeck.Width = 1000;
-                discarddeck.Parent = myForm;
-                myForm.Update();
-                myForm.Show();
-                    
-                Label countCard1Remaining = new Label();
-                countCard1Remaining.Text = "Cards Remaining: " + board.getCardsLeft(woodcutter);
-                countCard1Remaining.Location = new Point(500, 500);
-                countCard1Remaining.Width = 1000;
-                countCard1Remaining.Parent = myForm;
-                myForm.Update();
-                myForm.Show();
-                */
-                
+                myForm.DrawHand();         
          } 
     }
             
