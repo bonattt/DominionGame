@@ -90,11 +90,11 @@ namespace UnitTestProject2
         {
             p3.getDeck().Push(new Village());
             p3.getDeck().Push(new Market());
-            int deckSize3 = p2.getDeck().Count;
-            int discardSize3 = p2.getDiscard().Count;
+            int deckSize3 = p3.getDeck().Count;
+            int discardSize3 = p3.getDiscard().Count;
             p1.playCard(card);
-            Assert.AreEqual(deckSize3 - 2, p2.getDeck().Count);
-            Assert.AreEqual(discardSize3 + 2, p2.getDiscard().Count);
+            Assert.AreEqual(deckSize3 - 2, p3.getDeck().Count);
+            Assert.AreEqual(discardSize3 + 2, p3.getDiscard().Count);
         }
 
 
