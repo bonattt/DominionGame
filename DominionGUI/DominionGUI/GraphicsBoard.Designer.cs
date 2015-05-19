@@ -79,18 +79,8 @@
             this.skipTurnButton.Font = new System.Drawing.Font("Times New Roman", 14, System.Drawing.FontStyle.Regular);
             this.skipTurnButton.Text = "End Phase";
             this.skipTurnButton.Click += new System.EventHandler(this.SkipPhase);
+
             // 
-            // button2
-            /*/ 
-            this.playButton.Location = new System.Drawing.Point(1787, 874);
-            this.playButton.Margin = new System.Windows.Forms.Padding(2);
-            this.playButton.Name = "button2";
-            this.playButton.Size = new System.Drawing.Size(56, 32);
-            this.playButton.TabIndex = 16;
-            this.playButton.Text = "Play!";
-            this.playButton.UseVisualStyleBackColor = true;
-            this.playButton.Click += new System.EventHandler(this.button2_Click);
-            /*/ 
             // pictureBox1
             // 
             this.deckImage.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));

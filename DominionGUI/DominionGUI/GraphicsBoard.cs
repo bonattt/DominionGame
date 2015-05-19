@@ -61,6 +61,19 @@ namespace DominionGUI
             discarddeck.Visible = true;*/
         }
 
+        private void WaitToUpdate()
+        {
+            while(!board.GameIsOver()){
+                lock (DominionCards.GameBoard.UpdateGraphicsLock)
+                {
+                    Monitor.Wait(DominionCards.GameBoard.UpdateGraphicsLock);
+                    UpdateLabelsAndHand();
+                    Monitor.PulseAll(DominionCards.GameBoard.UpdateGraphicsLock);
+                }
+                Thread.Sleep(500);
+            }
+        }
+
         private void SetUpImagesDictionary()
         {
             cardImages = new Dictionary<DominionCards.Card, System.Drawing.Bitmap>();
@@ -336,28 +349,10 @@ namespace DominionGUI
                 labels[i].Text = "Cards Left: " + cardsLeft;
             }
         }
-
-
-        private void drawCorrectImage(Button button)
-        {
-            
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void MainBoard_Load(object sender, EventArgs e)
         {
 
         }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void SkipPhase(object sender, EventArgs e)
         {
             
@@ -377,23 +372,14 @@ namespace DominionGUI
                     Monitor.PulseAll(DominionCards.GameBoard.BuyPhaseLock);
                 }
             }
+            Thread.Sleep(500);
+            UpdateLabelsAndHand();
             
         }
-
         private void exitButtonClick(object sender, EventArgs e)
         {
             EndGame();
         }
-        private void button2_Click(object sender, EventArgs e)
-        {
-            EndGame();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void EndGame()
         {
             if (DominionCards.GameBoard.gamePhase == 1)
@@ -409,6 +395,10 @@ namespace DominionGUI
                 {
                     Monitor.PulseAll(DominionCards.GameBoard.BuyPhaseLock);
                 }
+            }
+            lock (DominionCards.GameBoard.UpdateGraphicsLock)
+            {
+                Monitor.PulseAll(DominionCards.GameBoard.UpdateGraphicsLock);
             }
 
             DominionCards.GameBoard.AbortGame = true;

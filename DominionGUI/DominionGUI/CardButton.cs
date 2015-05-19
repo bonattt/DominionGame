@@ -47,7 +47,8 @@ namespace DominionGUI
                 Monitor.PulseAll(GameBoard.BuyPhaseLock);
                 Monitor.Wait(GameBoard.BuyPhaseLock);
             }
-            GraphicsBoard.getinstance().UpdateLabelsAndHand();
+            WaitToUpdateLabels();
+            //GraphicsBoard.getinstance().UpdateLabelsAndHand();
             GameBoard.getInstance().PrintOutDictionary();
         }
 
@@ -66,7 +67,18 @@ namespace DominionGUI
                 Monitor.PulseAll(GameBoard.ActionPhaseLock);
                 Monitor.Wait(GameBoard.ActionPhaseLock);
             }
-            GraphicsBoard.getinstance().UpdateLabelsAndHand();
+            WaitToUpdateLabels();
+            //GraphicsBoard.getinstance().UpdateLabelsAndHand();
+        }
+
+        private void WaitToUpdateLabels()
+        {
+            lock (DominionCards.GameBoard.UpdateGraphicsLock)
+            {
+                Monitor.Wait(DominionCards.GameBoard.UpdateGraphicsLock);
+                GraphicsBoard.getinstance().UpdateLabelsAndHand();
+                Monitor.PulseAll(DominionCards.GameBoard.UpdateGraphicsLock);
+            }
         }
     }
 }

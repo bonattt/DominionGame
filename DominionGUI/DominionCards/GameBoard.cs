@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DominionCards.KingdomCards;
+using System.Threading;
 
 namespace DominionCards
 {
@@ -15,6 +16,7 @@ namespace DominionCards
         public static bool AbortPhase = false;
         public static bool AbortGame = false;
         private static GameBoard boardInstance;
+        public static Object UpdateGraphicsLock = new Object();
         public static Object ActionPhaseLock = new Object();
         public static Object BuyPhaseLock = new Object();
 
@@ -34,6 +36,15 @@ namespace DominionCards
         public virtual int getCardsLeft(Card c)
         {
             return cards[c];
+        }
+        public static void SignalToUpdateGraphics()
+        {
+            Thread.Sleep(250);
+            lock (GameBoard.UpdateGraphicsLock)
+            {
+                Monitor.PulseAll(GameBoard.UpdateGraphicsLock);
+                Monitor.Wait(GameBoard.UpdateGraphicsLock);
+            }
         }
 
         public virtual Player NextPlayer()
@@ -59,6 +70,7 @@ namespace DominionCards
                 gamePhase = 0;
                 turnOrder.Peek().TakeTurn();
                 NextPlayer();
+                SignalToUpdateGraphics();
             }
             try
             {

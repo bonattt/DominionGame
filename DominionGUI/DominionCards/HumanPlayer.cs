@@ -97,6 +97,7 @@ namespace DominionCards
                 Console.WriteLine("PLAYER: finished playing card, pulse sent.");
                 Console.WriteLine("Buying a card with ID " + cardBought.getID());
             }
+
         }
         public override void TakeTurn()
         {
@@ -111,11 +112,16 @@ namespace DominionCards
             while (IsActionPhase())
             {
                 actionPhase();
+                GameBoard.SignalToUpdateGraphics();
             }
             MessageBox.Show("buy phase!\nbuy some cards.");
             while (IsBuyPhase())
             {
                 buyPhase();
+                if (IsBuyPhase()) // If it's still the buy phase, immediately update graphics, otherwise, wait for the next player to load.
+                {
+                    GameBoard.SignalToUpdateGraphics();
+                }
             }
             EndTurn();
         }
