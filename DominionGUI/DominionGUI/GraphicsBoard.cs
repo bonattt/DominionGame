@@ -322,10 +322,6 @@ namespace DominionGUI
                 this.Controls.Remove(currentHand[i]);
             }
             Console.WriteLine();
-            Update();
-            Refresh();
-            Show();
-            MessageBox.Show("just want to pause here. i = " + i);
             DrawHand();
         }
 
