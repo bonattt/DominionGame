@@ -301,6 +301,10 @@ namespace DominionCards
         public virtual void TakeTurn()
         {
             ProcessAttacks();
+            if (!IsActionPhase())
+            {
+                GameBoard.gamePhase = 2;
+            }
             GameBoard.SignalToUpdateGraphics();
             Console.WriteLine("\nplayer" + getNumber() + " taking turn.");
             Console.Write("Player has cards ");
