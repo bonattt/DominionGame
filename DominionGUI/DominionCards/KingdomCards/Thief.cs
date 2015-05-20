@@ -60,9 +60,9 @@ namespace DominionCards.KingdomCards
                 return;
             }
             ArrayList cardsToTrash = playerAttacked.SelectCards(cards, "Choose a card to trash", 1);
-            while (cardsToTrash.Count > 1)
+            while (cardsToTrash.Count != 1)
             {
-                DialogResult result1 = MessageBox.Show("You may only select 1 card to trash.  Try again");
+                DialogResult result1 = MessageBox.Show("You must select exactly 1 card to trash.  Try again");
                 cardsToTrash = playerAttacked.SelectCards(cards, "Choose a card to trash.", 1);
             }
             Card cardSelected = (Card)cardsToTrash[0];

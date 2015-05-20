@@ -33,9 +33,9 @@ namespace DominionCards.KingdomCards
                 return;
             }
             ArrayList cards = player.SelectCards(trashableCards, "Choose a card to trash", 1);
-            while (cards.Count > 1)
+            while (cards.Count != 1)
             {
-                DialogResult result1 = MessageBox.Show("You may only select 1 card to trash.  Try again");
+                DialogResult result1 = MessageBox.Show("You must select exactly 1 card to trash.  Try again");
                 cards = player.SelectCards(trashableCards, "Choose a card to trash.", 1);
             }
             Card cardSelected = (Card)cards[0];
@@ -58,9 +58,9 @@ namespace DominionCards.KingdomCards
                 return;
             }
             ArrayList cards2 = player.SelectCards(buyableCards, "Choose a card to gain.", 1);
-            while (cards2.Count > 1)
+            while (cards2.Count != 1)
             {
-                DialogResult result1 = MessageBox.Show("You may only select 1 card to gain.  Try again");
+                DialogResult result1 = MessageBox.Show("You must select exactly 1 card to gain.  Try again");
                 cards2 = player.SelectCards(buyableCards, "Choose a card to gain.", 1);
             }
             Card cardSelected2 = (Card)cards2[0];
