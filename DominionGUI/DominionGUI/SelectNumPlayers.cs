@@ -117,6 +117,7 @@ namespace DominionGUI
                 board = new DominionCards.GameBoard(CreateRandomCardDictionary());
                 createplayers(numberplayers);
                 var myForm = GraphicsBoard.getinstance();
+                GraphicsBoard.WaitToUpdateLabels();
                 myForm.Update();
                 myForm.Show();
         }

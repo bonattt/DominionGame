@@ -70,7 +70,6 @@ namespace DominionCards
                 gamePhase = 0;
                 turnOrder.Peek().TakeTurn();
                 NextPlayer();
-                SignalToUpdateGraphics();
             }
             try
             {
@@ -83,7 +82,8 @@ namespace DominionCards
             {
                 String str = e.PrintWinners();
                 System.Windows.Forms.MessageBox.Show(str);
-            }            
+            }
+            
         }
 
         public Player FindWinningPlayer()

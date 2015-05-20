@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
 using RandomGenerateCards;
+using System.Windows.Forms;
 
 namespace DominionCards
 {
@@ -299,7 +300,31 @@ namespace DominionCards
         }
         public virtual void TakeTurn()
         {
-            // TODO
+            ProcessAttacks();
+            GameBoard.SignalToUpdateGraphics();
+            Console.WriteLine("\nplayer" + getNumber() + " taking turn.");
+            Console.Write("Player has cards ");
+            for (int i = 0; i < getHand().Count; i++)
+            {
+                Console.Write(((Card)getHand()[i]).getID() + " ");
+            }
+            Console.WriteLine(" in his hand");
+            MessageBox.Show("It is player " + getNumber() + "'s turn. \n   Action Phase.");
+            while (IsActionPhase())
+            {
+                actionPhase();
+                GameBoard.SignalToUpdateGraphics();
+            }
+            MessageBox.Show("buy phase!\nbuy some cards.");
+            while (IsBuyPhase())
+            {
+                buyPhase();
+                if (IsBuyPhase()) // If it's still the buy phase, immediately update graphics, otherwise, wait for the next player to load.
+                {
+                    GameBoard.SignalToUpdateGraphics();
+                }
+            }
+            EndTurn();
         }
         public override string ToString()
         {

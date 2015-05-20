@@ -40,7 +40,7 @@ namespace DominionGUI
         {
             if (GameBoard.gamePhase != 3)
             {
-                Console.WriteLine("buy button ignored because game in wrong state");
+                Console.WriteLine("buy button ignored because game in wrong state (" + GameBoard.gamePhase + ")");
                 return;
             }
             Console.WriteLine("\n                       BUTTON PUSH BUY!!!\n");
@@ -51,7 +51,7 @@ namespace DominionGUI
                 Monitor.PulseAll(GameBoard.BuyPhaseLock);
                 Monitor.Wait(GameBoard.BuyPhaseLock);
             }
-            WaitToUpdateLabels();
+            GraphicsBoard.WaitToUpdateLabels();
             //GraphicsBoard.getinstance().UpdateLabelsAndHand();
             GameBoard.getInstance().PrintOutDictionary();
         }
@@ -60,7 +60,7 @@ namespace DominionGUI
         {   
             if (GameBoard.gamePhase != 1)
             {
-                Console.WriteLine("play button ignored because game in wrong state");
+                Console.WriteLine("play button ignored because game in wrong state (" + GameBoard.gamePhase + ")");
                 return;
             }
             Console.WriteLine("\n                       BUTTON PUSH PLAY!!!\n");
@@ -71,18 +71,9 @@ namespace DominionGUI
                 Monitor.PulseAll(GameBoard.ActionPhaseLock);
                 Monitor.Wait(GameBoard.ActionPhaseLock);
             }
-            WaitToUpdateLabels();
+            GraphicsBoard.WaitToUpdateLabels();
             //GraphicsBoard.getinstance().UpdateLabelsAndHand();
         }
 
-        private void WaitToUpdateLabels()
-        {
-            lock (DominionCards.GameBoard.UpdateGraphicsLock)
-            {
-                Monitor.Wait(DominionCards.GameBoard.UpdateGraphicsLock);
-                GraphicsBoard.getinstance().UpdateLabelsAndHand();
-                Monitor.PulseAll(DominionCards.GameBoard.UpdateGraphicsLock);
-            }
-        }
     }
 }

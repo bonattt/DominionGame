@@ -68,6 +68,16 @@ namespace DominionGUI
             discarddeck.Visible = true;*/
         }
 
+        public static void WaitToUpdateLabels()
+        {
+            lock (DominionCards.GameBoard.UpdateGraphicsLock)
+            {
+                Monitor.Wait(DominionCards.GameBoard.UpdateGraphicsLock);
+                GraphicsBoard.getinstance().UpdateLabelsAndHand();
+                Monitor.PulseAll(DominionCards.GameBoard.UpdateGraphicsLock);
+            }
+        }
+
         private void WaitToUpdate()
         {
             while(!board.GameIsOver()){
