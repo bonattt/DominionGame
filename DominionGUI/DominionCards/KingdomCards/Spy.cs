@@ -28,16 +28,29 @@ namespace DominionCards.KingdomCards
 
         public override void MakeImmediateAttack(Player playerAttacked)
         {
+            if (playerAttacked.getDeck().Count == 0){
+                playerAttacked.setDeck(Player.Shuffle(playerAttacked.getDiscard()));
+            }
             String str;
             if (GameBoard.getInstance().turnOrder.Peek() == playerAttacked)
             {
-                str = "you have a " + playerAttacked.getDeck().Peek() + " on the top of their deck." +
-                    "\n  would you like to discard it?";
+                StringBuilder builder = new StringBuilder();
+                builder.Append("you have a ");
+                builder.Append(playerAttacked.getDeck().Peek());
+                builder.Append(" on the top of their deck.");
+                builder.Append("\n  would you like to discard it?");
+                str = builder.ToString();
             }
             else
             {
-                str = "player " + playerAttacked.getNumber() + " has a " + playerAttacked.getDeck().Peek() + " on the top of their deck." +
-                    "\n  would you like to discard it?";
+                StringBuilder builder = new StringBuilder();
+                builder.Append("player ");
+                builder.Append(playerAttacked.getNumber());
+                builder.Append(" has a ");
+                builder.Append(playerAttacked.getDeck().Peek());
+                builder.Append(" on the top of their deck.");
+                builder.Append("\n  would you like to discard it?");
+                str = builder.ToString();
             }
             DialogResult result1 = MessageBox.Show(str, "You played a spy", MessageBoxButtons.YesNo);
             String result = result1.ToString();
