@@ -35,11 +35,6 @@ namespace DominionCards.KingdomCards
                 DiscardableCards.Add(card);
 
             }
-            if (DiscardableCards.Count == 0)
-            {
-                MessageBox.Show("You have no cards to discard with the milita!");
-                return;
-            }
             ArrayList cards = playerAttacked.SelectCards(DiscardableCards, "Player " + playerAttacked.getNumber() + ": You were attacked by a militia!!! \n Choose " + numCardsToDiscard + " cards to discard", numCardsToDiscard);
             while (cards.Count != numCardsToDiscard)
             {

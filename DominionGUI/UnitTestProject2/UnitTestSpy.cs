@@ -35,6 +35,16 @@ namespace UnitTestProject2
             Assert.IsFalse(card.IsTreasure());
         }
         [TestMethod]
+        public void TestSpyWhenDeckEmpty()
+        {
+            p2.setDiscard(p2.getHand());
+            p2.setDeck(new Stack<Card>());
+            p1.playCard(card);
+            Assert.AreNotEqual(0, p2.getDeck().Count);
+            Assert.IsTrue(p2.getDiscard().Count <= 1);
+        }
+
+        [TestMethod]
         public void TestSpyDiscardsPlayerTwosCard()
         {
             int discardCount = p2.getDiscard().Count;

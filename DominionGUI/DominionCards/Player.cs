@@ -63,15 +63,15 @@ namespace DominionCards
                 hand.Add(GetNextCard());
             }
         }
-        private void drawCardsFromPartialDeck()
+        /*private void drawCardsFromPartialDeck()
         {
             throw new NotImplementedException("Your deck ran out while drawing cards!!!");
-        }
-        public void endTurn()
+        }*/
+        /*public void endTurn()
         {
             // this method should discard remaining hand, and draw new cards, then reset actions and buys to 1.
             // TODO implement this.
-        }
+        }*/
 
         public abstract void actionPhase();
         public abstract void buyPhase();
@@ -101,8 +101,7 @@ namespace DominionCards
             {
 
                 Card card = (Card)discard[i];
-                int cardID = card.getID();
-                if (cardID == 0 || cardID == 1 || cardID == 2)
+                if (card.IsTreasure())
                 {
                     money += ((TreasureCard)card).getValue();
                 }
@@ -341,7 +340,7 @@ namespace DominionCards
                 card.MakeDelayedAttack(this);
             }
         }
-        protected void EndTurn()
+        public void EndTurn()
         {
             money = 0;
             actions = 1;

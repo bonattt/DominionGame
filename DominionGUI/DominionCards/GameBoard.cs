@@ -151,11 +151,7 @@ namespace DominionCards
                 return true;
             }
             Card province = new KingdomCards.Province();
-            if (!cards.ContainsKey(province))
-            {
-                return true;
-            }
-
+            
             if (cards[province] == 0)
             {
                 return true;

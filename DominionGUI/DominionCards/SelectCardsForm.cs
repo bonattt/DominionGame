@@ -43,21 +43,6 @@ namespace DominionCards
             Visible = false;
             Close();
         }
-
-        /*public ArrayList SelectFrom()
-        {
-            ArrayList list = new ArrayList();
-
-            return list;
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-
-
-                Close();
-        }
-         */
         private void button1_Click(object sender, EventArgs e)
         {
             Close();

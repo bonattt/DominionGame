@@ -21,10 +21,6 @@ namespace DominionCards.KingdomCards
         {
             return "Chapel";
         }
-        public void textEffect()
-        {
-            //todo
-        }
         public override void Play(Player player)
         {
             ArrayList cardsToList = new ArrayList();

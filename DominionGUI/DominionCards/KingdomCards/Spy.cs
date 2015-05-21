@@ -30,6 +30,7 @@ namespace DominionCards.KingdomCards
         {
             if (playerAttacked.getDeck().Count == 0){
                 playerAttacked.setDeck(Player.Shuffle(playerAttacked.getDiscard()));
+                playerAttacked.setDiscard(new System.Collections.ArrayList());
             }
             String str;
             if (GameBoard.getInstance().turnOrder.Peek() == playerAttacked)

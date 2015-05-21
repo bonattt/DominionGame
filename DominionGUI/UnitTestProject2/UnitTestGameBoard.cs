@@ -11,6 +11,87 @@ namespace UnitTestProject2
     [TestClass]
     public class UnitTestGameBoard
     {
+        [TestMethod]
+        public void TestIsBuyPhaseResetsAbortPhase()
+        {
+            GameBoard board = new GameBoard(GetTestCards());
+            GameBoard.AbortPhase = true;
+            Player p1 = new HumanPlayer(1);
+            Assert.IsFalse(p1.IsBuyPhase());
+            Assert.IsFalse(GameBoard.AbortPhase);
+        }
+        [TestMethod]
+        public void TestIsActionPhaseResetsAbortPhase()
+        {
+            GameBoard board = new GameBoard(GetTestCards());
+            GameBoard.AbortPhase = true;
+            Player p1 = new HumanPlayer(1);
+            Assert.IsFalse(p1.IsActionPhase());
+            Assert.IsFalse(GameBoard.AbortPhase);
+        }
+        [TestMethod]
+        public void TestNotActionPhaseIfAbortGame()
+        {
+            GameBoard board = new GameBoard(GetTestCards());
+            GameBoard.AbortGame = true;
+            Player p1 = new HumanPlayer(1);
+            Assert.IsFalse(p1.IsActionPhase());
+            Assert.IsTrue(GameBoard.AbortGame);
+        }
+        [TestMethod]
+        public void TestNotBuyPhaseIfAbortGame()
+        {
+            GameBoard board = new GameBoard(GetTestCards());
+            GameBoard.AbortGame = true;
+            Player p1 = new HumanPlayer(1);
+            Assert.IsFalse(p1.IsBuyPhase());
+            Assert.IsTrue(GameBoard.AbortGame);
+        }
+        [TestMethod]
+        public void TestGameIsNotOverIfOnlyTwoPilesAreEmpty()
+        {
+            GameBoard board = new GameBoard(GetTestCards());
+            board.GetCards()[new Silver()] = 0;
+            board.GetCards()[new Copper()] = 0;
+            Assert.IsFalse(board.GameIsOver());
+        }
+        [TestMethod]
+        public void TestGameIsOverIfThreePilesAreEmpty()
+        {
+            GameBoard board = new GameBoard(GetTestCards());
+            board.GetCards()[new Silver()] = 0;
+            board.GetCards()[new Copper()] = 0;
+            board.GetCards()[new Gold()] = 0;
+            Assert.IsTrue(board.GameIsOver());
+        }
+        [TestMethod]
+        public void TestGameIsOverIfProvincesAreEmpty()
+        {
+            GameBoard board = new GameBoard(GetTestCards());
+            board.GetCards()[new Province()] = 0;
+            Assert.IsTrue(board.GameIsOver());
+        }
+
+        [TestMethod]
+        public void TestGetInstanceReturnsInstance()
+        {
+            GameBoard board = new GameBoard(GetTestCards());
+            Assert.AreSame(board, GameBoard.getInstance());
+        }
+        [TestMethod]
+        public void TestGetInstanceThrowsExceptionIfNoInstanceExists()
+        {
+            try
+            {
+                GameBoard.getInstance();
+                Assert.Fail("Should throw exception");
+            }
+            catch (GameBoardInstanceIsNullException)
+            {
+                // exception expected, test passes.
+            }
+        }
+
         private static Dictionary<Card, int> GetTestCards()
         {
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
@@ -33,6 +114,20 @@ namespace UnitTestProject2
             cards[new Market()] = 10;
             return cards;
         }
+        [TestMethod]
+        public void TestGameBoardNullInstanceThrowsException()
+        {
+            try
+            {
+                GameBoard board = GameBoard.getInstance();
+                Assert.Fail();
+            }
+            catch (GameBoardInstanceIsNullException e)
+            {
+                // This exception is expected, tesst passes.
+            }
+        }
+
         [TestMethod]
         public void TestTurnOrderDoesNotChange()
         {
@@ -111,6 +206,13 @@ namespace UnitTestProject2
                 // testing if exception is thrown. Test passed.
             }
         }
+        [TestMethod]
+        public void TestGameOverReturnsTrueIfProvincesOut()
+        {
+            GameBoard board = new GameBoard(GetTestCards());
+            board.GetCards()[new Province()] = 0;
+            Assert.IsTrue(board.GameIsOver());
+        }
 
         [TestMethod]
         public void TestGameEndsFalseIfOnlyTwoStacksEmpty()
@@ -149,6 +251,30 @@ namespace UnitTestProject2
             }
             Assert.Fail("expected an exception");
 
+        }
+        [TestMethod]
+        public void IntegrationTestLastPlayerBreaksTie()
+        {
+            Dictionary<Card, int> cards = GetTestCards();
+            GameBoard board = new GameBoard(cards);
+            Player p1 = new SpecialPlayerMock(1);
+            Player p2 = new SpecialPlayerMock(2);
+            Player p3 = new SpecialPlayerMock(3);
+            Player p4 = new SpecialPlayerMock(4);
+            cards[new Province()] = 12;
+            board.AddPlayer(p1);
+            board.AddPlayer(p2);
+            board.AddPlayer(p3);
+            board.AddPlayer(p4);
+            p4.addCardToHand(new Gold());
+            try
+            {
+                board.PlayGame();
+            }
+            catch (TieException e)
+            {
+                Assert.Fail("should not tie.");
+            }
         }
         [TestMethod]
         public void IntegrationTestPlayerWinsWithMoreVP()
@@ -240,6 +366,61 @@ namespace UnitTestProject2
                 Assert.AreEqual(4, e.getArraySize());
             }
         }
+        [TestMethod]
+        public void IntegrationTestTieIsBrokenByHigherVPplayer()
+        {
+            //            MockRepository mocks = new MockRepository();
+            Dictionary<Card, int> cards = GetTestCards();
+            GameBoard board = new GameBoard(cards);
+            Player p1 = new SpecialPlayerMock(1);
+            Player p2 = new SpecialPlayerMock(2);
+            Player p3 = new SpecialPlayerMock(3);
+            Player p4 = new SpecialPlayerMock(4);
+
+            board.AddPlayer(p1);
+            board.AddPlayer(p2);
+            board.AddPlayer(p3);
+            board.AddPlayer(p4);
+            board.GetCards()[new Province()] = 12;
+            p4.addCardToHand(new Province());
+            try
+            {
+                Player winner = board.PlayGame();
+                Assert.AreSame(p4, winner);
+            }
+            catch (TieException e)
+            {
+                Assert.Fail("tie should be broken");
+            }
+        }
+        [TestMethod]
+        public void TestGameRunnerRunsGame()
+        {
+            GameBoard board = new GameBoard(GetTestCards());
+            board.GetCards()[new Province()] = 12;
+            SpecialPlayerMock p1 = new SpecialPlayerMock(1);
+            SpecialPlayerMock p2 = new SpecialPlayerMock(2);
+            SpecialPlayerMock p3 = new SpecialPlayerMock(3);
+            SpecialPlayerMock p4 = new SpecialPlayerMock(4);
+            board.AddPlayer(p1);
+            board.AddPlayer(p2);
+            board.AddPlayer(p3);
+            board.AddPlayer(p4);
+            try
+            {
+                board.PlayGame();
+                Assert.Fail();
+            }
+            catch (TieException e)
+            {
+                //exception expected
+            }
+            Assert.AreEqual(3, p1.numbTimesCalled);
+            Assert.AreEqual(3, p2.numbTimesCalled);
+            Assert.AreEqual(3, p3.numbTimesCalled);
+            Assert.AreEqual(3, p4.numbTimesCalled);
+        }
+
         public class SpecialPlayerMock : HumanPlayer
         {
             public int numbTimesCalled;

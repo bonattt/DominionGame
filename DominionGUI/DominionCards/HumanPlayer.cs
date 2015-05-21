@@ -42,6 +42,7 @@ namespace DominionCards
         {
             lock (GameBoard.ActionPhaseLock)
             {
+                GameBoard.lastCardPlayed = null;
                 Console.WriteLine("PLAYER: Action Phase called on player " + getNumber());
                 GameBoard.gamePhase = 1;
                 Monitor.Wait(GameBoard.ActionPhaseLock);
@@ -53,6 +54,7 @@ namespace DominionCards
                     if (cardPlayed == null)
                     {
                         Console.WriteLine("Action Phase terminated.");
+                        Monitor.PulseAll(GameBoard.ActionPhaseLock);
                         return;
                     }
                     playCard(cardPlayed);
@@ -68,6 +70,7 @@ namespace DominionCards
         }
         public override void buyPhase()
         {
+            GameBoard.lastCardBought = null;
             Console.WriteLine("Buy Phase called on player " + getNumber());
             lock (GameBoard.BuyPhaseLock)
             {
@@ -82,6 +85,7 @@ namespace DominionCards
                     if (cardBought == null)
                     {
                         Console.WriteLine("Buy Phase terminated.");
+                        Monitor.PulseAll(GameBoard.BuyPhaseLock);
                         return;
                     }
                     if (!buyCard(cardBought))

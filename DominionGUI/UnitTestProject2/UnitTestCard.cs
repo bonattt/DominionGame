@@ -10,7 +10,11 @@ namespace UnitTestProject2
     [TestClass]
     public class UnitTestCard
     {
-
+        [TestMethod]
+        public void TestCardDoesNotEqualNonCard()
+        {
+            Assert.IsFalse(new Copper().Equals(1));
+        }
         [TestMethod]
         public void TestPlayingTreasureThrowsException()
         {
@@ -121,6 +125,9 @@ namespace UnitTestProject2
             Card c = new Silver();
             Assert.AreEqual(0, c.getVictoryPoints());
         }
+
+
+
         [TestMethod]
         public void testWorkshopPutsNewCardInDiscard()
         {
@@ -150,9 +157,6 @@ namespace UnitTestProject2
             p1.playCard(c);
             Assert.AreEqual(spendPoints, p1.moneyLeft());
         }
-
-
-
         [TestMethod]
         public void testLibrary()
         {
@@ -315,6 +319,21 @@ namespace UnitTestProject2
             p1.playCard(c);
             Assert.AreEqual(before + 1, p2.getHand().Count);
         }
+        [TestMethod]
+        public void TestWitchDisplaysMessage()
+        {
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            cards.Add(new Curse(), 30);
+            GameBoard board = new GameBoard(cards);
+            Card c = new Witch();
+            Player p1 = new HumanPlayer(1);
+            Player p2 = new HumanPlayer(2);
+            board.AddPlayer(p1);
+            board.AddPlayer(p2);
+            p1.addCardToHand(c);
+            p1.playCard(c);
+            p2.ProcessAttacks();
+        }
 
         [TestMethod]
         public void TestWitchAddsCurseToOtherPlayers()
@@ -337,7 +356,8 @@ namespace UnitTestProject2
             Assert.AreEqual(cardsInDiscardp3 + 1, p3.getDiscard().Count);
             Assert.IsTrue(p2.getDiscard().Contains(new Curse()));
             Assert.IsTrue(p3.getDiscard().Contains(new Curse()));
-        }[TestMethod]
+        }
+        [TestMethod]
         public void TestWitchDoesNotAddCursesIfNoCursesAreLeft()
         {
             Dictionary<Card, int> cards = new Dictionary<Card, int>();
@@ -419,6 +439,22 @@ namespace UnitTestProject2
             Assert.AreEqual(cardsInDiscard + 1, p1.getDiscard().Count);
             Assert.AreEqual(cardsInHand - 4, p1.getHand().Count);
         }
+        [TestMethod]
+        public void TestChapelNoCards()
+        {
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            GameBoard board = new GameBoard(cards);
+            Card c = new Chapel();
+            Player p1 = new HumanPlayer(1);
+            board.AddPlayer(p1);
+            p1.setHand(new ArrayList());
+            p1.addCardToHand(c);
+            int cardsInDiscard = p1.getDiscard().Count;
+            int cardsInHand = p1.getHand().Count;
+            p1.playCard(c);
+            Assert.AreEqual(cardsInDiscard + 1, p1.getDiscard().Count);
+            Assert.AreEqual(cardsInHand - 1, p1.getHand().Count);
+        }
 
         [TestMethod]
         public void testRemodelPutsNewAndPlayedCardsInDiscard()
@@ -435,6 +471,23 @@ namespace UnitTestProject2
             int numdiscard = p1.getDiscard().Count;
             p1.playCard(c);
             Assert.AreEqual(numdiscard + 2, p1.getDiscard().Count);
+        }
+        [TestMethod]
+        public void testRemodelWithNoOtherCards()
+        {
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            cards.Add(new Copper(), 1);
+            cards.Add(new Estate(), 1);
+            cards.Add(new Witch(), 1);
+            GameBoard board = new GameBoard(cards);
+            Card c = new Remodel();
+            Player p1 = new HumanPlayer(1);
+            board.AddPlayer(p1);
+            p1.setHand(new ArrayList());
+            p1.addCardToHand(c);
+            int numdiscard = p1.getDiscard().Count;
+            p1.playCard(c);
+            Assert.AreEqual(numdiscard + 1, p1.getDiscard().Count);
         }
 
         [TestMethod]
@@ -505,6 +558,24 @@ namespace UnitTestProject2
             p1.playCard(c);
             Assert.IsTrue(p1.getHand().Contains(new Silver()));
             Assert.AreEqual(moneyInHand + 1, p1.getTotalMoney());
+            Assert.AreEqual(cardsInHand - 1, p1.getHand().Count);
+        }
+        [TestMethod]
+        public void TestMineWithNoTreasureCards()
+        {
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            cards.Add(new Silver(), 1);
+            GameBoard board = new GameBoard(cards);
+            Card c = new Mine();
+            Player p1 = new HumanPlayer(1);
+            board.AddPlayer(p1);
+            ArrayList newHand = new ArrayList();
+            newHand.Add(c);
+            p1.setHand(newHand);
+            int cardsInHand = p1.getHand().Count;
+            int moneyInHand = p1.getTotalMoney();
+            p1.playCard(c);
+            Assert.AreEqual(moneyInHand, p1.getTotalMoney());
             Assert.AreEqual(cardsInHand - 1, p1.getHand().Count);
         }
 

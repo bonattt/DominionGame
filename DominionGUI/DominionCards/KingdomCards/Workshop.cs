@@ -27,11 +27,6 @@ namespace DominionCards.KingdomCards
                     buyableCards.Add(card);
                 }
             }
-            if (buyableCards.Count == 0)
-            {
-                MessageBox.Show("You have no cards to play with the workshop!");
-                return;
-            }
             ArrayList cards = player.SelectCards(buyableCards, "Choose a card to gain.", 1);
             while (cards.Count != 1)
             {
