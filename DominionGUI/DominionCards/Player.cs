@@ -65,7 +65,7 @@ namespace DominionCards
         }
         private void drawCardsFromPartialDeck()
         {
-            throw new NotImplementedException("your deck ran out while drawing cards!!!");
+            throw new NotImplementedException("Your deck ran out while drawing cards!!!");
         }
         public void endTurn()
         {
@@ -264,7 +264,7 @@ namespace DominionCards
             // makse sure a card was removed.
             if (handSize - 1 != hand.Count)
             {
-                throw new Exception("tried to play a card not in your hand!!!"); // USE A BETTER EXCEPTION
+                throw new Exception("Tried to play a card not in your hand!!!"); // USE A BETTER EXCEPTION
             }
             ActionCard card = (ActionCard) c;
             actions--;
@@ -318,7 +318,7 @@ namespace DominionCards
                 actionPhase();
                 GameBoard.SignalToUpdateGraphics();
             }
-            MessageBox.Show("buy phase!\nbuy some cards.");
+            MessageBox.Show("Buy phase!\nBuy some cards.");
             while (IsBuyPhase())
             {
                 buyPhase();

@@ -11,6 +11,20 @@ namespace UnitTestProject2
     public class UnitTestRandomCards
     {
         [TestMethod]
+        public void testException()
+        {
+            try
+            {
+                List<int> theList = GenerateRandom.GenerateRandomList(-1, -1);
+                Assert.Fail();
+            }
+            catch (Exception)
+            {
+                Assert.IsTrue(true);
+            }
+            
+        }
+        [TestMethod]
         public void testRandomList1()
         {
             List<int> theList = GenerateRandom.GenerateRandomList(25, 15);

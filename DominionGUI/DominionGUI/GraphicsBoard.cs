@@ -60,12 +60,7 @@ namespace DominionGUI
                 MessageBox.Show("The game is over");
                 EndGame();
             }
-            
-            /*discarddeck.Location = new Point(98, 769);
-            discarddeck.Width = 20;
-            discarddeck.Height = 10;
-            discarddeck.Text = "Discard Cards Size: " + discardsize;
-            discarddeck.Visible = true;*/
+         
         }
 
         public static void WaitToUpdateLabels()

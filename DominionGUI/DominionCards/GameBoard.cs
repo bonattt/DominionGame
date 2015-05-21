@@ -75,7 +75,7 @@ namespace DominionCards
             catch (TieException e)
             {
                 String str = e.PrintWinners();
-                System.Windows.Forms.MessageBox.Show(str);
+                System.Windows.Forms.MessageBox.Show(str + " are tied.");
             }
         }
 

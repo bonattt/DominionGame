@@ -12,7 +12,7 @@ namespace DominionCards.KingdomCards
     {
         private static int ID = 18;
         public Militia()
-            : base(0, 0, 0, 0, 4, ID)
+            : base(0, 2, 0, 0, 4, ID)
         {
             // TODO implement
         }
@@ -40,10 +40,10 @@ namespace DominionCards.KingdomCards
                 MessageBox.Show("You have no cards to discard with the milita!");
                 return;
             }
-            ArrayList cards = playerAttacked.SelectCards(DiscardableCards, "You were attacked by a militia!!! \n Choose " + numCardsToDiscard + " cards to discard", numCardsToDiscard);
+            ArrayList cards = playerAttacked.SelectCards(DiscardableCards, "Player " + playerAttacked.getNumber() + ": You were attacked by a militia!!! \n Choose " + numCardsToDiscard + " cards to discard", numCardsToDiscard);
             while (cards.Count != numCardsToDiscard)
             {
-                DialogResult result1 = MessageBox.Show("You only have to discard " + numCardsToDiscard + " cards.  Try again");
+                DialogResult result1 = MessageBox.Show("You must discard exactly " + numCardsToDiscard + " cards.  Try again");
                 cards = playerAttacked.SelectCards(DiscardableCards, "You were attacked by a militia!!! \n Choose " + numCardsToDiscard + " cards to discard", numCardsToDiscard);
             }
             for (int i = 0; i < numCardsToDiscard; i++)
