@@ -52,7 +52,7 @@ namespace DominionGUI
 
             try
             {
-                Thread thread1 = new Thread(board.PlayGame);
+                Thread thread1 = new Thread(board.GameRunner);
                 thread1.Start();
             }
             catch (Exception e)

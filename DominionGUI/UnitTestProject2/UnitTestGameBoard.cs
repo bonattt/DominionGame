@@ -145,6 +145,12 @@ namespace UnitTestProject2
             cards[new Estate()] = 0;
             Assert.IsFalse(board.GameIsOver());
         }
+        [TestMethod]
+        public void TestThatGetInstanceRetutrnsCorrectBoard()
+        {
+            GameBoard board = new GameBoard(GetTestCards());
+            Assert.AreSame(board, GameBoard.getInstance());
+        }
         /*[TestMethod]
         public void IntegrationTestPlayGameAndGameIsOverUsingCustomPlayerMock()
         {
@@ -221,7 +227,7 @@ namespace UnitTestProject2
 
         } 
         [TestMethod]
-        public void IntegrationTestTieIsThrownOnTrueTieWithFivePlayers()
+        public void IntegrationTestTieIsThrownOnTrueTieWithFourPlayers()
         {
 //            MockRepository mocks = new MockRepository();
             Dictionary<Card, int> cards = GetTestCards();
@@ -230,32 +236,30 @@ namespace UnitTestProject2
             Player p2 = new SpecialPlayerMock(2);
             Player p3 = new SpecialPlayerMock(3);
             Player p4 = new SpecialPlayerMock(4);
-            Player p5 = new SpecialPlayerMock(5);
 
             board.AddPlayer(p1);
             board.AddPlayer(p2);
             board.AddPlayer(p3);
             board.AddPlayer(p4);
-            board.AddPlayer(p5);
+            board.GetCards()[new Province()] = 12;
             try
             {
                 board.PlayGame();
             }
             catch (TieException e)
             {
-                Assert.AreEqual(5, e.getArraySize());
+                Assert.AreEqual(4, e.getArraySize());
                 return;
             }
             Assert.Fail("expected an exception");
 
         }
+
+
         public class SpecialPlayerMock : HumanPlayer
         {
             public int numbTimesCalled;
-            public SpecialPlayerMock() : base()
-            {
-                numbTimesCalled = 0;
-            }
+            
             public SpecialPlayerMock(int n) : base(n)
             {
                 numbTimesCalled = 0;

@@ -14,10 +14,6 @@ namespace DominionCards
         {
             value = money;
         }
-        public override void Play(Player p)
-        {
-            // TODO implement this
-        }
         public override int getVictoryPoints()
         {
             return 0;
