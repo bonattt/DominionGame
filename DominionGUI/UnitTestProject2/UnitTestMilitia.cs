@@ -33,6 +33,13 @@ namespace UnitTestProject2
             p1.addCardToHand(militia);
         }
         [TestMethod]
+        public void TestMilitiaIsActionCard()
+        {
+            Assert.IsTrue(militia.IsAction());
+            Assert.IsFalse(militia.IsVictory());
+            Assert.IsFalse(militia.IsTreasure());
+        }
+        [TestMethod]
         public void MilitiaCausesOtherPlayerDiscard()
         {
             int handcount = p2.getHand().Count;

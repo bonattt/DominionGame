@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DominionCards.KingdomCards
 {
-    public class Moat : ActionCard
+    public class Moat : AttackCard
     {
         private static int ID = 20;
         public Moat()
@@ -19,5 +19,15 @@ namespace DominionCards.KingdomCards
         {
             return "Moat";
         }
+
+        public override void Play(Player player)
+        {
+            // do nothing (not ACTUALLY an attack card)
+        }
+        public override void MakeDelayedAttack(Player playerAttacked)
+        {
+            System.Windows.Forms.MessageBox.Show("You blocked an attack with a moat!!");
+        }
+
     }
 }

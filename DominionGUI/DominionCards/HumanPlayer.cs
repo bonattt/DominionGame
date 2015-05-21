@@ -86,7 +86,18 @@ namespace DominionCards
                     }
                     if (!buyCard(cardBought))
                     {
-                        MessageBox.Show("You do not have enough money to buy that!");
+                        if (GameBoard.getInstance().getCardsLeft(cardBought) == 0)
+                        {
+                            MessageBox.Show("There are none left to buy!");
+                        }
+                        else if (moneyLeft() < cardBought.getPrice())
+                        {
+                            MessageBox.Show("You do not have enough money to buy that!");
+                        }
+                        else
+                        {
+                            MessageBox.Show("You can't buy that!");
+                        }
                     }
                 }
                 catch (Exception e)

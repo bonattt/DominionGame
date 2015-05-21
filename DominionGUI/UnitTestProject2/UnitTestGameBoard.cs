@@ -17,7 +17,7 @@ namespace UnitTestProject2
             cards[new Gold()] = 30;
             cards[new Silver()] = 40;
             cards[new Copper()] = 60;
-            cards[new Province()] = 10;
+            cards[new Province()] = 12;
             cards[new Duchy()] = 12;
             cards[new Estate()] = 12;
             cards[new Curse()] = 30;
@@ -79,45 +79,7 @@ namespace UnitTestProject2
             board.AddPlayer(p1);
             Assert.IsFalse(board.AddPlayer(p1));
         }
-/*        [TestMethod]
-        public void TestTurnOrderUsingMocks()
-        {
-            MockRepository mocks = new MockRepository();
-            Dictionary<Card, int> cards = GetTestCards();
-            GameBoard fakeBoard = mocks.DynamicMock<GameBoard>(cards);
 
-            Player p1 = mocks.DynamicMock<HumanPlayer>(1);
-            Player p2 = mocks.DynamicMock<HumanPlayer>(2);
-            
-            using (mocks.Ordered())
-            {
-                fakeBoard.PlayGame();
-                for (int i = 0; i < 10; i++)
-                {
-                    Expect.Call(()=>p1.TakeTurn(fakeBoard)).CallOriginalMethod(OriginalCallOptions.CreateExpectation);
-                    Expect.Call(()=>p2.TakeTurn(fakeBoard)).CallOriginalMethod(OriginalCallOptions.CreateExpectation);
-                    //p1.TakeTurn(fakeBoard);
-                    //p2.TakeTurn(fakeBoard);
-                }
-            }
-            Expect.Call(fakeBoard.AddPlayer(p1)).CallOriginalMethod(OriginalCallOptions.NoExpectation);
-            Expect.Call(fakeBoard.AddPlayer(p2)).CallOriginalMethod(OriginalCallOptions.NoExpectation);
-            Expect.Call((()=>fakeBoard.PlayGame())).CallOriginalMethod(OriginalCallOptions.NoExpectation);
-            Expect.Call(fakeBoard.NextPlayer()).CallOriginalMethod(OriginalCallOptions.CreateExpectation);
-            Expect.Call(fakeBoard.GameIsOver()).Repeat.Times(20).Return(false);
-            Expect.Call(fakeBoard.GameIsOver()).Return(true);
-            mocks.ReplayAll();
-            try
-            {
-                fakeBoard.PlayGame();
-                Assert.Fail("Players did not tie");
-            }
-            catch (TieException e)
-            {
-                // nothing, this is an expected exception.
-            }
-            mocks.VerifyAll();
-        }*/
         [TestMethod]
         public void TestGameEndsTrueWhenProvincesRunOut()
         {
@@ -137,6 +99,20 @@ namespace UnitTestProject2
             Assert.IsTrue(board.GameIsOver());
         }
         [TestMethod]
+        public void TestWhenGameBoardInstanceIsNull()
+        {
+            try
+            {
+                GameBoard.getInstance();
+                Assert.Fail();
+            }
+            catch (GameBoardInstanceIsNullException e)
+            {
+                // testing if exception is thrown. Test passed.
+            }
+        }
+
+        [TestMethod]
         public void TestGameEndsFalseIfOnlyTwoStacksEmpty()
         {
             Dictionary<Card, int> cards = GetTestCards();
@@ -151,67 +127,15 @@ namespace UnitTestProject2
             GameBoard board = new GameBoard(GetTestCards());
             Assert.AreSame(board, GameBoard.getInstance());
         }
-        /*[TestMethod]
-        public void IntegrationTestPlayGameAndGameIsOverUsingCustomPlayerMock()
-        {
-            MockRepository mocks = new MockRepository();
-            Dictionary<Card, int> cards = GetTestCards();
-            GameBoard board = new GameBoard(cards);
-            Player p1 = new SpecialPlayerMock(1);
-            Player p2 = new SpecialPlayerMock(2);
-            Player p3 = new SpecialPlayerMock(3);
-
-            board.AddPlayer(p1);
-            board.AddPlayer(p2);
-            board.AddPlayer(p3);
-            board.PlayGame();
-
-            Assert.AreEqual(4, ((SpecialPlayerMock)p1).numbTimesCalled);
-            Assert.AreEqual(3, ((SpecialPlayerMock)p2).numbTimesCalled);
-            Assert.AreEqual(3, ((SpecialPlayerMock)p3).numbTimesCalled);
-        }
-
-        [TestMethod]
-        public void IntegrationTestPlayCountVPWhenGameIsOverUsingPlayerMock()
-        {
-            MockRepository mocks = new MockRepository();
-            Dictionary<Card, int> cards = GetTestCards();
-            GameBoard board = new GameBoard(cards);
-            Player p1 = new SpecialPlayerMock();
-            Player p2 = new SpecialPlayerMock();
-            Player p3 = new SpecialPlayerMock();
-
-            board.AddPlayer(p1);
-            board.AddPlayer(p2);
-            board.AddPlayer(p3);
-            Assert.AreEqual(p1, board.PlayGame());
-
-        }
-
-        [TestMethod]
-        public void IntegrationTestPlayCountVPWhenGameIsOverUsingPlayerMockWithTie()
-        {
-            MockRepository mocks = new MockRepository();
-            Dictionary<Card, int> cards = GetTestCards();
-            GameBoard board = new GameBoard(cards);
-            Player p1 = new SpecialPlayerMock(1);
-            Player p2 = new SpecialPlayerMock(2);
-
-            board.AddPlayer(p1);
-            board.AddPlayer(p2);
-            p2.getDiscard().Add(new Gold());
-            Assert.AreEqual(p2, board.PlayGame());
-
-        }*/
+        
         [TestMethod]
         public void IntegrationTestTieIsThrownOnTrueTie()
         {
-//            MockRepository mocks = new MockRepository();
             Dictionary<Card, int> cards = GetTestCards();
             GameBoard board = new GameBoard(cards);
             Player p1 = new SpecialPlayerMock(1);
             Player p2 = new SpecialPlayerMock(2);
-
+            cards[new Province()] = 8;
             board.AddPlayer(p1);
             board.AddPlayer(p2);
             try
@@ -225,11 +149,75 @@ namespace UnitTestProject2
             }
             Assert.Fail("expected an exception");
 
-        } 
+        }
+        [TestMethod]
+        public void IntegrationTestPlayerWinsWithMoreVP()
+        {
+            Dictionary<Card, int> cards = GetTestCards();
+            GameBoard board = new GameBoard(cards);
+            Player p1 = new SpecialPlayerMock(1);
+            Player p2 = new SpecialPlayerMock(2);
+
+            board.AddPlayer(p1);
+            board.AddPlayer(p2);
+            board.GetCards()[new Province()] = 8;
+            p1.getDiscard().Add(new Province());
+            try
+            {
+                Assert.AreSame(p1, board.PlayGame());
+            }
+            catch (TieException e)
+            {
+                Assert.Fail("Tie should not have occured");
+            }
+        }
+        [TestMethod]
+        public void IntegrationTestTieBrokenByMoney()
+        {
+            Dictionary<Card, int> cards = GetTestCards();
+            GameBoard board = new GameBoard(cards);
+            Player p1 = new SpecialPlayerMock(1);
+            Player p2 = new SpecialPlayerMock(2);
+
+            board.AddPlayer(p1);
+            board.AddPlayer(p2);
+            board.GetCards()[new Province()] = 8;
+            p1.getDiscard().Add(new Gold());
+            try
+            {
+                Assert.AreSame(p1, board.PlayGame());
+            }
+            catch (TieException e)
+            {
+                Assert.Fail("Tie should not have occured");
+            }
+        }
+        [TestMethod]
+        public void IntegrationTestMoreGoldDoesNotWinWithLessVP()
+        {
+            Dictionary<Card, int> cards = GetTestCards();
+            GameBoard board = new GameBoard(cards);
+            Player p1 = new SpecialPlayerMock(1);
+            Player p2 = new SpecialPlayerMock(2);
+
+            board.AddPlayer(p1);
+            board.AddPlayer(p2);
+            board.GetCards()[new Province()] = 8;
+            p1.getDiscard().Add(new Gold());
+            p2.getDiscard().Add(new Province());
+            try
+            {
+                Assert.AreSame(p2, board.PlayGame());
+            }
+            catch (TieException e)
+            {
+                Assert.Fail("Tie should not have occured");
+            }
+        }
         [TestMethod]
         public void IntegrationTestTieIsThrownOnTrueTieWithFourPlayers()
         {
-//            MockRepository mocks = new MockRepository();
+            //            MockRepository mocks = new MockRepository();
             Dictionary<Card, int> cards = GetTestCards();
             GameBoard board = new GameBoard(cards);
             Player p1 = new SpecialPlayerMock(1);
@@ -245,17 +233,13 @@ namespace UnitTestProject2
             try
             {
                 board.PlayGame();
+                Assert.Fail("expected an exception");
             }
             catch (TieException e)
             {
                 Assert.AreEqual(4, e.getArraySize());
-                return;
             }
-            Assert.Fail("expected an exception");
-
         }
-
-
         public class SpecialPlayerMock : HumanPlayer
         {
             public int numbTimesCalled;

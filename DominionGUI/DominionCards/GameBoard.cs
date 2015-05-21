@@ -28,10 +28,10 @@ namespace DominionCards
             turnOrder = new Queue<Player>();
             boardInstance = this;
         }
-        public virtual void addCard(Card c)
+        /*public virtual void addCard(Card c)
         {
             cards.Add(c, 10);
-        }
+        }*/
 
         public virtual int getCardsLeft(Card c)
         {
@@ -183,7 +183,7 @@ namespace DominionCards
         {
             if (boardInstance == null)
             {
-                return null; //add an exception here in the future
+                throw new GameBoardInstanceIsNullException();
             }
             return boardInstance;
         }

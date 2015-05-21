@@ -37,6 +37,13 @@ namespace UnitTestProject2
             p1.addCardToHand(card);
         }
         [TestMethod]
+        public void TestThiefIsActionCard()
+        {
+            Assert.IsTrue(card.IsAction());
+            Assert.IsFalse(card.IsVictory());
+            Assert.IsFalse(card.IsTreasure());
+        }
+        [TestMethod]
         public void TestThatThiefKeepsSomeCards()
         {
             int discardCount = p1.getDiscard().Count;

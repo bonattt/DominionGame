@@ -10,14 +10,34 @@ namespace UnitTestProject2
     [TestClass]
     public class UnitTestCard
     {
-        /*public void testThatCardsWorkInDictionaries()
+
+        [TestMethod]
+        public void TestPlayingTreasureThrowsException()
         {
-            Dictionary<Card, int> dict = new Dictionary<Card, int>();
-            dict.Add(new Copper(), 1);
-            dict.Add(new Village(), 2);
-            Assert.AreEqual(1, dict[new Copper()]);
-            Assert.AreEqual(2, dict[new Village()]);
-        }*/
+            try
+            {
+
+                new Copper().Play(null);
+                Assert.Fail();
+            }
+            catch (UnplayableCardException e)
+            {
+                // exception expected, test passes.
+            }
+        }
+        [TestMethod]
+        public void TestPlayingVictoryCardThrowsException()
+        {
+            try
+            {
+                new Estate().Play(null);
+                Assert.Fail();
+            }
+            catch (UnplayableCardException e)
+            {
+                // exception expected, test passes.
+            }
+        }
         [TestMethod]
         public void TestVictoryCardsAreVictoryCards()
         {
@@ -65,6 +85,7 @@ namespace UnitTestProject2
             Assert.AreEqual("Festival", new Festival().ToString());
             Assert.AreEqual("Gardens", new Gardens().ToString());
             Assert.AreEqual("Gold", new Gold().ToString());
+            Assert.AreEqual("Library", new Library().ToString());
             Assert.AreEqual("Laboratory", new Laboratory().ToString());
             Assert.AreEqual("Market", new Market().ToString());
             Assert.AreEqual("Militia", new Militia().ToString());
@@ -83,6 +104,7 @@ namespace UnitTestProject2
             Assert.AreEqual("Woodcutter", new Woodcutter().ToString());
             Assert.AreEqual("Workshop", new Workshop().ToString());
         }
+        [TestMethod]
         public void testThatAdventurerDoesThing()
         {
             Card c = new Adventurer();

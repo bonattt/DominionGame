@@ -54,6 +54,7 @@
     <Compile Include="CardCheckBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="GameBoardInstanceIsNullException.cs" />
     <Compile Include="SelectCardsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +99,7 @@
     <Compile Include="PlayerTest.cs" />
     <Compile Include="TestAddCards.cs" />
     <Compile Include="TieException.cs" />
+    <Compile Include="UnplayableCardException.cs" />
     <Compile Include="VictoryCard.cs" />
     <Compile Include="TreasureCard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

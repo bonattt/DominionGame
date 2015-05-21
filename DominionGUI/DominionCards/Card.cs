@@ -27,7 +27,7 @@ namespace DominionCards
         public abstract int getVictoryPoints();
         public virtual void Play(Player player)
         {
-            // this method does nothing for non action cards
+            throw new UnplayableCardException(this);
         }
 
         public override int GetHashCode()
