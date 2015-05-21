@@ -24,10 +24,5 @@ namespace DominionCards.KingdomCards
         {
             // do nothing (not ACTUALLY an attack card)
         }
-        public override void MakeDelayedAttack(Player playerAttacked)
-        {
-            System.Windows.Forms.MessageBox.Show("You blocked an attack with a moat!!");
-        }
-
     }
 }

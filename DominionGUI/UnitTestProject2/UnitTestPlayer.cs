@@ -107,7 +107,7 @@ namespace UnitTestProject2
         }
 
         [TestMethod]
-        public void TestThatActionPhasePhaseDoesNotPlayCardWithoutEnoughMoneyActions()
+        public void TestThatActionPhasePhaseDoesNotPlayCardWithoutEnoughActions()
         {
             Dictionary<Card, int> dict = new Dictionary<Card, int>();
             dict.Add(new Witch(), 10);
