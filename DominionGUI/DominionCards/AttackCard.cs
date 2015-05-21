@@ -35,6 +35,7 @@ namespace DominionCards
                 }
                 else
                 {
+                    System.Windows.Forms.MessageBox.Show("Your attack was blocked by player " + p.getNumber() + "'s moat!");
                     current.getAttacks().Enqueue(new KingdomCards.Moat());
                 }
             } 

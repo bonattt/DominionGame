@@ -18,6 +18,7 @@ namespace UnitTestProject2
         public void SetUp()
         {
             Dictionary<Card, int> dict = new Dictionary<Card, int>();
+            dict.Add(new Curse(), 10);
             board = new GameBoard(dict);
             p1 = new HumanPlayer(1);
             p1.setHand(new ArrayList());
