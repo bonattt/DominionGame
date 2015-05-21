@@ -22,24 +22,25 @@ namespace DominionCards.KingdomCards
 
         public override void Play(Player player)
         {
-            ArrayList trashableCards = new ArrayList();
+            ArrayList discardableCards = new ArrayList();
             foreach (Card card in player.getHand())
             {
-                trashableCards.Add(card);
+                discardableCards.Add(card);
                 
             }
-            if (trashableCards.Count == 0)
+            if (discardableCards.Count == 0)
             {
                 MessageBox.Show("You have no cards to play with the cellar");
                 return;
             }
-            ArrayList cards = player.SelectCards(trashableCards, "Choose cards to trash.", player.getHand().Count);
+            ArrayList cards = player.SelectCards(discardableCards, "Choose cards to trash.", player.getHand().Count);
             //This doesn't need a check to make sure you didn't check too many boxes because you can check all of them
             for (int i = 0; i < cards.Count; i++)
             {
-                player.actions += 1;
+                player.getHand().Add(player.GetNextCard());
                 Card cardSelected = (Card)cards[i];
                 player.getHand().Remove(cardSelected);
+                player.getDiscard().Add(cardSelected);
             }
         }
     }

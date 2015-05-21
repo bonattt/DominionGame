@@ -19,7 +19,7 @@ namespace DominionCards.KingdomCards
 
         public override String ToString()
         {
-            return "mine";
+            return "Mine";
         }
         public override void Play(Player player)
         {

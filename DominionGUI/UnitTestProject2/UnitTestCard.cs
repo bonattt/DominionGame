@@ -10,13 +10,99 @@ namespace UnitTestProject2
     [TestClass]
     public class UnitTestCard
     {
-        public void testThatCardsWorkInDictionaries()
+
+        [TestMethod]
+        public void TestPlayingTreasureThrowsException()
         {
-            Dictionary<Card, int> dict = new Dictionary<Card, int>();
-            dict.Add(new Copper(), 1);
-            dict.Add(new Village(), 2);
-            Assert.AreEqual(1, dict[new Copper()]);
-            Assert.AreEqual(2, dict[new Village()]);
+            try
+            {
+
+                new Copper().Play(null);
+                Assert.Fail();
+            }
+            catch (UnplayableCardException e)
+            {
+                // exception expected, test passes.
+            }
+        }
+        [TestMethod]
+        public void TestPlayingVictoryCardThrowsException()
+        {
+            try
+            {
+                new Estate().Play(null);
+                Assert.Fail();
+            }
+            catch (UnplayableCardException e)
+            {
+                // exception expected, test passes.
+            }
+        }
+        [TestMethod]
+        public void TestVictoryCardsAreVictoryCards()
+        {
+            Assert.IsTrue(new Estate().IsVictory());
+            Assert.IsTrue(new Duchy().IsVictory());
+            Assert.IsTrue(new Province().IsVictory());
+            Assert.IsTrue(new Gardens().IsVictory());
+            Assert.IsFalse(new Estate().IsAction());
+            Assert.IsFalse(new Duchy().IsAction());
+            Assert.IsFalse(new Province().IsAction());
+            Assert.IsFalse(new Gardens().IsAction());
+            Assert.IsFalse(new Estate().IsTreasure());
+            Assert.IsFalse(new Duchy().IsTreasure());
+            Assert.IsFalse(new Province().IsTreasure());
+            Assert.IsFalse(new Gardens().IsTreasure());
+        }
+        [TestMethod]
+        public void TestTreasureCardsAreTresureCards()
+        {
+            Assert.IsFalse(new Copper().IsVictory());
+            Assert.IsFalse(new Silver().IsVictory());
+            Assert.IsFalse(new Gold().IsVictory());
+            Assert.IsFalse(new Copper().IsAction());
+            Assert.IsFalse(new Silver().IsAction());
+            Assert.IsFalse(new Gold().IsAction());
+            Assert.IsTrue(new Copper().IsTreasure());
+            Assert.IsTrue(new Silver().IsTreasure());
+            Assert.IsTrue(new Gold().IsTreasure());
+        }
+
+        [TestMethod]
+        public void TestCardsPrintNames()
+        {
+            Assert.AreEqual("Adventurer", new Adventurer().ToString());
+            Assert.AreEqual("Bureaucrat", new Bureaucrat().ToString());
+            Assert.AreEqual("Cellar", new Cellar().ToString());
+            Assert.AreEqual("Chancellor", new Chancellor().ToString());
+            Assert.AreEqual("Chapel", new Chapel().ToString());
+            Assert.AreEqual("Copper", new Copper().ToString());
+            Assert.AreEqual("Council Room", new CouncilRoom().ToString());
+            Assert.AreEqual("Curse", new Curse().ToString());
+            Assert.AreEqual("Duchy", new Duchy().ToString());
+            Assert.AreEqual("Estate", new Estate().ToString());
+            Assert.AreEqual("Feast", new Feast().ToString());
+            Assert.AreEqual("Festival", new Festival().ToString());
+            Assert.AreEqual("Gardens", new Gardens().ToString());
+            Assert.AreEqual("Gold", new Gold().ToString());
+            Assert.AreEqual("Library", new Library().ToString());
+            Assert.AreEqual("Laboratory", new Laboratory().ToString());
+            Assert.AreEqual("Market", new Market().ToString());
+            Assert.AreEqual("Militia", new Militia().ToString());
+            Assert.AreEqual("Mine", new Mine().ToString());
+            Assert.AreEqual("Moat", new Moat().ToString());
+            Assert.AreEqual("Money Lender", new MoneyLender().ToString());
+            Assert.AreEqual("Province", new Province().ToString());
+            Assert.AreEqual("Remodel", new Remodel().ToString());
+            Assert.AreEqual("Silver", new Silver().ToString());
+            Assert.AreEqual("Smithy", new Smithy().ToString());
+            Assert.AreEqual("Spy", new Spy().ToString());
+            Assert.AreEqual("Thief", new Thief().ToString());
+            Assert.AreEqual("Throne Room", new ThroneRoom().ToString());
+            Assert.AreEqual("Village", new Village().ToString());
+            Assert.AreEqual("Witch", new Witch().ToString());
+            Assert.AreEqual("Woodcutter", new Woodcutter().ToString());
+            Assert.AreEqual("Workshop", new Workshop().ToString());
         }
         [TestMethod]
         public void testThatAdventurerDoesThing()

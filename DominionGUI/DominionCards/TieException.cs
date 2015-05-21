@@ -54,19 +54,19 @@ namespace DominionCards
             StringBuilder sb = new StringBuilder();
             sb.Append("Player ");
             sb.Append(((Player)TiedPlayers[0]).getNumber());
-            for (int i = 1; i < TiedPlayers.Count; i++)
+            for (int i = 1; i < TiedPlayers.Count - 1; i++)
             {
                 sb.Append(", ");
                 sb.Append("Player ");
                 sb.Append(((Player)TiedPlayers[i]).getNumber());
                 i++;
             }
+            sb.Append(", and Player ");
+            sb.Append(((Player)TiedPlayers[TiedPlayers.Count - 1]).getNumber());
+            sb.Append(" tied for winner! \n");
             String str = sb.ToString();
             Console.WriteLine(str);
             return str;
-            //Console.Write("and Player ");
-            //Console.Write(((Player)TiedPlayers[TiedPlayers.Count - 1]).getNumber());
-            Console.Write(" tied for winner! \n");
         }
 
 

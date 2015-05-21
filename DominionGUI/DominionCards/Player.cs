@@ -32,7 +32,6 @@ namespace DominionCards
                 discard.Add(new KingdomCards.Copper());
             }
             drawHand();
-            // TODO shuffle the deck
         }
         public void setNumber(int numb)
         {

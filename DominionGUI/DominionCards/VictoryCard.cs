@@ -17,10 +17,6 @@ namespace DominionCards
         public override int getVictoryPoints(){
             return vp;
         }
-        public override void Play(Player p)
-        {
-            // TODO implement this
-        }
         public override bool IsVictory()
         {
             return true;

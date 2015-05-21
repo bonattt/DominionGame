@@ -52,7 +52,7 @@ namespace DominionGUI
 
             try
             {
-                Thread thread1 = new Thread(board.PlayGame);
+                Thread thread1 = new Thread(board.GameRunner);
                 thread1.Start();
             }
             catch (Exception e)
@@ -202,7 +202,7 @@ namespace DominionGUI
             
         }
 
-        public void addRandomtencards()
+        /*public void addRandomtencards()
         {
             List<int> numList = new List<int>();
             numList = RandomGenerateCards.GenerateRandom.GenerateRandomList(25, 10);
@@ -233,7 +233,7 @@ namespace DominionGUI
                     this.Show();
                 }
             }
-        }
+        }*/
         public void DrawHand()
         {
             SetCurrentPlayerHand();

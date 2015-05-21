@@ -53,7 +53,6 @@ namespace DominionGUI
             }
             GraphicsBoard.WaitToUpdateLabels();
             //GraphicsBoard.getinstance().UpdateLabelsAndHand();
-            GameBoard.getInstance().PrintOutDictionary();
         }
 
         internal void PlayThisCard(object sender, EventArgs e)

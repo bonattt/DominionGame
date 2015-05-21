@@ -28,6 +28,13 @@ namespace UnitTestProject2
             p1.addCardToHand(card);
         }
         [TestMethod]
+        public void TestSpyIsActionCard()
+        {
+            Assert.IsTrue(card.IsAction());
+            Assert.IsFalse(card.IsVictory());
+            Assert.IsFalse(card.IsTreasure());
+        }
+        [TestMethod]
         public void TestSpyDiscardsPlayerTwosCard()
         {
             int discardCount = p2.getDiscard().Count;

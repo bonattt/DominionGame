@@ -28,10 +28,10 @@ namespace DominionCards
             turnOrder = new Queue<Player>();
             boardInstance = this;
         }
-        public virtual void addCard(Card c)
+        /*public virtual void addCard(Card c)
         {
             cards.Add(c, 10);
-        }
+        }*/
 
         public virtual int getCardsLeft(Card c)
         {
@@ -63,17 +63,11 @@ namespace DominionCards
             turnOrder.Enqueue(p);
             return true;
         }
-        public virtual void PlayGame()
+        public void GameRunner()
         {
-            while (!GameIsOver())
-            {
-                gamePhase = 0;
-                turnOrder.Peek().TakeTurn();
-                NextPlayer();
-            }
             try
             {
-                Player p = FindWinningPlayer();
+                Player p = PlayGame();
                 string winnerMessage = "Player " + p.getNumber() + " won!";
                 Console.WriteLine(winnerMessage);
                 System.Windows.Forms.MessageBox.Show(winnerMessage);
@@ -83,7 +77,17 @@ namespace DominionCards
                 String str = e.PrintWinners();
                 System.Windows.Forms.MessageBox.Show(str + " are tied.");
             }
-            
+        }
+
+        public virtual Player PlayGame()
+        {
+            while (!GameIsOver())
+            {
+                gamePhase = 0;
+                turnOrder.Peek().TakeTurn();
+                NextPlayer();
+            }
+            return FindWinningPlayer();
         }
 
         public Player FindWinningPlayer()
@@ -179,18 +183,9 @@ namespace DominionCards
         {
             if (boardInstance == null)
             {
-                return null; //add an exception here in the future
+                throw new GameBoardInstanceIsNullException();
             }
             return boardInstance;
-        }
-        public void PrintOutDictionary()
-        {
-            Console.Write("PRINTING DICTIONARY");
-            foreach (Card c in cards.Keys)
-            {
-                Console.Write(cards[c] + " ");
-            }
-            Console.WriteLine();
         }
     }
 }

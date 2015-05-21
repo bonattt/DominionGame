@@ -10,8 +10,9 @@ namespace DominionCards.KingdomCards
 {
     public class Chapel : ActionCard
     {
+        public static int ID = 10;
         public Chapel()
-            : base(0, 0, 0, 0, 4, 10)
+            : base(0, 0, 0, 0, 2, ID)
         {
             // TODO implement
         }

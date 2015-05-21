@@ -33,6 +33,13 @@ namespace UnitTestProject2
             card = new Bureaucrat();
             p1.addCardToHand(card);
         }
+        [TestMethod]
+        public void TestBureaucratIsActionCard()
+        {
+            Assert.IsTrue(card.IsAction());
+            Assert.IsFalse(card.IsVictory());
+            Assert.IsFalse(card.IsTreasure());
+        }
 
         [TestMethod]
         public void TestNextCardIsSilverAfterPlayingBeaureauqwertyuiop()

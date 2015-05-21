@@ -25,7 +25,10 @@ namespace DominionCards
             return id;
         }
         public abstract int getVictoryPoints();
-        public abstract void Play(Player player);
+        public virtual void Play(Player player)
+        {
+            throw new UnplayableCardException(this);
+        }
 
         public override int GetHashCode()
         {

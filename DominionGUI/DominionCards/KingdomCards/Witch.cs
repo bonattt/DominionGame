@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace DominionCards.KingdomCards
 {
@@ -13,6 +14,11 @@ namespace DominionCards.KingdomCards
             : base(2, 0, 0, 0, 5, ID)
         {
             // TODO implement
+        }
+        public override void MakeDelayedAttack(Player playerAttacked)
+        {
+            MessageBox.Show("You have been cursed by a witch!!");
+            Console.WriteLine("Curse debug: top discard " + playerAttacked.getDiscard()[playerAttacked.getDiscard().Count - 1]);
         }
 
         public override void MakeImmediateAttack(Player playerAttacked)

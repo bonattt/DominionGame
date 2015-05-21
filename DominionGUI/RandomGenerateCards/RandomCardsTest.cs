@@ -11,7 +11,6 @@ namespace RandomGenerateCards
     [TestFixture()]
     class RandomCardsTest
     {
-        /*
         [Test()]
         public void testRandomList1()
         {
@@ -129,6 +128,6 @@ namespace RandomGenerateCards
             }
             Assert.AreEqual(true, israndom);
         }
-        */
+        
     }
 }

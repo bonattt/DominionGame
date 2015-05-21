@@ -13,31 +13,99 @@ namespace UnitTestProject2
     [TestClass]
     public class UnitTestPlayer
     {
+        private static Dictionary<Card, int> GetTestCards()
+        {
+            Dictionary<Card, int> cards = new Dictionary<Card, int>();
+            cards[new Gold()] = 30;
+            cards[new Silver()] = 40;
+            cards[new Copper()] = 60;
+            cards[new Province()] = 12;
+            cards[new Duchy()] = 12;
+            cards[new Estate()] = 12;
+            cards[new Curse()] = 30;
+            cards[new Cellar()] = 10;
+            cards[new Moat()] = 10;
+            cards[new Woodcutter()] = 10;
+            cards[new Village()] = 10;
+            cards[new Militia()] = 10;
+            cards[new Mine()] = 10;
+            cards[new Remodel()] = 10;
+            cards[new Feast()] = 10;
+            cards[new Workshop()] = 10;
+            cards[new Market()] = 10;
+            return cards;
+        }
+        [TestMethod]
+        public void TestIsBuyPhaseIsFalseWithNoBuys()
+        {
+            Player p1 = new HumanPlayer(1);
+            p1.buys = 0;
+            Assert.IsFalse(p1.IsBuyPhase());
+        }
+        [TestMethod]
+        public void TestIsBuyPhaseIsTrueWithBuys()
+        {
+            Player p1 = new HumanPlayer(1);
+            Assert.IsTrue(p1.IsBuyPhase());
+        }
+        [TestMethod]
+        public void TestIsActionPhaseFailsWithNoActions()
+        {
+            Player p1 = new HumanPlayer();
+            p1.addCardToHand(new Village());
+            p1.actions = 0;
+            Assert.IsFalse(p1.IsActionPhase());
+        }
+        [TestMethod]
+        public void TestIsActionPhaseFailsWithNoActionCards()
+        {
+            Player p1 = new HumanPlayer();
+            p1.setHand(new ArrayList());
+            p1.actions = 1;
+            Assert.IsFalse(p1.IsActionPhase());
+        }
+        [TestMethod]
+        public void TestIsActionPhasePassesWithActionCardsAndActionsLeft()
+        {
+            Player p1 = new HumanPlayer();
+            p1.addCardToHand(new Village());
+            p1.actions = 1;
+            Assert.IsTrue(p1.IsActionPhase());
+        }
+
+
         [TestMethod]
         public void TestThatBuyPhaseBuysMostRecentBoughtCard()
         {
             Assert.Fail();
         }
-
         [TestMethod]
-        public void TestThatBuyPhaseBuysDoesNotBuyCardWithoutEnoughMoney()
+        public void IntegrationFailsToBuyCardWithNoneLeft()
         {
-            Dictionary<Card, int> dict = new Dictionary<Card, int>();
-            dict.Add(new Witch(), 10);
-            GameBoard board = new GameBoard(dict);
+            GameBoard board = new GameBoard(GetTestCards());
+            board.GetCards()[new Gold()] = 0;
             Player p1 = new HumanPlayer(1);
-            p1.money = 5;
-            GameBoard.lastCardBought = new Copper();
-
-            
-            Thread t = new Thread(p1.buyPhase);
-            t.Start();
-            GameBoard.lastCardBought = new Witch();
-            //Monitor.PulseAll(new BuyButtonSignal());
-            
-
-            Assert.AreEqual(9, board.GetCards()[new Witch()]);
+            Assert.IsFalse(p1.buyCard(new Gold()));
         }
+        [TestMethod]
+        public void IntegrationTestBuyCardAddsNewCardToDiscard()
+        {
+            GameBoard board = new GameBoard(GetTestCards());
+            Player p1 = new HumanPlayer(1);
+            p1.addCardToHand(new Gold()); // ensures player has enough money to buy a silver.
+            int discardSize = p1.getDiscard().Count;
+            p1.buyCard(new Silver());
+            Assert.IsTrue(p1.getDiscard().Contains(new Silver()));
+            Assert.AreEqual(discardSize + 1, p1.getDiscard().Count);
+        }
+        [TestMethod]
+        public void IntegrationFailsToBuyCardWithoutEnoughMoney()
+        {
+            GameBoard board = new GameBoard(GetTestCards());
+            Player p1 = new HumanPlayer(1);
+            Assert.IsFalse(p1.buyCard(new Province()));
+        }
+
         [TestMethod]
         public void TestThatActionPhasePhaseDoesNotPlayCardWithoutEnoughMoneyActions()
         {
@@ -96,20 +164,6 @@ namespace UnitTestProject2
             Assert.IsTrue(p1.getDiscard().Contains(new Witch()));
         }
 
-        [TestMethod]
-        public void TestIsActionPhaseWheneverPlayerHasTreasure()
-        {
-            Dictionary<Card, int> dict = new Dictionary<Card, int>();
-            GameBoard board = new GameBoard(dict);
-            HumanPlayer p1 = new HumanPlayer(1);
-            p1.actions = 0;
-            ArrayList cardList = new ArrayList();
-            cardList.Add(new Copper());
-            cardList.Add(new Estate());
-            p1.setHand(cardList);
-
-            Assert.IsTrue(p1.IsActionPhase());
-        }
         [TestMethod]
         public void TestIsActionPhaseIsFalseWithoutActionCard()
         {
@@ -252,39 +306,6 @@ namespace UnitTestProject2
             ArrayList hand = p1.getHand();
             p1.drawHand();
             Assert.AreEqual(hand, p1.getHand());
-        }
-        [TestMethod]
-        public void playingTreasureCardDoesntUseAnAction()
-        {
-            Player p1 = new HumanPlayer();
-            int a = p1.actionsLeft();
-            ArrayList hand = new ArrayList();
-            hand.Add(new Copper());
-            p1.setHand(hand);
-            p1.playCard((Card)hand[0]);
-            Assert.AreEqual(a, p1.actionsLeft());
-        }
-        [TestMethod]
-        public void playingTreasureCardDoesntAddBuys()
-        {
-            Player p1 = new HumanPlayer();
-            int b = p1.buysLeft();
-            ArrayList hand = new ArrayList();
-            hand.Add(new Gold());
-            p1.setHand(hand);
-            p1.playCard((Card)hand[0]);
-            Assert.AreEqual(b, p1.actionsLeft());
-        }
-        [TestMethod]
-        public void playingTreasureCardDoesntDrawCards()
-        {
-            Player p1 = new HumanPlayer();
-            ArrayList hand = new ArrayList();
-            hand.Add(new Gold());
-            int cards = hand.Count;
-            p1.setHand(hand);
-            p1.playCard((Card)hand[0]);
-            Assert.AreEqual(cards - 1, p1.getHand().Count);
         }
         [TestMethod]
         public void testCountVictoryPointsCountsBasicVictoryCards(){

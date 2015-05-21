@@ -33,16 +33,12 @@ namespace DominionCards
                     MakeImmediateAttack(current);
                     current.getAttacks().Enqueue(this);
                 }
+                else
+                {
+                    System.Windows.Forms.MessageBox.Show("Your attack was blocked by player " + p.getNumber() + "'s moat!");
+                    current.getAttacks().Enqueue(new KingdomCards.Moat());
+                }
             } 
-        }
-
-        public virtual void GetAttackerDecision(Player attacker, Player target)
-        {
-            // does nothing by default.
-        }
-        public virtual void GetResponse(Player target)
-        {
-            // does nothing.
         }
 
         public override void Play(Player player)
