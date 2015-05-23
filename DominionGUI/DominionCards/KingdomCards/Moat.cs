@@ -15,6 +15,10 @@ namespace DominionCards.KingdomCards
         {
             // DONE
         }
+        public override bool IsAttack()
+        {
+            return false;
+        }
         public override String ToString()
         {
             return "Moat";

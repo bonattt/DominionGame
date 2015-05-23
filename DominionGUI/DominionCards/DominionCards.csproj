@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AIplayer.cs" />
     <Compile Include="AttackCard.cs" />
     <Compile Include="Card.cs" />
     <Compile Include="CardCannotBePlayedException.cs" />

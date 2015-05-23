@@ -18,8 +18,9 @@ namespace DominionCards
         private Queue<AttackCard> attacks = new Queue<AttackCard>();
 
         public int actions, buys, money; // TODO set this to public temporarily so code would compile. 
-        public Player()
+        public Player(int num)
         {
+            number = num;
             actions = 1;
             buys = 1;
             money = 0;
@@ -181,7 +182,7 @@ namespace DominionCards
             }
             return true;
         }
-        public bool buyCard(Card card)
+        public virtual bool buyCard(Card card)
         {
             if (this.moneyLeft() < card.getPrice())
             {

@@ -16,6 +16,10 @@ namespace DominionCards
             this.price = price;
             id = idNumb;
         }
+        public virtual bool IsAttack()
+        {
+            return false;
+        }
         public int getPrice()
         {
             return price;

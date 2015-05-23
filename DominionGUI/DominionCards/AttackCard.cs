@@ -40,6 +40,10 @@ namespace DominionCards
                 }
             } 
         }
+        public override bool IsAttack()
+        {
+            return true;
+        }
 
         public override void Play(Player player)
         {

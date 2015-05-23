@@ -28,15 +28,14 @@ namespace DominionCards
         }
 
         public HumanPlayer()
-            : base()
+            : base(1)
         {
-            setNumber(1);
-            // TODO implement
+            // do nothing
         }
         public HumanPlayer(int playerNumber)
-            : base()
+            : base(playerNumber)
         {
-            setNumber(playerNumber);
+            // do nothing
         }
         public override void actionPhase()
         {
